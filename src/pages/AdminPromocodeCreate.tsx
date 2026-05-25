@@ -469,6 +469,9 @@ export default function AdminPromocodeCreate() {
             <button
               type="button"
               onClick={() => setIsActive(!isActive)}
+              role="switch"
+              aria-checked={isActive}
+              aria-label={t('admin.promocodes.form.active')}
               className={`relative h-6 w-10 rounded-full transition-colors ${
                 isActive ? 'bg-accent-500' : 'bg-dark-600'
               }`}
@@ -486,6 +489,9 @@ export default function AdminPromocodeCreate() {
             <button
               type="button"
               onClick={() => setFirstPurchaseOnly(!firstPurchaseOnly)}
+              role="switch"
+              aria-checked={firstPurchaseOnly}
+              aria-label={t('admin.promocodes.form.firstPurchaseOnly')}
               className={`relative h-6 w-10 rounded-full transition-colors ${
                 firstPurchaseOnly ? 'bg-accent-500' : 'bg-dark-600'
               }`}

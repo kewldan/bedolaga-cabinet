@@ -378,6 +378,9 @@ export default function AdminPromoGroupCreate() {
           <button
             type="button"
             onClick={() => setApplyToAddons(!applyToAddons)}
+            role="switch"
+            aria-checked={applyToAddons}
+            aria-label={t('admin.promoGroups.form.applyToAddons')}
             className={`relative h-6 w-11 rounded-full transition-colors ${
               applyToAddons ? 'bg-accent-500' : 'bg-dark-600'
             }`}
@@ -396,6 +399,9 @@ export default function AdminPromoGroupCreate() {
           <button
             type="button"
             onClick={() => setIsDefault(!isDefault)}
+            role="switch"
+            aria-checked={isDefault}
+            aria-label={t('admin.promoGroups.form.isDefault')}
             className={`relative h-6 w-11 rounded-full transition-colors ${
               isDefault ? 'bg-accent-500' : 'bg-dark-600'
             }`}

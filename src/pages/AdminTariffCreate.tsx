@@ -855,6 +855,9 @@ export default function AdminTariffCreate() {
               <button
                 type="button"
                 onClick={() => setTrafficTopupEnabled(!trafficTopupEnabled)}
+                role="switch"
+                aria-checked={trafficTopupEnabled}
+                aria-label={t('admin.tariffs.extraTrafficTitle')}
                 className={`relative h-6 w-11 rounded-full transition-colors ${
                   trafficTopupEnabled ? 'bg-accent-500' : 'bg-dark-600'
                 }`}
@@ -1117,6 +1120,9 @@ export default function AdminTariffCreate() {
               <button
                 type="button"
                 onClick={() => setIsActive(!isActive)}
+                role="switch"
+                aria-checked={isActive}
+                aria-label={t('admin.tariffs.isActiveLabel')}
                 className={`relative h-6 w-11 rounded-full transition-colors ${
                   isActive ? 'bg-success-500' : 'bg-dark-600'
                 }`}
@@ -1139,6 +1145,9 @@ export default function AdminTariffCreate() {
               <button
                 type="button"
                 onClick={() => setShowInGift(!showInGift)}
+                role="switch"
+                aria-checked={showInGift}
+                aria-label={t('admin.tariffs.showInGiftLabel')}
                 className={`relative h-6 w-11 rounded-full transition-colors ${
                   showInGift ? 'bg-accent-500' : 'bg-dark-600'
                 }`}

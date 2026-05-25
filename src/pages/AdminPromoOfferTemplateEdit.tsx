@@ -304,6 +304,9 @@ export default function AdminPromoOfferTemplateEdit() {
               <button
                 type="button"
                 onClick={() => setIsActive(!isActive)}
+                role="switch"
+                aria-checked={isActive}
+                aria-label={t('admin.promoOffers.form.templateActive')}
                 className={`relative h-6 w-11 rounded-full transition-colors ${
                   isActive ? 'bg-accent-500' : 'bg-dark-600'
                 }`}
