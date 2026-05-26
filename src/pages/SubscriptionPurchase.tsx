@@ -477,7 +477,7 @@ export default function SubscriptionPurchase() {
                       height="16"
                       viewBox="0 0 24 24"
                       fill="none"
-                      stroke="#FFB800"
+                      stroke="rgb(var(--color-urgent-400))"
                       strokeWidth="1.5"
                       aria-hidden="true"
                     >
@@ -489,7 +489,10 @@ export default function SubscriptionPurchase() {
                     </svg>
                   </div>
                   <div>
-                    <div className="text-sm font-semibold" style={{ color: '#FFB800' }}>
+                    <div
+                      className="text-sm font-semibold"
+                      style={{ color: 'rgb(var(--color-urgent-400))' }}
+                    >
                       {t('subscription.trialUpgrade.title')}
                     </div>
                     <div className="mt-1 text-[12px] text-dark-50/40">
@@ -522,7 +525,7 @@ export default function SubscriptionPurchase() {
                       height="16"
                       viewBox="0 0 24 24"
                       fill="none"
-                      stroke="#FF3B5C"
+                      stroke="rgb(var(--color-critical-500))"
                       strokeWidth="1.5"
                       aria-hidden="true"
                     >
@@ -534,7 +537,10 @@ export default function SubscriptionPurchase() {
                     </svg>
                   </div>
                   <div>
-                    <div className="text-sm font-semibold" style={{ color: '#FF3B5C' }}>
+                    <div
+                      className="text-sm font-semibold"
+                      style={{ color: 'rgb(var(--color-critical-500))' }}
+                    >
                       {t('subscription.expiredBanner.title')}
                     </div>
                     <div className="mt-1 text-[12px] text-dark-50/40">

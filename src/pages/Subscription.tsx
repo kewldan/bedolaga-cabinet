@@ -98,7 +98,13 @@ const CountdownTimer = memo(function CountdownTimer({
             height="13"
             viewBox="0 0 24 24"
             fill="none"
-            stroke={isExpired ? '#FF3B5C' : isUrgent ? '#FFB800' : g.textSecondary}
+            stroke={
+              isExpired
+                ? 'rgb(var(--color-critical-500))'
+                : isUrgent
+                  ? 'rgb(var(--color-urgent-400))'
+                  : g.textSecondary
+            }
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -111,7 +117,10 @@ const CountdownTimer = memo(function CountdownTimer({
         {t('dashboard.remaining')}
       </div>
       {isExpired ? (
-        <div className="text-[18px] font-bold tracking-tight" style={{ color: '#FF3B5C' }}>
+        <div
+          className="text-[18px] font-bold tracking-tight"
+          style={{ color: 'rgb(var(--color-critical-500))' }}
+        >
           {t('subscription.expired')}
         </div>
       ) : (
@@ -121,7 +130,7 @@ const CountdownTimer = memo(function CountdownTimer({
               <>
                 <span
                   className="text-[20px] font-bold tracking-tight"
-                  style={{ color: isUrgent ? '#FFB800' : g.text }}
+                  style={{ color: isUrgent ? 'rgb(var(--color-urgent-400))' : g.text }}
                 >
                   {countdown.days}
                 </span>
@@ -132,31 +141,31 @@ const CountdownTimer = memo(function CountdownTimer({
             )}
             <span
               className="text-[20px] font-bold tracking-tight"
-              style={{ color: isUrgent ? '#FFB800' : g.text }}
+              style={{ color: isUrgent ? 'rgb(var(--color-urgent-400))' : g.text }}
             >
               {String(countdown.hours).padStart(2, '0')}
             </span>
             <span
               className="mx-[-1px] text-[16px] font-bold opacity-30"
-              style={{ color: isUrgent ? '#FFB800' : g.text }}
+              style={{ color: isUrgent ? 'rgb(var(--color-urgent-400))' : g.text }}
             >
               :
             </span>
             <span
               className="text-[20px] font-bold tracking-tight"
-              style={{ color: isUrgent ? '#FFB800' : g.text }}
+              style={{ color: isUrgent ? 'rgb(var(--color-urgent-400))' : g.text }}
             >
               {String(countdown.minutes).padStart(2, '0')}
             </span>
             <span
               className="mx-[-1px] text-[16px] font-bold opacity-30"
-              style={{ color: isUrgent ? '#FFB800' : g.text }}
+              style={{ color: isUrgent ? 'rgb(var(--color-urgent-400))' : g.text }}
             >
               :
             </span>
             <span
               className="text-[20px] font-bold tracking-tight"
-              style={{ color: isUrgent ? '#FFB800' : g.text }}
+              style={{ color: isUrgent ? 'rgb(var(--color-urgent-400))' : g.text }}
             >
               {String(countdown.seconds).padStart(2, '0')}
             </span>
@@ -710,8 +719,8 @@ export default function Subscription() {
                     color: subscription.is_active
                       ? zone.mainHex
                       : subscription.is_limited
-                        ? '#FFB800'
-                        : '#FF3B5C',
+                        ? 'rgb(var(--color-urgent-400))'
+                        : 'rgb(var(--color-critical-500))',
                   }}
                 >
                   {subscription.is_active
@@ -746,7 +755,7 @@ export default function Subscription() {
                         height="16"
                         viewBox="0 0 24 24"
                         fill="none"
-                        stroke="#FFB800"
+                        stroke="rgb(var(--color-urgent-400))"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -758,7 +767,10 @@ export default function Subscription() {
                       </svg>
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm font-semibold" style={{ color: '#FFB800' }}>
+                      <p
+                        className="text-sm font-semibold"
+                        style={{ color: 'rgb(var(--color-urgent-400))' }}
+                      >
                         {t('subscription.trafficLimitedTitle')}
                       </p>
                       <p className="mt-1 text-xs text-dark-400">
@@ -1269,7 +1281,7 @@ export default function Subscription() {
                 color:
                   subscription.is_daily_paused || subscription.status === 'disabled'
                     ? 'rgb(var(--color-accent-400))'
-                    : '#FFB800',
+                    : 'rgb(var(--color-urgent-400))',
               }}
             >
               {pauseMutation.isPending ? (
@@ -1306,7 +1318,7 @@ export default function Subscription() {
                   style={{
                     background: 'rgba(255,59,92,0.08)',
                     border: '1px solid rgba(255,59,92,0.15)',
-                    color: '#FF3B5C',
+                    color: 'rgb(var(--color-critical-500))',
                   }}
                 >
                   {getErrorMessage(pauseMutation.error)}
@@ -1324,11 +1336,14 @@ export default function Subscription() {
               }}
             >
               <div className="flex items-start gap-3">
-                <div className="text-lg" style={{ color: '#FFB800' }}>
+                <div className="text-lg" style={{ color: 'rgb(var(--color-urgent-400))' }}>
                   ⏸️
                 </div>
                 <div>
-                  <div className="text-sm font-semibold" style={{ color: '#FFB800' }}>
+                  <div
+                    className="text-sm font-semibold"
+                    style={{ color: 'rgb(var(--color-urgent-400))' }}
+                  >
                     {t('subscription.pause.pausedInfo')}
                   </div>
                   <div className="mt-1 text-[12px] text-dark-50/35">
@@ -2412,7 +2427,7 @@ export default function Subscription() {
                 }}
                 disabled={deleteAllDevicesMutation.isPending}
                 className="text-[11px] font-medium transition-colors"
-                style={{ color: '#FF3B5C' }}
+                style={{ color: 'rgb(var(--color-critical-500))' }}
               >
                 {t('subscription.deleteAllDevices')}
               </button>

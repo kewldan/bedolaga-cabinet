@@ -180,6 +180,13 @@
     --color-error-900: 127, 29, 29;
     --color-error-950: 69, 10, 10;
 
+    /* Subscription-status semantic tokens — distinct from warning/error
+       because the urgency timeline ("expiring soon" vs "expired") needs a
+       sharper, hotter signal than the system-wide warning/error roles.
+       Extracted from inline #FFB800 / #FF3B5C in Subscription.tsx etc. */
+    --color-urgent-400: 255, 184, 0; /* #FFB800 — expiring soon */
+    --color-critical-500: 255, 59, 92; /* #FF3B5C — expired */
+
     /* Theme semantic colors (hex for direct use) */
     --color-dark-bg: #0a0f1a;
     --color-dark-surface: #0f172a;
