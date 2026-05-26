@@ -24,6 +24,7 @@ import {
 } from '../api/adminBulkActions';
 import { usePlatform } from '../platform/hooks/usePlatform';
 import { useCurrency } from '../hooks/useCurrency';
+import { useFocusTrap } from '@/hooks/useFocusTrap';
 import { cn } from '@/lib/utils';
 
 // ============ Types ============
@@ -802,16 +803,10 @@ function ActionModal({
   }, [modal.open, modal.action]);
 
   // Escape key handler — only when not loading
-  useEffect(() => {
-    if (!modal.open) return;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && !modal.loading) {
-        onClose();
-      }
-    };
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [modal.open, modal.loading, onClose]);
+  // Focus trap + scroll lock + Escape close (only while not loading).
+  const dialogRef = useFocusTrap<HTMLDivElement>(modal.open, {
+    onEscape: modal.loading ? undefined : onClose,
+  });
 
   // Count active paid subscriptions among selected ones
   const activePaidCount = useMemo(() => {
@@ -1118,8 +1113,6 @@ function ActionModal({
         paddingLeft: 'max(1rem, env(safe-area-inset-left))',
         paddingRight: 'max(1rem, env(safe-area-inset-right))',
       }}
-      role="dialog"
-      aria-modal="true"
     >
       {/* Backdrop — no close on click during loading */}
       <div
@@ -1127,11 +1120,21 @@ function ActionModal({
         onClick={handleBackdropClick}
       />
 
-      {/* Modal */}
-      <div className="relative max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto rounded-2xl border border-dark-700 bg-dark-900 p-6 shadow-2xl">
+      {/* Modal — role/aria-modal live on the focus-trapped element so AT
+          announces and Tab cycles correctly. */}
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="bulk-action-modal-title"
+        tabIndex={-1}
+        className="relative max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto rounded-2xl border border-dark-700 bg-dark-900 p-6 shadow-2xl"
+      >
         {/* Header */}
         <div className="mb-5 flex items-center justify-between">
-          <h3 className="text-lg font-bold text-dark-100">{t(actionLabelKeys[modal.action])}</h3>
+          <h3 id="bulk-action-modal-title" className="text-lg font-bold text-dark-100">
+            {t(actionLabelKeys[modal.action])}
+          </h3>
           {!modal.loading && (
             <button
               onClick={onClose}
