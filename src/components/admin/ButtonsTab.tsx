@@ -17,7 +17,7 @@ type StyleValue = 'primary' | 'success' | 'danger' | 'default';
 
 const STYLE_OPTIONS: { value: StyleValue; colorClass: string }[] = [
   { value: 'default', colorClass: 'bg-dark-500' },
-  { value: 'primary', colorClass: 'bg-blue-500' },
+  { value: 'primary', colorClass: 'bg-accent-500' },
   { value: 'success', colorClass: 'bg-success-500' },
   { value: 'danger', colorClass: 'bg-error-500' },
 ];
@@ -227,7 +227,7 @@ export function ButtonsTab() {
                           ? 'bg-success-500 text-white'
                           : cfg.style === 'danger'
                             ? 'bg-error-500 text-white'
-                            : 'bg-blue-500 text-white'
+                            : 'bg-accent-500 text-white'
                     }`}
                   >
                     {t(`admin.buttons.styles.${cfg.style}`)}
