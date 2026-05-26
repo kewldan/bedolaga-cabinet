@@ -393,15 +393,21 @@ export default function AdminCampaignCreate() {
 
       {/* Bonus Type */}
       <div className="card space-y-4">
-        <h2 className="text-lg font-semibold text-dark-100">
+        <h2 id="bonus-type-label" className="text-lg font-semibold text-dark-100">
           {t('admin.campaigns.form.bonusType')}
         </h2>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div
+          className="grid grid-cols-2 gap-3"
+          role="radiogroup"
+          aria-labelledby="bonus-type-label"
+        >
           {(Object.keys(bonusTypeConfig) as CampaignBonusType[]).map((type) => (
             <button
               key={type}
               type="button"
+              role="radio"
+              aria-checked={bonusType === type}
               onClick={() => setBonusType(type)}
               className={`rounded-lg border p-4 text-left transition-all ${
                 bonusType === type
