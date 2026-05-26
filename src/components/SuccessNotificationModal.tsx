@@ -340,7 +340,7 @@ export default function SuccessNotificationModal() {
             {isBalanceTopup && (
               <button
                 onClick={handleGoToBalance}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-success-500 to-success-600 py-3.5 font-bold text-white shadow-lg shadow-success-500/25 transition-all hover:from-success-400 hover:to-success-500 active:from-success-600 active:to-success-700"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-success-500 py-3.5 font-bold text-white shadow-lg shadow-success-500/25 transition-colors hover:bg-success-400 active:bg-success-600"
               >
                 <WalletIcon />
                 <span>{t('successNotification.goToBalance', 'Go to Balance')}</span>
@@ -360,7 +360,7 @@ export default function SuccessNotificationModal() {
             {isTrafficPurchased && (
               <button
                 onClick={handleGoToSubscription}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-success-500 to-success-600 py-3.5 font-bold text-white shadow-lg shadow-success-500/25 transition-all hover:from-success-400 hover:to-success-500 active:from-success-600 active:to-success-700"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-success-500 py-3.5 font-bold text-white shadow-lg shadow-success-500/25 transition-colors hover:bg-success-400 active:bg-success-600"
               >
                 <TrafficIcon />
                 <span>{t('successNotification.goToSubscription', 'Go to Subscription')}</span>
