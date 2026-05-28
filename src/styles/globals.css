@@ -917,15 +917,26 @@ img.twemoji {
   }
 
   .prose ul {
-    @apply mb-4 list-inside list-disc space-y-2 pl-2;
+    @apply mb-4 list-disc space-y-2 pl-6;
   }
 
   .prose ol {
-    @apply mb-4 list-inside list-decimal space-y-2 pl-2;
+    @apply mb-4 list-decimal space-y-2 pl-6;
   }
 
   .prose li {
     @apply text-dark-300;
+  }
+
+  /* TipTap wraps list-item content in <p>. Without these resets, the marker
+     stays on its line and the <p> drops to the next line, breaking lists
+     in the editor and on the rendered article page (Telegram bug #597116). */
+  .prose li > p {
+    @apply mb-0 inline;
+  }
+
+  .prose li > p + p {
+    @apply mt-2 block;
   }
 
   .prose li::marker {
