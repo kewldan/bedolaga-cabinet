@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.54.1](https://github.com/BEDOLAGA-DEV/bedolaga-cabinet/compare/v1.54.0...v1.54.1) (2026-05-28)
+
+
+### Bug Fixes
+
+* **i18n:** backfill 120 missing keys + close 2 typo regressions from purchase refactor ([e1f401c](https://github.com/BEDOLAGA-DEV/bedolaga-cabinet/commit/e1f401c333b992ab6476206fb231b608f8f20646))
+
 ## [1.54.0](https://github.com/BEDOLAGA-DEV/bedolaga-cabinet/compare/v1.53.0...v1.54.0) (2026-05-28)
 
 
