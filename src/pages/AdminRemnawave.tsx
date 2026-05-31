@@ -373,7 +373,7 @@ function OverviewTab({
           <ChartIcon className="h-4 w-4" />
           {t('admin.remnawave.overview.system', 'System')}
         </h3>
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 [&>*:last-child:nth-child(odd)]:col-span-2 lg:[&>*:last-child]:col-span-1">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 max-lg:[&>*:last-child:nth-child(odd)]:col-span-2">
           <StatCard
             label={t('admin.remnawave.overview.usersOnline', 'Users Online')}
             value={stats.system.users_online}
@@ -407,7 +407,7 @@ function OverviewTab({
           <ChartIcon className="h-4 w-4" />
           {t('admin.remnawave.overview.bandwidth', 'Inbound Traffic')}
         </h3>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 [&>*:last-child:nth-child(odd)]:col-span-2 sm:[&>*:last-child]:col-span-1">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 max-sm:[&>*:last-child:nth-child(odd)]:col-span-2">
           <StatCard
             label={t('admin.remnawave.overview.download', 'Download')}
             value={formatBytes(stats.bandwidth.realtime_download)}
@@ -435,7 +435,7 @@ function OverviewTab({
           <ServerIcon className="h-4 w-4" />
           {t('admin.remnawave.overview.server', 'Server')}
         </h3>
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 [&>*:last-child:nth-child(odd)]:col-span-2 lg:[&>*:last-child]:col-span-1">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 max-lg:[&>*:last-child:nth-child(odd)]:col-span-2">
           <StatCard
             label={t('admin.remnawave.overview.cpu', 'CPU Cores')}
             value={stats.server_info.cpu_cores}
@@ -464,7 +464,7 @@ function OverviewTab({
           <ChartIcon className="h-4 w-4" />
           {t('admin.remnawave.overview.traffic', 'Traffic Statistics')}
         </h3>
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-5 [&>*:last-child:nth-child(odd)]:col-span-2 lg:[&>*:last-child]:col-span-1">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-5 max-lg:[&>*:last-child:nth-child(odd)]:col-span-2">
           <StatCard
             label={t('admin.remnawave.overview.traffic2days', '2 days')}
             value={formatBytes(stats.traffic_periods.last_2_days.current)}
@@ -504,7 +504,7 @@ function OverviewTab({
           <UsersIcon className="h-4 w-4" />
           {t('admin.remnawave.overview.usersByStatus', 'Users by Status')}
         </h3>
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 [&>*:last-child:nth-child(odd)]:col-span-2 lg:[&>*:last-child]:col-span-1">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 max-lg:[&>*:last-child:nth-child(odd)]:col-span-2">
           {Object.entries(stats.users_by_status).map(([status, count]) => (
             <StatCard
               key={status}
@@ -524,7 +524,7 @@ function OverviewTab({
             <RemnawaveIcon className="h-4 w-4" />
             {t('admin.remnawave.overview.panel', 'Панель')}
           </h3>
-          <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 [&>*:last-child:nth-child(odd)]:col-span-2 lg:[&>*:last-child]:col-span-1">
+          <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 max-lg:[&>*:last-child:nth-child(odd)]:col-span-2">
             <StatCard
               label={t('admin.remnawave.overview.lifetimeTraffic', 'Трафик за всё время')}
               value={formatBytes(recap.total.traffic_bytes)}
@@ -625,7 +625,7 @@ function OverviewTab({
             {t('admin.remnawave.overview.panelHealth', 'Здоровье панели')}
             {health.instances > 1 ? ` · ${health.instances}` : ''}
           </h3>
-          <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 [&>*:last-child:nth-child(odd)]:col-span-2 lg:[&>*:last-child]:col-span-1">
+          <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 max-lg:[&>*:last-child:nth-child(odd)]:col-span-2">
             <StatCard
               label={t('admin.remnawave.overview.panelRam', 'RAM процесса')}
               value={formatBytes(health.rss_bytes)}
@@ -715,7 +715,7 @@ function NodesTab({
   return (
     <div className="space-y-4">
       {/* Stats */}
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-5 [&>*:last-child:nth-child(odd)]:col-span-2 lg:[&>*:last-child]:col-span-1">
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-5 max-lg:[&>*:last-child:nth-child(odd)]:col-span-2">
         <StatCard
           label={t('admin.remnawave.nodes.stats.total', 'Total')}
           value={stats.total}
@@ -821,7 +821,7 @@ function SquadsTab({
   return (
     <div className="space-y-4">
       {/* Stats */}
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 [&>*:last-child:nth-child(odd)]:col-span-2 lg:[&>*:last-child]:col-span-1">
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 max-lg:[&>*:last-child:nth-child(odd)]:col-span-2">
         <StatCard
           label={t('admin.remnawave.squads.stats.total', 'Total')}
           value={stats.total}
