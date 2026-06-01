@@ -165,7 +165,7 @@ export default function Subscriptions() {
 
       {/* Subscription grid */}
       {subscriptions.length > 0 && (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:[&>*:last-child:nth-child(odd)]:col-span-2">
           {subscriptions.map((sub) => (
             <SubscriptionListCard
               key={sub.id}
