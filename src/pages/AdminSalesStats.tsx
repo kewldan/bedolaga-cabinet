@@ -143,6 +143,7 @@ export default function AdminSalesStats() {
               ? '...'
               : formatWithCurrency(
                   (summary?.total_revenue_kopeks ?? 0) / SALES_STATS.KOPEKS_DIVISOR,
+                  0,
                 )
           }
           valueClassName="text-success-400"
@@ -181,6 +182,7 @@ export default function AdminSalesStats() {
               ? '...'
               : formatWithCurrency(
                   (summary?.addon_revenue_kopeks ?? 0) / SALES_STATS.KOPEKS_DIVISOR,
+                  0,
                 )
           }
           valueClassName="text-accent-400"
@@ -191,7 +193,10 @@ export default function AdminSalesStats() {
           value={
             summaryLoading
               ? '...'
-              : formatWithCurrency((summary?.manual_topup_kopeks ?? 0) / SALES_STATS.KOPEKS_DIVISOR)
+              : formatWithCurrency(
+                  (summary?.manual_topup_kopeks ?? 0) / SALES_STATS.KOPEKS_DIVISOR,
+                  0,
+                )
           }
           valueClassName="text-warning-400"
           delta={deltas?.manualTopup}
