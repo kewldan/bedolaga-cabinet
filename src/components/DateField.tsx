@@ -51,10 +51,12 @@ export function DateField({ value, onChange, placeholder, min, max, className }:
 
   const selected = parseISO(value);
   const locale = LOCALES[i18n.language as keyof typeof LOCALES] ?? enUS;
+  // Numeric format keeps a constant button width across dates and locales
+  // (a "short" month name varies in length and makes the trigger jitter).
   const display = selected
     ? selected.toLocaleDateString(i18n.language, {
         day: '2-digit',
-        month: 'short',
+        month: '2-digit',
         year: 'numeric',
       })
     : '';
@@ -72,18 +74,21 @@ export function DateField({ value, onChange, placeholder, min, max, className }:
           type="button"
           className={
             className ??
-            'flex items-center gap-2 rounded-lg border border-dark-600 bg-dark-800 px-3 py-1.5 text-sm text-dark-200 transition-colors hover:border-dark-500'
+            'flex min-w-[8rem] items-center justify-start gap-2 whitespace-nowrap rounded-lg border border-dark-600 bg-dark-800 px-3 py-1.5 text-sm text-dark-200 transition-colors hover:border-dark-500'
           }
         >
           <CalendarIcon className="h-4 w-4 shrink-0 text-dark-500" />
-          <span className={selected ? '' : 'text-dark-500'}>{display || placeholder}</span>
+          <span className={`truncate ${selected ? '' : 'text-dark-500'}`}>
+            {display || placeholder}
+          </span>
         </button>
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content
           align="start"
           sideOffset={6}
-          className="rdp-dark z-50 rounded-xl border border-dark-700 bg-dark-800 p-2 shadow-xl"
+          collisionPadding={8}
+          className="rdp-dark z-50 max-w-[calc(100vw-1rem)] rounded-xl border border-dark-700 bg-dark-800 p-2 shadow-xl"
         >
           <DayPicker
             mode="single"
@@ -91,6 +96,8 @@ export function DateField({ value, onChange, placeholder, min, max, className }:
             selected={selected}
             defaultMonth={selected}
             disabled={disabled}
+            fixedWeeks
+            showOutsideDays
             components={{ Chevron: NavChevron }}
             onSelect={(d) => {
               if (d) {

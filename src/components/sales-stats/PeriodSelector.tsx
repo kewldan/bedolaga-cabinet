@@ -68,7 +68,7 @@ export function PeriodSelector({ value, onChange }: PeriodSelectorProps) {
       </button>
 
       {showCustom && (
-        <div className="flex items-center gap-2">
+        <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto">
           <DateField
             value={value.startDate || ''}
             onChange={(v) => handleDateChange('startDate', v)}

@@ -42,8 +42,8 @@ export function PeriodSelector({
 
   if (dateMode) {
     return (
-      <div className="flex items-center gap-2">
-        <CalendarIcon className="h-4 w-4" />
+      <div className="flex flex-wrap items-center gap-2">
+        <CalendarIcon className="h-4 w-4 shrink-0" />
         <span className="text-xs text-dark-400">{t('admin.trafficUsage.dateFrom')}</span>
         <DateField
           value={customStart}
