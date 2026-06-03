@@ -213,9 +213,9 @@ export default function TvQuickConnect({ subscriptionUrl, isLight }: Props) {
           maxLength={5}
           value={code}
           onChange={(e) => setCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ''))}
-          placeholder="12345"
+          placeholder="A1B2C"
           autoComplete="one-time-code"
-          inputMode="numeric"
+          inputMode="text"
           className={inputClass}
         />
         <button

@@ -150,11 +150,11 @@ export default function InstallationGuide({
   );
 
   const userIsOnTv = detectedPlatform === 'androidTV' || detectedPlatform === 'appleTV';
-  // Happ's TV quick-connect (check.happ.su/sendtv, 5-digit code) is an ANDROID TV
-  // -only API. Apple TV uses a different mechanism (tv.happ.su temporary code), so
-  // the block must NOT show there — it would POST to the wrong endpoint.
-  const isAndroidTvLayout =
-    (activePlatformKey || availablePlatforms[0]) === 'androidTV' && !userIsOnTv;
+  // Happ's TV quick-connect (check.happ.su/sendtv) is ONE API serving BOTH
+  // Android TV and Apple TV — show the widget on either.
+  const selectedPlatform = activePlatformKey || availablePlatforms[0];
+  const isTvLayout =
+    (selectedPlatform === 'androidTV' || selectedPlatform === 'appleTV') && !userIsOnTv;
 
   const currentPlatformKey = activePlatformKey || availablePlatforms[0];
   const currentPlatformData = currentPlatformKey
@@ -194,11 +194,11 @@ export default function InstallationGuide({
   const blockType = appConfig.uiConfig?.installationGuidesBlockType || 'cards';
   const Renderer = RENDERERS[blockType] || CardsBlock;
 
-  // For the Happ Android TV app, inject the TV connect widget into a step as
+  // For the Happ TV app (Android TV / Apple TV), inject the TV connect widget as
   // customNode so it renders THROUGH the active block style (cards/timeline/
   // accordion/minimal) instead of as separate clashing cards that break it.
   const showTvConnect = Boolean(
-    selectedApp && isAndroidTvLayout && isHappApp(selectedApp) && appConfig.subscriptionUrl,
+    selectedApp && isTvLayout && isHappApp(selectedApp) && appConfig.subscriptionUrl,
   );
   let renderBlocks: RenderBlock[] = selectedApp?.blocks ?? [];
   if (selectedApp && showTvConnect && appConfig.subscriptionUrl) {
