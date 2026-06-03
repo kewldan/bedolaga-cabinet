@@ -5103,6 +5103,7 @@
   "subscriptions": {
     "buy": "Buy subscription",
     "buyAnother": "Buy another subscription",
+    "browsePlans": "View plans and subscribe",
     "empty": "You have no subscriptions yet",
     "emptyDesc": "Choose a tariff to get started",
     "title": "My subscriptions"

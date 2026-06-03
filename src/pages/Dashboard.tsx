@@ -198,6 +198,12 @@ export default function Dashboard() {
     ? multiSubData !== undefined && (multiSubData.subscriptions?.length ?? 0) === 0
     : subscriptionResponse?.has_subscription === false && !subLoading;
 
+  // Есть ли НАСТОЯЩАЯ (платная, не триал) живая подписка — от этого зависит CTA:
+  // «+ Купить ещё» только при наличии платной; иначе явная «Посмотреть тарифы».
+  const hasActivePaid = (multiSubData?.subscriptions ?? []).some(
+    (s) => !s.is_trial && (s.status === 'active' || s.status === 'limited'),
+  );
+
   // Show onboarding for new users after data loads
   useEffect(() => {
     if (!isOnboardingCompleted && !subLoading && !refLoading && !blockingType) {
@@ -299,12 +305,23 @@ export default function Dashboard() {
               {t('dashboard.showAll', 'Показать все')} ({multiSubData.subscriptions.length})
             </Link>
           )}
-          <Link
-            to="/subscription/purchase"
-            className="flex w-full items-center justify-center gap-2 rounded-2xl bg-accent-500/15 p-3.5 text-sm font-medium text-accent-400 transition-all hover:bg-accent-500/25"
-          >
-            <span className="text-base">+</span> {t('subscriptions.buyAnother', 'Купить ещё тариф')}
-          </Link>
+          {hasActivePaid ? (
+            <Link
+              to="/subscription/purchase"
+              className="flex w-full items-center justify-center gap-2 rounded-2xl bg-accent-500/15 p-3.5 text-sm font-medium text-accent-400 transition-all hover:bg-accent-500/25"
+            >
+              <span className="text-base">+</span>{' '}
+              {t('subscriptions.buyAnother', 'Купить ещё тариф')}
+            </Link>
+          ) : (
+            <Link
+              to="/subscription/purchase"
+              className="flex w-full items-center justify-center gap-2 rounded-2xl bg-accent-500 p-3.5 text-sm font-semibold text-white transition-colors hover:bg-accent-600"
+            >
+              <span className="text-base">+</span>{' '}
+              {t('subscriptions.browsePlans', 'Посмотреть тарифы и купить подписку')}
+            </Link>
+          )}
         </div>
       )}
 
@@ -360,8 +377,9 @@ export default function Dashboard() {
               (вход по умолчанию) юзер оставался заперт (Telegram-баг #605056/#605063). */}
           <Link
             to="/subscription/purchase"
-            className="flex w-full items-center justify-center rounded-2xl border border-dashed border-white/15 p-3.5 text-sm font-medium opacity-60 transition-opacity hover:opacity-90"
+            className="flex w-full items-center justify-center gap-2 rounded-2xl bg-accent-500 p-3.5 text-sm font-semibold text-white transition-colors hover:bg-accent-600"
           >
+            <span className="text-base">+</span>{' '}
             {t('subscriptions.browsePlans', 'Посмотреть тарифы и купить подписку')}
           </Link>
         </div>

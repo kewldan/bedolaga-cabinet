@@ -4736,6 +4736,7 @@
   "subscriptions": {
     "buy": "购买订阅",
     "buyAnother": "再购买一个订阅",
+    "browsePlans": "查看套餐并订阅",
     "empty": "您还没有订阅",
     "emptyDesc": "选择套餐以开始使用",
     "title": "我的订阅"
