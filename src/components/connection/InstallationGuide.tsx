@@ -34,6 +34,14 @@ const RENDERERS: Record<string, React.ComponentType<BlockRendererProps>> = {
   minimal: MinimalBlock,
 };
 
+/** TV quick-connect is a Happ-only feature (check.happ.su/sendtv) — show it only
+ *  for the Happ app, detected by its happ:// deep-link scheme (name as fallback). */
+function isHappApp(app: RemnawaveAppClient | null): boolean {
+  if (!app) return false;
+  if ((app.deepLink ?? '').toLowerCase().startsWith('happ://')) return true;
+  return app.name.toLowerCase().includes('happ');
+}
+
 interface Props {
   appConfig: AppConfig;
   onOpenDeepLink: (url: string) => void;
@@ -312,8 +320,9 @@ export default function InstallationGuide({
         </a>
       )}
 
-      {/* Blocks — for TV: first block, Quick Connect, last block */}
-      {selectedApp && isTvPlatform && appConfig.subscriptionUrl ? (
+      {/* Blocks — for the Happ TV app: first block, Quick Connect, last block.
+          Other apps (or non-TV) render their blocks normally. */}
+      {selectedApp && isTvPlatform && isHappApp(selectedApp) && appConfig.subscriptionUrl ? (
         <>
           {selectedApp.blocks.length > 0 && (
             <Renderer

@@ -5,6 +5,7 @@ import {
   isQrScannerSupported,
   retrieveLaunchParams,
 } from '@telegram-apps/sdk-react';
+import { blockButtonClass } from './blocks/buttonStyles';
 
 const TG_MOBILE_PLATFORMS = new Set(['ios', 'android', 'android_x', 'ios_x']);
 
@@ -198,6 +199,10 @@ export default function TvQuickConnect({ subscriptionUrl, isLight }: Props) {
     ? 'w-full rounded-xl border border-dark-700/60 bg-white px-4 py-3 text-center text-2xl font-bold tracking-[0.3em] uppercase text-dark-100 outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500'
     : 'w-full rounded-xl border border-dark-700 bg-dark-900/50 px-4 py-3 text-center text-2xl font-bold tracking-[0.3em] uppercase text-dark-100 outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500';
 
+  // Full-width buttons in the same outlined-accent language as the config blocks
+  // (so the Happ TV block adapts to the subscription-page styles, not a one-off).
+  const actionBtnClass = `${blockButtonClass('light', isLight)} flex w-full items-center justify-center`;
+
   return (
     <div className="space-y-3">
       {/* Code input */}
@@ -232,15 +237,15 @@ export default function TvQuickConnect({ subscriptionUrl, isLight }: Props) {
                 maxLength={5}
                 value={code}
                 onChange={(e) => setCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ''))}
-                placeholder="A1B2C"
+                placeholder="12345"
                 autoComplete="one-time-code"
-                inputMode="text"
+                inputMode="numeric"
                 className={inputClass}
               />
               <button
                 onClick={() => sendToTV(code)}
                 disabled={sending || code.length !== 5}
-                className="btn-primary w-full justify-center py-3 disabled:opacity-50"
+                className={`${actionBtnClass} disabled:opacity-50`}
               >
                 {sending ? (
                   <div className="h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white" />
@@ -285,7 +290,7 @@ export default function TvQuickConnect({ subscriptionUrl, isLight }: Props) {
             </p>
 
             {!scanning && (
-              <button onClick={startScan} className="btn-secondary mt-3 w-full justify-center py-3">
+              <button onClick={startScan} className={`${actionBtnClass} mt-3`}>
                 <svg
                   className="mr-2 h-5 w-5"
                   fill="none"
@@ -310,7 +315,7 @@ export default function TvQuickConnect({ subscriptionUrl, isLight }: Props) {
             <div className={scanning ? 'mt-3 space-y-2' : 'hidden'}>
               <div id="tv-qr-reader" className="overflow-hidden rounded-xl" />
               {scanning && (
-                <button onClick={stopScan} className="btn-secondary w-full justify-center py-2.5">
+                <button onClick={stopScan} className={actionBtnClass}>
                   {t('subscription.tvQuickConnect.stopScan')}
                 </button>
               )}
