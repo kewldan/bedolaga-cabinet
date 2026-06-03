@@ -137,6 +137,21 @@ export interface PurchaseStatus {
   auto_login_token: string | null;
   recipient_in_bot: boolean | null;
   bot_link: string | null;
+  // Transferable gift claim link — the buyer forwards this; whoever activates it
+  // gets the gift. Derived from token + status (purchase.user is null until claim).
+  is_claimable: boolean;
+  claim_url: string | null;
+  bot_claim_link: string | null;
+}
+
+/** Result returned to the recipient after a successful web (email) gift claim. */
+export interface GiftClaimResult {
+  status: string;
+  tariff_name: string | null;
+  period_days: number | null;
+  subscription_url: string | null;
+  subscription_crypto_link: string | null;
+  auto_login_token: string | null;
 }
 
 /** Locale dict for multi-language text fields (admin API) */
@@ -280,6 +295,18 @@ export const landingApi = {
 
   activatePurchase: async (token: string): Promise<PurchaseStatus> => {
     const response = await apiClient.post(`/cabinet/landing/activate/${token}`);
+    return response.data;
+  },
+
+  // Public gift claim page data (no auth — the token is the bearer secret).
+  getGiftClaim: async (token: string): Promise<PurchaseStatus> => {
+    const response = await apiClient.get(`/cabinet/landing/gift/${token}`);
+    return response.data;
+  },
+
+  // Web (email) arm of the gift claim — binds the gift to the given email account.
+  claimGift: async (token: string, email: string): Promise<GiftClaimResult> => {
+    const response = await apiClient.post(`/cabinet/landing/gift/${token}/claim`, { email });
     return response.data;
   },
 };

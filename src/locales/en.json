@@ -4834,6 +4834,34 @@
     "merging": "Merging..."
   },
   "landing": {
+    "giftClaim": {
+      "title": "You have a gift!",
+      "error": "Could not activate the gift.",
+      "notFoundTitle": "Gift not found",
+      "notFoundDesc": "This gift link is invalid or no longer available.",
+      "alreadyTitle": "Gift already activated",
+      "alreadyDesc": "This gift has already been claimed.",
+      "successTitle": "Gift activated!",
+      "connectDesc": "Use this link to connect:",
+      "copyLink": "Copy link",
+      "pendingTitle": "Almost ready…",
+      "pendingDesc": "The payment is still being confirmed. This page will update automatically.",
+      "replaceWarning": "You already have a subscription — activating this gift will replace it.",
+      "activateTelegram": "Activate in Telegram",
+      "activateWeb": "Activate by email",
+      "emailLabel": "Your email",
+      "claimNow": "Get my gift"
+    },
+    "giftLink": {
+      "shareText": "I have a gift for you! Activate it here:",
+      "viaTelegram": "Telegram:",
+      "title": "Gift is ready!",
+      "subtitle": "Send this link to whoever you want to receive the gift — they activate it themselves.",
+      "linkLabel": "Gift link",
+      "telegramLabel": "Telegram link",
+      "alsoSent": "We also emailed it to {{contact}}.",
+      "copyMessage": "Copy message"
+    },
     "notFound": "Page not found",
     "forMe": "For me",
     "asGift": "As a gift",
