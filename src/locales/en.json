@@ -1596,7 +1596,7 @@
       "methodEnabled": "Method enabled",
       "providerNotConfigured": "Provider not configured in env",
       "openUrlDirect": "Open payment page directly",
-      "openUrlDirectHint": "Skip the link panel: the provider opens inside the MiniApp/tab right after the click. After payment the user returns to /balance/top-up/result. Ignored for Stars/CryptoBot and other t.me/ links.",
+      "openUrlDirectHint": "ON — the payment link opens immediately, without the intermediate button panel. OFF — an \"Open payment\" button is shown. Inside Telegram the link opens in the external browser either way (otherwise paying via a bank app/SBP fails); after payment the user returns to the result page. Stars/CryptoBot (t.me/ links) always open natively and ignore this flag.",
       "displayName": "Display name",
       "displayNameHint": "Leave empty for default name",
       "subOptions": "Payment options",

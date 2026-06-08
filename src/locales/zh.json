@@ -1411,7 +1411,7 @@
       "methodEnabled": "方法已启用",
       "providerNotConfigured": "提供商未在env中配置",
       "openUrlDirect": "直接打开支付页面",
-      "openUrlDirectHint": "跳过链接面板:点击后提供商在 MiniApp/标签页内直接打开。支付完成后用户返回 /balance/top-up/result。Stars/CryptoBot 和其他 t.me/ 链接忽略此标志。",
+      "openUrlDirectHint": "开启 — 支付链接立即打开,不显示中间的按钮面板。关闭 — 显示「打开支付」按钮。在 Telegram 内两种情况都会在外部浏览器中打开链接(否则通过银行 App/SBP 付款会失败);支付完成后返回结果页。Stars/CryptoBot(t.me/ 链接)始终原生打开,不受此开关影响。",
       "displayName": "显示名称",
       "displayNameHint": "留空以使用默认名称",
       "subOptions": "支付选项",
