@@ -351,6 +351,11 @@ export const backgroundRegistry: BackgroundDefinition[] = [
         type: 'color',
         default: '#000000',
       },
+      { key: 'waveColor1', label: 'admin.backgrounds.color1', type: 'color', default: '#38bdf8' },
+      { key: 'waveColor2', label: 'admin.backgrounds.color2', type: 'color', default: '#818cf8' },
+      { key: 'waveColor3', label: 'admin.backgrounds.color3', type: 'color', default: '#c084fc' },
+      { key: 'waveColor4', label: 'admin.backgrounds.color4', type: 'color', default: '#e879f9' },
+      { key: 'waveColor5', label: 'admin.backgrounds.color5', type: 'color', default: '#22d3ee' },
     ],
   },
   {
@@ -419,6 +424,18 @@ export const backgroundRegistry: BackgroundDefinition[] = [
         default: 12,
       },
       { key: 'boxColor', label: 'admin.backgrounds.fillColor', type: 'color', default: '#818cf8' },
+      {
+        key: 'multicolor',
+        label: 'admin.backgrounds.multicolor',
+        type: 'boolean',
+        default: true,
+      },
+      {
+        key: 'lineColor',
+        label: 'admin.backgrounds.lineColor',
+        type: 'color',
+        default: 'rgba(51,65,85,0.5)',
+      },
     ],
   },
   {

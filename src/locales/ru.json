@@ -1202,6 +1202,8 @@
       "pointerColor": "Цвет курсорного блоба",
       "beamColor": "Цвет лучей",
       "explosionColor": "Цвет взрыва",
+      "multicolor": "Разноцветный режим",
+      "lineColor": "Цвет линий",
       "bgColor": "Цвет фона",
       "fillColor": "Цвет заливки",
       "color1": "Цвет 1",
