@@ -688,6 +688,8 @@ export interface PaymentMethodConfig {
   default_display_name: string;
   sub_options: Record<string, boolean> | null;
   available_sub_options: PaymentMethodSubOptionInfo[] | null;
+  quick_amounts: number[] | null;
+  default_quick_amounts: number[];
   min_amount_kopeks: number | null;
   max_amount_kopeks: number | null;
   default_min_amount_kopeks: number;
