@@ -1236,7 +1236,8 @@
       "referralNetwork": "Referral Network",
       "news": "News",
       "bulkActions": "Bulk Actions",
-      "infoPages": "Info Pages"
+      "infoPages": "Info Pages",
+      "legalPages": "System pages"
     },
     "panel": {
       "title": "Admin Panel",
@@ -4132,6 +4133,42 @@
         "zh": "Chinese",
         "fa": "Persian"
       }
+    },
+    "legalPages": {
+      "title": "System pages",
+      "subtitle": "Rules, privacy policy, public offer and FAQ",
+      "open": "System pages",
+      "tabs": {
+        "privacy": "Privacy",
+        "offer": "Offer",
+        "rules": "Rules",
+        "faq": "FAQ"
+      },
+      "displayMode": "Visibility",
+      "displayModes": {
+        "bot": "Bot only",
+        "web": "Web only",
+        "both": "Bot and web"
+      },
+      "displayModeLocked": "Set via environment variable",
+      "enabled": "Visible to users",
+      "language": "Content language",
+      "content": "Content",
+      "contentPlaceholder": "HTML page content...",
+      "save": "Save",
+      "saving": "Saving...",
+      "saveError": "Failed to save. Please try again.",
+      "faqPages": "Questions and answers",
+      "addQuestion": "Add question",
+      "newQuestion": "New question",
+      "questionTitle": "Question",
+      "questionContent": "Answer (HTML supported)",
+      "confirmDeleteQuestion": "Delete this question?",
+      "noQuestions": "No questions yet",
+      "active": "Active",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "delete": "Delete"
     }
   },
   "adminUpdates": {
