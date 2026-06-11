@@ -5,7 +5,7 @@ import { adminRemnawaveApi, SquadWithLocalInfo } from '../api/adminRemnawave';
 import { AdminBackButton } from '../components/admin';
 import { ServerIcon, UsersIcon, CheckIcon, XIcon, BanknotesIcon } from '../components/icons';
 import { StatCard } from '@/components/stats';
-import Twemoji from 'react-twemoji';
+import Twemoji from '@/lib/Twemoji';
 import { getFlagEmoji } from '../utils/subscriptionHelpers';
 
 // Country flag helper. Алгоритмический ISO 3166-1 alpha-2 → regional indicator,

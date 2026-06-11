@@ -43,12 +43,12 @@ export const buttonVariants = cva(
         ],
       },
       size: {
-        sm: 'h-8 px-3 text-sm rounded-linear',
-        md: 'h-10 px-4 text-sm rounded-linear',
-        lg: 'h-12 px-6 text-base rounded-linear-lg',
-        icon: 'h-10 w-10 rounded-linear',
-        'icon-sm': 'h-8 w-8 rounded-linear',
-        'icon-lg': 'h-12 w-12 rounded-linear-lg',
+        sm: 'h-8 px-3 text-sm rounded-xl',
+        md: 'h-10 px-4 text-sm rounded-xl',
+        lg: 'h-12 px-6 text-base rounded-xl',
+        icon: 'h-10 w-10 rounded-xl',
+        'icon-sm': 'h-8 w-8 rounded-xl',
+        'icon-lg': 'h-12 w-12 rounded-xl',
       },
       fullWidth: {
         true: 'w-full',

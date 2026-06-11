@@ -891,7 +891,7 @@
      min-h-[44px] on mobile (WCAG 2.5.5 AAA touch target floor), keeping
      visual at py-2 / ~36px on desktop where mouse precision rules.
      Cascades to every .btn-primary / .btn-secondary / .btn-ghost / .btn-danger. */
-  @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium duration-200 ease-smooth focus:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-900 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 sm:min-h-0;
+  @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-medium duration-200 ease-smooth focus:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-900 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 sm:min-h-0;
   transition-property: color, background-color, border-color, box-shadow, transform, opacity;
 
   /* Buttons - Light */
