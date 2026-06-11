@@ -734,7 +734,7 @@ export default function AdminAuditLog() {
             <div className="mt-4 flex items-center gap-3">
               <button
                 onClick={handleApplyFilters}
-                className="rounded-lg bg-accent-500 px-4 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600"
+                className="rounded-xl bg-accent-500 px-4 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600"
               >
                 {t('admin.auditLog.filters.apply')}
               </button>

@@ -378,7 +378,7 @@ export function InfoTab(props: InfoTabProps) {
                 <button
                   onClick={onUpdateReferralCommission}
                   disabled={actionLoading}
-                  className="w-full rounded-lg bg-accent-500 px-2 py-1 text-xs text-on-accent transition-colors hover:bg-accent-600 disabled:opacity-50"
+                  className="w-full rounded-xl bg-accent-500 px-2 py-1 text-xs font-medium text-on-accent transition-colors hover:bg-accent-600 disabled:opacity-50"
                 >
                   {actionLoading ? t('common.loading') : t('common.save')}
                 </button>
