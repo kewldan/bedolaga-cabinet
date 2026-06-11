@@ -103,7 +103,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
         role="region"
         aria-label="Notifications"
         aria-live="polite"
-        className="pointer-events-none fixed left-4 right-4 top-[calc(1rem+env(safe-area-inset-top,0px))] z-[100] flex flex-col gap-3 sm:left-auto sm:right-[calc(1rem+env(safe-area-inset-right,0px))]"
+        className="pointer-events-none fixed top-[calc(1rem+env(safe-area-inset-top,0))] right-4 left-4 z-100 flex flex-col gap-3 sm:right-[calc(1rem+env(safe-area-inset-right,0))] sm:left-auto"
       >
         {toasts.map((toast) => (
           <ToastItem key={toast.id} toast={toast} onClose={() => removeToast(toast.id)} />
@@ -177,14 +177,14 @@ function ToastItem({ toast, onClose }: { toast: Toast; onClose: () => void }) {
       tabIndex={0}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      className={`pointer-events-auto w-full cursor-pointer overflow-hidden rounded-2xl border bg-dark-900 shadow-xl shadow-black/30 backdrop-blur-xl ${style.border} animate-slide-in-right transition-transform duration-200 hover:scale-[1.01] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-950 active:scale-[0.99] sm:max-w-sm`}
+      className={`bg-dark-900 pointer-events-auto w-full cursor-pointer overflow-hidden rounded-2xl border shadow-xl shadow-black/30 backdrop-blur-xl ${style.border} animate-slide-in-right focus-visible:ring-accent-500/60 focus-visible:ring-offset-dark-950 transition-transform duration-200 hover:scale-[1.01] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none active:scale-[0.99] sm:max-w-sm`}
     >
       <div className="relative p-4">
         <div className="flex gap-3">
           {/* Icon — carries the semantic by itself; the border is a soft echo */}
           <div
             aria-hidden="true"
-            className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl ${style.iconBg} ${style.icon}`}
+            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${style.iconBg} ${style.icon}`}
           >
             {toast.icon || defaultIcons[toast.type || 'info']}
           </div>
@@ -192,16 +192,16 @@ function ToastItem({ toast, onClose }: { toast: Toast; onClose: () => void }) {
           {/* Content */}
           <div className="min-w-0 flex-1 pt-0.5">
             {toast.title && (
-              <p className="mb-0.5 text-sm font-semibold text-dark-100">{toast.title}</p>
+              <p className="text-dark-100 mb-0.5 text-sm font-semibold">{toast.title}</p>
             )}
-            <p className="text-sm leading-relaxed text-dark-300">{toast.message}</p>
+            <p className="text-dark-300 text-sm leading-relaxed">{toast.message}</p>
           </div>
         </div>
 
         {/* Progress bar — visual countdown until auto-dismiss. scaleX animates
             on the compositor, no layout reflow. aria-hidden because the visual
             timer doesn't carry meaning beyond the toast lifetime. */}
-        <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 h-0.5 bg-dark-800/50">
+        <div aria-hidden="true" className="bg-dark-800/50 absolute right-0 bottom-0 left-0 h-0.5">
           <div
             className={`h-full w-full ${style.progress} opacity-70`}
             style={{

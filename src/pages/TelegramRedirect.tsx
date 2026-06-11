@@ -131,12 +131,12 @@ export default function TelegramRedirect() {
   return (
     <div className="min-h-viewport flex items-center justify-center p-4">
       {/* Background */}
-      <div className="fixed inset-0 bg-gradient-to-br from-dark-950 via-dark-900 to-dark-950" />
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-accent-500/10 via-transparent to-transparent" />
+      <div className="from-dark-950 via-dark-900 to-dark-950 fixed inset-0 bg-linear-to-br" />
+      <div className="from-accent-500/10 fixed inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] via-transparent to-transparent" />
 
       <div className="relative w-full max-w-sm text-center">
         {/* Logo */}
-        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-accent-400 to-accent-600 shadow-lg shadow-accent-500/30">
+        <div className="from-accent-400 to-accent-600 shadow-accent-500/30 mx-auto mb-6 flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl bg-linear-to-br shadow-lg">
           {branding?.has_custom_logo && logoUrl ? (
             <img src={logoUrl} alt={appName} className="h-full w-full object-cover" />
           ) : (
@@ -144,36 +144,36 @@ export default function TelegramRedirect() {
           )}
         </div>
 
-        <h1 className="mb-2 text-2xl font-bold text-dark-50">{appName}</h1>
+        <h1 className="text-dark-50 mb-2 text-2xl font-bold">{appName}</h1>
 
         {/* Loading State */}
         {status === 'loading' && (
           <div className="mt-8">
-            <div className="border-3 mx-auto mb-4 h-10 w-10 animate-spin rounded-full border-accent-500 border-t-transparent" />
+            <div className="border-accent-500 mx-auto mb-4 h-10 w-10 animate-spin rounded-full border-3 border-t-transparent" />
             <p className="text-dark-400">{t('auth.authenticating')}</p>
-            <p className="mt-2 text-sm text-dark-500">{t('common.loading')}</p>
+            <p className="text-dark-500 mt-2 text-sm">{t('common.loading')}</p>
           </div>
         )}
 
         {/* Success State */}
         {status === 'success' && (
           <div className="mt-8">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-success-500/20">
-              <CheckIcon className="h-8 w-8 text-success-400" />
+            <div className="bg-success-500/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
+              <CheckIcon className="text-success-400 h-8 w-8" />
             </div>
             <p className="text-dark-200">{t('auth.loginSuccess')}</p>
-            <p className="mt-2 text-sm text-dark-500">{t('telegramRedirect.redirecting')}</p>
+            <p className="text-dark-500 mt-2 text-sm">{t('telegramRedirect.redirecting')}</p>
           </div>
         )}
 
         {/* Error State */}
         {status === 'error' && (
           <div className="mt-8">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-error-500/20">
-              <XIcon className="h-8 w-8 text-error-400" />
+            <div className="bg-error-500/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
+              <XIcon className="text-error-400 h-8 w-8" />
             </div>
-            <p className="mb-2 text-dark-200">{t('auth.loginFailed')}</p>
-            <p className="mb-6 text-sm text-error-400">{errorMessage}</p>
+            <p className="text-dark-200 mb-2">{t('auth.loginFailed')}</p>
+            <p className="text-error-400 mb-6 text-sm">{errorMessage}</p>
             <div className="flex flex-col gap-3">
               <button onClick={handleRetry} className="btn-primary w-full">
                 {t('auth.tryAgain')}
@@ -188,17 +188,17 @@ export default function TelegramRedirect() {
         {/* Not in Telegram State */}
         {status === 'not-telegram' && (
           <div className="mt-8">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-warning-500/20">
-              <ExclamationIcon className="h-8 w-8 text-warning-400" />
+            <div className="bg-warning-500/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
+              <ExclamationIcon className="text-warning-400 h-8 w-8" />
             </div>
-            <p className="mb-2 text-dark-200">{t('telegramRedirect.openInTelegram')}</p>
-            <p className="mb-6 text-sm text-dark-400">{t('telegramRedirect.openInTelegramDesc')}</p>
-            <p className="text-sm text-dark-500">{t('telegramRedirect.redirectToLogin')}</p>
+            <p className="text-dark-200 mb-2">{t('telegramRedirect.openInTelegram')}</p>
+            <p className="text-dark-400 mb-6 text-sm">{t('telegramRedirect.openInTelegramDesc')}</p>
+            <p className="text-dark-500 text-sm">{t('telegramRedirect.redirectToLogin')}</p>
           </div>
         )}
 
         {/* Telegram branding */}
-        <div className="mt-12 flex items-center justify-center gap-2 text-dark-600">
+        <div className="text-dark-600 mt-12 flex items-center justify-center gap-2">
           <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
             <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
           </svg>

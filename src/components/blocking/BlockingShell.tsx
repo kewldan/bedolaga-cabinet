@@ -23,7 +23,7 @@ const accentMap: Record<
   warning: {
     glow: 'bg-warning-500/10',
     medallion:
-      'bg-warning-500/10 ring-warning-500/30 shadow-[0_0_44px_-8px_rgba(var(--color-warning-500),0.5)]',
+      'bg-warning-500/10 ring-warning-500/30 shadow-[0_0_44px_-8px_rgba(var(--rt-warning-500),0.5)]',
     sheen: 'from-warning-500/25',
     iconColor: 'text-warning-400',
     dot: 'bg-warning-500',
@@ -32,7 +32,7 @@ const accentMap: Record<
   error: {
     glow: 'bg-error-500/10',
     medallion:
-      'bg-error-500/10 ring-error-500/30 shadow-[0_0_44px_-8px_rgba(var(--color-error-500),0.5)]',
+      'bg-error-500/10 ring-error-500/30 shadow-[0_0_44px_-8px_rgba(var(--rt-error-500),0.5)]',
     sheen: 'from-error-500/25',
     iconColor: 'text-error-400',
     dot: 'bg-error-500',
@@ -100,18 +100,18 @@ export default function BlockingShell({
       aria-modal="true"
       aria-labelledby={titleId}
       tabIndex={-1}
-      className="fixed inset-0 z-[100] overflow-y-auto bg-dark-950"
+      className="bg-dark-950 fixed inset-0 z-100 overflow-y-auto"
     >
       {/* Self-contained backdrop — accent glow behind the card. No app reveal:
           the canvas stays opaque so this remains a hard block. */}
       <div aria-hidden className="pointer-events-none fixed inset-0 overflow-hidden">
         <div
           className={cn(
-            'absolute left-1/2 top-1/2 h-[30rem] w-[30rem] -translate-x-1/2 -translate-y-[58%] rounded-full blur-[130px]',
+            'absolute top-1/2 left-1/2 h-120 w-120 -translate-x-1/2 translate-y-[-58%] rounded-full blur-[130px]',
             a.glow,
           )}
         />
-        <div className="absolute -bottom-24 left-1/2 h-72 w-[22rem] -translate-x-1/2 rounded-full bg-dark-800/30 blur-[120px]" />
+        <div className="bg-dark-800/30 absolute -bottom-24 left-1/2 h-72 w-88 -translate-x-1/2 rounded-full blur-[120px]" />
       </div>
 
       {/* Scroll-safe centering: min-h-full + items-center centers when it fits
@@ -124,13 +124,13 @@ export default function BlockingShell({
           transition={scaleTransition}
           aria-live={ariaLive === 'polite' ? 'polite' : undefined}
           aria-atomic={ariaLive === 'polite' ? true : undefined}
-          className="relative w-full max-w-md overflow-hidden rounded-[var(--bento-radius)] border border-dark-700/40 bg-dark-900/80 p-8 text-center shadow-[0_4px_24px_-4px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.05)] backdrop-blur-xl sm:p-10"
+          className="border-dark-700/40 bg-dark-900/80 relative w-full max-w-md overflow-hidden rounded-(--bento-radius) border p-8 text-center shadow-[0_4px_24px_-4px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.05)] backdrop-blur-xl sm:p-10"
         >
           {/* Top accent hairline */}
           <div
             aria-hidden
             className={cn(
-              'pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent to-transparent',
+              'pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent to-transparent',
               a.hairline,
             )}
           />
@@ -152,7 +152,7 @@ export default function BlockingShell({
               <span
                 aria-hidden
                 className={cn(
-                  'absolute inset-0 rounded-full bg-gradient-to-br to-transparent',
+                  'absolute inset-0 rounded-full bg-linear-to-br to-transparent',
                   a.sheen,
                 )}
               />
@@ -160,11 +160,11 @@ export default function BlockingShell({
             </span>
           </motion.div>
 
-          <h1 id={titleId} className="font-display text-2xl font-bold tracking-tight text-dark-50">
+          <h1 id={titleId} className="font-display text-dark-50 text-2xl font-bold tracking-tight">
             {title}
           </h1>
           {description && (
-            <p className="mt-3 text-base leading-relaxed text-dark-400">{description}</p>
+            <p className="text-dark-400 mt-3 text-base leading-relaxed">{description}</p>
           )}
 
           {children && <div className="mt-6 space-y-3 text-left">{children}</div>}
@@ -188,7 +188,7 @@ export default function BlockingShell({
             </div>
           )}
 
-          {footer && <p className="mt-6 text-sm text-dark-500">{footer}</p>}
+          {footer && <p className="text-dark-500 mt-6 text-sm">{footer}</p>}
         </motion.div>
       </div>
     </div>

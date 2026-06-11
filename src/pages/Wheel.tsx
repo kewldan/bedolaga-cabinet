@@ -465,7 +465,7 @@ export default function Wheel() {
   if (isLoading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <div className="h-12 w-12 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+        <div className="border-accent-500 h-12 w-12 animate-spin rounded-full border-2 border-t-transparent" />
       </div>
     );
   }
@@ -473,10 +473,10 @@ export default function Wheel() {
   if (error || !config) {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4">
-        <div className="flex h-20 w-20 items-center justify-center rounded-full bg-error-500/10">
+        <div className="bg-error-500/10 flex h-20 w-20 items-center justify-center rounded-full">
           <span className="text-4xl">😔</span>
         </div>
-        <p className="text-lg text-dark-400">{t('wheel.errors.loadFailed')}</p>
+        <p className="text-dark-400 text-lg">{t('wheel.errors.loadFailed')}</p>
       </div>
     );
   }
@@ -484,11 +484,11 @@ export default function Wheel() {
   if (!config.is_enabled) {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center gap-6">
-        <div className="flex h-24 w-24 items-center justify-center rounded-full bg-dark-800">
+        <div className="bg-dark-800 flex h-24 w-24 items-center justify-center rounded-full">
           <span className="text-5xl">🎡</span>
         </div>
         <div className="text-center">
-          <h1 className="mb-2 text-2xl font-bold text-dark-100">{t('wheel.title')}</h1>
+          <h1 className="text-dark-100 mb-2 text-2xl font-bold">{t('wheel.title')}</h1>
           <p className="text-dark-400">{t('wheel.disabled')}</p>
         </div>
       </div>
@@ -520,11 +520,11 @@ export default function Wheel() {
     <div className="animate-fade-in space-y-6 pb-8">
       {/* Simple Header */}
       <div>
-        <h1 className="text-2xl font-bold text-dark-50">{t('wheel.title')}</h1>
+        <h1 className="text-dark-50 text-2xl font-bold">{t('wheel.title')}</h1>
         {config.daily_limit > 0 && (
-          <p className="mt-1 text-dark-400">
+          <p className="text-dark-400 mt-1">
             {t('wheel.spinsRemaining')}:{' '}
-            <span className="inline-flex items-center rounded-full bg-accent-500/15 px-2 py-0.5 text-sm font-medium text-accent-400">
+            <span className="bg-accent-500/15 text-accent-400 inline-flex items-center rounded-full px-2 py-0.5 text-sm font-medium">
               {Math.max(0, config.daily_limit - config.user_spins_today)}/{config.daily_limit}
             </span>
           </p>
@@ -533,7 +533,7 @@ export default function Wheel() {
 
       {/* Wheel Section */}
       <Card>
-        <div className="grid gap-6 p-6 sm:p-8 lg:grid-cols-[1fr,280px]">
+        <div className="grid gap-6 p-6 sm:p-8 lg:grid-cols-[1fr_280px]">
           {/* Left: Wheel and Controls */}
           <div>
             {/* Wheel */}
@@ -548,8 +548,8 @@ export default function Wheel() {
             <div className="mt-8 space-y-4">
               {/* Payment type selector */}
               {(starsEnabled || daysEnabled) && (
-                <div className="rounded-xl border border-dark-700/30 bg-dark-800/30 px-1 pb-1 pt-2">
-                  <p className="mb-1 text-center text-xs text-dark-400">{t('wheel.spinCost')}</p>
+                <div className="border-dark-700/30 bg-dark-800/30 rounded-xl border px-1 pt-2 pb-1">
+                  <p className="text-dark-400 mb-1 text-center text-xs">{t('wheel.spinCost')}</p>
                   <div
                     className={`grid gap-1 ${bothMethodsAvailable ? 'grid-cols-2' : 'grid-cols-1'}`}
                   >
@@ -589,8 +589,8 @@ export default function Wheel() {
               {paymentType === 'subscription_days' &&
                 config.eligible_subscriptions &&
                 config.eligible_subscriptions.length > 1 && (
-                  <div className="rounded-xl border border-dark-700/30 bg-dark-800/30 p-3">
-                    <p className="mb-2 text-center text-xs text-dark-400">
+                  <div className="border-dark-700/30 bg-dark-800/30 rounded-xl border p-3">
+                    <p className="text-dark-400 mb-2 text-center text-xs">
                       {t('wheel.selectSubscription', 'Выберите подписку')}
                     </p>
                     <div className="space-y-1.5">
@@ -619,20 +619,20 @@ export default function Wheel() {
 
               {/* Stars confirmation panel */}
               {showStarsConfirm && !isSpinning && !isPayingStars ? (
-                <div className="space-y-3 rounded-xl border border-accent-500/30 bg-accent-500/5 p-4">
-                  <p className="text-center text-sm text-dark-300">
+                <div className="border-accent-500/30 bg-accent-500/5 space-y-3 rounded-xl border p-4">
+                  <p className="text-dark-300 text-center text-sm">
                     {t('wheel.confirmStarsPayment')}
                   </p>
                   <div className="grid grid-cols-2 gap-2">
                     <button
                       onClick={() => setShowStarsConfirm(false)}
-                      className="rounded-lg border border-dark-700 bg-dark-800 px-4 py-2.5 text-sm font-medium text-dark-300 transition-colors hover:bg-dark-700"
+                      className="border-dark-700 bg-dark-800 text-dark-300 hover:bg-dark-700 rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors"
                     >
                       {t('common.cancel')}
                     </button>
                     <button
                       onClick={handleDirectStarsPay}
-                      className="rounded-lg bg-accent-500 px-4 py-2.5 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600"
+                      className="bg-accent-500 text-on-accent hover:bg-accent-600 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors"
                     >
                       {t('wheel.payStars', { count: config.spin_cost_stars ?? 0 })}
                     </button>
@@ -654,7 +654,7 @@ export default function Wheel() {
 
               {/* No subscription hint */}
               {!isSpinning && noSubscription && (
-                <div className="rounded-linear border border-warning-500/30 bg-warning-500/5 p-4 text-center">
+                <div className="rounded-linear border-warning-500/30 bg-warning-500/5 border p-4 text-center">
                   <p className="text-warning-400">{t('wheel.errors.noSubscription')}</p>
                 </div>
               )}
@@ -663,7 +663,7 @@ export default function Wheel() {
                 !noSubscription &&
                 paymentType !== 'telegram_stars' &&
                 !config.can_spin && (
-                  <div className="rounded-linear border border-dark-700/30 bg-dark-800/30 p-4 text-center">
+                  <div className="rounded-linear border-dark-700/30 bg-dark-800/30 border p-4 text-center">
                     <p className="text-dark-400">
                       {config.can_spin_reason === 'daily_limit_reached'
                         ? t('wheel.errors.dailyLimitReached')
@@ -676,13 +676,13 @@ export default function Wheel() {
                 !noSubscription &&
                 paymentType === 'telegram_stars' &&
                 dailyLimitReached && (
-                  <div className="rounded-linear border border-dark-700/30 bg-dark-800/30 p-4 text-center">
+                  <div className="rounded-linear border-dark-700/30 bg-dark-800/30 border p-4 text-center">
                     <p className="text-dark-400">{t('wheel.errors.dailyLimitReached')}</p>
                   </div>
                 )}
               {/* Subscription selection required hint */}
               {!isSpinning && needsSubscriptionPick && (
-                <div className="rounded-linear border border-warning-500/30 bg-warning-500/5 p-4 text-center">
+                <div className="rounded-linear border-warning-500/30 bg-warning-500/5 border p-4 text-center">
                   <p className="text-warning-400">
                     {t('wheel.errors.selectSubscription', 'Выберите подписку для списания дней')}
                   </p>
@@ -699,11 +699,11 @@ export default function Wheel() {
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-linear bg-dark-700/50 text-2xl">
+                    <div className="rounded-linear bg-dark-700/50 flex h-12 w-12 shrink-0 items-center justify-center text-2xl">
                       {spinResult.success ? spinResult.emoji || '🎉' : '😔'}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <div className="font-semibold text-dark-100">
+                      <div className="text-dark-100 font-semibold">
                         {spinResult.success && spinResult.prize_display_name
                           ? spinResult.prize_display_name
                           : spinResult.success
@@ -712,11 +712,11 @@ export default function Wheel() {
                               : t('wheel.congratulations')
                             : t('wheel.oops')}
                       </div>
-                      <div className="text-sm text-dark-400">{spinResult.message}</div>
+                      <div className="text-dark-400 text-sm">{spinResult.message}</div>
                     </div>
                     <button
                       onClick={closeResultModal}
-                      className="shrink-0 rounded-lg p-2 text-dark-400 transition-colors hover:bg-white/5 hover:text-dark-200"
+                      className="text-dark-400 hover:text-dark-200 shrink-0 rounded-lg p-2 transition-colors hover:bg-white/5"
                     >
                       <CloseIcon className="h-6 w-6" />
                     </button>
@@ -724,9 +724,9 @@ export default function Wheel() {
 
                   {/* Promocode if won */}
                   {spinResult.promocode && (
-                    <div className="mt-3 rounded-linear border border-accent-500/20 bg-accent-500/10 p-3 text-center">
-                      <p className="mb-1 text-xs text-accent-400">{t('wheel.yourPromoCode')}</p>
-                      <p className="select-all font-mono text-lg font-bold tracking-wider text-white">
+                    <div className="rounded-linear border-accent-500/20 bg-accent-500/10 mt-3 border p-3 text-center">
+                      <p className="text-accent-400 mb-1 text-xs">{t('wheel.yourPromoCode')}</p>
+                      <p className="font-mono text-lg font-bold tracking-wider text-white select-all">
                         {spinResult.promocode}
                       </p>
                     </div>
@@ -739,7 +739,7 @@ export default function Wheel() {
 
           {/* Right column (desktop) / Bottom (mobile): Prize Legend */}
           <div className="flex flex-col">
-            <h3 className="mb-3 text-sm font-semibold text-dark-300">
+            <h3 className="text-dark-300 mb-3 text-sm font-semibold">
               {t('wheel.prizes') || 'Призы'}
             </h3>
             <WheelLegend prizes={config.prizes} />
@@ -753,11 +753,11 @@ export default function Wheel() {
           onClick={() => setHistoryExpanded(!historyExpanded)}
           className="flex w-full items-center justify-between p-4"
         >
-          <h3 className="flex items-center gap-2 font-semibold text-dark-100">
+          <h3 className="text-dark-100 flex items-center gap-2 font-semibold">
             <HistoryIcon />
             {t('wheel.recentSpins')}
             {history && history.items.length > 0 && (
-              <span className="text-sm font-normal text-dark-500">({history.items.length})</span>
+              <span className="text-dark-500 text-sm font-normal">({history.items.length})</span>
             )}
           </h3>
           <ChevronIcon expanded={historyExpanded} />
@@ -772,7 +772,7 @@ export default function Wheel() {
               transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden"
             >
-              <div className="border-t border-dark-700/30 px-4 pb-4 pt-2">
+              <div className="border-dark-700/30 border-t px-4 pt-2 pb-4">
                 {history && history.items.length > 0 ? (
                   <motion.div
                     variants={staggerContainer}
@@ -784,22 +784,22 @@ export default function Wheel() {
                       <motion.div
                         key={item.id}
                         variants={staggerItem}
-                        className="flex items-center justify-between rounded-linear border border-dark-700/30 bg-dark-800/30 p-3"
+                        className="rounded-linear border-dark-700/30 bg-dark-800/30 flex items-center justify-between border p-3"
                       >
                         <div className="flex items-center gap-3">
-                          <div className="flex h-10 w-10 items-center justify-center rounded-linear bg-dark-700/50 text-xl">
+                          <div className="rounded-linear bg-dark-700/50 flex h-10 w-10 items-center justify-center text-xl">
                             {item.emoji}
                           </div>
                           <div className="min-w-0">
-                            <div className="truncate text-sm font-medium text-dark-100">
+                            <div className="text-dark-100 truncate text-sm font-medium">
                               {item.prize_display_name}
                             </div>
-                            <div className="text-xs text-dark-500">
+                            <div className="text-dark-500 text-xs">
                               {new Date(item.created_at).toLocaleDateString()}
                             </div>
                           </div>
                         </div>
-                        <div className="whitespace-nowrap text-sm text-dark-400">
+                        <div className="text-dark-400 text-sm whitespace-nowrap">
                           -
                           {item.payment_type === 'telegram_stars'
                             ? `${item.payment_amount} ⭐`
@@ -809,7 +809,7 @@ export default function Wheel() {
                     ))}
                   </motion.div>
                 ) : (
-                  <div className="py-6 text-center text-dark-500">
+                  <div className="text-dark-500 py-6 text-center">
                     <div className="mb-2 text-3xl">🎰</div>
                     {t('wheel.noHistory')}
                   </div>

@@ -158,7 +158,7 @@ export default function BackgroundGradientAnimation({ settings }: Props) {
           <div
             key={i}
             className={cn(
-              'absolute left-[calc(50%-var(--size)/2)] top-[calc(50%-var(--size)/2)] h-[var(--size)] w-[var(--size)] rounded-full',
+              'absolute top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)] h-(--size) w-(--size) rounded-full',
               isMobile ? 'opacity-50' : 'opacity-100 mix-blend-hard-light',
               blob.anim,
             )}
@@ -171,7 +171,7 @@ export default function BackgroundGradientAnimation({ settings }: Props) {
         {interactive && !isMobile && (
           <div
             ref={interactiveRef}
-            className="absolute left-[calc(50%-var(--size)/2)] top-[calc(50%-var(--size)/2)] h-[var(--size)] w-[var(--size)] rounded-full opacity-70 mix-blend-hard-light"
+            className="absolute top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)] h-(--size) w-(--size) rounded-full opacity-70 mix-blend-hard-light"
             style={{
               background: `radial-gradient(circle at center, rgba(${pointerColor}, 0.8) 0, rgba(${pointerColor}, 0) 50%) no-repeat`,
             }}

@@ -66,9 +66,9 @@ function SortableTariffCard({
     <div
       ref={setNodeRef}
       style={style}
-      className={`rounded-xl border bg-dark-800 p-4 transition-colors ${
+      className={`bg-dark-800 rounded-xl border p-4 transition-colors ${
         isDragging
-          ? 'border-accent-500/50 shadow-xl shadow-accent-500/20'
+          ? 'border-accent-500/50 shadow-accent-500/20 shadow-xl'
           : tariff.is_active
             ? 'border-dark-700'
             : 'border-dark-700/50 opacity-60'
@@ -78,7 +78,7 @@ function SortableTariffCard({
         <button
           {...attributes}
           {...listeners}
-          className="mt-1 flex-shrink-0 cursor-grab touch-none rounded-lg p-2.5 text-dark-500 hover:bg-dark-700/50 hover:text-dark-300 active:cursor-grabbing sm:p-1.5"
+          className="text-dark-500 hover:bg-dark-700/50 hover:text-dark-300 mt-1 shrink-0 cursor-grab touch-none rounded-lg p-2.5 active:cursor-grabbing sm:p-1.5"
           title={t('admin.tariffs.dragToReorder')}
         >
           <GripIcon />
@@ -88,18 +88,18 @@ function SortableTariffCard({
           <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-3">
             <div className="min-w-0 flex-1">
               <div className="mb-1 flex flex-wrap items-center gap-2">
-                <h3 className="truncate font-medium text-dark-100">{tariff.name}</h3>
+                <h3 className="text-dark-100 truncate font-medium">{tariff.name}</h3>
                 {tariff.is_daily ? (
-                  <span className="rounded bg-warning-500/20 px-2 py-0.5 text-xs text-warning-400">
+                  <span className="bg-warning-500/20 text-warning-400 rounded px-2 py-0.5 text-xs">
                     {t('admin.tariffs.dailyType')}
                   </span>
                 ) : (
-                  <span className="rounded bg-accent-500/20 px-2 py-0.5 text-xs text-accent-400">
+                  <span className="bg-accent-500/20 text-accent-400 rounded px-2 py-0.5 text-xs">
                     {t('admin.tariffs.periodType')}
                   </span>
                 )}
                 {tariff.is_trial_available && (
-                  <span className="rounded bg-success-500/20 px-2 py-0.5 text-xs text-success-400">
+                  <span className="bg-success-500/20 text-success-400 rounded px-2 py-0.5 text-xs">
                     {t('admin.tariffs.trial')}
                   </span>
                 )}
@@ -110,12 +110,12 @@ function SortableTariffCard({
                   </span>
                 )}
                 {!tariff.is_active && (
-                  <span className="rounded bg-dark-600 px-2 py-0.5 text-xs text-dark-400">
+                  <span className="bg-dark-600 text-dark-400 rounded px-2 py-0.5 text-xs">
                     {t('admin.tariffs.inactive')}
                   </span>
                 )}
               </div>
-              <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-dark-400">
+              <div className="text-dark-400 flex flex-wrap gap-x-4 gap-y-1 text-sm">
                 {tariff.is_daily && tariff.daily_price_kopeks > 0 && (
                   <span className="text-warning-400">
                     {(tariff.daily_price_kopeks / 100).toFixed(2)}{' '}
@@ -135,7 +135,7 @@ function SortableTariffCard({
               </div>
             </div>
 
-            <div className="flex items-center gap-2 sm:flex-shrink-0">
+            <div className="flex items-center gap-2 sm:shrink-0">
               <button
                 onClick={onToggle}
                 className={`rounded-lg p-2 transition-colors ${
@@ -164,7 +164,7 @@ function SortableTariffCard({
 
               <button
                 onClick={onEdit}
-                className="rounded-lg bg-dark-700 p-2 text-dark-300 transition-colors hover:bg-dark-600 hover:text-dark-100"
+                className="bg-dark-700 text-dark-300 hover:bg-dark-600 hover:text-dark-100 rounded-lg p-2 transition-colors"
                 title={t('admin.tariffs.edit')}
               >
                 <EditIcon />
@@ -172,7 +172,7 @@ function SortableTariffCard({
 
               <button
                 onClick={onDelete}
-                className="rounded-lg bg-dark-700 p-2 text-dark-300 transition-colors hover:bg-error-500/20 hover:text-error-400"
+                className="bg-dark-700 text-dark-300 hover:bg-error-500/20 hover:text-error-400 rounded-lg p-2 transition-colors"
                 title={t('admin.tariffs.delete')}
               >
                 <TrashIcon className="h-4 w-4" />
@@ -301,14 +301,14 @@ export default function AdminTariffs() {
           {!capabilities.hasBackButton && (
             <button
               onClick={() => navigate('/admin')}
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-dark-700 bg-dark-800 transition-colors hover:border-dark-600"
+              className="border-dark-700 bg-dark-800 hover:border-dark-600 flex h-10 w-10 items-center justify-center rounded-xl border transition-colors"
             >
               <BackIcon />
             </button>
           )}
           <div>
-            <h1 className="text-xl font-bold text-dark-100">{t('admin.tariffs.title')}</h1>
-            <p className="text-sm text-dark-400">{t('admin.tariffs.subtitle')}</p>
+            <h1 className="text-dark-100 text-xl font-bold">{t('admin.tariffs.title')}</h1>
+            <p className="text-dark-400 text-sm">{t('admin.tariffs.subtitle')}</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -316,7 +316,7 @@ export default function AdminTariffs() {
             <button
               onClick={handleSaveOrder}
               disabled={saveOrderMutation.isPending}
-              className="flex items-center gap-2 rounded-lg bg-success-500 px-4 py-2 text-white transition-colors hover:bg-success-600"
+              className="bg-success-500 hover:bg-success-600 flex items-center gap-2 rounded-lg px-4 py-2 text-white transition-colors"
             >
               {saveOrderMutation.isPending ? (
                 <div className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
@@ -328,7 +328,7 @@ export default function AdminTariffs() {
           )}
           <button
             onClick={() => navigate('/admin/tariffs/create')}
-            className="flex items-center justify-center gap-2 rounded-lg bg-accent-500 px-4 py-2 text-on-accent transition-colors hover:bg-accent-600"
+            className="bg-accent-500 text-on-accent hover:bg-accent-600 flex items-center justify-center gap-2 rounded-lg px-4 py-2 transition-colors"
           >
             <PlusIcon />
             {t('admin.tariffs.create')}
@@ -337,7 +337,7 @@ export default function AdminTariffs() {
       </div>
 
       {/* Drag hint */}
-      <div className="mb-4 flex items-center gap-2 text-sm text-dark-500">
+      <div className="text-dark-500 mb-4 flex items-center gap-2 text-sm">
         <GripIcon />
         {t('admin.tariffs.dragToReorder')}
       </div>
@@ -345,7 +345,7 @@ export default function AdminTariffs() {
       {/* Tariffs List */}
       {isLoading ? (
         <div className="flex items-center justify-center py-12">
-          <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+          <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
         </div>
       ) : localTariffs.length === 0 ? (
         <div className="py-12 text-center">

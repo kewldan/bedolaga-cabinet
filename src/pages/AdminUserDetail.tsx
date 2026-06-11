@@ -729,7 +729,7 @@ export default function AdminUserDetail() {
   if (loading) {
     return (
       <div className="flex min-h-[50vh] items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+        <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
       </div>
     );
   }
@@ -740,7 +740,7 @@ export default function AdminUserDetail() {
         <p className="text-dark-400">{t('admin.users.notFound')}</p>
         <button
           onClick={() => navigate('/admin/users')}
-          className="rounded-lg bg-accent-500 px-4 py-2 text-on-accent transition-colors hover:bg-accent-600"
+          className="bg-accent-500 text-on-accent hover:bg-accent-600 rounded-lg px-4 py-2 transition-colors"
         >
           {t('common.back')}
         </button>
@@ -754,19 +754,19 @@ export default function AdminUserDetail() {
       <div className="mb-6 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <AdminBackButton to="/admin/users" />
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-accent-500 to-accent-700 text-lg font-bold text-white">
+          <div className="from-accent-500 to-accent-700 flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-br text-lg font-bold text-white">
             {user.first_name?.[0] || user.username?.[0] || '?'}
           </div>
           <div>
-            <div className="font-semibold text-dark-100">{user.full_name}</div>
-            <div className="flex items-center gap-2 text-sm text-dark-400">
+            <div className="text-dark-100 font-semibold">{user.full_name}</div>
+            <div className="text-dark-400 flex items-center gap-2 text-sm">
               <TelegramIcon />
               {user.telegram_id}
               {user.username && <span>@{user.username}</span>}
             </div>
           </div>
         </div>
-        <button onClick={loadUser} className="rounded-lg p-2 transition-colors hover:bg-dark-700">
+        <button onClick={loadUser} className="hover:bg-dark-700 rounded-lg p-2 transition-colors">
           <RefreshIcon className={loading ? 'animate-spin' : ''} />
         </button>
       </div>
@@ -782,9 +782,9 @@ export default function AdminUserDetail() {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`shrink-0 whitespace-nowrap rounded-xl px-4 py-2.5 text-sm font-medium transition-all ${
+              className={`shrink-0 rounded-xl px-4 py-2.5 text-sm font-medium whitespace-nowrap transition-all ${
                 activeTab === tab
-                  ? 'bg-accent-500/15 text-accent-400 ring-1 ring-accent-500/30'
+                  ? 'bg-accent-500/15 text-accent-400 ring-accent-500/30 ring-1'
                   : 'bg-dark-800/50 text-dark-400 active:bg-dark-700'
               }`}
             >

@@ -48,7 +48,7 @@ export function SubscriptionSubRow({
   return (
     <tr
       className={cn(
-        'border-b border-dark-700/30 transition-colors',
+        'border-dark-700/30 border-b transition-colors',
         isSelected ? 'bg-accent-500/8' : 'bg-dark-850/40 hover:bg-dark-800/60',
       )}
     >
@@ -60,7 +60,7 @@ export function SubscriptionSubRow({
               className={cn(
                 'flex h-5 w-5 items-center justify-center rounded-md border-2 transition-all duration-150',
                 isSelected
-                  ? 'border-accent-500 bg-accent-500 shadow-[0_0_8px_rgba(var(--color-accent-500),0.4)]'
+                  ? 'border-accent-500 bg-accent-500 shadow-[0_0_8px_rgba(var(--rt-accent-500),0.4)]'
                   : 'border-dark-500 bg-dark-700/60 hover:border-accent-500/50 hover:bg-dark-600/60',
               )}
               aria-label={
@@ -78,7 +78,7 @@ export function SubscriptionSubRow({
       <td colSpan={7} className="px-3 py-2">
         <div className="flex items-center gap-3 pl-9">
           <div className="flex items-center gap-1.5">
-            <span className="text-[10px] text-dark-500" aria-hidden="true">
+            <span className="text-dark-500 text-[10px]" aria-hidden="true">
               <svg
                 className="h-3.5 w-3.5"
                 fill="none"
@@ -93,7 +93,7 @@ export function SubscriptionSubRow({
                 />
               </svg>
             </span>
-            <span className="min-w-0 flex-1 truncate text-xs font-semibold text-dark-200">
+            <span className="text-dark-200 min-w-0 flex-1 truncate text-xs font-semibold">
               {subscription.tariff_name || '—'}
             </span>
           </div>
@@ -102,17 +102,17 @@ export function SubscriptionSubRow({
 
           <span className={cn('text-xs font-medium tabular-nums', daysColor)}>
             {days}
-            <span className="ml-0.5 text-[10px] font-normal text-dark-500">
+            <span className="text-dark-500 ml-0.5 text-[10px] font-normal">
               {t('admin.bulkActions.daysUnit')}
             </span>
           </span>
 
           <div className="flex items-center gap-1.5">
-            <span className="text-[10px] tabular-nums text-dark-400">
+            <span className="text-dark-400 text-[10px] tabular-nums">
               {subscription.traffic_used_gb.toFixed(1)} {t('admin.bulkActions.trafficOf')}{' '}
               {subscription.traffic_limit_gb} {t('admin.bulkActions.trafficGbUnit')}
             </span>
-            <div className="h-1.5 w-16 overflow-hidden rounded-full bg-dark-700/60">
+            <div className="bg-dark-700/60 h-1.5 w-16 overflow-hidden rounded-full">
               <div
                 className={cn('h-full rounded-full transition-all duration-300', trafficBarColor)}
                 style={{ width: `${trafficPercent}%` }}
@@ -120,7 +120,7 @@ export function SubscriptionSubRow({
             </div>
           </div>
 
-          <span className="flex items-center gap-1 text-xs text-dark-400">
+          <span className="text-dark-400 flex items-center gap-1 text-xs">
             <svg
               className="h-3 w-3"
               fill="none"
@@ -173,7 +173,7 @@ export function StatusBadge({ status }: { status: string | null }) {
   return (
     <span
       className={cn(
-        'inline-flex rounded-full border px-2 py-0.5 text-[10px] font-medium leading-tight',
+        'inline-flex rounded-full border px-2 py-0.5 text-[10px] leading-tight font-medium',
         c.class,
       )}
     >

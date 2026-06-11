@@ -90,7 +90,7 @@ export default function Polls() {
   if (isLoading) {
     return (
       <div className="flex min-h-64 items-center justify-center">
-        <div className="h-10 w-10 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+        <div className="border-accent-500 h-10 w-10 animate-spin rounded-full border-2 border-t-transparent" />
       </div>
     );
   }
@@ -107,14 +107,14 @@ export default function Polls() {
     <div className="space-y-6">
       <div className="flex items-center gap-3">
         <ClipboardIcon className="h-6 w-6" />
-        <h1 className="text-2xl font-bold text-dark-50 sm:text-3xl">{t('polls.title')}</h1>
+        <h1 className="text-dark-50 text-2xl font-bold sm:text-3xl">{t('polls.title')}</h1>
       </div>
 
       {/* Poll Modal */}
       {selectedPoll && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div
-            className="absolute inset-0 bg-dark-950/60"
+            className="bg-dark-950/60 absolute inset-0"
             onClick={handleClosePoll}
             aria-hidden="true"
           />
@@ -141,13 +141,13 @@ export default function Polls() {
 
             {startPollMutation.isPending && (
               <div className="flex justify-center py-8">
-                <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+                <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
               </div>
             )}
 
             {completionMessage && (
               <div className="space-y-4">
-                <div className="rounded-lg bg-success-500/20 p-4 text-center text-success-400">
+                <div className="bg-success-500/20 text-success-400 rounded-lg p-4 text-center">
                   <CheckIcon className="h-5 w-5" />
                   <p className="mt-2 font-medium">{completionMessage.message}</p>
                   {completionMessage.reward && (
@@ -164,12 +164,12 @@ export default function Polls() {
 
             {currentQuestion && !completionMessage && (
               <div className="space-y-4">
-                <div className="text-sm text-dark-400">
+                <div className="text-dark-400 text-sm">
                   {t('polls.question')} {questionIndex + 1} {t('polls.of')} {totalQuestions}
                 </div>
-                <div className="h-2 w-full rounded-full bg-dark-700">
+                <div className="bg-dark-700 h-2 w-full rounded-full">
                   <div
-                    className="h-2 rounded-full bg-accent-500 transition-all"
+                    className="bg-accent-500 h-2 rounded-full transition-all"
                     style={{ width: `${((questionIndex + 1) / totalQuestions) * 100}%` }}
                   />
                 </div>
@@ -182,7 +182,7 @@ export default function Polls() {
                       key={option.id}
                       onClick={() => handleAnswer(option.id)}
                       disabled={answerMutation.isPending}
-                      className="w-full rounded-lg bg-dark-700 p-4 text-left transition-colors hover:bg-dark-600 disabled:opacity-50"
+                      className="bg-dark-700 hover:bg-dark-600 w-full rounded-lg p-4 text-left transition-colors disabled:opacity-50"
                     >
                       {option.text}
                     </button>
@@ -191,7 +191,7 @@ export default function Polls() {
 
                 {answerMutation.isPending && (
                   <div className="flex justify-center">
-                    <div className="h-6 w-6 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+                    <div className="border-accent-500 h-6 w-6 animate-spin rounded-full border-2 border-t-transparent" />
                   </div>
                 )}
               </div>
@@ -207,11 +207,11 @@ export default function Polls() {
             <div key={poll.id} className="card">
               <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0 flex-1">
-                  <h3 className="break-words text-lg font-semibold">{poll.title}</h3>
+                  <h3 className="text-lg font-semibold wrap-break-word">{poll.title}</h3>
                   {poll.description && (
-                    <p className="mt-1 text-sm text-dark-400">{poll.description}</p>
+                    <p className="text-dark-400 mt-1 text-sm">{poll.description}</p>
                   )}
-                  <div className="mt-2 flex items-center gap-4 text-sm text-dark-400">
+                  <div className="text-dark-400 mt-2 flex items-center gap-4 text-sm">
                     <span>
                       {poll.answered_questions}/
                       {t('polls.questions', { count: poll.total_questions })}
@@ -219,7 +219,7 @@ export default function Polls() {
                   </div>
                 </div>
                 {poll.reward_amount && (
-                  <div className="flex shrink-0 items-center gap-1 text-accent-400">
+                  <div className="text-accent-400 flex shrink-0 items-center gap-1">
                     <GiftIcon className="h-5 w-5" />
                     <span className="text-sm font-medium">+{poll.reward_amount}</span>
                   </div>
@@ -244,7 +244,7 @@ export default function Polls() {
       ) : (
         <div className="card py-12 text-center">
           <ClipboardIcon className="h-6 w-6" />
-          <p className="mt-4 text-dark-400">{t('polls.noPolls')}</p>
+          <p className="text-dark-400 mt-4">{t('polls.noPolls')}</p>
         </div>
       )}
     </div>

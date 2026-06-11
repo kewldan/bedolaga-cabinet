@@ -296,7 +296,7 @@ export default function TopUpAmount() {
     }
     return (
       <div className="flex items-center justify-center py-12">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+        <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
       </div>
     );
   }
@@ -419,15 +419,15 @@ export default function TopUpAmount() {
         <div
           className={`flex h-14 w-14 items-center justify-center rounded-2xl ${
             isStarsMethod
-              ? 'bg-gradient-to-br from-yellow-500/20 to-orange-500/20 text-yellow-400'
-              : 'bg-gradient-to-br from-accent-500/20 to-accent-600/20 text-accent-400'
+              ? 'bg-linear-to-br from-yellow-500/20 to-orange-500/20 text-yellow-400'
+              : 'from-accent-500/20 to-accent-600/20 text-accent-400 bg-linear-to-br'
           }`}
         >
           <div className="flex h-7 w-7 items-center justify-center">{getMethodIcon(method.id)}</div>
         </div>
         <div className="flex-1">
-          <h3 className="text-lg font-bold text-dark-100">{methodName}</h3>
-          <p className="text-sm text-dark-400">
+          <h3 className="text-dark-100 text-lg font-bold">{methodName}</h3>
+          <p className="text-dark-400 text-sm">
             {formatAmount(minRubles, 0)} – {formatAmount(maxRubles, 0)} {currencySymbol}
           </p>
         </div>
@@ -436,7 +436,7 @@ export default function TopUpAmount() {
       {/* Payment options (if any) */}
       {hasOptions && orderedOptions.length > 0 && (
         <motion.div variants={staggerItem} className="space-y-2">
-          <label className="text-sm font-medium text-dark-400">{t('balance.paymentMethod')}</label>
+          <label className="text-dark-400 text-sm font-medium">{t('balance.paymentMethod')}</label>
           <div className="grid grid-cols-2 gap-2">
             {orderedOptions.map((opt) => (
               <button
@@ -445,14 +445,14 @@ export default function TopUpAmount() {
                 onClick={() => setSelectedOption(opt.id)}
                 className={`relative rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 ${
                   selectedOption === opt.id
-                    ? 'bg-accent-500/15 text-accent-400 ring-2 ring-accent-500/40'
-                    : 'border border-dark-700/50 bg-dark-800/70 text-dark-300 hover:bg-dark-700/70'
+                    ? 'bg-accent-500/15 text-accent-400 ring-accent-500/40 ring-2'
+                    : 'border-dark-700/50 bg-dark-800/70 text-dark-300 hover:bg-dark-700/70 border'
                 }`}
               >
                 {opt.name}
                 {selectedOption === opt.id && (
-                  <span className="absolute right-1.5 top-1.5">
-                    <span className="block h-2 w-2 rounded-full bg-accent-500" />
+                  <span className="absolute top-1.5 right-1.5">
+                    <span className="bg-accent-500 block h-2 w-2 rounded-full" />
                   </span>
                 )}
               </button>
@@ -463,13 +463,13 @@ export default function TopUpAmount() {
 
       {/* Amount input + Submit button - inline */}
       <motion.div variants={staggerItem} className="space-y-2">
-        <label className="text-sm font-medium text-dark-400">{t('balance.enterAmount')}</label>
+        <label className="text-dark-400 text-sm font-medium">{t('balance.enterAmount')}</label>
         <div className="flex gap-2">
           <div
             className={`relative flex-1 rounded-2xl transition-all duration-200 ${
               isInputFocused
-                ? 'bg-dark-800 ring-2 ring-accent-500/50'
-                : 'border border-dark-700/50 bg-dark-800/70'
+                ? 'bg-dark-800 ring-accent-500/50 ring-2'
+                : 'border-dark-700/50 bg-dark-800/70 border'
             }`}
           >
             <input
@@ -491,10 +491,10 @@ export default function TopUpAmount() {
                 }
               }}
               placeholder="0"
-              className="h-14 w-full bg-transparent px-4 pr-12 text-xl font-bold text-dark-100 placeholder:text-dark-600 focus:outline-none"
+              className="text-dark-100 placeholder:text-dark-600 h-14 w-full bg-transparent px-4 pr-12 text-xl font-bold focus:outline-none"
               autoComplete="off"
             />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-base font-semibold text-dark-500">
+            <span className="text-dark-500 absolute top-1/2 right-4 -translate-y-1/2 text-base font-semibold">
               {currencySymbol}
             </span>
           </div>
@@ -504,10 +504,10 @@ export default function TopUpAmount() {
             disabled={isPending || !amount || parseFloat(amount) <= 0}
             className={`flex h-14 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-2xl px-6 text-base font-bold transition-colors duration-200 ${
               isPending || !amount || parseFloat(amount) <= 0
-                ? 'cursor-not-allowed bg-dark-700 text-dark-500'
+                ? 'bg-dark-700 text-dark-500 cursor-not-allowed'
                 : isStarsMethod
-                  ? 'bg-gradient-to-r from-yellow-500 to-orange-500 text-white shadow-lg shadow-yellow-500/25 hover:from-yellow-400 hover:to-orange-400 active:from-yellow-600 active:to-orange-600'
-                  : 'bg-accent-500 text-on-accent shadow-lg shadow-accent-500/25 transition-colors hover:bg-accent-400 active:bg-accent-600'
+                  ? 'bg-linear-to-r from-yellow-500 to-orange-500 text-white shadow-lg shadow-yellow-500/25 hover:from-yellow-400 hover:to-orange-400 active:from-yellow-600 active:to-orange-600'
+                  : 'bg-accent-500 text-on-accent shadow-accent-500/25 hover:bg-accent-400 active:bg-accent-600 shadow-lg transition-colors'
             }`}
           >
             {isPending ? (
@@ -564,10 +564,10 @@ export default function TopUpAmount() {
       {error && (
         <motion.div
           variants={staggerItem}
-          className="flex items-center gap-2 rounded-xl border border-error-500/20 bg-error-500/10 p-3"
+          className="border-error-500/20 bg-error-500/10 flex items-center gap-2 rounded-xl border p-3"
         >
-          <ExclamationIcon className="h-5 w-5 shrink-0 text-error-400" />
-          <span className="text-sm text-error-400">{error}</span>
+          <ExclamationIcon className="text-error-400 h-5 w-5 shrink-0" />
+          <span className="text-error-400 text-sm">{error}</span>
         </motion.div>
       )}
 
@@ -575,27 +575,27 @@ export default function TopUpAmount() {
       {paymentUrl && (
         <motion.div
           variants={staggerItem}
-          className="space-y-3 rounded-2xl border border-success-500/20 bg-success-500/10 p-4"
+          className="border-success-500/20 bg-success-500/10 space-y-3 rounded-2xl border p-4"
         >
-          <div className="flex items-center gap-2 text-success-400">
+          <div className="text-success-400 flex items-center gap-2">
             <CheckIcon className="h-5 w-5" />
             <span className="font-semibold">{t('balance.paymentReady')}</span>
           </div>
 
-          <p className="text-sm text-dark-400">{t('balance.clickToOpenPayment')}</p>
+          <p className="text-dark-400 text-sm">{t('balance.clickToOpenPayment')}</p>
 
           <button
             type="button"
             onClick={handleOpenPayment}
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-success-500 font-bold text-white transition-colors hover:bg-success-400 active:bg-success-600"
+            className="bg-success-500 hover:bg-success-400 active:bg-success-600 flex h-12 w-full items-center justify-center gap-2 rounded-xl font-bold text-white transition-colors"
           >
             <ExternalLinkIcon />
             <span>{t('balance.openPaymentPage')}</span>
           </button>
 
           <div className="flex items-center gap-2">
-            <div className="min-w-0 flex-1 rounded-lg border border-dark-700/50 bg-dark-800/70 px-3 py-2">
-              <p className="truncate text-xs text-dark-500">{paymentUrl}</p>
+            <div className="border-dark-700/50 bg-dark-800/70 min-w-0 flex-1 rounded-lg border px-3 py-2">
+              <p className="text-dark-500 truncate text-xs">{paymentUrl}</p>
             </div>
             <button
               type="button"

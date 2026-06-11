@@ -84,13 +84,13 @@ export default function LinkTelegramCallback() {
 
   return (
     <div className="min-h-viewport flex items-center justify-center">
-      <div className="fixed inset-0 bg-gradient-to-br from-dark-950 via-dark-900 to-dark-950" />
+      <div className="from-dark-950 via-dark-900 to-dark-950 fixed inset-0 bg-linear-to-br" />
       <div className="relative text-center">
-        <div className="mx-auto mb-4 h-10 w-10 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
-        <h2 className="text-lg font-semibold text-dark-50">
+        <div className="border-accent-500 mx-auto mb-4 h-10 w-10 animate-spin rounded-full border-2 border-t-transparent" />
+        <h2 className="text-dark-50 text-lg font-semibold">
           {t('profile.accounts.linkingTelegram')}
         </h2>
-        <p className="mt-2 text-sm text-dark-400">{t('common.loading')}</p>
+        <p className="text-dark-400 mt-2 text-sm">{t('common.loading')}</p>
       </div>
     </div>
   );

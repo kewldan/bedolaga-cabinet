@@ -117,9 +117,8 @@ const sections: AdminSection[] = [
   {
     id: 'analytics',
     titleKey: 'admin.groups.analytics',
-    accent: 'rgb(var(--color-success-400))',
-    gradient:
-      'linear-gradient(135deg, rgb(var(--color-success-400)), rgb(var(--color-accent-500)))',
+    accent: 'rgb(var(--rt-success-400))',
+    gradient: 'linear-gradient(135deg, rgb(var(--rt-success-400)), rgb(var(--rt-accent-500)))',
     items: [
       {
         name: 'admin.nav.dashboard',
@@ -150,8 +149,8 @@ const sections: AdminSection[] = [
   {
     id: 'users',
     titleKey: 'admin.groups.users',
-    accent: 'rgb(var(--color-accent-400))',
-    gradient: 'linear-gradient(135deg, rgb(var(--color-accent-400)), rgb(var(--color-error-400)))',
+    accent: 'rgb(var(--rt-accent-400))',
+    gradient: 'linear-gradient(135deg, rgb(var(--rt-accent-400)), rgb(var(--rt-error-400)))',
     items: [
       { name: 'admin.nav.users', icon: 'users', to: '/admin/users', permission: 'users:read' },
       {
@@ -177,8 +176,8 @@ const sections: AdminSection[] = [
   {
     id: 'tariffs',
     titleKey: 'admin.groups.tariffs',
-    accent: 'rgb(var(--color-warning-400))',
-    gradient: 'linear-gradient(135deg, rgb(var(--color-warning-400)), rgb(var(--color-error-300)))',
+    accent: 'rgb(var(--rt-warning-400))',
+    gradient: 'linear-gradient(135deg, rgb(var(--rt-warning-400)), rgb(var(--rt-error-300)))',
     items: [
       { name: 'admin.nav.tariffs', icon: 'tag', to: '/admin/tariffs', permission: 'tariffs:read' },
       {
@@ -216,8 +215,8 @@ const sections: AdminSection[] = [
   {
     id: 'marketing',
     titleKey: 'admin.groups.marketing',
-    accent: 'rgb(var(--color-accent-300))',
-    gradient: 'linear-gradient(135deg, rgb(var(--color-accent-300)), rgb(var(--color-accent-600)))',
+    accent: 'rgb(var(--rt-accent-300))',
+    gradient: 'linear-gradient(135deg, rgb(var(--rt-accent-300)), rgb(var(--rt-accent-600)))',
     items: [
       { name: 'admin.nav.news', icon: 'newspaper', to: '/admin/news', permission: 'news:read' },
       {
@@ -262,9 +261,8 @@ const sections: AdminSection[] = [
   {
     id: 'system',
     titleKey: 'admin.groups.system',
-    accent: 'rgb(var(--color-accent-500))',
-    gradient:
-      'linear-gradient(135deg, rgb(var(--color-accent-500)), rgb(var(--color-success-500)))',
+    accent: 'rgb(var(--rt-accent-500))',
+    gradient: 'linear-gradient(135deg, rgb(var(--rt-accent-500)), rgb(var(--rt-success-500)))',
     items: [
       {
         name: 'admin.nav.channelSubscriptions',
@@ -320,8 +318,8 @@ const sections: AdminSection[] = [
   {
     id: 'security',
     titleKey: 'admin.groups.security',
-    accent: 'rgb(var(--color-error-400))',
-    gradient: 'linear-gradient(135deg, rgb(var(--color-error-400)), rgb(var(--color-accent-600)))',
+    accent: 'rgb(var(--rt-error-400))',
+    gradient: 'linear-gradient(135deg, rgb(var(--rt-error-400)), rgb(var(--rt-accent-600)))',
     items: [
       { name: 'admin.nav.roles', icon: 'shield', to: '/admin/roles', permission: 'roles:read' },
       {
@@ -422,7 +420,7 @@ const StatsBar = memo(function StatsBar({ systemInfo, dashboardStats, loading }:
         <div
           key={i}
           className={cn(
-            'flex min-w-0 flex-1 items-center gap-2 rounded-xl border border-dark-700/50 bg-dark-800/40 px-3 py-2 transition-all duration-200',
+            'border-dark-700/50 bg-dark-800/40 flex min-w-0 flex-1 items-center gap-2 rounded-xl border px-3 py-2 transition-all duration-200',
             'light:border-champagne-300/50 light:bg-champagne-100/60',
             loading && 'animate-pulse',
           )}
@@ -437,19 +435,19 @@ const StatsBar = memo(function StatsBar({ systemInfo, dashboardStats, loading }:
             {s.icon}
           </div>
           <div className="flex min-w-0 flex-col gap-0.5 overflow-hidden">
-            <span className="flex items-center gap-1 font-mono text-xs font-bold text-dark-100 light:text-champagne-900">
+            <span className="text-dark-100 light:text-champagne-900 flex items-center gap-1 font-mono text-xs font-bold">
               {'numericValue' in s && s.numericValue !== undefined ? (
                 <AnimatedStat value={s.numericValue} />
               ) : (
                 <span className="truncate">{s.value}</span>
               )}
               {s.delta && (
-                <span className="shrink-0 rounded-md border border-success-400/20 bg-success-400/10 px-1.5 py-px text-2xs font-semibold text-success-400">
+                <span className="border-success-400/20 bg-success-400/10 text-2xs text-success-400 shrink-0 rounded-md border px-1.5 py-px font-semibold">
                   {s.delta}
                 </span>
               )}
             </span>
-            <span className="truncate text-2xs text-dark-500 light:text-champagne-600">
+            <span className="text-2xs text-dark-500 light:text-champagne-600 truncate">
               {s.label}
               {s.delta && ` · ${t('admin.panel.statsToday')}`}
             </span>
@@ -494,7 +492,7 @@ const GlassCard = memo(function GlassCard({ section, index, searchTerm }: GlassC
       return (
         <>
           {text.slice(0, idx)}
-          <mark className="rounded-sm bg-accent-400/30 px-0.5 text-dark-100 light:text-champagne-900">
+          <mark className="bg-accent-400/30 text-dark-100 light:text-champagne-900 rounded-sm px-0.5">
             {text.slice(idx, idx + searchTerm.length)}
           </mark>
           {text.slice(idx + searchTerm.length)}
@@ -507,18 +505,18 @@ const GlassCard = memo(function GlassCard({ section, index, searchTerm }: GlassC
   if (visibleItems.length === 0) return null;
 
   return (
-    <div className="group/card relative overflow-hidden rounded-2xl border border-dark-700/50 bg-dark-800/30 backdrop-blur-xl transition-colors duration-200 hover:border-dark-600/80 light:border-champagne-300/50 light:bg-champagne-100/40 light:hover:border-champagne-400/60">
+    <div className="group/card border-dark-700/50 bg-dark-800/30 hover:border-dark-600/80 light:border-champagne-300/50 light:bg-champagne-100/40 light:hover:border-champagne-400/60 relative overflow-hidden rounded-2xl border backdrop-blur-xl transition-colors duration-200">
       {/* Header */}
-      <div className="flex items-center gap-2.5 border-b border-dark-700/30 px-3.5 py-2.5 light:border-champagne-300/30">
+      <div className="border-dark-700/30 light:border-champagne-300/30 flex items-center gap-2.5 border-b px-3.5 py-2.5">
         <div
           className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg"
           style={{ background: section.gradient }}
         >
-          <span className="text-xs font-bold text-dark-50" aria-hidden="true">
+          <span className="text-dark-50 text-xs font-bold" aria-hidden="true">
             {visibleItems.length}
           </span>
         </div>
-        <h2 className="truncate text-[13px] font-semibold text-dark-100 light:text-champagne-900">
+        <h2 className="text-dark-100 light:text-champagne-900 truncate text-[13px] font-semibold">
           {t(section.titleKey)}
         </h2>
       </div>
@@ -540,19 +538,19 @@ const GlassCard = memo(function GlassCard({ section, index, searchTerm }: GlassC
           >
             {/* Icon */}
             <div
-              className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-dark-700/40 bg-dark-800/40 transition-all duration-150 group-hover/item:scale-105 light:border-champagne-400/30 light:bg-champagne-200/50 [&>svg]:h-[13px] [&>svg]:w-[13px]"
+              className="border-dark-700/40 bg-dark-800/40 light:border-champagne-400/30 light:bg-champagne-200/50 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border transition-all duration-150 group-hover/item:scale-105 [&>svg]:h-[13px] [&>svg]:w-[13px]"
               style={{ color: section.accent }}
             >
               {icons[item.icon]}
             </div>
 
             {/* Label */}
-            <span className="flex-1 truncate text-xs font-medium text-dark-200 transition-colors group-hover/item:text-dark-50 light:text-champagne-700 light:group-hover/item:text-champagne-950">
+            <span className="text-dark-200 group-hover/item:text-dark-50 light:text-champagne-700 light:group-hover/item:text-champagne-950 flex-1 truncate text-xs font-medium transition-colors">
               {highlightMatch(t(item.name))}
             </span>
 
             {/* Chevron */}
-            <div className="h-3 w-3 shrink-0 -translate-x-1 text-dark-600 opacity-0 transition-all duration-150 group-hover/item:translate-x-0 group-hover/item:opacity-60 [&>svg]:h-3 [&>svg]:w-3">
+            <div className="text-dark-600 h-3 w-3 shrink-0 -translate-x-1 opacity-0 transition-all duration-150 group-hover/item:translate-x-0 group-hover/item:opacity-60 [&>svg]:h-3 [&>svg]:w-3">
               {icons.chevron}
             </div>
           </Link>
@@ -669,22 +667,22 @@ export default function AdminPanel() {
             <div
               key={i}
               className={cn(
-                'flex items-center gap-2 rounded-xl border border-dark-700/50 bg-dark-800/40 px-2.5 py-2',
+                'border-dark-700/50 bg-dark-800/40 flex items-center gap-2 rounded-xl border px-2.5 py-2',
                 'light:border-champagne-300/50 light:bg-champagne-100/60',
                 loading && 'animate-pulse',
               )}
             >
               <div className={cn('shrink-0', s.cls)}>{s.icon}</div>
               <div className="flex min-w-0 flex-col">
-                <span className="flex items-center gap-1 font-mono text-[11px] font-bold text-dark-100 light:text-champagne-900">
+                <span className="text-dark-100 light:text-champagne-900 flex items-center gap-1 font-mono text-[11px] font-bold">
                   <span className="truncate">{s.value}</span>
                   {'delta' in s && s.delta && (
-                    <span className="shrink-0 rounded border border-success-400/20 bg-success-400/10 px-1 text-2xs font-semibold text-success-400">
+                    <span className="border-success-400/20 bg-success-400/10 text-2xs text-success-400 shrink-0 rounded border px-1 font-semibold">
                       {s.delta}
                     </span>
                   )}
                 </span>
-                <span className="truncate text-2xs text-dark-500 light:text-champagne-600">
+                <span className="text-2xs text-dark-500 light:text-champagne-600 truncate">
                   {s.label}
                 </span>
               </div>
@@ -694,20 +692,20 @@ export default function AdminPanel() {
 
         {/* Hero + Search */}
         <div className="flex shrink-0 flex-wrap items-center gap-3">
-          <h1 className="text-lg font-bold tracking-tight text-dark-50 light:text-champagne-900 sm:text-xl">
+          <h1 className="text-dark-50 light:text-champagne-900 text-lg font-bold tracking-tight sm:text-xl">
             {t('admin.panel.title')}
           </h1>
-          <div className="flex items-center gap-1.5 text-xs text-dark-400 light:text-champagne-500">
+          <div className="text-dark-400 light:text-champagne-500 flex items-center gap-1.5 text-xs">
             <span
               aria-hidden="true"
-              className="h-1.5 w-1.5 rounded-full bg-success-400"
+              className="bg-success-400 h-1.5 w-1.5 rounded-full"
               style={{ animation: 'adminPulse 2s ease-in-out infinite' }}
             />
             {t('admin.panel.statsOnline')}
           </div>
           {/* Search */}
-          <div className="relative ml-auto min-w-[160px] max-w-[360px] flex-1">
-            <div className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-dark-500 [&>svg]:h-3.5 [&>svg]:w-3.5">
+          <div className="relative ml-auto max-w-[360px] min-w-[160px] flex-1">
+            <div className="text-dark-500 pointer-events-none absolute top-1/2 left-2.5 -translate-y-1/2 [&>svg]:h-3.5 [&>svg]:w-3.5">
               {icons.search}
             </div>
             <input
@@ -716,20 +714,20 @@ export default function AdminPanel() {
               onChange={(e) => setSearch(e.target.value)}
               placeholder={t('admin.panel.searchPlaceholder')}
               aria-label={t('admin.panel.searchPlaceholder')}
-              className="w-full rounded-xl border border-dark-700/50 bg-dark-800/40 py-2 pl-8 pr-16 font-sans text-xs text-dark-100 outline-none backdrop-blur-lg transition-all placeholder:text-dark-500 focus:border-accent-500/40 focus:shadow-[0_0_0_3px_rgba(var(--color-accent-500),0.08)] light:border-champagne-300/50 light:bg-champagne-100/60 light:text-champagne-900 light:placeholder:text-champagne-500 light:focus:border-accent-500/40"
+              className="border-dark-700/50 bg-dark-800/40 text-dark-100 placeholder:text-dark-500 focus:border-accent-500/40 light:border-champagne-300/50 light:bg-champagne-100/60 light:text-champagne-900 light:placeholder:text-champagne-500 light:focus:border-accent-500/40 w-full rounded-xl border py-2 pr-16 pl-8 font-sans text-xs backdrop-blur-lg transition-all outline-none focus:shadow-[0_0_0_3px_rgba(var(--rt-accent-500),0.08)]"
             />
             {search && (
               <button
                 onClick={() => setSearch('')}
                 aria-label={t('admin.panel.searchClear')}
-                className="absolute right-12 top-1/2 -translate-y-1/2 text-dark-500 transition-colors hover:text-dark-300 [&>svg]:h-3.5 [&>svg]:w-3.5"
+                className="text-dark-500 hover:text-dark-300 absolute top-1/2 right-12 -translate-y-1/2 transition-colors [&>svg]:h-3.5 [&>svg]:w-3.5"
               >
                 {icons.x}
               </button>
             )}
             <kbd
               aria-hidden="true"
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-md border border-dark-700/50 bg-dark-800/60 px-1.5 py-0.5 font-mono text-2xs text-dark-500"
+              className="border-dark-700/50 bg-dark-800/60 text-2xs text-dark-500 absolute top-1/2 right-2.5 -translate-y-1/2 rounded-md border px-1.5 py-0.5 font-mono"
             >
               {IS_MAC ? '\u2318' : 'Ctrl+'}K
             </kbd>
@@ -752,13 +750,13 @@ export default function AdminPanel() {
               role="status"
               aria-live="polite"
             >
-              <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl border border-dark-700/50 bg-dark-800/40 text-dark-500 [&>svg]:h-6 [&>svg]:w-6">
+              <div className="border-dark-700/50 bg-dark-800/40 text-dark-500 mb-3 flex h-14 w-14 items-center justify-center rounded-2xl border [&>svg]:h-6 [&>svg]:w-6">
                 {icons.search}
               </div>
-              <h3 className="text-sm font-semibold text-dark-200 light:text-champagne-800">
+              <h3 className="text-dark-200 light:text-champagne-800 text-sm font-semibold">
                 {t('admin.panel.searchEmpty')}
               </h3>
-              <p className="text-xs text-dark-500 light:text-champagne-600">
+              <p className="text-dark-500 light:text-champagne-600 text-xs">
                 {t('admin.panel.searchEmptyHint')}
               </p>
             </div>

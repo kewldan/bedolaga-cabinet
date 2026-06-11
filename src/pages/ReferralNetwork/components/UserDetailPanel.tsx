@@ -31,11 +31,11 @@ export function UserDetailPanel({ userId, className }: UserDetailPanelProps) {
   return (
     <div className={className}>
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-dark-700/50 p-4">
-        <h3 className="text-sm font-semibold text-dark-100">{user?.display_name ?? '...'}</h3>
+      <div className="border-dark-700/50 flex items-center justify-between border-b p-4">
+        <h3 className="text-dark-100 text-sm font-semibold">{user?.display_name ?? '...'}</h3>
         <button
           onClick={handleClose}
-          className="rounded-lg p-1 text-dark-500 transition-colors hover:bg-dark-800 hover:text-dark-300"
+          className="text-dark-500 hover:bg-dark-800 hover:text-dark-300 rounded-lg p-1 transition-colors"
           aria-label={t('common.close')}
         >
           <CloseIcon className="h-5 w-5" />
@@ -43,15 +43,15 @@ export function UserDetailPanel({ userId, className }: UserDetailPanelProps) {
       </div>
 
       {/* Content */}
-      <div className="overflow-y-auto p-4 pb-[calc(1rem+var(--safe-bottom,0px))]">
+      <div className="overflow-y-auto p-4 pb-[calc(1rem+var(--safe-bottom,0))]">
         {isLoading && (
           <div className="flex items-center justify-center py-8">
-            <div className="h-6 w-6 animate-spin rounded-full border-2 border-dark-600 border-t-accent-400" />
+            <div className="border-dark-600 border-t-accent-400 h-6 w-6 animate-spin rounded-full border-2" />
           </div>
         )}
 
         {isError && (
-          <div className="py-8 text-center text-sm text-error-400">
+          <div className="text-error-400 py-8 text-center text-sm">
             {t('admin.referralNetwork.error')}
           </div>
         )}
@@ -62,25 +62,25 @@ export function UserDetailPanel({ userId, className }: UserDetailPanelProps) {
             <div className="space-y-2">
               {user.username && (
                 <div className="flex items-center justify-between gap-2 text-sm">
-                  <span className="shrink-0 text-dark-500">@</span>
-                  <span className="min-w-0 truncate font-mono text-dark-200">{user.username}</span>
+                  <span className="text-dark-500 shrink-0">@</span>
+                  <span className="text-dark-200 min-w-0 truncate font-mono">{user.username}</span>
                 </div>
               )}
               {user.tg_id && (
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-dark-500">{t('admin.referralNetwork.user.tgId')}</span>
-                  <span className="font-mono text-dark-200">{user.tg_id}</span>
+                  <span className="text-dark-200 font-mono">{user.tg_id}</span>
                 </div>
               )}
               {user.email && (
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-dark-500">{t('admin.referralNetwork.user.email')}</span>
-                  <span className="truncate pl-4 font-mono text-dark-200">{user.email}</span>
+                  <span className="text-dark-200 truncate pl-4 font-mono">{user.email}</span>
                 </div>
               )}
               {user.is_partner && (
                 <div className="flex justify-end">
-                  <span className="rounded bg-warning-500/20 px-2 py-0.5 text-xs font-medium text-warning-400">
+                  <span className="bg-warning-500/20 text-warning-400 rounded px-2 py-0.5 text-xs font-medium">
                     {t('admin.referralNetwork.user.partner')}
                   </span>
                 </div>
@@ -88,23 +88,23 @@ export function UserDetailPanel({ userId, className }: UserDetailPanelProps) {
             </div>
 
             {/* Subscription */}
-            <div className="rounded-lg border border-dark-700/50 bg-dark-800/40 p-3">
-              <h4 className="mb-2 text-xs font-medium uppercase tracking-wider text-dark-500">
+            <div className="border-dark-700/50 bg-dark-800/40 rounded-lg border p-3">
+              <h4 className="text-dark-500 mb-2 text-xs font-medium tracking-wider uppercase">
                 {t('admin.referralNetwork.user.subscription')}
               </h4>
               {user.subscription_name ? (
                 <div>
                   <div className="flex items-center justify-between">
-                    <p className="text-sm font-medium text-dark-100">{user.subscription_name}</p>
+                    <p className="text-dark-100 text-sm font-medium">{user.subscription_name}</p>
                     {user.subscription_status && (
-                      <span className="flex items-center gap-1.5 rounded-full bg-dark-700/50 px-2 py-0.5">
+                      <span className="bg-dark-700/50 flex items-center gap-1.5 rounded-full px-2 py-0.5">
                         <span
                           className="h-2 w-2 shrink-0 rounded-full"
                           style={{
                             backgroundColor: getSubscriptionStatusColor(user.subscription_status),
                           }}
                         />
-                        <span className="text-[10px] font-medium text-dark-300">
+                        <span className="text-dark-300 text-[10px] font-medium">
                           {t(
                             `admin.referralNetwork.user.subscriptionStatus.${user.subscription_status}`,
                           )}
@@ -113,7 +113,7 @@ export function UserDetailPanel({ userId, className }: UserDetailPanelProps) {
                     )}
                   </div>
                   {user.subscription_end && (
-                    <p className="mt-0.5 text-xs text-dark-400">
+                    <p className="text-dark-400 mt-0.5 text-xs">
                       {t('admin.referralNetwork.user.validUntil', {
                         date: new Date(user.subscription_end).toLocaleDateString(),
                       })}
@@ -121,15 +121,15 @@ export function UserDetailPanel({ userId, className }: UserDetailPanelProps) {
                   )}
                 </div>
               ) : (
-                <p className="text-sm text-dark-500">
+                <p className="text-dark-500 text-sm">
                   {t('admin.referralNetwork.user.noSubscription')}
                 </p>
               )}
             </div>
 
             {/* Personal stats */}
-            <div className="rounded-lg border border-dark-700/50 bg-dark-800/40 p-3">
-              <h4 className="mb-2 text-xs font-medium uppercase tracking-wider text-dark-500">
+            <div className="border-dark-700/50 bg-dark-800/40 rounded-lg border p-3">
+              <h4 className="text-dark-500 mb-2 text-xs font-medium tracking-wider uppercase">
                 {t('admin.referralNetwork.user.personalStats')}
               </h4>
               <div className="space-y-2">
@@ -137,7 +137,7 @@ export function UserDetailPanel({ userId, className }: UserDetailPanelProps) {
                   <span className="text-dark-400">
                     {t('admin.referralNetwork.user.totalSpent')}
                   </span>
-                  <span className="font-mono text-dark-100">
+                  <span className="text-dark-100 font-mono">
                     {formatKopeksToRubles(user.personal_spent_kopeks)} ₽
                   </span>
                 </div>
@@ -145,7 +145,7 @@ export function UserDetailPanel({ userId, className }: UserDetailPanelProps) {
                   <span className="text-dark-400">
                     {t('admin.referralNetwork.user.referralEarnings')}
                   </span>
-                  <span className="font-mono text-accent-400">
+                  <span className="text-accent-400 font-mono">
                     {formatKopeksToRubles(user.personal_revenue_kopeks)} ₽
                   </span>
                 </div>
@@ -153,8 +153,8 @@ export function UserDetailPanel({ userId, className }: UserDetailPanelProps) {
             </div>
 
             {/* Referral branch */}
-            <div className="rounded-lg border border-dark-700/50 bg-dark-800/40 p-3">
-              <h4 className="mb-2 text-xs font-medium uppercase tracking-wider text-dark-500">
+            <div className="border-dark-700/50 bg-dark-800/40 rounded-lg border p-3">
+              <h4 className="text-dark-500 mb-2 text-xs font-medium tracking-wider uppercase">
                 {t('admin.referralNetwork.user.referralBranch')}
               </h4>
               <div className="space-y-2">
@@ -162,19 +162,19 @@ export function UserDetailPanel({ userId, className }: UserDetailPanelProps) {
                   <span className="text-dark-400">
                     {t('admin.referralNetwork.user.directReferrals')}
                   </span>
-                  <span className="font-mono text-dark-100">{user.direct_referrals}</span>
+                  <span className="text-dark-100 font-mono">{user.direct_referrals}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-dark-400">
                     {t('admin.referralNetwork.user.branchSize')}
                   </span>
-                  <span className="font-mono text-dark-100">{user.total_branch_users}</span>
+                  <span className="text-dark-100 font-mono">{user.total_branch_users}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-dark-400">
                     {t('admin.referralNetwork.user.branchRevenue')}
                   </span>
-                  <span className="font-mono text-dark-100">
+                  <span className="text-dark-100 font-mono">
                     {formatKopeksToRubles(user.branch_revenue_kopeks)} ₽
                   </span>
                 </div>
@@ -182,8 +182,8 @@ export function UserDetailPanel({ userId, className }: UserDetailPanelProps) {
             </div>
 
             {/* Source */}
-            <div className="rounded-lg border border-dark-700/50 bg-dark-800/40 p-3">
-              <h4 className="mb-2 text-xs font-medium uppercase tracking-wider text-dark-500">
+            <div className="border-dark-700/50 bg-dark-800/40 rounded-lg border p-3">
+              <h4 className="text-dark-500 mb-2 text-xs font-medium tracking-wider uppercase">
                 {t('admin.referralNetwork.user.source')}
               </h4>
               <div className="space-y-2">
@@ -197,10 +197,10 @@ export function UserDetailPanel({ userId, className }: UserDetailPanelProps) {
                 </div>
                 {user.campaign_name && (
                   <div className="flex items-center justify-between gap-2 text-sm">
-                    <span className="shrink-0 text-dark-400">
+                    <span className="text-dark-400 shrink-0">
                       {t('admin.referralNetwork.user.fromCampaign')}
                     </span>
-                    <span className="min-w-0 truncate text-dark-200">{user.campaign_name}</span>
+                    <span className="text-dark-200 min-w-0 truncate">{user.campaign_name}</span>
                   </div>
                 )}
               </div>

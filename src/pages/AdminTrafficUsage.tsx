@@ -91,9 +91,9 @@ function ProgressBar({ loading }: { loading: boolean }) {
   if (!visible) return null;
 
   return (
-    <div className="absolute left-0 right-0 top-0 z-50 h-0.5 overflow-hidden rounded-full bg-dark-700/50">
+    <div className="bg-dark-700/50 absolute top-0 right-0 left-0 z-50 h-0.5 overflow-hidden rounded-full">
       <div
-        className="h-full rounded-full bg-gradient-to-r from-accent-500 to-accent-400 transition-all duration-200 ease-out"
+        className="from-accent-500 to-accent-400 h-full rounded-full bg-linear-to-r transition-all duration-200 ease-out"
         style={{ width: `${progress}%` }}
       />
     </div>
@@ -428,17 +428,17 @@ export default function AdminTrafficUsage() {
           const item = row.original;
           return (
             <div className="flex items-center gap-1.5">
-              <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent-500 to-accent-700 text-[10px] font-medium text-white">
+              <div className="from-accent-500 to-accent-700 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-linear-to-br text-[10px] font-medium text-white">
                 {item.full_name?.[0] || '?'}
               </div>
               <div className="min-w-0">
-                <div className="truncate text-xs font-medium text-dark-100">{item.full_name}</div>
+                <div className="text-dark-100 truncate text-xs font-medium">{item.full_name}</div>
                 {item.username ? (
-                  <div className="truncate text-[10px] leading-tight text-dark-500">
+                  <div className="text-dark-500 truncate text-[10px] leading-tight">
                     @{item.username}
                   </div>
                 ) : item.email ? (
-                  <div className="truncate text-[10px] leading-tight text-dark-500">
+                  <div className="text-dark-500 truncate text-[10px] leading-tight">
                     {item.email}
                   </div>
                 ) : null}
@@ -455,7 +455,7 @@ export default function AdminTrafficUsage() {
         size: 120,
         minSize: 80,
         cell: ({ getValue }) => (
-          <span className="text-xs text-dark-300">
+          <span className="text-dark-300 text-xs">
             {(getValue() as string | null) || t('admin.trafficUsage.noTariff')}
           </span>
         ),
@@ -468,7 +468,7 @@ export default function AdminTrafficUsage() {
         minSize: 60,
         meta: { align: 'center' as const },
         cell: ({ getValue }) => (
-          <span className="text-xs text-dark-300">{getValue() as number}</span>
+          <span className="text-dark-300 text-xs">{getValue() as number}</span>
         ),
       },
       {
@@ -480,7 +480,7 @@ export default function AdminTrafficUsage() {
         meta: { align: 'center' as const },
         cell: ({ getValue }) => {
           const gb = getValue() as number;
-          return <span className="text-xs text-dark-300">{gb > 0 ? `${gb} GB` : '\u221E'}</span>;
+          return <span className="text-dark-300 text-xs">{gb > 0 ? `${gb} GB` : '\u221E'}</span>;
         },
       },
       // ---- Enrichment columns ----
@@ -494,8 +494,8 @@ export default function AdminTrafficUsage() {
         cell: ({ row }) => {
           const e = enrichment?.[row.original.user_id];
           if (enrichmentLoading && !enrichment)
-            return <div className="mx-auto h-4 w-8 animate-pulse rounded bg-dark-700" />;
-          return <span className="text-xs text-dark-300">{e?.devices_connected ?? '\u2014'}</span>;
+            return <div className="bg-dark-700 mx-auto h-4 w-8 animate-pulse rounded" />;
+          return <span className="text-dark-300 text-xs">{e?.devices_connected ?? '\u2014'}</span>;
         },
       },
       {
@@ -508,11 +508,11 @@ export default function AdminTrafficUsage() {
         cell: ({ row }) => {
           const e = enrichment?.[row.original.user_id];
           if (enrichmentLoading && !enrichment)
-            return <div className="mx-auto h-4 w-12 animate-pulse rounded bg-dark-700" />;
+            return <div className="bg-dark-700 mx-auto h-4 w-12 animate-pulse rounded" />;
           if (!e || e.total_spent_kopeks === 0)
-            return <span className="text-xs text-dark-300">{'\u2014'}</span>;
+            return <span className="text-dark-300 text-xs">{'\u2014'}</span>;
           return (
-            <span className="text-xs text-dark-300">{formatCurrency(e.total_spent_kopeks)}</span>
+            <span className="text-dark-300 text-xs">{formatCurrency(e.total_spent_kopeks)}</span>
           );
         },
       },
@@ -526,9 +526,9 @@ export default function AdminTrafficUsage() {
         cell: ({ row }) => {
           const e = enrichment?.[row.original.user_id];
           if (enrichmentLoading && !enrichment)
-            return <div className="mx-auto h-4 w-14 animate-pulse rounded bg-dark-700" />;
+            return <div className="bg-dark-700 mx-auto h-4 w-14 animate-pulse rounded" />;
           return (
-            <span className="text-xs text-dark-300">
+            <span className="text-dark-300 text-xs">
               {formatShortDate(e?.subscription_start_date ?? null)}
             </span>
           );
@@ -544,9 +544,9 @@ export default function AdminTrafficUsage() {
         cell: ({ row }) => {
           const e = enrichment?.[row.original.user_id];
           if (enrichmentLoading && !enrichment)
-            return <div className="mx-auto h-4 w-14 animate-pulse rounded bg-dark-700" />;
+            return <div className="bg-dark-700 mx-auto h-4 w-14 animate-pulse rounded" />;
           return (
-            <span className="text-xs text-dark-300">
+            <span className="text-dark-300 text-xs">
               {formatShortDate(e?.subscription_end_date ?? null)}
             </span>
           );
@@ -562,8 +562,8 @@ export default function AdminTrafficUsage() {
         cell: ({ row }) => {
           const e = enrichment?.[row.original.user_id];
           if (enrichmentLoading && !enrichment)
-            return <div className="mx-auto h-4 w-16 animate-pulse rounded bg-dark-700" />;
-          return <span className="text-xs text-dark-300">{e?.last_node_name ?? '\u2014'}</span>;
+            return <div className="bg-dark-700 mx-auto h-4 w-16 animate-pulse rounded" />;
+          return <span className="text-dark-300 text-xs">{e?.last_node_name ?? '\u2014'}</span>;
         },
       },
       // ---- Dynamic node columns ----
@@ -579,7 +579,7 @@ export default function AdminTrafficUsage() {
           cell: ({ getValue }) => {
             const bytes = getValue() as number;
             if (bytes <= 0) {
-              return <span className="text-xs text-dark-300">{'\u2014'}</span>;
+              return <span className="text-dark-300 text-xs">{'\u2014'}</span>;
             }
             const dailyNode = bytesToGbPerDay(bytes, periodDays);
             const nodeRatio = hasNodeThreshold ? getRatio(dailyNode, nodeThresholdNum) : 0;
@@ -587,7 +587,7 @@ export default function AdminTrafficUsage() {
             return (
               <div className="flex flex-col items-center">
                 <span
-                  className="text-xs text-dark-300"
+                  className="text-dark-300 text-xs"
                   style={{
                     color: textColor,
                     fontWeight: nodeRatio > 0.8 ? 600 : undefined,
@@ -646,14 +646,14 @@ export default function AdminTrafficUsage() {
       cell: ({ getValue }) => {
         const bytes = getValue() as number;
         if (bytes <= 0) {
-          return <span className="text-xs font-semibold text-dark-100">{'\u2014'}</span>;
+          return <span className="text-dark-100 text-xs font-semibold">{'\u2014'}</span>;
         }
         const dailyTotal = bytesToGbPerDay(bytes, periodDays);
         return (
           <div className="flex flex-col items-center">
-            <span className="text-xs font-semibold text-dark-100">{formatBytes(bytes)}</span>
+            <span className="text-dark-100 text-xs font-semibold">{formatBytes(bytes)}</span>
             {hasTotalThreshold && (
-              <span className="text-[9px] leading-tight text-dark-400">
+              <span className="text-dark-400 text-[9px] leading-tight">
                 {formatGbPerDay(dailyTotal)} GB/d
               </span>
             )}
@@ -693,14 +693,14 @@ export default function AdminTrafficUsage() {
   const currentPage = Math.floor(offset / limit) + 1;
 
   return (
-    <div className="relative animate-fade-in">
+    <div className="animate-fade-in relative">
       {/* Progress bar — shown during background refresh */}
       <ProgressBar loading={loading} />
 
       {/* Toast */}
       {toast && (
         <div
-          className={`fixed left-1/2 top-4 z-50 -translate-x-1/2 rounded-xl border px-4 py-2 text-sm shadow-lg ${
+          className={`fixed top-4 left-1/2 z-50 -translate-x-1/2 rounded-xl border px-4 py-2 text-sm shadow-lg ${
             toast.type === 'success'
               ? 'border-success-500/30 bg-success-500/20 text-success-400'
               : 'border-error-500/30 bg-error-500/20 text-error-400'
@@ -716,20 +716,20 @@ export default function AdminTrafficUsage() {
           {!capabilities.hasBackButton && (
             <button
               onClick={() => navigate('/admin')}
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-dark-700 bg-dark-800 transition-colors hover:border-dark-600"
+              className="border-dark-700 bg-dark-800 hover:border-dark-600 flex h-10 w-10 items-center justify-center rounded-xl border transition-colors"
             >
               <ChevronLeftIcon />
             </button>
           )}
           <div>
-            <h1 className="text-xl font-bold text-dark-100">{t('admin.trafficUsage.title')}</h1>
-            <p className="text-sm text-dark-400">{t('admin.trafficUsage.subtitle')}</p>
+            <h1 className="text-dark-100 text-xl font-bold">{t('admin.trafficUsage.title')}</h1>
+            <p className="text-dark-400 text-sm">{t('admin.trafficUsage.subtitle')}</p>
           </div>
         </div>
         <button
           onClick={handleRefresh}
           disabled={loading}
-          className="rounded-lg p-2 transition-colors hover:bg-dark-700 disabled:opacity-50"
+          className="hover:bg-dark-700 rounded-lg p-2 transition-colors disabled:opacity-50"
         >
           <RefreshIcon className={loading ? 'animate-spin' : ''} />
         </button>
@@ -767,7 +767,7 @@ export default function AdminTrafficUsage() {
           />
 
           {/* Threshold inputs */}
-          <div className="flex items-center gap-1.5 rounded-lg border border-dark-700 bg-dark-800 px-2 py-1">
+          <div className="border-dark-700 bg-dark-800 flex items-center gap-1.5 rounded-lg border px-2 py-1">
             <ShieldIcon className="h-3.5 w-3.5" />
             <input
               type="number"
@@ -777,7 +777,7 @@ export default function AdminTrafficUsage() {
               step="0.1"
               min="0"
               max="9999"
-              className="w-20 bg-transparent text-xs text-dark-200 placeholder-dark-500 [appearance:textfield] focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+              className="text-dark-200 placeholder-dark-500 w-20 [appearance:textfield] bg-transparent text-xs focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
             />
             {totalThreshold && (
               <button
@@ -788,7 +788,7 @@ export default function AdminTrafficUsage() {
               </button>
             )}
           </div>
-          <div className="flex items-center gap-1.5 rounded-lg border border-dark-700 bg-dark-800 px-2 py-1">
+          <div className="border-dark-700 bg-dark-800 flex items-center gap-1.5 rounded-lg border px-2 py-1">
             <ServerSmallIcon className="h-3.5 w-3.5" />
             <input
               type="number"
@@ -798,7 +798,7 @@ export default function AdminTrafficUsage() {
               step="0.1"
               min="0"
               max="9999"
-              className="w-20 bg-transparent text-xs text-dark-200 placeholder-dark-500 [appearance:textfield] focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+              className="text-dark-200 placeholder-dark-500 w-20 [appearance:textfield] bg-transparent text-xs focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
             />
             {nodeThreshold && (
               <button
@@ -813,7 +813,7 @@ export default function AdminTrafficUsage() {
           <button
             onClick={handleExport}
             disabled={exporting}
-            className="flex items-center gap-1.5 rounded-lg border border-dark-700 bg-dark-800 px-3 py-1.5 text-xs font-medium text-dark-200 transition-colors hover:border-dark-600 hover:bg-dark-700 disabled:opacity-50"
+            className="border-dark-700 bg-dark-800 text-dark-200 hover:border-dark-600 hover:bg-dark-700 flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors disabled:opacity-50"
           >
             <DownloadIcon />
             {t('admin.trafficUsage.exportCsv')}
@@ -827,9 +827,9 @@ export default function AdminTrafficUsage() {
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
               placeholder={t('admin.trafficUsage.search')}
-              className="w-full rounded-xl border border-dark-700 bg-dark-800 py-2 pl-10 pr-4 text-dark-100 placeholder-dark-500 focus:border-dark-600 focus:outline-none"
+              className="border-dark-700 bg-dark-800 text-dark-100 placeholder-dark-500 focus:border-dark-600 w-full rounded-xl border py-2 pr-4 pl-10 focus:outline-none"
             />
-            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-dark-500">
+            <div className="text-dark-500 absolute top-1/2 left-3 -translate-y-1/2">
               <SearchIcon />
             </div>
           </div>
@@ -839,19 +839,19 @@ export default function AdminTrafficUsage() {
       {/* Table */}
       {initialLoading && !hasData ? (
         <div className="flex justify-center py-12">
-          <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+          <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
         </div>
       ) : !hasData && !loading ? (
-        <div className="py-12 text-center text-dark-400">{t('admin.trafficUsage.noData')}</div>
+        <div className="text-dark-400 py-12 text-center">{t('admin.trafficUsage.noData')}</div>
       ) : (
         <div
           className={`transition-opacity duration-200 ${loading && hasData ? 'opacity-70' : 'opacity-100'}`}
         >
-          <div className="overflow-x-auto rounded-xl border border-dark-700">
+          <div className="border-dark-700 overflow-x-auto rounded-xl border">
             <table className="text-left text-sm" style={{ width: table.getCenterTotalSize() }}>
               <thead>
                 {table.getHeaderGroups().map((headerGroup) => (
-                  <tr key={headerGroup.id} className="border-b border-dark-700 bg-dark-800/80">
+                  <tr key={headerGroup.id} className="border-dark-700 bg-dark-800/80 border-b">
                     {headerGroup.headers.map((header) => {
                       const meta = header.column.columnDef.meta;
                       const isSticky = meta?.sticky;
@@ -861,11 +861,11 @@ export default function AdminTrafficUsage() {
                       return (
                         <th
                           key={header.id}
-                          className={`relative overflow-hidden text-ellipsis whitespace-nowrap px-3 py-2 text-xs font-medium ${
-                            isBold ? 'font-semibold text-dark-200' : 'text-dark-400'
+                          className={`relative overflow-hidden px-3 py-2 text-xs font-medium text-ellipsis whitespace-nowrap ${
+                            isBold ? 'text-dark-200 font-semibold' : 'text-dark-400'
                           } ${align} ${
-                            isSticky ? 'sticky left-0 z-10 bg-dark-800' : ''
-                          } ${header.column.getCanSort() ? 'cursor-pointer select-none hover:text-dark-200' : ''}`}
+                            isSticky ? 'bg-dark-800 sticky left-0 z-10' : ''
+                          } ${header.column.getCanSort() ? 'hover:text-dark-200 cursor-pointer select-none' : ''}`}
                           style={{ width: header.getSize(), maxWidth: header.getSize() }}
                           onClick={header.column.getToggleSortingHandler()}
                         >
@@ -877,14 +877,14 @@ export default function AdminTrafficUsage() {
                             onMouseDown={header.getResizeHandler()}
                             onTouchStart={header.getResizeHandler()}
                             onClick={(e) => e.stopPropagation()}
-                            className="absolute -right-2 top-0 z-20 h-full w-5 cursor-col-resize select-none"
+                            className="absolute top-0 -right-2 z-20 h-full w-5 cursor-col-resize select-none"
                             style={{ touchAction: 'none' }}
                           >
                             <div
-                              className={`absolute right-2 top-0 h-full w-1 ${
+                              className={`absolute top-0 right-2 h-full w-1 ${
                                 header.column.getIsResizing()
                                   ? 'bg-accent-500'
-                                  : 'bg-transparent hover:bg-dark-500'
+                                  : 'hover:bg-dark-500 bg-transparent'
                               }`}
                             />
                           </div>
@@ -909,7 +909,7 @@ export default function AdminTrafficUsage() {
                   return (
                     <tr
                       key={row.id}
-                      className="cursor-pointer border-b border-dark-700/50 transition-colors hover:bg-dark-800/50"
+                      className="border-dark-700/50 hover:bg-dark-800/50 cursor-pointer border-b transition-colors"
                       style={{ backgroundColor: rowBg }}
                       onClick={() => navigate(`/admin/users/${row.original.user_id}`)}
                     >
@@ -922,7 +922,7 @@ export default function AdminTrafficUsage() {
                           <td
                             key={cell.id}
                             className={`overflow-hidden px-3 py-2 ${align} ${
-                              isSticky ? 'sticky left-0 z-10 bg-dark-900' : ''
+                              isSticky ? 'bg-dark-900 sticky left-0 z-10' : ''
                             }`}
                             style={{
                               width: cell.column.getSize(),
@@ -945,7 +945,7 @@ export default function AdminTrafficUsage() {
       {/* Pagination */}
       {totalPages > 1 && (
         <div className="mt-4 flex items-center justify-between">
-          <div className="text-sm text-dark-400">
+          <div className="text-dark-400 text-sm">
             {offset + 1}
             {'\u2013'}
             {Math.min(offset + limit, total)} / {total}
@@ -954,17 +954,17 @@ export default function AdminTrafficUsage() {
             <button
               onClick={() => setOffset(Math.max(0, offset - limit))}
               disabled={offset === 0}
-              className="rounded-lg border border-dark-700 bg-dark-800 p-2 transition-colors hover:bg-dark-700 disabled:opacity-50"
+              className="border-dark-700 bg-dark-800 hover:bg-dark-700 rounded-lg border p-2 transition-colors disabled:opacity-50"
             >
               <ChevronLeftIcon />
             </button>
-            <span className="px-3 py-2 text-dark-300">
+            <span className="text-dark-300 px-3 py-2">
               {currentPage} / {totalPages}
             </span>
             <button
               onClick={() => setOffset(offset + limit)}
               disabled={offset + limit >= total}
-              className="rounded-lg border border-dark-700 bg-dark-800 p-2 transition-colors hover:bg-dark-700 disabled:opacity-50"
+              className="border-dark-700 bg-dark-800 hover:bg-dark-700 rounded-lg border p-2 transition-colors disabled:opacity-50"
             >
               <ChevronRightIcon />
             </button>

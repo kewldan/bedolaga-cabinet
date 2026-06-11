@@ -62,17 +62,17 @@ function ProgressView({ progress }: { progress: ProgressState }) {
     <div className="space-y-4">
       <div>
         <div className="mb-2 flex items-center justify-between text-sm">
-          <span className="font-medium text-dark-200">
+          <span className="text-dark-200 font-medium">
             {t('admin.bulkActions.progress.processed', {
               current: progress.current,
               total: progress.total,
             })}
           </span>
-          <span className="font-bold tabular-nums text-accent-400">{percentage}%</span>
+          <span className="text-accent-400 font-bold tabular-nums">{percentage}%</span>
         </div>
-        <div className="h-2.5 overflow-hidden rounded-full bg-dark-700/60">
+        <div className="bg-dark-700/60 h-2.5 overflow-hidden rounded-full">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-accent-500 to-accent-400 transition-all duration-300 ease-out"
+            className="from-accent-500 to-accent-400 h-full rounded-full bg-linear-to-r transition-all duration-300 ease-out"
             style={{ width: `${percentage}%` }}
           />
         </div>
@@ -80,32 +80,32 @@ function ProgressView({ progress }: { progress: ProgressState }) {
 
       <div className="flex gap-4">
         <div className="flex items-center gap-1.5">
-          <div className="h-2 w-2 rounded-full bg-success-400" />
-          <span className="text-sm tabular-nums text-success-400">{progress.successCount}</span>
-          <span className="text-xs text-dark-500">{t('admin.bulkActions.progress.succeeded')}</span>
+          <div className="bg-success-400 h-2 w-2 rounded-full" />
+          <span className="text-success-400 text-sm tabular-nums">{progress.successCount}</span>
+          <span className="text-dark-500 text-xs">{t('admin.bulkActions.progress.succeeded')}</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <div className="h-2 w-2 rounded-full bg-error-400" />
-          <span className="text-sm tabular-nums text-error-400">{progress.errorCount}</span>
-          <span className="text-xs text-dark-500">{t('admin.bulkActions.progress.failed')}</span>
+          <div className="bg-error-400 h-2 w-2 rounded-full" />
+          <span className="text-error-400 text-sm tabular-nums">{progress.errorCount}</span>
+          <span className="text-dark-500 text-xs">{t('admin.bulkActions.progress.failed')}</span>
         </div>
       </div>
 
       {progress.log.length > 0 && (
-        <div className="max-h-48 overflow-y-auto rounded-xl border border-dark-700 bg-dark-800/50 p-3">
+        <div className="border-dark-700 bg-dark-800/50 max-h-48 overflow-y-auto rounded-xl border p-3">
           <div className="space-y-1">
             {progress.log.slice(-10).map((entry, idx) => (
               <div key={idx} className="flex items-start gap-2 text-xs">
                 {entry.success ? (
-                  <span className="mt-0.5 shrink-0 text-success-400" aria-hidden="true">
+                  <span className="text-success-400 mt-0.5 shrink-0" aria-hidden="true">
                     <CheckIcon className="h-3 w-3" />
                   </span>
                 ) : (
-                  <span className="mt-0.5 shrink-0 text-error-400" aria-hidden="true">
+                  <span className="text-error-400 mt-0.5 shrink-0" aria-hidden="true">
                     <XIcon className="h-3 w-3" />
                   </span>
                 )}
-                <span className="font-mono text-dark-400">
+                <span className="text-dark-400 font-mono">
                   {entry.username ? `@${entry.username}` : `#${entry.user_id}`}
                 </span>
                 <span className={entry.success ? 'text-dark-300' : 'text-error-300'}>
@@ -130,31 +130,31 @@ function ErrorDetails({ result }: { result: BulkActionResult }) {
   if (result.error_count === 0 || result.errors.length === 0) return null;
 
   return (
-    <div className="rounded-xl border border-error-500/20 bg-error-500/5">
+    <div className="border-error-500/20 bg-error-500/5 rounded-xl border">
       <button
         onClick={() => setExpanded(!expanded)}
         className="flex w-full items-center justify-between px-4 py-3 text-left"
         aria-expanded={expanded}
       >
-        <span className="text-sm font-medium text-error-400">
+        <span className="text-error-400 text-sm font-medium">
           {t('admin.bulkActions.errors.title', { count: result.error_count })}
         </span>
         <ChevronDownIcon
           className={cn(
-            'h-4 w-4 text-error-400 transition-transform duration-200',
+            'text-error-400 h-4 w-4 transition-transform duration-200',
             expanded && 'rotate-180',
           )}
         />
       </button>
       {expanded && (
-        <div className="max-h-48 overflow-y-auto border-t border-error-500/20 px-4 py-3">
+        <div className="border-error-500/20 max-h-48 overflow-y-auto border-t px-4 py-3">
           <div className="space-y-2">
             {result.errors.map((err, idx) => (
               <div key={idx} className="flex items-start gap-2 text-xs">
-                <span className="mt-0.5 shrink-0 text-error-400" aria-hidden="true">
+                <span className="text-error-400 mt-0.5 shrink-0" aria-hidden="true">
                   <XIcon className="h-3 w-3" />
                 </span>
-                <span className="shrink-0 font-mono text-dark-400">
+                <span className="text-dark-400 shrink-0 font-mono">
                   {err.username ? `@${err.username}` : `#${err.user_id}`}
                 </span>
                 <span className="text-error-300">{err.error}</span>
@@ -313,7 +313,7 @@ export function ActionModal({
       case 'extend_subscription':
         return (
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-dark-300">
+            <label className="text-dark-300 mb-1.5 block text-sm font-medium">
               {t('admin.bulkActions.params.days')}
             </label>
             <input
@@ -322,14 +322,14 @@ export function ActionModal({
               max={365}
               value={days}
               onChange={(e) => setDays(Number(e.target.value))}
-              className="w-full rounded-xl border border-dark-700 bg-dark-800 px-3 py-2.5 text-sm text-dark-100 outline-none transition-colors focus:border-accent-500/40"
+              className="border-dark-700 bg-dark-800 text-dark-100 focus:border-accent-500/40 w-full rounded-xl border px-3 py-2.5 text-sm transition-colors outline-none"
             />
           </div>
         );
       case 'change_tariff':
         return (
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-dark-300">
+            <label className="text-dark-300 mb-1.5 block text-sm font-medium">
               {t('admin.bulkActions.params.tariff')}
             </label>
             <DropdownSelect
@@ -342,7 +342,7 @@ export function ActionModal({
       case 'add_traffic':
         return (
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-dark-300">
+            <label className="text-dark-300 mb-1.5 block text-sm font-medium">
               {t('admin.bulkActions.params.trafficGb')}
             </label>
             <input
@@ -351,14 +351,14 @@ export function ActionModal({
               max={10000}
               value={trafficGb}
               onChange={(e) => setTrafficGb(Number(e.target.value))}
-              className="w-full rounded-xl border border-dark-700 bg-dark-800 px-3 py-2.5 text-sm text-dark-100 outline-none transition-colors focus:border-accent-500/40"
+              className="border-dark-700 bg-dark-800 text-dark-100 focus:border-accent-500/40 w-full rounded-xl border px-3 py-2.5 text-sm transition-colors outline-none"
             />
           </div>
         );
       case 'add_balance':
         return (
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-dark-300">
+            <label className="text-dark-300 mb-1.5 block text-sm font-medium">
               {t('admin.bulkActions.params.balanceRub')}
             </label>
             <input
@@ -367,14 +367,14 @@ export function ActionModal({
               max={100000}
               value={balanceRub}
               onChange={(e) => setBalanceRub(Number(e.target.value))}
-              className="w-full rounded-xl border border-dark-700 bg-dark-800 px-3 py-2.5 text-sm text-dark-100 outline-none transition-colors focus:border-accent-500/40"
+              className="border-dark-700 bg-dark-800 text-dark-100 focus:border-accent-500/40 w-full rounded-xl border px-3 py-2.5 text-sm transition-colors outline-none"
             />
           </div>
         );
       case 'assign_promo_group':
         return (
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-dark-300">
+            <label className="text-dark-300 mb-1.5 block text-sm font-medium">
               {t('admin.bulkActions.params.promoGroup')}
             </label>
             <DropdownSelect
@@ -390,7 +390,7 @@ export function ActionModal({
       case 'set_devices':
         return (
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-dark-300">
+            <label className="text-dark-300 mb-1.5 block text-sm font-medium">
               {t('admin.bulkActions.params.deviceLimit')}
             </label>
             <input
@@ -399,7 +399,7 @@ export function ActionModal({
               max={50}
               value={deviceLimit}
               onChange={(e) => setDeviceLimit(Number(e.target.value))}
-              className="w-full rounded-xl border border-dark-700 bg-dark-800 px-3 py-2.5 text-sm text-dark-100 outline-none transition-colors focus:border-accent-500/40"
+              className="border-dark-700 bg-dark-800 text-dark-100 focus:border-accent-500/40 w-full rounded-xl border px-3 py-2.5 text-sm transition-colors outline-none"
             />
           </div>
         );
@@ -407,7 +407,7 @@ export function ActionModal({
         return (
           <div className="space-y-4">
             <div>
-              <label className="mb-1.5 block text-sm font-medium text-dark-300">
+              <label className="text-dark-300 mb-1.5 block text-sm font-medium">
                 {t('admin.bulkActions.params.tariff')}
               </label>
               <DropdownSelect
@@ -417,7 +417,7 @@ export function ActionModal({
               />
             </div>
             <div>
-              <label className="mb-1.5 block text-sm font-medium text-dark-300">
+              <label className="text-dark-300 mb-1.5 block text-sm font-medium">
                 {t('admin.bulkActions.params.days')}
               </label>
               <input
@@ -426,11 +426,11 @@ export function ActionModal({
                 max={365}
                 value={grantDays}
                 onChange={(e) => setGrantDays(Number(e.target.value))}
-                className="w-full rounded-xl border border-dark-700 bg-dark-800 px-3 py-2.5 text-sm text-dark-100 outline-none transition-colors focus:border-accent-500/40"
+                className="border-dark-700 bg-dark-800 text-dark-100 focus:border-accent-500/40 w-full rounded-xl border px-3 py-2.5 text-sm transition-colors outline-none"
               />
             </div>
-            <div className="rounded-xl border border-warning-500/20 bg-warning-500/5 px-3 py-2.5">
-              <p className="text-xs text-warning-400">
+            <div className="border-warning-500/20 bg-warning-500/5 rounded-xl border px-3 py-2.5">
+              <p className="text-warning-400 text-xs">
                 {t('admin.bulkActions.grantSubscription.warning')}
               </p>
             </div>
@@ -440,18 +440,18 @@ export function ActionModal({
         const totalSelected = selectedSubscriptionIds.length;
         return (
           <div className="space-y-4">
-            <div className="rounded-xl border border-error-500/20 bg-error-500/5 px-3 py-2.5">
-              <p className="text-sm font-medium text-error-400">
+            <div className="border-error-500/20 bg-error-500/5 rounded-xl border px-3 py-2.5">
+              <p className="text-error-400 text-sm font-medium">
                 {t('admin.bulkActions.deleteSubscription.warning')}
               </p>
-              <p className="mt-1 text-xs text-error-300/70">
+              <p className="text-error-300/70 mt-1 text-xs">
                 {t('admin.bulkActions.deleteSubscription.hint')}
               </p>
             </div>
             {activePaidCount > 0 && (
               <>
-                <div className="rounded-xl border border-warning-500/20 bg-warning-500/5 px-3 py-2.5">
-                  <p className="text-sm font-medium text-warning-400">
+                <div className="border-warning-500/20 bg-warning-500/5 rounded-xl border px-3 py-2.5">
+                  <p className="text-warning-400 text-sm font-medium">
                     {t('admin.bulkActions.deleteSubscription.activePaidWarning', {
                       count: activePaidCount,
                       total: totalSelected,
@@ -474,7 +474,7 @@ export function ActionModal({
                   <span
                     className={cn(
                       'text-sm',
-                      forceDeleteActivePaid ? 'font-medium text-error-400' : 'text-dark-400',
+                      forceDeleteActivePaid ? 'text-error-400 font-medium' : 'text-dark-400',
                     )}
                   >
                     {t('admin.bulkActions.deleteSubscription.forceDeleteConfirm')}
@@ -488,11 +488,11 @@ export function ActionModal({
       case 'delete_user':
         return (
           <div className="space-y-4">
-            <div className="rounded-xl border border-error-500/20 bg-error-500/5 px-3 py-2.5">
-              <p className="text-sm font-medium text-error-400">
+            <div className="border-error-500/20 bg-error-500/5 rounded-xl border px-3 py-2.5">
+              <p className="text-error-400 text-sm font-medium">
                 {t('admin.bulkActions.deleteUser.warning')}
               </p>
-              <p className="mt-1 text-xs text-error-300/70">
+              <p className="text-error-300/70 mt-1 text-xs">
                 {t('admin.bulkActions.deleteUser.hint')}
               </p>
             </div>
@@ -512,7 +512,7 @@ export function ActionModal({
               <span
                 className={cn(
                   'text-sm',
-                  deleteFromPanel ? 'font-medium text-error-400' : 'text-dark-400',
+                  deleteFromPanel ? 'text-error-400 font-medium' : 'text-dark-400',
                 )}
               >
                 {t('admin.bulkActions.deleteUser.deleteFromPanel')}
@@ -527,7 +527,7 @@ export function ActionModal({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center"
+      className="fixed inset-0 z-9999 flex items-center justify-center"
       style={{
         paddingTop: 'max(1rem, env(safe-area-inset-top))',
         paddingBottom: 'max(1rem, env(safe-area-inset-bottom))',
@@ -536,7 +536,7 @@ export function ActionModal({
       }}
     >
       <div
-        className="absolute inset-0 bg-dark-950/80 backdrop-blur-sm"
+        className="bg-dark-950/80 absolute inset-0 backdrop-blur-sm"
         onClick={handleBackdropClick}
       />
 
@@ -546,16 +546,16 @@ export function ActionModal({
         aria-modal="true"
         aria-labelledby="bulk-action-modal-title"
         tabIndex={-1}
-        className="relative max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto rounded-2xl border border-dark-700 bg-dark-900 p-6 shadow-2xl"
+        className="border-dark-700 bg-dark-900 relative max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto rounded-2xl border p-6 shadow-2xl"
       >
         <div className="mb-5 flex items-center justify-between">
-          <h3 id="bulk-action-modal-title" className="text-lg font-bold text-dark-100">
+          <h3 id="bulk-action-modal-title" className="text-dark-100 text-lg font-bold">
             {t(actionLabelKeys[modal.action])}
           </h3>
           {!modal.loading && (
             <button
               onClick={onClose}
-              className="min-h-[44px] min-w-[44px] rounded-lg p-2.5 text-dark-400 transition-colors hover:bg-dark-800 hover:text-dark-200"
+              className="text-dark-400 hover:bg-dark-800 hover:text-dark-200 min-h-[44px] min-w-[44px] rounded-lg p-2.5 transition-colors"
               aria-label={t('common.close')}
             >
               <XCloseIcon />
@@ -566,28 +566,28 @@ export function ActionModal({
         {modal.loading && modal.progress ? (
           <div className="space-y-4">
             <ProgressView progress={modal.progress} />
-            <p className="text-center text-xs text-dark-500">
+            <p className="text-dark-500 text-center text-xs">
               {t('admin.bulkActions.progress.doNotClose')}
             </p>
           </div>
         ) : modal.result ? (
           <div className="space-y-4">
-            <div className="rounded-xl border border-dark-700 bg-dark-800/50 p-4">
-              <div className="mb-3 text-center text-sm font-semibold text-dark-100">
+            <div className="border-dark-700 bg-dark-800/50 rounded-xl border p-4">
+              <div className="text-dark-100 mb-3 text-center text-sm font-semibold">
                 {t('admin.bulkActions.complete')}
               </div>
               <div className="mb-3 text-center text-sm">
-                <span className="font-medium text-success-400">
+                <span className="text-success-400 font-medium">
                   {t('admin.bulkActions.progress.summarySuccess', {
                     count: modal.result.success_count,
                   })}
                 </span>
                 {modal.result.error_count > 0 && (
                   <>
-                    <span className="mx-1.5 text-dark-600" aria-hidden="true">
+                    <span className="text-dark-600 mx-1.5" aria-hidden="true">
                       /
                     </span>
-                    <span className="font-medium text-error-400">
+                    <span className="text-error-400 font-medium">
                       {t('admin.bulkActions.progress.summaryErrors', {
                         count: modal.result.error_count,
                       })}
@@ -597,19 +597,19 @@ export function ActionModal({
               </div>
               <div className="flex justify-center gap-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-success-400">
+                  <div className="text-success-400 text-2xl font-bold">
                     {modal.result.success_count}
                   </div>
-                  <div className="text-xs text-dark-400">
+                  <div className="text-dark-400 text-xs">
                     {t('admin.bulkActions.successCount', { count: modal.result.success_count })}
                   </div>
                 </div>
                 {modal.result.error_count > 0 && (
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-error-400">
+                    <div className="text-error-400 text-2xl font-bold">
                       {modal.result.error_count}
                     </div>
-                    <div className="text-xs text-dark-400">
+                    <div className="text-dark-400 text-xs">
                       {t('admin.bulkActions.errorCount', { count: modal.result.error_count })}
                     </div>
                   </div>
@@ -621,15 +621,15 @@ export function ActionModal({
 
             <button
               onClick={onClose}
-              className="w-full rounded-xl bg-accent-500 px-4 py-2.5 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-600"
+              className="bg-accent-500 text-on-accent hover:bg-accent-600 w-full rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors"
             >
               {t('common.close')}
             </button>
           </div>
         ) : (
           <>
-            <div className="mb-4 rounded-xl border border-accent-500/20 bg-accent-500/5 px-4 py-3">
-              <p className="text-sm text-dark-200">
+            <div className="border-accent-500/20 bg-accent-500/5 mb-4 rounded-xl border px-4 py-3">
+              <p className="text-dark-200 text-sm">
                 {t('admin.bulkActions.selectedCount', { count: selectedCount })}
               </p>
             </div>
@@ -640,14 +640,14 @@ export function ActionModal({
               <button
                 onClick={onClose}
                 disabled={modal.loading}
-                className="min-h-[44px] flex-1 rounded-xl border border-dark-700 bg-dark-800 px-4 py-2.5 text-sm font-medium text-dark-300 transition-colors hover:bg-dark-700 disabled:opacity-50"
+                className="border-dark-700 bg-dark-800 text-dark-300 hover:bg-dark-700 min-h-[44px] flex-1 rounded-xl border px-4 py-2.5 text-sm font-medium transition-colors disabled:opacity-50"
               >
                 {t('admin.bulkActions.cancel')}
               </button>
               <button
                 onClick={handleSubmit}
                 disabled={isConfirmDisabled}
-                className="flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-xl bg-accent-500 px-4 py-2.5 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-600 disabled:opacity-50"
+                className="bg-accent-500 text-on-accent hover:bg-accent-600 flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors disabled:opacity-50"
               >
                 {t('admin.bulkActions.confirm')}
               </button>

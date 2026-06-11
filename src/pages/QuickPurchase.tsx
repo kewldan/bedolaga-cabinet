@@ -65,9 +65,9 @@ function formatPeriodLabel(
 
 function LoadingSkeleton() {
   return (
-    <div className="flex min-h-dvh items-center justify-center bg-dark-950">
+    <div className="bg-dark-950 flex min-h-dvh items-center justify-center">
       <div className="flex flex-col items-center gap-4">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-dark-600 border-t-accent-500" />
+        <div className="border-dark-600 border-t-accent-500 h-8 w-8 animate-spin rounded-full border-2" />
       </div>
     </div>
   );
@@ -77,11 +77,11 @@ function ErrorState({ message }: { message: string }) {
   const { t } = useTranslation();
 
   return (
-    <div className="flex min-h-dvh items-center justify-center bg-dark-950 px-4">
+    <div className="bg-dark-950 flex min-h-dvh items-center justify-center px-4">
       <div className="flex max-w-sm flex-col items-center gap-4 text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-error-500/10">
+        <div className="bg-error-500/10 flex h-16 w-16 items-center justify-center rounded-full">
           <svg
-            className="h-8 w-8 text-error-400"
+            className="text-error-400 h-8 w-8"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -94,8 +94,8 @@ function ErrorState({ message }: { message: string }) {
             />
           </svg>
         </div>
-        <h2 className="text-lg font-semibold text-dark-50">{t('landing.error', 'Error')}</h2>
-        <p className="text-sm text-dark-300">{message}</p>
+        <h2 className="text-dark-50 text-lg font-semibold">{t('landing.error', 'Error')}</h2>
+        <p className="text-dark-300 text-sm">{message}</p>
       </div>
     </div>
   );
@@ -120,9 +120,9 @@ function PeriodTabs({
           type="button"
           onClick={() => onSelect(period.days)}
           className={cn(
-            'whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-all duration-200',
+            'rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-all duration-200',
             selectedDays === period.days
-              ? 'bg-accent-500 text-on-accent shadow-lg shadow-accent-500/25'
+              ? 'bg-accent-500 text-on-accent shadow-accent-500/25 shadow-lg'
               : 'bg-dark-800/50 text-dark-300 hover:bg-dark-700/50 hover:text-dark-100',
           )}
         >
@@ -140,7 +140,7 @@ function GiftToggle({ isGift, onToggle }: { isGift: boolean; onToggle: (v: boole
     <div
       role="group"
       aria-label={t('landing.giftToggleLabel', 'Purchase type')}
-      className="flex rounded-xl bg-dark-800/50 p-1"
+      className="bg-dark-800/50 flex rounded-xl p-1"
     >
       <button
         type="button"
@@ -188,10 +188,10 @@ function ContactForm({
   const { t } = useTranslation();
 
   return (
-    <div className="space-y-4 rounded-2xl border border-dark-800/50 bg-dark-900/50 p-5">
+    <div className="border-dark-800/50 bg-dark-900/50 space-y-4 rounded-2xl border p-5">
       {/* Main contact */}
       <div>
-        <label htmlFor="contact-input" className="mb-2 block text-sm font-medium text-dark-200">
+        <label htmlFor="contact-input" className="text-dark-200 mb-2 block text-sm font-medium">
           {t('landing.yourContact', 'Your contact')}
         </label>
         <input
@@ -200,9 +200,9 @@ function ContactForm({
           value={contactValue}
           onChange={(e) => onContactChange(e.target.value)}
           placeholder={t('landing.contactPlaceholder', 'email@example.com or @telegram')}
-          className="w-full rounded-xl border border-dark-700/50 bg-dark-800/50 px-4 py-3 text-sm text-dark-50 placeholder-dark-500 outline-none transition-colors focus:border-accent-500/50 focus:ring-1 focus:ring-accent-500/25"
+          className="border-dark-700/50 bg-dark-800/50 text-dark-50 placeholder-dark-500 focus:border-accent-500/50 focus:ring-accent-500/25 w-full rounded-xl border px-4 py-3 text-sm transition-colors outline-none focus:ring-1"
         />
-        <p className="mt-1.5 text-xs text-dark-500">{t('landing.contactHint')}</p>
+        <p className="text-dark-500 mt-1.5 text-xs">{t('landing.contactHint')}</p>
       </div>
 
       {/* Gift fields */}
@@ -215,10 +215,10 @@ function ContactForm({
             transition={{ duration: 0.2 }}
             className="space-y-4 overflow-hidden"
           >
-            <div className="border-t border-dark-800/50 pt-4">
+            <div className="border-dark-800/50 border-t pt-4">
               <label
                 htmlFor="gift-recipient-input"
-                className="mb-2 block text-sm font-medium text-dark-200"
+                className="text-dark-200 mb-2 block text-sm font-medium"
               >
                 {t('landing.recipientLabel')}
               </label>
@@ -228,13 +228,13 @@ function ContactForm({
                 value={giftRecipient}
                 onChange={(e) => onGiftRecipientChange(e.target.value)}
                 placeholder={t('landing.recipientPlaceholder', 'Recipient email or @telegram')}
-                className="w-full rounded-xl border border-dark-700/50 bg-dark-800/50 px-4 py-3 text-sm text-dark-50 placeholder-dark-500 outline-none transition-colors focus:border-accent-500/50 focus:ring-1 focus:ring-accent-500/25"
+                className="border-dark-700/50 bg-dark-800/50 text-dark-50 placeholder-dark-500 focus:border-accent-500/50 focus:ring-accent-500/25 w-full rounded-xl border px-4 py-3 text-sm transition-colors outline-none focus:ring-1"
               />
             </div>
             <div>
               <label
                 htmlFor="gift-message-input"
-                className="mb-2 block text-sm font-medium text-dark-200"
+                className="text-dark-200 mb-2 block text-sm font-medium"
               >
                 {t('landing.giftMessageLabel')}
               </label>
@@ -247,7 +247,7 @@ function ContactForm({
                   'Add a personal message (optional)',
                 )}
                 rows={3}
-                className="w-full resize-none rounded-xl border border-dark-700/50 bg-dark-800/50 px-4 py-3 text-sm text-dark-50 placeholder-dark-500 outline-none transition-colors focus:border-accent-500/50 focus:ring-1 focus:ring-accent-500/25"
+                className="border-dark-700/50 bg-dark-800/50 text-dark-50 placeholder-dark-500 focus:border-accent-500/50 focus:ring-accent-500/25 w-full resize-none rounded-xl border px-4 py-3 text-sm transition-colors outline-none focus:ring-1"
               />
             </div>
           </motion.div>
@@ -279,16 +279,16 @@ function TariffCard({
       className={cn(
         'relative flex w-full flex-col rounded-2xl border p-5 text-start transition-all duration-200',
         isSelected
-          ? 'border-accent-500/50 bg-accent-500/5 ring-1 ring-accent-500/25'
+          ? 'border-accent-500/50 bg-accent-500/5 ring-accent-500/25 ring-1'
           : 'border-dark-800/50 bg-dark-900/50 hover:border-dark-700/50 hover:bg-dark-800/30',
       )}
     >
       {/* Header */}
       <div className="mb-3 flex items-start justify-between">
         <div>
-          <h3 className="text-base font-semibold text-dark-50">{tariff.name}</h3>
+          <h3 className="text-dark-50 text-base font-semibold">{tariff.name}</h3>
           {tariff.description && (
-            <p className="mt-0.5 text-xs text-dark-400">{tariff.description}</p>
+            <p className="text-dark-400 mt-0.5 text-xs">{tariff.description}</p>
           )}
         </div>
         <div
@@ -302,7 +302,7 @@ function TariffCard({
       </div>
 
       {/* Info row */}
-      <div className="flex items-center gap-3 text-xs text-dark-400">
+      <div className="text-dark-400 flex items-center gap-3 text-xs">
         <span className="flex items-center gap-1">
           <DownloadIcon className="h-3.5 w-3.5" />
           {tariff.traffic_limit_gb === 0 ? '∞' : tariff.traffic_limit_gb} {t('landing.gb', 'GB')}
@@ -315,19 +315,19 @@ function TariffCard({
 
       {/* Price */}
       {selectedPeriod && (
-        <div className="mt-3 border-t border-dark-800/30 pt-3">
+        <div className="border-dark-800/30 mt-3 border-t pt-3">
           <div className="flex items-center gap-2">
-            <span className="text-lg font-bold text-accent-400">
+            <span className="text-accent-400 text-lg font-bold">
               {formatPrice(selectedPeriod.price_kopeks)}
             </span>
             {selectedPeriod.original_price_kopeks != null &&
               selectedPeriod.original_price_kopeks > selectedPeriod.price_kopeks && (
                 <>
-                  <span className="text-sm text-dark-500 line-through">
+                  <span className="text-dark-500 text-sm line-through">
                     {formatPrice(selectedPeriod.original_price_kopeks)}
                   </span>
                   {selectedPeriod.discount_percent != null && (
-                    <span className="rounded-full bg-accent-500/20 px-1.5 py-0.5 text-[10px] font-bold text-accent-400">
+                    <span className="bg-accent-500/20 text-accent-400 rounded-full px-1.5 py-0.5 text-[10px] font-bold">
                       -{selectedPeriod.discount_percent}%
                     </span>
                   )}
@@ -373,16 +373,16 @@ function PaymentMethodCard({
       >
         {/* Icon */}
         {method.icon_url && (
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-dark-800/50">
+          <div className="bg-dark-800/50 flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl">
             <img src={method.icon_url} alt="" className="h-6 w-6 object-contain" />
           </div>
         )}
 
         {/* Text */}
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-medium text-dark-100">{method.display_name}</p>
+          <p className="text-dark-100 text-sm font-medium">{method.display_name}</p>
           {method.description && (
-            <p className="mt-0.5 truncate text-xs text-dark-400">{method.description}</p>
+            <p className="text-dark-400 mt-0.5 truncate text-xs">{method.description}</p>
           )}
         </div>
 
@@ -399,7 +399,7 @@ function PaymentMethodCard({
 
       {/* Sub-options */}
       {isSelected && hasSubOptions && (
-        <div className="border-t border-dark-800/30 px-4 pb-4 pt-3">
+        <div className="border-dark-800/30 border-t px-4 pt-3 pb-4">
           <div className="flex flex-wrap gap-2">
             {method.sub_options!.map((opt) => (
               <button
@@ -409,7 +409,7 @@ function PaymentMethodCard({
                 className={cn(
                   'rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200',
                   selectedSubOption === opt.id
-                    ? 'bg-accent-500 text-on-accent shadow-sm shadow-accent-500/25'
+                    ? 'bg-accent-500 text-on-accent shadow-accent-500/25 shadow-sm'
                     : 'bg-dark-800/50 text-dark-300 hover:bg-dark-700/50 hover:text-dark-100',
                 )}
               >
@@ -440,7 +440,10 @@ function SanitizedHtml({ html, className }: { html: string; className?: string }
   }, [html]);
 
   return (
-    <div className={cn('break-words', className)} dangerouslySetInnerHTML={{ __html: sanitized }} />
+    <div
+      className={cn('wrap-break-word', className)}
+      dangerouslySetInnerHTML={{ __html: sanitized }}
+    />
   );
 }
 
@@ -480,39 +483,39 @@ function SummaryCard({
   return (
     <div className="space-y-5">
       {/* Summary */}
-      <div className="rounded-2xl border border-dark-800/50 bg-dark-900/50 p-5">
+      <div className="border-dark-800/50 bg-dark-900/50 rounded-2xl border p-5">
         {selectedTariff && (
           <div className="mb-3">
-            <p className="text-xs font-medium uppercase tracking-wider text-dark-500">
+            <p className="text-dark-500 text-xs font-medium tracking-wider uppercase">
               {t('landing.selectedTariff', 'Tariff')}
             </p>
-            <p className="mt-1 text-sm font-semibold text-dark-50">{selectedTariff.name}</p>
+            <p className="text-dark-50 mt-1 text-sm font-semibold">{selectedTariff.name}</p>
           </div>
         )}
         {selectedPeriod && (
           <div className="mb-4">
-            <p className="text-xs font-medium uppercase tracking-wider text-dark-500">
+            <p className="text-dark-500 text-xs font-medium tracking-wider uppercase">
               {t('landing.period', 'Period')}
             </p>
-            <p className="mt-1 text-sm text-dark-200">
+            <p className="text-dark-200 mt-1 text-sm">
               {formatPeriodLabel(selectedPeriod.days, t)}
             </p>
           </div>
         )}
-        <div className="border-t border-dark-800/50 pt-4">
-          <p className="text-xs font-medium uppercase tracking-wider text-dark-500">
+        <div className="border-dark-800/50 border-t pt-4">
+          <p className="text-dark-500 text-xs font-medium tracking-wider uppercase">
             {t('landing.total', 'Total')}
           </p>
           <div className="mt-1 flex items-center gap-2">
-            <span className="text-2xl font-bold text-accent-400">{formatPrice(currentPrice)}</span>
+            <span className="text-accent-400 text-2xl font-bold">{formatPrice(currentPrice)}</span>
             {selectedPeriod?.original_price_kopeks != null &&
               selectedPeriod.original_price_kopeks > selectedPeriod.price_kopeks && (
                 <>
-                  <span className="text-base text-dark-500 line-through">
+                  <span className="text-dark-500 text-base line-through">
                     {formatPrice(selectedPeriod.original_price_kopeks)}
                   </span>
                   {selectedPeriod.discount_percent != null && (
-                    <span className="rounded-full bg-accent-500/20 px-2 py-0.5 text-xs font-bold text-accent-400">
+                    <span className="bg-accent-500/20 text-accent-400 rounded-full px-2 py-0.5 text-xs font-bold">
                       -{selectedPeriod.discount_percent}%
                     </span>
                   )}
@@ -527,12 +530,12 @@ function SummaryCard({
         <div className="space-y-3">
           {config.features.map((feature, idx) => (
             <div key={idx} className="flex gap-3">
-              <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-success-500/10">
-                <CheckCircleIcon className="h-3 w-3 text-success-500" />
+              <div className="bg-success-500/10 mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full">
+                <CheckCircleIcon className="text-success-500 h-3 w-3" />
               </div>
               <div>
-                <p className="text-sm font-medium text-dark-100">{feature.title}</p>
-                <p className="text-xs text-dark-400">{feature.description}</p>
+                <p className="text-dark-100 text-sm font-medium">{feature.title}</p>
+                <p className="text-dark-400 text-xs">{feature.description}</p>
               </div>
             </div>
           ))}
@@ -546,9 +549,9 @@ function SummaryCard({
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="rounded-xl border border-error-500/20 bg-error-500/5 p-3"
+            className="border-error-500/20 bg-error-500/5 rounded-xl border p-3"
           >
-            <p className="text-sm text-error-400">{submitError}</p>
+            <p className="text-error-400 text-sm">{submitError}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -557,7 +560,7 @@ function SummaryCard({
       {stickyPayButton && isMobile ? (
         createPortal(
           <div
-            className="fixed bottom-0 left-0 right-0 z-50 p-3"
+            className="fixed right-0 bottom-0 left-0 z-50 p-3"
             style={{
               background:
                 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 70%, transparent 100%)',
@@ -570,9 +573,9 @@ function SummaryCard({
                   const el = document.getElementById('contact-input');
                   if (el) {
                     el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    el.classList.add('!border-error-500', '!ring-2', '!ring-error-500/50');
+                    el.classList.add('border-error-500!', 'ring-2!', 'ring-error-500/50!');
                     setTimeout(() => {
-                      el.classList.remove('!border-error-500', '!ring-2', '!ring-error-500/50');
+                      el.classList.remove('border-error-500!', 'ring-2!', 'ring-error-500/50!');
                     }, 2000);
                   }
                   return;
@@ -583,8 +586,8 @@ function SummaryCard({
               className={cn(
                 'flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 text-base font-semibold transition-all duration-200',
                 canSubmit && !isSubmitting
-                  ? 'bg-accent-500 text-on-accent shadow-lg shadow-accent-500/25 hover:bg-accent-400 hover:shadow-accent-500/40 active:scale-[0.98]'
-                  : 'cursor-not-allowed bg-dark-800 text-dark-500',
+                  ? 'bg-accent-500 text-on-accent shadow-accent-500/25 hover:bg-accent-400 hover:shadow-accent-500/40 shadow-lg active:scale-[0.98]'
+                  : 'bg-dark-800 text-dark-500 cursor-not-allowed',
               )}
             >
               {isSubmitting ? (
@@ -613,12 +616,12 @@ function SummaryCard({
               const el = document.getElementById('contact-input');
               if (el) {
                 el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                el.classList.add('!border-error-500', '!ring-2', '!ring-error-500/50');
+                el.classList.add('border-error-500!', 'ring-2!', 'ring-error-500/50!');
                 setTimeout(() => {
                   el.focus();
                 }, 300);
                 setTimeout(() => {
-                  el.classList.remove('!border-error-500', '!ring-2', '!ring-error-500/50');
+                  el.classList.remove('border-error-500!', 'ring-2!', 'ring-error-500/50!');
                 }, 2000);
               }
               return;
@@ -629,8 +632,8 @@ function SummaryCard({
           className={cn(
             'flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 text-base font-semibold transition-all duration-200',
             canSubmit && !isSubmitting
-              ? 'bg-accent-500 text-on-accent shadow-lg shadow-accent-500/25 hover:bg-accent-400 hover:shadow-accent-500/40 active:scale-[0.98]'
-              : 'cursor-not-allowed bg-dark-800 text-dark-500',
+              ? 'bg-accent-500 text-on-accent shadow-accent-500/25 hover:bg-accent-400 hover:shadow-accent-500/40 shadow-lg active:scale-[0.98]'
+              : 'bg-dark-800 text-dark-500 cursor-not-allowed',
           )}
         >
           {isSubmitting ? (
@@ -654,7 +657,7 @@ function SummaryCard({
       {config.footer_text && (
         <SanitizedHtml
           html={config.footer_text}
-          className="text-center text-xs leading-relaxed text-dark-500 [&_a]:text-accent-400 [&_a]:underline [&_a]:underline-offset-2"
+          className="text-dark-500 [&_a]:text-accent-400 text-center text-xs leading-relaxed [&_a]:underline [&_a]:underline-offset-2"
         />
       )}
     </div>
@@ -664,10 +667,10 @@ function SummaryCard({
 function TimeUnit({ value, label }: { value: number; label: string }) {
   return (
     <div className="flex flex-col items-center">
-      <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-dark-800/80 text-lg font-bold tabular-nums text-dark-50 sm:h-12 sm:w-12 sm:text-xl">
+      <span className="bg-dark-800/80 text-dark-50 flex h-10 w-10 items-center justify-center rounded-lg text-lg font-bold tabular-nums sm:h-12 sm:w-12 sm:text-xl">
         {String(value).padStart(2, '0')}
       </span>
-      <span className="mt-1 text-[10px] uppercase tracking-wider text-dark-500">{label}</span>
+      <span className="text-dark-500 mt-1 text-[10px] tracking-wider uppercase">{label}</span>
     </div>
   );
 }
@@ -729,16 +732,16 @@ function DiscountBanner({
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
-      className="mb-8 overflow-hidden rounded-2xl border border-accent-500/30 bg-gradient-to-r from-accent-500/10 via-accent-500/5 to-transparent"
+      className="border-accent-500/30 from-accent-500/10 via-accent-500/5 mb-8 overflow-hidden rounded-2xl border bg-linear-to-r to-transparent"
     >
       <div className="flex flex-col items-center gap-4 px-5 py-5 sm:flex-row sm:justify-between">
         {/* Left: badge + text */}
         <div className="flex items-center gap-3">
-          <span className="shrink-0 rounded-full bg-accent-500 px-3 py-1 text-sm font-bold text-on-accent shadow-lg shadow-accent-500/25">
+          <span className="bg-accent-500 text-on-accent shadow-accent-500/25 shrink-0 rounded-full px-3 py-1 text-sm font-bold shadow-lg">
             -{discount.percent}%
           </span>
           {discount.badge_text && (
-            <span className="text-sm font-medium text-dark-100">{discount.badge_text}</span>
+            <span className="text-dark-100 text-sm font-medium">{discount.badge_text}</span>
           )}
         </div>
 
@@ -747,13 +750,13 @@ function DiscountBanner({
           {timeLeft.days > 0 && (
             <>
               <TimeUnit value={timeLeft.days} label={t('landing.discount.days', 'd')} />
-              <span className="text-lg font-bold text-dark-500">:</span>
+              <span className="text-dark-500 text-lg font-bold">:</span>
             </>
           )}
           <TimeUnit value={timeLeft.hours} label={t('landing.discount.hours', 'h')} />
-          <span className="text-lg font-bold text-dark-500">:</span>
+          <span className="text-dark-500 text-lg font-bold">:</span>
           <TimeUnit value={timeLeft.minutes} label={t('landing.discount.minutes', 'm')} />
-          <span className="text-lg font-bold text-dark-500">:</span>
+          <span className="text-dark-500 text-lg font-bold">:</span>
           <TimeUnit value={timeLeft.seconds} label={t('landing.discount.seconds', 's')} />
         </div>
       </div>
@@ -1142,11 +1145,11 @@ export default function QuickPurchase() {
           transition={{ duration: 0.5 }}
           className="mb-10 text-center"
         >
-          <h1 className="text-3xl font-bold tracking-tight text-dark-50 sm:text-4xl">
+          <h1 className="text-dark-50 text-3xl font-bold tracking-tight sm:text-4xl">
             {config.title}
           </h1>
           {config.subtitle && (
-            <p className="mt-3 text-base text-dark-300 sm:text-lg">{config.subtitle}</p>
+            <p className="text-dark-300 mt-3 text-base sm:text-lg">{config.subtitle}</p>
           )}
         </motion.div>
 
@@ -1169,7 +1172,7 @@ export default function QuickPurchase() {
             {/* Period tabs */}
             {allPeriods.length > 0 && (
               <div>
-                <h2 className="mb-3 text-sm font-medium uppercase tracking-wider text-dark-400">
+                <h2 className="text-dark-400 mb-3 text-sm font-medium tracking-wider uppercase">
                   {t('landing.choosePeriod', 'Choose period')}
                 </h2>
                 <PeriodTabs
@@ -1208,7 +1211,7 @@ export default function QuickPurchase() {
             {/* Tariff cards */}
             {showTariffCards && (
               <div>
-                <h2 className="mb-3 text-sm font-medium uppercase tracking-wider text-dark-400">
+                <h2 className="text-dark-400 mb-3 text-sm font-medium tracking-wider uppercase">
                   {t('landing.chooseTariff', 'Choose tariff')}
                 </h2>
                 <div
@@ -1235,7 +1238,7 @@ export default function QuickPurchase() {
             {/* Payment methods */}
             {config.payment_methods.length > 0 && (
               <div>
-                <h2 className="mb-3 text-sm font-medium uppercase tracking-wider text-dark-400">
+                <h2 className="text-dark-400 mb-3 text-sm font-medium tracking-wider uppercase">
                   {t('landing.paymentMethod', 'Payment method')}
                 </h2>
                 <div

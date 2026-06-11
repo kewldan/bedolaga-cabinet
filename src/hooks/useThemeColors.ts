@@ -141,39 +141,33 @@ export function applyThemeColors(themeColors: ThemeColors): void {
 
   // Apply dark palette with actual user colors:
   // Text colors (light shades): 50-100 = primary text, 200-300 = mixed, 400 = secondary text
+  root.style.setProperty('--rt-dark-50', rgbToString(darkTextRgb.r, darkTextRgb.g, darkTextRgb.b));
+  root.style.setProperty('--rt-dark-100', rgbToString(darkTextRgb.r, darkTextRgb.g, darkTextRgb.b));
+  root.style.setProperty('--rt-dark-200', interpolateRgb(darkTextRgb, darkTextSecRgb, 0.33));
+  root.style.setProperty('--rt-dark-300', interpolateRgb(darkTextRgb, darkTextSecRgb, 0.66));
   root.style.setProperty(
-    '--color-dark-50',
-    rgbToString(darkTextRgb.r, darkTextRgb.g, darkTextRgb.b),
-  );
-  root.style.setProperty(
-    '--color-dark-100',
-    rgbToString(darkTextRgb.r, darkTextRgb.g, darkTextRgb.b),
-  );
-  root.style.setProperty('--color-dark-200', interpolateRgb(darkTextRgb, darkTextSecRgb, 0.33));
-  root.style.setProperty('--color-dark-300', interpolateRgb(darkTextRgb, darkTextSecRgb, 0.66));
-  root.style.setProperty(
-    '--color-dark-400',
+    '--rt-dark-400',
     rgbToString(darkTextSecReadable.r, darkTextSecReadable.g, darkTextSecReadable.b),
   );
 
   // Transition colors (500-700): interpolate between secondary text and surface
   root.style.setProperty(
-    '--color-dark-500',
+    '--rt-dark-500',
     rgbToString(darkHintReadable.r, darkHintReadable.g, darkHintReadable.b),
   );
-  root.style.setProperty('--color-dark-600', interpolateRgb(darkTextSecRgb, darkSurfaceRgb, 0.6));
-  root.style.setProperty('--color-dark-700', interpolateRgb(darkTextSecRgb, darkSurfaceRgb, 0.8));
+  root.style.setProperty('--rt-dark-600', interpolateRgb(darkTextSecRgb, darkSurfaceRgb, 0.6));
+  root.style.setProperty('--rt-dark-700', interpolateRgb(darkTextSecRgb, darkSurfaceRgb, 0.8));
 
   // Surface/card colors (800-850): surface color
   root.style.setProperty(
-    '--color-dark-800',
+    '--rt-dark-800',
     rgbToString(darkSurfaceRgb.r, darkSurfaceRgb.g, darkSurfaceRgb.b),
   );
-  root.style.setProperty('--color-dark-850', interpolateRgb(darkSurfaceRgb, darkBgRgb, 0.5));
+  root.style.setProperty('--rt-dark-850', interpolateRgb(darkSurfaceRgb, darkBgRgb, 0.5));
 
   // Background colors (900-950): background color
-  root.style.setProperty('--color-dark-900', interpolateRgb(darkSurfaceRgb, darkBgRgb, 0.7));
-  root.style.setProperty('--color-dark-950', rgbToString(darkBgRgb.r, darkBgRgb.g, darkBgRgb.b));
+  root.style.setProperty('--rt-dark-900', interpolateRgb(darkSurfaceRgb, darkBgRgb, 0.7));
+  root.style.setProperty('--rt-dark-950', rgbToString(darkBgRgb.r, darkBgRgb.g, darkBgRgb.b));
 
   const lightBgRgb = hexToRgb(colors.lightBackground);
   const lightSurfaceRgb = hexToRgb(colors.lightSurface);
@@ -183,16 +177,16 @@ export function applyThemeColors(themeColors: ThemeColors): void {
   // Apply champagne palette with actual user colors:
   // Background colors (light shades): 50-100 = surface, 200-400 = background tones
   root.style.setProperty(
-    '--color-champagne-50',
+    '--rt-champagne-50',
     rgbToString(lightSurfaceRgb.r, lightSurfaceRgb.g, lightSurfaceRgb.b),
   );
-  root.style.setProperty('--color-champagne-100', interpolateRgb(lightSurfaceRgb, lightBgRgb, 0.3));
+  root.style.setProperty('--rt-champagne-100', interpolateRgb(lightSurfaceRgb, lightBgRgb, 0.3));
   root.style.setProperty(
-    '--color-champagne-200',
+    '--rt-champagne-200',
     rgbToString(lightBgRgb.r, lightBgRgb.g, lightBgRgb.b),
   );
-  root.style.setProperty('--color-champagne-300', interpolateRgb(lightBgRgb, lightTextSecRgb, 0.2));
-  root.style.setProperty('--color-champagne-400', interpolateRgb(lightBgRgb, lightTextSecRgb, 0.4));
+  root.style.setProperty('--rt-champagne-300', interpolateRgb(lightBgRgb, lightTextSecRgb, 0.2));
+  root.style.setProperty('--rt-champagne-400', interpolateRgb(lightBgRgb, lightTextSecRgb, 0.4));
 
   // Transition colors (500-600): between bg and text.
   // Same contrast floors as the dark palette: champagne-600 backs dark-400
@@ -205,56 +199,50 @@ export function applyThemeColors(themeColors: ThemeColors): void {
   );
   const lightTextSecReadable = ensureReadable(lightTextSecRgb, lightTextRgb, lightSurfaceRgb, 5.0);
   root.style.setProperty(
-    '--color-champagne-500',
+    '--rt-champagne-500',
     rgbToString(lightHintReadable.r, lightHintReadable.g, lightHintReadable.b),
   );
   root.style.setProperty(
-    '--color-champagne-600',
+    '--rt-champagne-600',
     rgbToString(lightTextSecReadable.r, lightTextSecReadable.g, lightTextSecReadable.b),
   );
 
   // Text colors (700-950): secondary to primary text
+  root.style.setProperty('--rt-champagne-700', interpolateRgb(lightTextSecRgb, lightTextRgb, 0.33));
+  root.style.setProperty('--rt-champagne-800', interpolateRgb(lightTextSecRgb, lightTextRgb, 0.66));
   root.style.setProperty(
-    '--color-champagne-700',
-    interpolateRgb(lightTextSecRgb, lightTextRgb, 0.33),
-  );
-  root.style.setProperty(
-    '--color-champagne-800',
-    interpolateRgb(lightTextSecRgb, lightTextRgb, 0.66),
-  );
-  root.style.setProperty(
-    '--color-champagne-900',
+    '--rt-champagne-900',
     rgbToString(lightTextRgb.r, lightTextRgb.g, lightTextRgb.b),
   );
   root.style.setProperty(
-    '--color-champagne-950',
+    '--rt-champagne-950',
     rgbToString(lightTextRgb.r, lightTextRgb.g, lightTextRgb.b),
   );
 
   for (const shade of SHADE_LEVELS) {
-    root.style.setProperty(`--color-accent-${shade}`, accentPalette[shade]);
-    root.style.setProperty(`--color-success-${shade}`, successPalette[shade]);
-    root.style.setProperty(`--color-warning-${shade}`, warningPalette[shade]);
-    root.style.setProperty(`--color-error-${shade}`, errorPalette[shade]);
+    root.style.setProperty(`--rt-accent-${shade}`, accentPalette[shade]);
+    root.style.setProperty(`--rt-success-${shade}`, successPalette[shade]);
+    root.style.setProperty(`--rt-warning-${shade}`, warningPalette[shade]);
+    root.style.setProperty(`--rt-error-${shade}`, errorPalette[shade]);
   }
 
   // Readable text color on top of each status color (buttons, filled badges).
   // Hardcoded white breaks the moment an operator picks a light accent.
-  root.style.setProperty('--color-on-accent', onColorFor(accentPalette[500]));
-  root.style.setProperty('--color-on-success', onColorFor(successPalette[500]));
-  root.style.setProperty('--color-on-warning', onColorFor(warningPalette[500]));
-  root.style.setProperty('--color-on-error', onColorFor(errorPalette[500]));
+  root.style.setProperty('--rt-on-accent', onColorFor(accentPalette[500]));
+  root.style.setProperty('--rt-on-success', onColorFor(successPalette[500]));
+  root.style.setProperty('--rt-on-warning', onColorFor(warningPalette[500]));
+  root.style.setProperty('--rt-on-error', onColorFor(errorPalette[500]));
 
   // Apply semantic colors (hex for direct use)
-  root.style.setProperty('--color-dark-bg', colors.darkBackground);
-  root.style.setProperty('--color-dark-surface', colors.darkSurface);
-  root.style.setProperty('--color-dark-text', colors.darkText);
-  root.style.setProperty('--color-dark-text-secondary', colors.darkTextSecondary);
+  root.style.setProperty('--rt-dark-bg', colors.darkBackground);
+  root.style.setProperty('--rt-dark-surface', colors.darkSurface);
+  root.style.setProperty('--rt-dark-text', colors.darkText);
+  root.style.setProperty('--rt-dark-text-secondary', colors.darkTextSecondary);
 
-  root.style.setProperty('--color-light-bg', colors.lightBackground);
-  root.style.setProperty('--color-light-surface', colors.lightSurface);
-  root.style.setProperty('--color-light-text', colors.lightText);
-  root.style.setProperty('--color-light-text-secondary', colors.lightTextSecondary);
+  root.style.setProperty('--rt-light-bg', colors.lightBackground);
+  root.style.setProperty('--rt-light-surface', colors.lightSurface);
+  root.style.setProperty('--rt-light-text', colors.lightText);
+  root.style.setProperty('--rt-light-text-secondary', colors.lightTextSecondary);
 }
 
 export function useThemeColors() {

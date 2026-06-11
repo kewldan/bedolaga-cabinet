@@ -41,8 +41,8 @@ const sizeClasses: Record<BentoSize, string> = {
 
 const baseClasses = `
   bento-card
-  rounded-[var(--bento-radius)]
-  p-[var(--bento-padding)]
+  rounded-(--bento-radius)
+  p-(--bento-padding)
   bg-dark-900/70
   border border-dark-700/40
   duration-300 ease-smooth

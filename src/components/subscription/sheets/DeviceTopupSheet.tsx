@@ -73,10 +73,10 @@ export function DeviceTopupSheet({
       >
         <div className="flex items-center justify-between">
           <div>
-            <div className="font-medium text-dark-100">
+            <div className="text-dark-100 font-medium">
               {t('subscription.additionalOptions.buyDevices')}
             </div>
-            <div className="mt-1 text-sm text-dark-400">
+            <div className="text-dark-400 mt-1 text-sm">
               {t('subscription.additionalOptions.currentDeviceLimit', {
                 count: subscription.device_limit,
               })}
@@ -93,10 +93,10 @@ export function DeviceTopupSheet({
       className={`rounded-xl border p-5 ${isDark ? 'border-dark-700/50 bg-dark-800/50' : 'border-champagne-300/60 bg-champagne-200/40'}`}
     >
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="font-medium text-dark-100">{t('subscription.buyDevices')}</h3>
+        <h3 className="text-dark-100 font-medium">{t('subscription.buyDevices')}</h3>
         <button
           onClick={onClose}
-          className="text-sm text-dark-400 hover:text-dark-200"
+          className="text-dark-400 hover:text-dark-200 text-sm"
           aria-label={t('common.close', 'Close')}
         >
           ✕
@@ -104,7 +104,7 @@ export function DeviceTopupSheet({
       </div>
 
       {devicePriceData?.available === false ? (
-        <div className="py-4 text-center text-sm text-dark-400">
+        <div className="text-dark-400 py-4 text-center text-sm">
           {devicePriceData.reason || t('subscription.additionalOptions.devicesUnavailable')}
         </div>
       ) : (
@@ -114,14 +114,14 @@ export function DeviceTopupSheet({
             <button
               onClick={() => onDevicesToAddChange(Math.max(1, devicesToAdd - 1))}
               disabled={devicesToAdd <= 1}
-              className="btn-secondary flex h-12 w-12 items-center justify-center !p-0 text-2xl"
+              className="btn-secondary flex h-12 w-12 items-center justify-center p-0! text-2xl"
               aria-label={t('subscription.additionalOptions.decrementDevices', 'Уменьшить')}
             >
               -
             </button>
             <div className="text-center">
-              <div className="text-4xl font-bold text-dark-100">{devicesToAdd}</div>
-              <div className="text-sm text-dark-500">
+              <div className="text-dark-100 text-4xl font-bold">{devicesToAdd}</div>
+              <div className="text-dark-500 text-sm">
                 {t('subscription.additionalOptions.devicesUnit')}
               </div>
             </div>
@@ -133,7 +133,7 @@ export function DeviceTopupSheet({
                     devicePriceData.max_device_limit
                   : false
               }
-              className="btn-secondary flex h-12 w-12 items-center justify-center !p-0 text-2xl"
+              className="btn-secondary flex h-12 w-12 items-center justify-center p-0! text-2xl"
               aria-label={t('subscription.additionalOptions.incrementDevices', 'Увеличить')}
             >
               +
@@ -141,7 +141,7 @@ export function DeviceTopupSheet({
           </div>
 
           {devicePriceData?.max_device_limit && (
-            <div className="text-center text-sm text-dark-400">
+            <div className="text-dark-400 text-center text-sm">
               {t('subscription.additionalOptions.currentDeviceLimit', {
                 count: devicePriceData.current_device_limit || subscription.device_limit,
               })}{' '}
@@ -155,7 +155,7 @@ export function DeviceTopupSheet({
           {/* Price info */}
           {devicePriceData?.available && devicePriceData.price_per_device_label && (
             <div className="text-center">
-              <div className="mb-2 text-sm text-dark-400">
+              <div className="text-dark-400 mb-2 text-sm">
                 {devicePriceData.discount_percent &&
                 devicePriceData.discount_percent > 0 &&
                 devicePriceData.original_price_per_device_kopeks ? (
@@ -173,21 +173,21 @@ export function DeviceTopupSheet({
               </div>
               {devicePriceData.discount_percent && devicePriceData.discount_percent > 0 && (
                 <div className="mb-2">
-                  <span className="inline-block rounded-full bg-success-500/20 px-2.5 py-0.5 text-sm font-medium text-success-400">
+                  <span className="bg-success-500/20 text-success-400 inline-block rounded-full px-2.5 py-0.5 text-sm font-medium">
                     -{devicePriceData.discount_percent}%
                   </span>
                 </div>
               )}
               {devicePriceData.total_price_kopeks === 0 ? (
-                <div className="text-2xl font-bold text-success-400">
+                <div className="text-success-400 text-2xl font-bold">
                   {t('subscription.switchTariff.free')}
                 </div>
               ) : (
-                <div className="text-2xl font-bold text-accent-400">
+                <div className="text-accent-400 text-2xl font-bold">
                   {devicePriceData.discount_percent &&
                     devicePriceData.discount_percent > 0 &&
                     devicePriceData.base_total_price_kopeks && (
-                      <span className="mr-2 text-lg text-dark-500 line-through">
+                      <span className="text-dark-500 mr-2 text-lg line-through">
                         {formatPrice(devicePriceData.base_total_price_kopeks)}
                       </span>
                     )}
@@ -236,7 +236,7 @@ export function DeviceTopupSheet({
           </button>
 
           {devicePurchaseMutation.isError && (
-            <div className="text-center text-sm text-error-400">
+            <div className="text-error-400 text-center text-sm">
               {getErrorMessage(devicePurchaseMutation.error)}
             </div>
           )}

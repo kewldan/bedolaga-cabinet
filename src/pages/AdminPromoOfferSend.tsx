@@ -173,7 +173,7 @@ export default function AdminPromoOfferSend() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+        <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
       </div>
     );
   }
@@ -189,24 +189,24 @@ export default function AdminPromoOfferSend() {
             }`}
           >
             {result.isSuccess ? (
-              <CheckIcon className="h-8 w-8 text-success-400" />
+              <CheckIcon className="text-success-400 h-8 w-8" />
             ) : (
-              <XIcon className="h-8 w-8 text-error-400" />
+              <XIcon className="text-error-400 h-8 w-8" />
             )}
           </div>
-          <h3 className="mb-2 text-lg font-semibold text-dark-100">{result.title}</h3>
-          <p className="mb-6 whitespace-pre-wrap text-dark-400">{result.message}</p>
+          <h3 className="text-dark-100 mb-2 text-lg font-semibold">{result.title}</h3>
+          <p className="text-dark-400 mb-6 whitespace-pre-wrap">{result.message}</p>
           <div className="flex justify-center gap-3">
             <button
               onClick={() => navigate('/admin/promo-offers')}
-              className="rounded-lg bg-accent-500 px-6 py-2 text-on-accent transition-colors hover:bg-accent-600"
+              className="bg-accent-500 text-on-accent hover:bg-accent-600 rounded-lg px-6 py-2 transition-colors"
             >
               {t('admin.promoOffers.backToList')}
             </button>
             {result.isSuccess && (
               <button
                 onClick={() => setResult(null)}
-                className="rounded-lg border border-dark-600 px-6 py-2 text-dark-300 transition-colors hover:text-dark-100"
+                className="border-dark-600 text-dark-300 hover:text-dark-100 rounded-lg border px-6 py-2 transition-colors"
               >
                 {t('admin.promoOffers.sendAnother')}
               </button>
@@ -223,10 +223,10 @@ export default function AdminPromoOfferSend() {
       <div className="mb-6 flex items-center gap-3">
         <AdminBackButton to="/admin/promo-offers" />
         <div className="flex items-center gap-3">
-          <div className="rounded-lg bg-accent-500/20 p-2">
+          <div className="bg-accent-500/20 rounded-lg p-2">
             <SendIcon />
           </div>
-          <h1 className="text-xl font-semibold text-dark-100">
+          <h1 className="text-dark-100 text-xl font-semibold">
             {t('admin.promoOffers.send.title')}
           </h1>
         </div>
@@ -239,8 +239,8 @@ export default function AdminPromoOfferSend() {
       ) : (
         <div className="mx-auto max-w-2xl space-y-6">
           {/* Template Selection */}
-          <div className="rounded-xl border border-dark-700 bg-dark-800 p-6">
-            <label id="po-template-label" className="mb-2 block text-sm font-medium text-dark-300">
+          <div className="border-dark-700 bg-dark-800 rounded-xl border p-6">
+            <label id="po-template-label" className="text-dark-300 mb-2 block text-sm font-medium">
               {t('admin.promoOffers.send.offerTemplate')}
               <span className="text-error-400">*</span>
             </label>
@@ -261,8 +261,8 @@ export default function AdminPromoOfferSend() {
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">{getOfferTypeIcon(template.offer_type)}</span>
                     <div className="flex-1">
-                      <div className="font-medium text-dark-100">{template.name}</div>
-                      <div className="text-sm text-dark-400">
+                      <div className="text-dark-100 font-medium">{template.name}</div>
+                      <div className="text-dark-400 text-sm">
                         {template.discount_percent > 0 &&
                           t('admin.promoOffers.send.discountLabel', {
                             percent: template.discount_percent,
@@ -287,8 +287,8 @@ export default function AdminPromoOfferSend() {
           </div>
 
           {/* Send Mode */}
-          <div className="rounded-xl border border-dark-700 bg-dark-800 p-6">
-            <label id="po-sendmode-label" className="mb-2 block text-sm font-medium text-dark-300">
+          <div className="border-dark-700 bg-dark-800 rounded-xl border p-6">
+            <label id="po-sendmode-label" className="text-dark-300 mb-2 block text-sm font-medium">
               {t('admin.promoOffers.send.sendTo')}
               <span className="text-error-400">*</span>
             </label>
@@ -339,18 +339,18 @@ export default function AdminPromoOfferSend() {
               <div ref={searchRef} className="relative">
                 {selectedUser ? (
                   // Selected user display
-                  <div className="flex items-center justify-between gap-2 rounded-lg border border-accent-500 bg-accent-500/10 px-3 py-2.5">
+                  <div className="border-accent-500 bg-accent-500/10 flex items-center justify-between gap-2 rounded-lg border px-3 py-2.5">
                     <div className="flex min-w-0 items-center gap-3">
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-dark-600">
+                      <div className="bg-dark-600 flex h-8 w-8 shrink-0 items-center justify-center rounded-full">
                         <UserIcon />
                       </div>
                       <div className="min-w-0">
-                        <div className="truncate text-sm font-medium text-dark-100">
+                        <div className="text-dark-100 truncate text-sm font-medium">
                           {selectedUser.full_name ||
                             selectedUser.username ||
                             `ID: ${selectedUser.telegram_id}`}
                         </div>
-                        <div className="truncate text-xs text-dark-400">
+                        <div className="text-dark-400 truncate text-xs">
                           {selectedUser.username && `@${selectedUser.username} · `}
                           Telegram: {selectedUser.telegram_id}
                         </div>
@@ -358,7 +358,7 @@ export default function AdminPromoOfferSend() {
                     </div>
                     <button
                       onClick={handleClearUser}
-                      className="shrink-0 rounded-lg p-1.5 text-dark-400 transition-colors hover:bg-dark-600 hover:text-dark-100"
+                      className="text-dark-400 hover:bg-dark-600 hover:text-dark-100 shrink-0 rounded-lg p-1.5 transition-colors"
                     >
                       <CloseIcon className="h-4 w-4" />
                     </button>
@@ -367,7 +367,7 @@ export default function AdminPromoOfferSend() {
                   // Search input
                   <>
                     <div className="relative">
-                      <div className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-dark-400">
+                      <div className="text-dark-400 pointer-events-none absolute top-1/2 left-3 -translate-y-1/2">
                         <SearchIcon className="h-4 w-4" />
                       </div>
                       <input
@@ -382,43 +382,43 @@ export default function AdminPromoOfferSend() {
                         className="input pl-10"
                       />
                       {isSearching && (
-                        <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                          <div className="h-4 w-4 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+                        <div className="absolute top-1/2 right-3 -translate-y-1/2">
+                          <div className="border-accent-500 h-4 w-4 animate-spin rounded-full border-2 border-t-transparent" />
                         </div>
                       )}
                     </div>
 
                     {/* Dropdown results */}
                     {showDropdown && searchQuery.length >= 2 && (
-                      <div className="absolute left-0 right-0 top-full z-50 mt-1 max-h-64 overflow-y-auto rounded-lg border border-dark-600 bg-dark-800 shadow-xl">
+                      <div className="border-dark-600 bg-dark-800 absolute top-full right-0 left-0 z-50 mt-1 max-h-64 overflow-y-auto rounded-lg border shadow-xl">
                         {filteredUsers.length > 0 ? (
                           filteredUsers.map((user) => (
                             <button
                               key={user.id}
                               onClick={() => handleSelectUser(user)}
-                              className="flex w-full items-center gap-3 px-3 py-2.5 text-left transition-colors hover:bg-dark-700"
+                              className="hover:bg-dark-700 flex w-full items-center gap-3 px-3 py-2.5 text-left transition-colors"
                             >
-                              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-dark-600">
+                              <div className="bg-dark-600 flex h-8 w-8 shrink-0 items-center justify-center rounded-full">
                                 <UserIcon />
                               </div>
                               <div className="min-w-0 flex-1">
-                                <div className="truncate text-sm font-medium text-dark-100">
+                                <div className="text-dark-100 truncate text-sm font-medium">
                                   {user.full_name || user.username || `User #${user.id}`}
                                 </div>
-                                <div className="truncate text-xs text-dark-400">
+                                <div className="text-dark-400 truncate text-xs">
                                   {user.username && `@${user.username} · `}
                                   Telegram: {user.telegram_id}
                                 </div>
                               </div>
                               {user.has_subscription && (
-                                <span className="flex-shrink-0 rounded bg-success-500/20 px-1.5 py-0.5 text-xs text-success-400">
+                                <span className="bg-success-500/20 text-success-400 shrink-0 rounded px-1.5 py-0.5 text-xs">
                                   {t('admin.promoOffers.send.hasSubscription')}
                                 </span>
                               )}
                             </button>
                           ))
                         ) : !isSearching ? (
-                          <div className="px-3 py-4 text-center text-sm text-dark-400">
+                          <div className="text-dark-400 px-3 py-4 text-center text-sm">
                             {t('admin.promoOffers.send.noUsersFound')}
                           </div>
                         ) : null}
@@ -432,16 +432,16 @@ export default function AdminPromoOfferSend() {
 
           {/* Preview */}
           {selectedTemplate && (
-            <div className="rounded-xl border border-dark-700 bg-dark-800 p-6">
-              <h4 className="mb-2 text-sm font-medium text-dark-300">
+            <div className="border-dark-700 bg-dark-800 rounded-xl border p-6">
+              <h4 className="text-dark-300 mb-2 text-sm font-medium">
                 {t('admin.promoOffers.send.preview')}
               </h4>
-              <div className="rounded-lg bg-dark-700/50 p-4">
-                <div className="whitespace-pre-wrap text-sm text-dark-200">
+              <div className="bg-dark-700/50 rounded-lg p-4">
+                <div className="text-dark-200 text-sm whitespace-pre-wrap">
                   {selectedTemplate.message_text}
                 </div>
                 <div className="mt-4">
-                  <span className="inline-block rounded-lg bg-accent-500 px-4 py-2 text-sm text-on-accent">
+                  <span className="bg-accent-500 text-on-accent inline-block rounded-lg px-4 py-2 text-sm">
                     {selectedTemplate.button_text}
                   </span>
                 </div>

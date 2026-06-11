@@ -53,10 +53,10 @@ export default function InsufficientBalancePrompt({
   if (compact) {
     return (
       <div
-        className={`flex items-center justify-between gap-3 rounded-xl border border-error-500/30 bg-error-500/10 p-3 ${className}`}
+        className={`border-error-500/30 bg-error-500/10 flex items-center justify-between gap-3 rounded-xl border p-3 ${className}`}
       >
-        <div className="flex items-center gap-2 text-sm text-error-400">
-          <InfoIcon className="h-4 w-4 flex-shrink-0" />
+        <div className="text-error-400 flex items-center gap-2 text-sm">
+          <InfoIcon className="h-4 w-4 shrink-0" />
           <span>
             {message || t('balance.insufficientFunds')}:{' '}
             <span className="font-semibold">
@@ -67,7 +67,7 @@ export default function InsufficientBalancePrompt({
         <button
           onClick={handleTopUpClick}
           disabled={isPreparingTopUp}
-          className="btn-primary whitespace-nowrap px-3 py-1.5 text-xs"
+          className="btn-primary px-3 py-1.5 text-xs whitespace-nowrap"
         >
           {isPreparingTopUp ? (
             <span className="h-3 w-3 animate-spin rounded-full border border-white/30 border-t-white" />
@@ -81,17 +81,17 @@ export default function InsufficientBalancePrompt({
 
   return (
     <div
-      className={`rounded-xl border border-error-500/30 bg-gradient-to-br from-error-500/10 to-warning-500/5 p-4 ${className}`}
+      className={`border-error-500/30 from-error-500/10 to-warning-500/5 rounded-xl border bg-linear-to-br p-4 ${className}`}
     >
       <div className="flex items-start gap-3">
-        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-error-500/20">
-          <WalletIcon className="h-5 w-5 text-error-400" />
+        <div className="bg-error-500/20 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl">
+          <WalletIcon className="text-error-400 h-5 w-5" />
         </div>
         <div className="min-w-0 flex-1">
-          <div className="mb-1 font-medium text-error-400">{t('balance.insufficientFunds')}</div>
-          <div className="text-sm text-dark-300">{message || t('balance.topUpToComplete')}</div>
+          <div className="text-error-400 mb-1 font-medium">{t('balance.insufficientFunds')}</div>
+          <div className="text-dark-300 text-sm">{message || t('balance.topUpToComplete')}</div>
           <div className="mt-3 flex items-center gap-3">
-            <div className="text-lg font-bold text-dark-100">
+            <div className="text-dark-100 text-lg font-bold">
               {t('balance.missing')}:{' '}
               <span className="text-error-400">
                 {displayAmount} {currencySymbol}

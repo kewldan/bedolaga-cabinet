@@ -1,13 +1,11 @@
 import { useRef, useEffect } from 'react';
 
 /**
- * Reads the current --color-accent-400 CSS variable and returns [r, g, b].
+ * Reads the current --rt-accent-400 CSS variable and returns [r, g, b].
  * Falls back to [96, 165, 250] (default blue accent).
  */
 function getAccentRGB(): [number, number, number] {
-  const raw = getComputedStyle(document.documentElement)
-    .getPropertyValue('--color-accent-400')
-    .trim();
+  const raw = getComputedStyle(document.documentElement).getPropertyValue('--rt-accent-400').trim();
   if (!raw) return [96, 165, 250];
   const parts = raw.split(',').map((s) => parseInt(s.trim(), 10));
   if (parts.length >= 3 && parts.every((n) => !isNaN(n))) {

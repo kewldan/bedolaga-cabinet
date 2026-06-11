@@ -87,7 +87,7 @@ function LoadingSkeleton() {
   return (
     <div className="flex min-h-dvh items-center justify-center">
       <div className="flex flex-col items-center gap-4">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-dark-600 border-t-accent-500" />
+        <div className="border-dark-600 border-t-accent-500 h-8 w-8 animate-spin rounded-full border-2" />
       </div>
     </div>
   );
@@ -99,11 +99,11 @@ function ErrorState({ message }: { message: string }) {
   return (
     <div className="flex min-h-dvh items-center justify-center px-4">
       <div className="flex max-w-sm flex-col items-center gap-4 text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-error-500/10">
-          <WarningCircleIcon className="h-8 w-8 text-error-400" />
+        <div className="bg-error-500/10 flex h-16 w-16 items-center justify-center rounded-full">
+          <WarningCircleIcon className="text-error-400 h-8 w-8" />
         </div>
-        <h2 className="text-lg font-semibold text-dark-50">{t('gift.failedTitle')}</h2>
-        <p className="text-sm text-dark-300">{message}</p>
+        <h2 className="text-dark-50 text-lg font-semibold">{t('gift.failedTitle')}</h2>
+        <p className="text-dark-300 text-sm">{message}</p>
       </div>
     </div>
   );
@@ -121,11 +121,11 @@ function DisabledState() {
   return (
     <div className="flex min-h-dvh items-center justify-center px-4">
       <div className="flex max-w-sm flex-col items-center gap-4 text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-dark-800/50">
-          <BanIcon className="h-8 w-8 text-dark-400" />
+        <div className="bg-dark-800/50 flex h-16 w-16 items-center justify-center rounded-full">
+          <BanIcon className="text-dark-400 h-8 w-8" />
         </div>
-        <h2 className="text-lg font-semibold text-dark-50">{t('gift.featureDisabled')}</h2>
-        <p className="text-sm text-dark-300">{t('gift.redirecting')}</p>
+        <h2 className="text-dark-50 text-lg font-semibold">{t('gift.featureDisabled')}</h2>
+        <p className="text-dark-300 text-sm">{t('gift.redirecting')}</p>
       </div>
     </div>
   );
@@ -172,10 +172,10 @@ function TariffCard({
 
       {/* Info */}
       <div className="min-w-0 flex-1">
-        <p className="text-base font-bold text-dark-50">{tariff.name}</p>
+        <p className="text-dark-50 text-base font-bold">{tariff.name}</p>
         <p
           className={cn(
-            'text-xs font-medium uppercase tracking-wider transition-colors',
+            'text-xs font-medium tracking-wider uppercase transition-colors',
             isSelected ? 'text-accent-400' : 'text-dark-400',
           )}
         >
@@ -220,7 +220,7 @@ function PeriodCard({
       className={cn(
         'flex w-full items-center justify-between rounded-2xl p-4 transition-all duration-200',
         isSelected
-          ? 'bg-gradient-to-r from-accent-500 to-accent-600 text-white shadow-lg shadow-accent-500/25'
+          ? 'from-accent-500 to-accent-600 shadow-accent-500/25 bg-linear-to-r text-white shadow-lg'
           : 'bg-dark-800/50 hover:bg-dark-700/50',
       )}
     >
@@ -231,7 +231,7 @@ function PeriodCard({
           <span
             className={cn(
               'rounded-md px-2 py-0.5 text-xs font-bold',
-              isSelected ? 'bg-white/20 text-on-accent' : 'bg-accent-500/20 text-accent-400',
+              isSelected ? 'text-on-accent bg-white/20' : 'bg-accent-500/20 text-accent-400',
             )}
           >
             -{period.discount_percent}%
@@ -271,7 +271,7 @@ function PaymentModeToggle({
     <div
       role="group"
       aria-label={t('gift.paymentMode')}
-      className="flex rounded-xl bg-dark-800/50 p-1"
+      className="bg-dark-800/50 flex rounded-xl p-1"
     >
       <button
         type="button"
@@ -335,14 +335,14 @@ function PaymentMethodCard({
         className="flex w-full items-center gap-4 p-4 text-start"
       >
         {method.icon_url && (
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-dark-800/50">
+          <div className="bg-dark-800/50 flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl">
             <img src={method.icon_url} alt="" className="h-6 w-6 object-contain" />
           </div>
         )}
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-medium text-dark-100">{method.display_name}</p>
+          <p className="text-dark-100 text-sm font-medium">{method.display_name}</p>
           {method.description && (
-            <p className="mt-0.5 truncate text-xs text-dark-400">{method.description}</p>
+            <p className="text-dark-400 mt-0.5 truncate text-xs">{method.description}</p>
           )}
         </div>
         <div
@@ -356,7 +356,7 @@ function PaymentMethodCard({
       </button>
 
       {isSelected && hasSubOptions && (
-        <div className="border-t border-dark-800/30 px-4 pb-4 pt-3">
+        <div className="border-dark-800/30 border-t px-4 pt-3 pb-4">
           <div className="flex flex-wrap gap-2">
             {method.sub_options!.map((opt) => (
               <button
@@ -366,7 +366,7 @@ function PaymentMethodCard({
                 className={cn(
                   'rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200',
                   selectedSubOption === opt.id
-                    ? 'bg-accent-500 text-on-accent shadow-sm shadow-accent-500/25'
+                    ? 'bg-accent-500 text-on-accent shadow-accent-500/25 shadow-sm'
                     : 'bg-dark-800/50 text-dark-300 hover:bg-dark-700/50',
                 )}
               >
@@ -544,7 +544,7 @@ function BuyTabContent({
       {/* Tariff selection */}
       {showTariffCards && (
         <div>
-          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-dark-400">
+          <h2 className="text-dark-400 mb-3 text-xs font-semibold tracking-wider uppercase">
             {t('gift.selectTariff')}
           </h2>
           <div role="radiogroup" aria-label={t('gift.chooseTariff')} className="space-y-2">
@@ -562,22 +562,22 @@ function BuyTabContent({
 
       {/* Selected tariff description */}
       {selectedTariff?.description && (
-        <div className="rounded-xl border border-dark-800/30 bg-dark-800/20 px-4 py-3">
-          <p className="text-sm text-dark-300">{selectedTariff.description}</p>
+        <div className="border-dark-800/30 bg-dark-800/20 rounded-xl border px-4 py-3">
+          <p className="text-dark-300 text-sm">{selectedTariff.description}</p>
         </div>
       )}
 
       {/* Promo group banner */}
       {config.promo_group_name && (
-        <div className="flex items-center gap-3 rounded-xl border border-success-500/30 bg-success-500/10 p-3">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-success-500/20">
-            <SparklesIcon className="h-4 w-4 text-success-400" />
+        <div className="border-success-500/30 bg-success-500/10 flex items-center gap-3 rounded-xl border p-3">
+          <div className="bg-success-500/20 flex h-8 w-8 shrink-0 items-center justify-center rounded-full">
+            <SparklesIcon className="text-success-400 h-4 w-4" />
           </div>
           <div>
-            <div className="text-sm font-medium text-success-400">
+            <div className="text-success-400 text-sm font-medium">
               {t('subscription.promoGroup.yourGroup', { name: config.promo_group_name })}
             </div>
-            <div className="text-xs text-dark-400">
+            <div className="text-dark-400 text-xs">
               {t('subscription.promoGroup.personalDiscountsApplied')}
             </div>
           </div>
@@ -586,11 +586,11 @@ function BuyTabContent({
 
       {/* Active discount banner */}
       {config.active_discount_percent != null && config.active_discount_percent > 0 && (
-        <div className="flex items-center gap-3 rounded-xl border border-warning-500/30 bg-warning-500/10 p-3">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-warning-500/20">
-            <SparklesIcon className="h-4 w-4 text-warning-400" />
+        <div className="border-warning-500/30 bg-warning-500/10 flex items-center gap-3 rounded-xl border p-3">
+          <div className="bg-warning-500/20 flex h-8 w-8 shrink-0 items-center justify-center rounded-full">
+            <SparklesIcon className="text-warning-400 h-4 w-4" />
           </div>
-          <div className="text-sm font-medium text-warning-400">
+          <div className="text-warning-400 text-sm font-medium">
             {t('promo.discountApplied')} -{config.active_discount_percent}%
           </div>
         </div>
@@ -599,7 +599,7 @@ function BuyTabContent({
       {/* Period selection */}
       {periodsForDisplay.length > 0 && (
         <div>
-          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-dark-400">
+          <h2 className="text-dark-400 mb-3 text-xs font-semibold tracking-wider uppercase">
             {t('gift.selectPeriod')}
           </h2>
           <div className="space-y-2">
@@ -617,7 +617,7 @@ function BuyTabContent({
 
       {/* Payment mode toggle */}
       <div>
-        <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-dark-400">
+        <h2 className="text-dark-400 mb-3 text-xs font-semibold tracking-wider uppercase">
           {t('gift.paymentMode')}
         </h2>
         <PaymentModeToggle
@@ -662,10 +662,10 @@ function BuyTabContent({
 
       {/* Summary / Balance info */}
       {paymentMode === 'balance' && (
-        <div className="rounded-2xl border border-dark-800/50 bg-dark-900/50 p-4">
+        <div className="border-dark-800/50 bg-dark-900/50 rounded-2xl border p-4">
           <div className="flex items-center justify-between">
-            <span className="text-sm text-dark-400">{t('gift.yourBalance')}</span>
-            <span className="text-sm font-semibold text-dark-200">
+            <span className="text-dark-400 text-sm">{t('gift.yourBalance')}</span>
+            <span className="text-dark-200 text-sm font-semibold">
               {formatPrice(config.balance_kopeks)}
             </span>
           </div>
@@ -679,13 +679,13 @@ function BuyTabContent({
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="rounded-xl border border-warning-500/20 bg-warning-500/5 p-3"
+            className="border-warning-500/20 bg-warning-500/5 rounded-xl border p-3"
           >
-            <p className="text-sm text-warning-400">
+            <p className="text-warning-400 text-sm">
               {t('gift.insufficientBalance')}{' '}
               <Link
                 to="/balance"
-                className="font-medium text-accent-400 underline underline-offset-2"
+                className="text-accent-400 font-medium underline underline-offset-2"
               >
                 {t('gift.topUpBalance')}
               </Link>
@@ -701,9 +701,9 @@ function BuyTabContent({
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="rounded-xl border border-error-500/20 bg-error-500/5 p-3"
+            className="border-error-500/20 bg-error-500/5 rounded-xl border p-3"
           >
-            <p className="text-sm text-error-400">{submitError}</p>
+            <p className="text-error-400 text-sm">{submitError}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -716,8 +716,8 @@ function BuyTabContent({
         className={cn(
           'flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 text-base font-semibold transition-all duration-200',
           canSubmit && !purchaseMutation.isPending
-            ? 'bg-accent-500 text-on-accent shadow-lg shadow-accent-500/25 hover:bg-accent-400 hover:shadow-accent-500/40 active:scale-[0.98]'
-            : 'cursor-not-allowed bg-dark-800 text-dark-500',
+            ? 'bg-accent-500 text-on-accent shadow-accent-500/25 hover:bg-accent-400 hover:shadow-accent-500/40 shadow-lg active:scale-[0.98]'
+            : 'bg-dark-800 text-dark-500 cursor-not-allowed',
         )}
       >
         {purchaseMutation.isPending ? (
@@ -771,11 +771,11 @@ function ActivateTabContent({ initialCode }: { initialCode?: string | null }) {
     const result = activateMutation.data;
     return (
       <div className="flex flex-col items-center gap-4 py-12 text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent-500/20">
-          <CheckCircleIcon className="h-8 w-8 text-accent-400" />
+        <div className="bg-accent-500/20 flex h-16 w-16 items-center justify-center rounded-full">
+          <CheckCircleIcon className="text-accent-400 h-8 w-8" />
         </div>
-        <h2 className="text-xl font-bold text-dark-50">{t('gift.activateSuccess')}</h2>
-        <p className="text-sm text-dark-300">
+        <h2 className="text-dark-50 text-xl font-bold">{t('gift.activateSuccess')}</h2>
+        <p className="text-dark-300 text-sm">
           {t('gift.activateSuccessDesc', {
             tariff: result.tariff_name ?? '',
             days: result.period_days ?? 0,
@@ -789,11 +789,11 @@ function ActivateTabContent({ initialCode }: { initialCode?: string | null }) {
     <div className="flex flex-col items-center gap-6 py-8">
       {/* Icon + title */}
       <div className="flex flex-col items-center gap-3 text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent-500/20">
-          <KeyIcon className="h-8 w-8 text-accent-400" />
+        <div className="bg-accent-500/20 flex h-16 w-16 items-center justify-center rounded-full">
+          <KeyIcon className="text-accent-400 h-8 w-8" />
         </div>
-        <h2 className="text-xl font-bold text-dark-50">{t('gift.activateTitle')}</h2>
-        <p className="max-w-xs text-sm text-dark-400">{t('gift.activateDescription')}</p>
+        <h2 className="text-dark-50 text-xl font-bold">{t('gift.activateTitle')}</h2>
+        <p className="text-dark-400 max-w-xs text-sm">{t('gift.activateDescription')}</p>
       </div>
 
       {/* Code input */}
@@ -806,7 +806,7 @@ function ActivateTabContent({ initialCode }: { initialCode?: string | null }) {
             setActivateError(null);
           }}
           placeholder={t('gift.activateCodePlaceholder')}
-          className="w-full rounded-2xl border border-dark-700/50 bg-dark-800/50 px-6 py-4 text-center font-mono text-sm text-dark-50 placeholder-dark-500 outline-none transition-colors focus:border-accent-500/50 focus:ring-1 focus:ring-accent-500/25"
+          className="border-dark-700/50 bg-dark-800/50 text-dark-50 placeholder-dark-500 focus:border-accent-500/50 focus:ring-accent-500/25 w-full rounded-2xl border px-6 py-4 text-center font-mono text-sm transition-colors outline-none focus:ring-1"
           aria-label={t('gift.activateTitle')}
         />
       </div>
@@ -818,9 +818,9 @@ function ActivateTabContent({ initialCode }: { initialCode?: string | null }) {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="w-full max-w-sm rounded-xl border border-error-500/20 bg-error-500/5 p-3"
+            className="border-error-500/20 bg-error-500/5 w-full max-w-sm rounded-xl border p-3"
           >
-            <p className="text-center text-sm text-error-400">{activateError}</p>
+            <p className="text-error-400 text-center text-sm">{activateError}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -833,8 +833,8 @@ function ActivateTabContent({ initialCode }: { initialCode?: string | null }) {
         className={cn(
           'w-full max-w-sm rounded-2xl px-6 py-4 text-base font-semibold transition-all duration-200',
           code.trim() && !activateMutation.isPending
-            ? 'bg-accent-500 text-on-accent shadow-lg shadow-accent-500/25 hover:bg-accent-400 active:scale-[0.98]'
-            : 'cursor-not-allowed bg-dark-800 text-dark-500',
+            ? 'bg-accent-500 text-on-accent shadow-accent-500/25 hover:bg-accent-400 shadow-lg active:scale-[0.98]'
+            : 'bg-dark-800 text-dark-500 cursor-not-allowed',
         )}
       >
         {activateMutation.isPending ? (
@@ -863,9 +863,9 @@ function CopiedToast({ onDismiss }: { onDismiss: () => void }) {
       transition={{ duration: 0.2, ease: 'easeOut' }}
       className="fixed inset-x-0 bottom-6 z-50 flex justify-center"
     >
-      <div className="flex items-center gap-2 rounded-full border border-dark-700/50 bg-dark-900/95 px-5 py-2.5 shadow-2xl shadow-black/40 backdrop-blur-md">
-        <CheckIcon className="h-4 w-4 text-success-400" />
-        <span className="text-sm font-medium text-success-400">{t('gift.shareToastCopied')}</span>
+      <div className="border-dark-700/50 bg-dark-900/95 flex items-center gap-2 rounded-full border px-5 py-2.5 shadow-2xl shadow-black/40 backdrop-blur-md">
+        <CheckIcon className="text-success-400 h-4 w-4" />
+        <span className="text-success-400 text-sm font-medium">{t('gift.shareToastCopied')}</span>
       </div>
     </motion.div>
   );
@@ -921,10 +921,10 @@ function SentGiftCard({ gift }: { gift: SentGift }) {
   const handleDismissToast = useCallback(() => setShowToast(false), []);
 
   return (
-    <div className="rounded-2xl border border-dark-800/50 bg-dark-900/50 p-4">
+    <div className="border-dark-800/50 bg-dark-900/50 rounded-2xl border p-4">
       {/* Header: tariff name + status badge */}
       <div className="mb-3 flex items-start justify-between">
-        <h3 className="text-base font-bold text-dark-50">{gift.tariff_name ?? t('gift.tariff')}</h3>
+        <h3 className="text-dark-50 text-base font-bold">{gift.tariff_name ?? t('gift.tariff')}</h3>
         <span
           className={cn(
             'rounded-lg px-2.5 py-1 text-xs font-bold',
@@ -940,7 +940,7 @@ function SentGiftCard({ gift }: { gift: SentGift }) {
       </div>
 
       {/* Info line */}
-      <p className="mb-3 text-xs text-dark-400">
+      <p className="text-dark-400 mb-3 text-xs">
         {formatGiftDate(gift.created_at)}
         {' \u2022 '}
         {gift.period_days} {t('gift.daysShort')}
@@ -952,8 +952,8 @@ function SentGiftCard({ gift }: { gift: SentGift }) {
       {!isActivated && (
         <>
           {/* Gift code display */}
-          <div className="mb-3 rounded-xl bg-dark-800/80 px-4 py-4 text-center">
-            <p className="font-mono text-base font-bold tracking-[0.15em] text-accent-400">
+          <div className="bg-dark-800/80 mb-3 rounded-xl px-4 py-4 text-center">
+            <p className="text-accent-400 font-mono text-base font-bold tracking-[0.15em]">
               {giftCode}
             </p>
           </div>
@@ -962,7 +962,7 @@ function SentGiftCard({ gift }: { gift: SentGift }) {
           <button
             type="button"
             onClick={handleShare}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent-500 px-4 py-3 text-sm font-bold uppercase tracking-wider text-on-accent transition-colors hover:bg-accent-400 active:scale-[0.98]"
+            className="bg-accent-500 text-on-accent hover:bg-accent-400 flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold tracking-wider uppercase transition-colors active:scale-[0.98]"
           >
             <ExportIcon className="h-4 w-4" />
             {t('gift.shareGift')}
@@ -972,14 +972,14 @@ function SentGiftCard({ gift }: { gift: SentGift }) {
 
       {/* Activated by */}
       {isActivated && gift.activated_by_username && (
-        <p className="mt-2 text-xs text-dark-500">
+        <p className="text-dark-500 mt-2 text-xs">
           {t('gift.activatedBy', { username: gift.activated_by_username })}
         </p>
       )}
 
       {/* Sent to */}
       {gift.gift_recipient_value && (
-        <p className="mt-1 text-xs text-dark-500">
+        <p className="text-dark-500 mt-1 text-xs">
           {t('gift.sentTo', { recipient: gift.gift_recipient_value })}
         </p>
       )}
@@ -1002,17 +1002,17 @@ function ReceivedGiftCard({ gift }: { gift: ReceivedGift }) {
   const statusText = t(statusKey);
 
   return (
-    <div className="rounded-2xl border border-dark-800/50 bg-dark-900/50 p-4">
+    <div className="border-dark-800/50 bg-dark-900/50 rounded-2xl border p-4">
       {/* Header */}
       <div className="mb-3 flex items-start justify-between">
-        <h3 className="text-base font-bold text-dark-50">{gift.tariff_name ?? t('gift.tariff')}</h3>
-        <span className="rounded-lg bg-dark-700 px-2.5 py-1 text-xs font-bold text-dark-400">
+        <h3 className="text-dark-50 text-base font-bold">{gift.tariff_name ?? t('gift.tariff')}</h3>
+        <span className="bg-dark-700 text-dark-400 rounded-lg px-2.5 py-1 text-xs font-bold">
           {statusText}
         </span>
       </div>
 
       {/* Info line */}
-      <p className="mb-2 text-xs text-dark-400">
+      <p className="text-dark-400 mb-2 text-xs">
         {formatGiftDate(gift.created_at)}
         {' \u2022 '}
         {gift.period_days} {t('gift.daysShort')}
@@ -1022,15 +1022,15 @@ function ReceivedGiftCard({ gift }: { gift: ReceivedGift }) {
 
       {/* Sender */}
       {gift.sender_display && (
-        <p className="text-xs text-dark-500">
+        <p className="text-dark-500 text-xs">
           {t('gift.pending.from', { sender: gift.sender_display })}
         </p>
       )}
 
       {/* Gift message */}
       {gift.gift_message && (
-        <div className="mt-2 rounded-xl bg-dark-800/50 p-3">
-          <p className="text-xs italic text-dark-300">{gift.gift_message}</p>
+        <div className="bg-dark-800/50 mt-2 rounded-xl p-3">
+          <p className="text-dark-300 text-xs italic">{gift.gift_message}</p>
         </div>
       )}
     </div>
@@ -1080,7 +1080,7 @@ function MyGiftsTabContent() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-16">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-dark-600 border-t-accent-500" />
+        <div className="border-dark-600 border-t-accent-500 h-8 w-8 animate-spin rounded-full border-2" />
       </div>
     );
   }
@@ -1088,7 +1088,7 @@ function MyGiftsTabContent() {
   if (sentError || receivedError) {
     return (
       <div className="flex flex-col items-center gap-4 py-12 text-center">
-        <p className="text-sm text-error-400">{t('gift.failedDesc')}</p>
+        <p className="text-error-400 text-sm">{t('gift.failedDesc')}</p>
       </div>
     );
   }
@@ -1096,11 +1096,11 @@ function MyGiftsTabContent() {
   if (isEmpty) {
     return (
       <div className="flex flex-col items-center gap-4 py-12 text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-dark-800/50">
-          <InboxIcon className="h-8 w-8 text-dark-400" />
+        <div className="bg-dark-800/50 flex h-16 w-16 items-center justify-center rounded-full">
+          <InboxIcon className="text-dark-400 h-8 w-8" />
         </div>
-        <h2 className="text-lg font-semibold text-dark-200">{t('gift.myGiftsEmpty')}</h2>
-        <p className="max-w-xs text-sm text-dark-400">{t('gift.myGiftsEmptyDesc')}</p>
+        <h2 className="text-dark-200 text-lg font-semibold">{t('gift.myGiftsEmpty')}</h2>
+        <p className="text-dark-400 max-w-xs text-sm">{t('gift.myGiftsEmptyDesc')}</p>
       </div>
     );
   }
@@ -1110,7 +1110,7 @@ function MyGiftsTabContent() {
       {/* Active gifts (awaiting activation) */}
       {hasActive && (
         <div>
-          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-dark-400">
+          <h2 className="text-dark-400 mb-3 text-xs font-semibold tracking-wider uppercase">
             {t('gift.activeGiftsTitle')}
           </h2>
           <div className="space-y-3">
@@ -1124,7 +1124,7 @@ function MyGiftsTabContent() {
       {/* Activated gifts */}
       {hasActivated && (
         <div>
-          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-dark-400">
+          <h2 className="text-dark-400 mb-3 text-xs font-semibold tracking-wider uppercase">
             {t('gift.activatedGiftsTitle')}
           </h2>
           <div className="space-y-3">
@@ -1138,7 +1138,7 @@ function MyGiftsTabContent() {
       {/* Received gifts */}
       {hasReceived && (
         <div>
-          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-dark-400">
+          <h2 className="text-dark-400 mb-3 text-xs font-semibold tracking-wider uppercase">
             {t('gift.receivedGiftsTitle')}
           </h2>
           <div className="space-y-3">
@@ -1217,10 +1217,10 @@ export default function GiftSubscription() {
           transition={{ duration: 0.4 }}
           className="mb-6 flex items-center gap-3"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent-500/20">
-            <GiftIcon className="h-5 w-5 text-accent-400" />
+          <div className="bg-accent-500/20 flex h-10 w-10 items-center justify-center rounded-full">
+            <GiftIcon className="text-accent-400 h-5 w-5" />
           </div>
-          <h1 className="text-2xl font-bold text-dark-50">{t('gift.pageTitle')}</h1>
+          <h1 className="text-dark-50 text-2xl font-bold">{t('gift.pageTitle')}</h1>
         </motion.div>
 
         {/* Tab bar */}
@@ -1228,7 +1228,7 @@ export default function GiftSubscription() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.05 }}
-          className="mb-6 rounded-2xl bg-dark-800/50 p-1"
+          className="bg-dark-800/50 mb-6 rounded-2xl p-1"
         >
           <div className="flex" role="tablist" aria-label={t('gift.pageTitle')}>
             {tabs.map((tab) => (

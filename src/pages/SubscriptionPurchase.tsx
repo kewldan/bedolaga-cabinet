@@ -100,7 +100,7 @@ export default function SubscriptionPurchase() {
   if (isLoading || optionsLoading) {
     return (
       <div className="flex min-h-64 items-center justify-center">
-        <div className="h-10 w-10 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+        <div className="border-accent-500 h-10 w-10 animate-spin rounded-full border-2 border-t-transparent" />
       </div>
     );
   }
@@ -108,7 +108,7 @@ export default function SubscriptionPurchase() {
   if (optionsError || (!purchaseOptions && !optionsLoading)) {
     return (
       <div className="space-y-6">
-        <h1 className="text-2xl font-bold text-dark-50 sm:text-3xl">{t('subscription.extend')}</h1>
+        <h1 className="text-dark-50 text-2xl font-bold sm:text-3xl">{t('subscription.extend')}</h1>
         <div
           className="rounded-3xl p-6 text-center"
           style={{
@@ -116,12 +116,12 @@ export default function SubscriptionPurchase() {
             border: `1px solid ${g.cardBorder}`,
           }}
         >
-          <p className="mb-4 text-dark-300">
+          <p className="text-dark-300 mb-4">
             {t('subscription.loadError', 'Не удалось загрузить варианты подписки')}
           </p>
           <button
             onClick={() => refetchOptions()}
-            className="rounded-xl bg-accent-500 px-6 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600"
+            className="bg-accent-500 text-on-accent hover:bg-accent-600 rounded-xl px-6 py-2 text-sm font-medium transition-colors"
           >
             {t('common.retry')}
           </button>
@@ -137,7 +137,7 @@ export default function SubscriptionPurchase() {
         <WebBackButton
           to={subscriptionId ? `/subscriptions/${subscriptionId}` : '/subscriptions'}
         />
-        <h1 className="text-2xl font-bold text-dark-50 sm:text-3xl">
+        <h1 className="text-dark-50 text-2xl font-bold sm:text-3xl">
           {isMultiTariff && !subscriptionId
             ? t('subscription.newTariff', 'Новый тариф')
             : !isMultiTariff && subscription?.is_daily && !subscription?.is_trial
@@ -171,16 +171,16 @@ export default function SubscriptionPurchase() {
                 className="mb-6 rounded-[14px] p-4"
                 style={{
                   background:
-                    'linear-gradient(135deg, rgba(255,184,0,0.08), rgba(var(--color-accent-400),0.06))',
+                    'linear-gradient(135deg, rgba(255,184,0,0.08), rgba(var(--rt-accent-400),0.06))',
                   border: '1px solid rgba(255,184,0,0.15)',
                 }}
               >
                 <div className="flex items-start gap-3">
                   <div
-                    className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-[10px]"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px]"
                     style={{
                       background: 'rgba(255,184,0,0.12)',
-                      color: 'rgb(var(--color-urgent-400))',
+                      color: 'rgb(var(--rt-urgent-400))',
                     }}
                   >
                     <SparklesIcon className="h-4 w-4" />
@@ -188,11 +188,11 @@ export default function SubscriptionPurchase() {
                   <div>
                     <div
                       className="text-sm font-semibold"
-                      style={{ color: 'rgb(var(--color-urgent-400))' }}
+                      style={{ color: 'rgb(var(--rt-urgent-400))' }}
                     >
                       {t('subscription.trialUpgrade.title')}
                     </div>
-                    <div className="mt-1 text-[12px] text-dark-50/40">
+                    <div className="text-dark-50/40 mt-1 text-[12px]">
                       {t('subscription.trialUpgrade.description')}
                     </div>
                   </div>
@@ -214,10 +214,10 @@ export default function SubscriptionPurchase() {
               >
                 <div className="flex items-start gap-3">
                   <div
-                    className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-[10px]"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px]"
                     style={{
                       background: 'rgba(255,59,92,0.12)',
-                      color: 'rgb(var(--color-critical-500))',
+                      color: 'rgb(var(--rt-critical-500))',
                     }}
                   >
                     <ExclamationIcon className="h-4 w-4" />
@@ -225,11 +225,11 @@ export default function SubscriptionPurchase() {
                   <div>
                     <div
                       className="text-sm font-semibold"
-                      style={{ color: 'rgb(var(--color-critical-500))' }}
+                      style={{ color: 'rgb(var(--rt-critical-500))' }}
                     >
                       {t('subscription.expiredBanner.title')}
                     </div>
-                    <div className="mt-1 text-[12px] text-dark-50/40">
+                    <div className="text-dark-50/40 mt-1 text-[12px]">
                       {t('subscription.expiredBanner.selectTariff')}
                     </div>
                   </div>
@@ -239,14 +239,14 @@ export default function SubscriptionPurchase() {
 
           {/* Legacy subscription notice */}
           {subscription && !subscription.is_trial && !subscription.tariff_id && (
-            <div className="mb-6 rounded-xl border border-accent-500/30 bg-accent-500/10 p-4">
-              <div className="mb-2 font-medium text-accent-400">
+            <div className="border-accent-500/30 bg-accent-500/10 mb-6 rounded-xl border p-4">
+              <div className="text-accent-400 mb-2 font-medium">
                 {t('subscription.legacy.selectTariffTitle')}
               </div>
-              <div className="text-sm text-dark-300">
+              <div className="text-dark-300 text-sm">
                 {t('subscription.legacy.selectTariffDescription')}
               </div>
-              <div className="mt-2 text-xs text-dark-500">
+              <div className="text-dark-500 mt-2 text-xs">
                 {t('subscription.legacy.currentSubContinues')}
               </div>
             </div>
@@ -317,12 +317,12 @@ export default function SubscriptionPurchase() {
               border: `1px solid ${g.cardBorder}`,
             }}
           >
-            <p className="mb-4 text-dark-300">
+            <p className="text-dark-300 mb-4">
               {t('subscription.noOptionsAvailable', 'Нет доступных вариантов подписки')}
             </p>
             <button
               onClick={() => refetchOptions()}
-              className="rounded-xl bg-accent-500 px-6 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600"
+              className="bg-accent-500 text-on-accent hover:bg-accent-600 rounded-xl px-6 py-2 text-sm font-medium transition-colors"
             >
               {t('common.retry')}
             </button>

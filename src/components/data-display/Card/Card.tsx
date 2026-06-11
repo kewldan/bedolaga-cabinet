@@ -10,7 +10,7 @@ const cardVariants = cva(
   [
     'relative overflow-hidden',
     'border border-dark-700/40 bg-dark-900/70',
-    'rounded-[var(--bento-radius)]',
+    'rounded-(--bento-radius)',
     'transition-[border-color,background-color,box-shadow,transform,opacity] duration-200',
     // Glass border inset
     'shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]',
@@ -135,7 +135,7 @@ export type CardTitleProps = HTMLAttributes<HTMLHeadingElement>;
 
 export const CardTitle = forwardRef<HTMLHeadingElement, CardTitleProps>(
   ({ className, ...props }, ref) => (
-    <h3 ref={ref} className={cn('text-lg font-semibold text-dark-100', className)} {...props} />
+    <h3 ref={ref} className={cn('text-dark-100 text-lg font-semibold', className)} {...props} />
   ),
 );
 
@@ -146,7 +146,7 @@ export type CardDescriptionProps = HTMLAttributes<HTMLParagraphElement>;
 
 export const CardDescription = forwardRef<HTMLParagraphElement, CardDescriptionProps>(
   ({ className, ...props }, ref) => (
-    <p ref={ref} className={cn('text-sm text-dark-400', className)} {...props} />
+    <p ref={ref} className={cn('text-dark-400 text-sm', className)} {...props} />
   ),
 );
 

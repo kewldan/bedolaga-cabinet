@@ -102,9 +102,9 @@ function ProgressBar({ loading }: { loading: boolean }) {
   if (!visible) return null;
 
   return (
-    <div className="absolute left-0 right-0 top-0 z-50 h-0.5 overflow-hidden rounded-full bg-dark-700/50">
+    <div className="bg-dark-700/50 absolute top-0 right-0 left-0 z-50 h-0.5 overflow-hidden rounded-full">
       <div
-        className="h-full rounded-full bg-gradient-to-r from-accent-500 to-accent-400 transition-all duration-200 ease-out"
+        className="from-accent-500 to-accent-400 h-full rounded-full bg-linear-to-r transition-all duration-200 ease-out"
         style={{ width: `${progress}%` }}
       />
     </div>
@@ -571,7 +571,7 @@ export default function AdminBulkActions() {
                 className={cn(
                   'flex h-5 w-5 items-center justify-center rounded-md border-2 transition-all duration-150',
                   table.getIsAllRowsSelected()
-                    ? 'border-accent-500 bg-accent-500 shadow-[0_0_8px_rgba(var(--color-accent-500),0.4)]'
+                    ? 'border-accent-500 bg-accent-500 shadow-[0_0_8px_rgba(var(--rt-accent-500),0.4)]'
                     : table.getIsSomeRowsSelected()
                       ? 'border-accent-500 bg-accent-500/30'
                       : 'border-dark-500 bg-dark-700/60 hover:border-accent-500/50 hover:bg-dark-600/60',
@@ -616,7 +616,7 @@ export default function AdminBulkActions() {
                 className={cn(
                   'flex h-5 w-5 items-center justify-center rounded-md border-2 transition-all duration-150',
                   row.getIsSelected()
-                    ? 'border-accent-500 bg-accent-500 shadow-[0_0_8px_rgba(var(--color-accent-500),0.4)]'
+                    ? 'border-accent-500 bg-accent-500 shadow-[0_0_8px_rgba(var(--rt-accent-500),0.4)]'
                     : 'border-dark-500 bg-dark-700/60 hover:border-accent-500/50 hover:bg-dark-600/60',
                 )}
                 aria-label={
@@ -651,7 +651,7 @@ export default function AdminBulkActions() {
                     e.stopPropagation();
                     toggleExpandRow(user.id);
                   }}
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent-500 to-accent-700 transition-transform"
+                  className="from-accent-500 to-accent-700 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-linear-to-br transition-transform"
                   aria-label={
                     isExpanded
                       ? t('admin.bulkActions.collapseSubscriptions')
@@ -662,22 +662,22 @@ export default function AdminBulkActions() {
                   <ChevronExpandIcon expanded={isExpanded} />
                 </button>
               ) : (
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent-500 to-accent-700 text-[10px] font-medium text-white">
+                <div className="from-accent-500 to-accent-700 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-linear-to-br text-[10px] font-medium text-white">
                   {user.first_name?.[0] || user.username?.[0] || '?'}
                 </div>
               )}
               <div className="min-w-0">
                 <div className="flex items-center gap-1.5">
-                  <span className="truncate text-xs font-medium text-dark-100">
+                  <span className="text-dark-100 truncate text-xs font-medium">
                     {user.full_name}
                   </span>
                   {canExpand && (
-                    <span className="shrink-0 rounded-md bg-dark-700/60 px-1.5 py-0.5 text-[9px] font-medium tabular-nums text-dark-400">
+                    <span className="bg-dark-700/60 text-dark-400 shrink-0 rounded-md px-1.5 py-0.5 text-[9px] font-medium tabular-nums">
                       {subCount}
                     </span>
                   )}
                 </div>
-                <div className="truncate text-[10px] leading-tight text-dark-500">
+                <div className="text-dark-500 truncate text-[10px] leading-tight">
                   {user.username ? `@${user.username}` : `ID: ${user.telegram_id}`}
                 </div>
               </div>
@@ -693,7 +693,7 @@ export default function AdminBulkActions() {
         cell: ({ row }) => {
           const user = row.original;
           if (!user.has_subscription) {
-            return <span className="text-xs text-dark-500">-</span>;
+            return <span className="text-dark-500 text-xs">-</span>;
           }
           return <StatusBadge status={user.subscription_status} />;
         },
@@ -713,9 +713,9 @@ export default function AdminBulkActions() {
 
           if (uniqueNames.length === 0) {
             if (!user.tariff_name) {
-              return <span className="text-xs text-dark-500">—</span>;
+              return <span className="text-dark-500 text-xs">—</span>;
             }
-            return <span className="text-xs text-dark-200">{user.tariff_name}</span>;
+            return <span className="text-dark-200 text-xs">{user.tariff_name}</span>;
           }
 
           return (
@@ -723,7 +723,7 @@ export default function AdminBulkActions() {
               {uniqueNames.map((name) => (
                 <span
                   key={name}
-                  className="inline-flex rounded-md border border-dark-600/40 bg-dark-700/40 px-1.5 py-0.5 text-[10px] font-medium text-dark-200"
+                  className="border-dark-600/40 bg-dark-700/40 text-dark-200 inline-flex rounded-md border px-1.5 py-0.5 text-[10px] font-medium"
                 >
                   {name}
                 </span>
@@ -738,7 +738,7 @@ export default function AdminBulkActions() {
         header: t('admin.bulkActions.columns.balance'),
         size: 100,
         cell: ({ getValue }) => (
-          <span className="text-xs font-medium text-dark-200">
+          <span className="text-dark-200 text-xs font-medium">
             {formatWithCurrency(getValue() as number)}
           </span>
         ),
@@ -751,11 +751,11 @@ export default function AdminBulkActions() {
         cell: ({ getValue }) => {
           const name = getValue() as string | null;
           return name ? (
-            <span className="inline-flex rounded-lg border border-accent-500/20 bg-accent-500/5 px-2 py-0.5 text-[10px] font-medium text-accent-400">
+            <span className="border-accent-500/20 bg-accent-500/5 text-accent-400 inline-flex rounded-lg border px-2 py-0.5 text-[10px] font-medium">
               {name}
             </span>
           ) : (
-            <span className="text-xs text-dark-500">-</span>
+            <span className="text-dark-500 text-xs">-</span>
           );
         },
       },
@@ -767,7 +767,7 @@ export default function AdminBulkActions() {
         cell: ({ getValue }) => {
           const kopeks = getValue() as number;
           return (
-            <span className="text-xs text-dark-300">
+            <span className="text-dark-300 text-xs">
               {kopeks > 0 ? formatWithCurrency(kopeks / 100) : '-'}
             </span>
           );
@@ -833,7 +833,7 @@ export default function AdminBulkActions() {
   ];
 
   return (
-    <div className="relative animate-fade-in">
+    <div className="animate-fade-in relative">
       <ProgressBar loading={loading} />
 
       {/* Header */}
@@ -842,7 +842,7 @@ export default function AdminBulkActions() {
           {!capabilities.hasBackButton && (
             <button
               onClick={() => navigate('/admin')}
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-dark-700 bg-dark-800 transition-colors hover:border-dark-600"
+              className="border-dark-700 bg-dark-800 hover:border-dark-600 flex h-10 w-10 items-center justify-center rounded-xl border transition-colors"
               aria-label={t('common.back')}
             >
               <BackIcon />
@@ -850,18 +850,18 @@ export default function AdminBulkActions() {
           )}
           <div>
             <div className="flex items-center gap-2.5">
-              <h1 className="text-xl font-bold text-dark-100">{t('admin.bulkActions.title')}</h1>
-              <span className="rounded-lg border border-dark-700 bg-dark-800 px-2 py-0.5 text-xs font-medium tabular-nums text-dark-400">
+              <h1 className="text-dark-100 text-xl font-bold">{t('admin.bulkActions.title')}</h1>
+              <span className="border-dark-700 bg-dark-800 text-dark-400 rounded-lg border px-2 py-0.5 text-xs font-medium tabular-nums">
                 {total.toLocaleString()}
               </span>
             </div>
-            <p className="text-sm text-dark-400">{t('admin.bulkActions.subtitle')}</p>
+            <p className="text-dark-400 text-sm">{t('admin.bulkActions.subtitle')}</p>
           </div>
         </div>
         <button
           onClick={handleRefresh}
           disabled={loading}
-          className="rounded-lg p-2 text-dark-400 transition-colors hover:bg-dark-700 hover:text-dark-200 disabled:opacity-50"
+          className="text-dark-400 hover:bg-dark-700 hover:text-dark-200 rounded-lg p-2 transition-colors disabled:opacity-50"
           aria-label={t('common.refresh')}
         >
           <RefreshIcon className={loading ? 'animate-spin' : ''} />
@@ -878,9 +878,9 @@ export default function AdminBulkActions() {
               value={searchInput}
               onChange={(e) => handleSearchChange(e.target.value)}
               placeholder={t('admin.bulkActions.filters.search')}
-              className="w-full rounded-xl border border-dark-700 bg-dark-800 py-2.5 pl-10 pr-4 text-sm text-dark-100 outline-none transition-colors placeholder:text-dark-500 focus:border-accent-500/40 focus:shadow-[0_0_0_3px_rgba(var(--color-accent-500),0.08)]"
+              className="border-dark-700 bg-dark-800 text-dark-100 placeholder:text-dark-500 focus:border-accent-500/40 w-full rounded-xl border py-2.5 pr-4 pl-10 text-sm transition-colors outline-none focus:shadow-[0_0_0_3px_rgba(var(--rt-accent-500),0.08)]"
             />
-            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-dark-500">
+            <div className="text-dark-500 absolute top-1/2 left-3 -translate-y-1/2">
               <SearchIcon />
             </div>
           </div>
@@ -938,7 +938,7 @@ export default function AdminBulkActions() {
             {trialOnly && <CheckIcon className="h-3 w-3" />}
           </button>
           <span
-            className={cn('text-sm', trialOnly ? 'font-medium text-warning-400' : 'text-dark-400')}
+            className={cn('text-sm', trialOnly ? 'text-warning-400 font-medium' : 'text-dark-400')}
           >
             {t('admin.bulkActions.filters.trialOnly')}
           </span>
@@ -948,14 +948,14 @@ export default function AdminBulkActions() {
       {/* Table */}
       {loading && users.length === 0 ? (
         <div className="flex justify-center py-16">
-          <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+          <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
         </div>
       ) : users.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-16">
-          <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl border border-dark-700/50 bg-dark-800/40 text-dark-500">
+          <div className="border-dark-700/50 bg-dark-800/40 text-dark-500 mb-3 flex h-14 w-14 items-center justify-center rounded-2xl border">
             <SearchIcon />
           </div>
-          <p className="text-sm font-medium text-dark-300">{t('admin.bulkActions.noResults')}</p>
+          <p className="text-dark-300 text-sm font-medium">{t('admin.bulkActions.noResults')}</p>
         </div>
       ) : (
         <div
@@ -964,15 +964,15 @@ export default function AdminBulkActions() {
             loading && users.length > 0 && 'opacity-60',
           )}
         >
-          <div className="overflow-x-auto rounded-xl border border-dark-700">
+          <div className="border-dark-700 overflow-x-auto rounded-xl border">
             <table className="w-full text-left text-sm">
               <thead>
                 {table.getHeaderGroups().map((headerGroup) => (
-                  <tr key={headerGroup.id} className="border-b border-dark-700 bg-dark-800/80">
+                  <tr key={headerGroup.id} className="border-dark-700 bg-dark-800/80 border-b">
                     {headerGroup.headers.map((header) => (
                       <th
                         key={header.id}
-                        className="whitespace-nowrap px-3 py-2.5 text-xs font-medium text-dark-400"
+                        className="text-dark-400 px-3 py-2.5 text-xs font-medium whitespace-nowrap"
                         style={{ width: header.getSize() }}
                       >
                         {header.isPlaceholder
@@ -1037,18 +1037,18 @@ export default function AdminBulkActions() {
       {/* Pagination + per-page selector */}
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <span className="text-sm text-dark-400">
+          <span className="text-dark-400 text-sm">
             {offset + 1}&ndash;{Math.min(offset + limit, total)} / {total}
           </span>
           <div className="flex items-center gap-1.5">
-            <span className="text-xs text-dark-500">{t('admin.bulkActions.perPage')}</span>
+            <span className="text-dark-500 text-xs">{t('admin.bulkActions.perPage')}</span>
             <select
               value={limit}
               onChange={(e) => {
                 setLimit(Number(e.target.value));
                 setOffset(0);
               }}
-              className="rounded-lg border border-dark-700 bg-dark-800 px-2 py-1.5 text-xs text-dark-200 outline-none transition-colors focus:border-accent-500/40"
+              className="border-dark-700 bg-dark-800 text-dark-200 focus:border-accent-500/40 rounded-lg border px-2 py-1.5 text-xs transition-colors outline-none"
             >
               {[25, 50, 100, 200].map((n) => (
                 <option key={n} value={n}>
@@ -1065,12 +1065,12 @@ export default function AdminBulkActions() {
                 setOffset(Math.max(0, offset - limit));
               }}
               disabled={offset === 0}
-              className="rounded-lg border border-dark-700 bg-dark-800 p-2 transition-colors hover:bg-dark-700 disabled:opacity-50"
+              className="border-dark-700 bg-dark-800 hover:bg-dark-700 rounded-lg border p-2 transition-colors disabled:opacity-50"
               aria-label={t('common.back')}
             >
               <ChevronLeftIcon />
             </button>
-            <span className="px-3 py-2 text-sm text-dark-300">
+            <span className="text-dark-300 px-3 py-2 text-sm">
               {currentPage} / {totalPages}
             </span>
             <button
@@ -1078,7 +1078,7 @@ export default function AdminBulkActions() {
                 setOffset(offset + limit);
               }}
               disabled={offset + limit >= total}
-              className="rounded-lg border border-dark-700 bg-dark-800 p-2 transition-colors hover:bg-dark-700 disabled:opacity-50"
+              className="border-dark-700 bg-dark-800 hover:bg-dark-700 rounded-lg border p-2 transition-colors disabled:opacity-50"
               aria-label={t('common.next')}
             >
               <ChevronRightIcon />

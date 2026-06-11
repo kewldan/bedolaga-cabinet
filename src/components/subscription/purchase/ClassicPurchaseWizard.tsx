@@ -214,7 +214,7 @@ export function ClassicPurchaseWizard({
       }}
     >
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-base font-bold tracking-tight text-dark-50">
+        <h2 className="text-dark-50 text-base font-bold tracking-tight">
           {subscription && !subscription.is_trial
             ? t('subscription.extend')
             : t('subscription.getSubscription')}
@@ -232,7 +232,7 @@ export function ClassicPurchaseWizard({
         <div className="space-y-6">
           {/* Step Indicator */}
           <div className="mb-6 flex items-center justify-between">
-            <div className="text-sm text-dark-400">
+            <div className="text-dark-400 text-sm">
               {t('subscription.step', { current: currentStepIndex + 1, total: steps.length })}
             </div>
             <div className="flex gap-2">
@@ -247,7 +247,7 @@ export function ClassicPurchaseWizard({
             </div>
           </div>
 
-          <div className="mb-4 text-lg font-medium text-dark-100">{getStepLabel(currentStep)}</div>
+          <div className="text-dark-100 mb-4 text-lg font-medium">{getStepLabel(currentStep)}</div>
 
           {/* Step: Period Selection */}
           {currentStep === 'period' && (
@@ -285,20 +285,20 @@ export function ClassicPurchaseWizard({
                   >
                     {promoPeriod.percent && promoPeriod.percent > 0 && (
                       <div
-                        className={`absolute right-2 top-2 z-10 rounded-full px-2 py-0.5 text-xs font-medium text-white shadow-sm ${
+                        className={`absolute top-2 right-2 z-10 rounded-full px-2 py-0.5 text-xs font-medium text-white shadow-sm ${
                           promoPeriod.isPromoGroup ? 'bg-success-500' : 'bg-warning-500'
                         }`}
                       >
                         -{promoPeriod.percent}%
                       </div>
                     )}
-                    <div className="text-lg font-semibold text-dark-100">{period.label}</div>
+                    <div className="text-dark-100 text-lg font-semibold">{period.label}</div>
                     <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
-                      <span className="font-medium text-accent-400">
+                      <span className="text-accent-400 font-medium">
                         {formatPrice(promoPeriod.price)}
                       </span>
                       {promoPeriod.original && promoPeriod.original > promoPeriod.price && (
-                        <span className="text-sm text-dark-500 line-through">
+                        <span className="text-dark-500 text-sm line-through">
                           {formatPrice(promoPeriod.original)}
                         </span>
                       )}
@@ -329,18 +329,18 @@ export function ClassicPurchaseWizard({
                   >
                     {promoTraffic.percent && promoTraffic.percent > 0 && (
                       <div
-                        className={`absolute right-2 top-2 z-10 rounded-full px-2 py-0.5 text-xs font-medium text-white shadow-sm ${
+                        className={`absolute top-2 right-2 z-10 rounded-full px-2 py-0.5 text-xs font-medium text-white shadow-sm ${
                           promoTraffic.isPromoGroup ? 'bg-success-500' : 'bg-warning-500'
                         }`}
                       >
                         -{promoTraffic.percent}%
                       </div>
                     )}
-                    <div className="text-lg font-semibold text-dark-100">{option.label}</div>
+                    <div className="text-dark-100 text-lg font-semibold">{option.label}</div>
                     <div className="mt-1 flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
                       <span className="text-accent-400">{formatPrice(promoTraffic.price)}</span>
                       {promoTraffic.original && promoTraffic.original > promoTraffic.price && (
-                        <span className="text-xs text-dark-500 line-through">
+                        <span className="text-dark-500 text-xs line-through">
                           {formatPrice(promoTraffic.original)}
                         </span>
                       )}
@@ -378,12 +378,12 @@ export function ClassicPurchaseWizard({
                           ? 'border-accent-500 bg-accent-500/10'
                           : server.is_available
                             ? 'border-dark-700/50 bg-dark-800/50 hover:border-dark-600'
-                            : 'cursor-not-allowed border-dark-800/30 bg-dark-900/30 opacity-50'
+                            : 'border-dark-800/30 bg-dark-900/30 cursor-not-allowed opacity-50'
                       }`}
                     >
                       {promoServer.percent && promoServer.percent > 0 ? (
                         <div
-                          className={`absolute right-2 top-2 z-10 rounded-full px-2 py-0.5 text-xs font-medium text-white shadow-sm ${
+                          className={`absolute top-2 right-2 z-10 rounded-full px-2 py-0.5 text-xs font-medium text-white shadow-sm ${
                             promoServer.isPromoGroup ? 'bg-success-500' : 'bg-warning-500'
                           }`}
                         >
@@ -392,7 +392,7 @@ export function ClassicPurchaseWizard({
                       ) : null}
                       <div className="flex items-center gap-3">
                         <div
-                          className={`flex h-5 w-5 flex-shrink-0 items-center justify-center rounded border-2 ${
+                          className={`flex h-5 w-5 shrink-0 items-center justify-center rounded border-2 ${
                             selectedServers.includes(server.uuid)
                               ? 'border-accent-500 bg-accent-500'
                               : 'border-dark-600'
@@ -401,18 +401,18 @@ export function ClassicPurchaseWizard({
                           {selectedServers.includes(server.uuid) && <CheckIcon />}
                         </div>
                         <div className="min-w-0">
-                          <div className="truncate font-medium text-dark-100">
+                          <div className="text-dark-100 truncate font-medium">
                             <Twemoji options={{ className: 'twemoji', folder: 'svg', ext: '.svg' }}>
                               {server.name}
                             </Twemoji>
                           </div>
                           <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                            <span className="text-sm text-accent-400">
+                            <span className="text-accent-400 text-sm">
                               {formatPrice(promoServer.price)}
                               {t('subscription.perMonth')}
                             </span>
                             {promoServer.original && promoServer.original > promoServer.price ? (
-                              <span className="text-xs text-dark-500 line-through">
+                              <span className="text-dark-500 text-xs line-through">
                                 {formatPrice(promoServer.original)}
                               </span>
                             ) : null}
@@ -434,25 +434,25 @@ export function ClassicPurchaseWizard({
                     setSelectedDevices(Math.max(selectedPeriod.devices.min, selectedDevices - 1))
                   }
                   disabled={selectedDevices <= selectedPeriod.devices.min}
-                  className="btn-secondary flex h-14 w-14 items-center justify-center !p-0 text-2xl"
+                  className="btn-secondary flex h-14 w-14 items-center justify-center p-0! text-2xl"
                 >
                   -
                 </button>
                 <div className="text-center">
-                  <div className="text-5xl font-bold text-dark-100">{selectedDevices}</div>
-                  <div className="mt-2 text-dark-500">{t('subscription.devices')}</div>
+                  <div className="text-dark-100 text-5xl font-bold">{selectedDevices}</div>
+                  <div className="text-dark-500 mt-2">{t('subscription.devices')}</div>
                 </div>
                 <button
                   onClick={() =>
                     setSelectedDevices(Math.min(selectedPeriod.devices.max, selectedDevices + 1))
                   }
                   disabled={selectedDevices >= selectedPeriod.devices.max}
-                  className="btn-secondary flex h-14 w-14 items-center justify-center !p-0 text-2xl"
+                  className="btn-secondary flex h-14 w-14 items-center justify-center p-0! text-2xl"
                 >
                   +
                 </button>
               </div>
-              <div className="mt-4 space-y-1 text-center text-sm text-dark-500">
+              <div className="text-dark-500 mt-4 space-y-1 text-center text-sm">
                 <div className="text-accent-400">
                   {t('subscription.devicesFree', { count: selectedPeriod.devices.min })}
                 </div>
@@ -471,14 +471,14 @@ export function ClassicPurchaseWizard({
             <div>
               {previewLoading ? (
                 <div className="flex items-center justify-center py-8">
-                  <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+                  <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
                 </div>
               ) : preview ? (
-                <div className="space-y-4 rounded-xl bg-dark-800/50 p-5">
+                <div className="bg-dark-800/50 space-y-4 rounded-xl p-5">
                   {activeDiscount?.is_active && activeDiscount.discount_percent && (
-                    <div className="flex items-center justify-center gap-2 rounded-lg border border-warning-500/30 bg-warning-500/10 p-3">
+                    <div className="border-warning-500/30 bg-warning-500/10 flex items-center justify-center gap-2 rounded-lg border p-3">
                       <svg
-                        className="h-4 w-4 text-warning-400"
+                        className="text-warning-400 h-4 w-4"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -490,14 +490,14 @@ export function ClassicPurchaseWizard({
                           d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"
                         />
                       </svg>
-                      <span className="text-sm font-medium text-warning-400">
+                      <span className="text-warning-400 text-sm font-medium">
                         {t('promo.discountApplied')} -{activeDiscount.discount_percent}%
                       </span>
                     </div>
                   )}
 
                   {preview.breakdown.map((item, idx) => (
-                    <div key={idx} className="flex justify-between text-dark-300">
+                    <div key={idx} className="text-dark-300 flex justify-between">
                       <span>{item.label}</span>
                       <span>{item.value}</span>
                     </div>
@@ -510,16 +510,16 @@ export function ClassicPurchaseWizard({
                     );
 
                     return (
-                      <div className="flex items-center justify-between border-t border-dark-700/50 pt-4">
-                        <span className="text-lg font-semibold text-dark-100">
+                      <div className="border-dark-700/50 flex items-center justify-between border-t pt-4">
+                        <span className="text-dark-100 text-lg font-semibold">
                           {t('subscription.total')}
                         </span>
                         <div className="text-right">
-                          <div className="text-2xl font-bold text-accent-400">
+                          <div className="text-accent-400 text-2xl font-bold">
                             {formatPrice(promoTotal.price)}
                           </div>
                           {promoTotal.original && promoTotal.original > promoTotal.price && (
-                            <div className="text-sm text-dark-500 line-through">
+                            <div className="text-dark-500 text-sm line-through">
                               {formatPrice(promoTotal.original)}
                             </div>
                           )}
@@ -529,7 +529,7 @@ export function ClassicPurchaseWizard({
                   })()}
 
                   {preview.discount_label && (
-                    <div className="text-center text-sm text-success-400">
+                    <div className="text-success-400 text-center text-sm">
                       {preview.discount_label}
                     </div>
                   )}
@@ -541,7 +541,7 @@ export function ClassicPurchaseWizard({
                         compact
                       />
                     ) : preview.status_message ? (
-                      <div className="rounded-lg bg-error-500/10 px-4 py-3 text-center text-sm text-error-400">
+                      <div className="bg-error-500/10 text-error-400 rounded-lg px-4 py-3 text-center text-sm">
                         {preview.status_message}
                       </div>
                     ) : null)}
@@ -551,7 +551,7 @@ export function ClassicPurchaseWizard({
           )}
 
           {/* Navigation Buttons */}
-          <div className="flex gap-3 border-t border-dark-800/50 pt-4">
+          <div className="border-dark-800/50 flex gap-3 border-t pt-4">
             {!isFirstStep && (
               <button onClick={goToPrevStep} className="btn-secondary flex-1">
                 {t('common.back')}
@@ -591,7 +591,7 @@ export function ClassicPurchaseWizard({
           </div>
 
           {purchaseMutation.isError && (
-            <div className="text-center text-sm text-error-400">
+            <div className="text-error-400 text-center text-sm">
               {getErrorMessage(purchaseMutation.error)}
             </div>
           )}

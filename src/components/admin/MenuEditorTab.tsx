@@ -132,7 +132,7 @@ function ButtonChip({
             className={`rounded-lg p-1.5 transition-colors ${
               onMoveUp
                 ? 'text-dark-400 hover:bg-dark-700/50 hover:text-dark-300'
-                : 'cursor-default text-dark-700'
+                : 'text-dark-700 cursor-default'
             }`}
           >
             <ArrowUpIcon className="h-3.5 w-3.5" />
@@ -144,14 +144,14 @@ function ButtonChip({
             className={`rounded-lg p-1.5 transition-colors ${
               onMoveDown
                 ? 'text-dark-400 hover:bg-dark-700/50 hover:text-dark-300'
-                : 'cursor-default text-dark-700'
+                : 'text-dark-700 cursor-default'
             }`}
           >
             <ArrowDownIcon className="h-3.5 w-3.5" />
           </button>
         </div>
         <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${colorDotClass}`} />
-        <span className="min-w-0 flex-1 truncate text-sm font-medium text-dark-100">
+        <span className="text-dark-100 min-w-0 flex-1 truncate text-sm font-medium">
           {displayName}
         </span>
         {!isBuiltin && (
@@ -162,14 +162,14 @@ function ButtonChip({
         <Toggle checked={button.enabled} onChange={() => onUpdate({ enabled: !button.enabled })} />
         <button
           onClick={onToggleExpand}
-          className="rounded-lg p-1 text-dark-400 transition-colors hover:bg-dark-700/50 hover:text-dark-300"
+          className="text-dark-400 hover:bg-dark-700/50 hover:text-dark-300 rounded-lg p-1 transition-colors"
         >
           <ChevronIcon expanded={isExpanded} />
         </button>
         {!isBuiltin && (
           <button
             onClick={onRemove}
-            className="rounded-lg p-1 text-dark-500 transition-colors hover:bg-error-500/10 hover:text-error-400"
+            className="text-dark-500 hover:bg-error-500/10 hover:text-error-400 rounded-lg p-1 transition-colors"
           >
             <TrashIcon className="h-4 w-4" />
           </button>
@@ -178,10 +178,10 @@ function ButtonChip({
 
       {/* Expanded body */}
       {isExpanded && (
-        <div className="space-y-3 border-t border-dark-700/30 px-3 py-3">
+        <div className="border-dark-700/30 space-y-3 border-t px-3 py-3">
           {/* Color selector */}
           <div>
-            <label className="mb-1.5 block text-xs font-medium text-dark-300">
+            <label className="text-dark-300 mb-1.5 block text-xs font-medium">
               {t('admin.buttons.color')}
             </label>
             <div className="flex flex-wrap gap-1.5">
@@ -204,7 +204,7 @@ function ButtonChip({
 
           {/* Emoji ID */}
           <div>
-            <label className="mb-1.5 block text-xs font-medium text-dark-300">
+            <label className="text-dark-300 mb-1.5 block text-xs font-medium">
               {t('admin.buttons.emojiId')}
             </label>
             <input
@@ -212,7 +212,7 @@ function ButtonChip({
               value={button.icon_custom_emoji_id}
               onChange={(e) => onUpdate({ icon_custom_emoji_id: e.target.value })}
               placeholder={t('admin.buttons.emojiPlaceholder')}
-              className="w-full rounded-lg border border-dark-600 bg-dark-700/50 px-3 py-2 text-sm text-dark-100 placeholder-dark-500 transition-colors focus:border-accent-500 focus:outline-none"
+              className="border-dark-600 bg-dark-700/50 text-dark-100 placeholder-dark-500 focus:border-accent-500 w-full rounded-lg border px-3 py-2 text-sm transition-colors focus:outline-none"
             />
           </div>
 
@@ -220,17 +220,17 @@ function ButtonChip({
           {!isBuiltin && (
             <>
               <div>
-                <label className="mb-1.5 block text-xs font-medium text-dark-300">URL</label>
+                <label className="text-dark-300 mb-1.5 block text-xs font-medium">URL</label>
                 <input
                   type="url"
                   value={button.url || ''}
                   onChange={(e) => onUpdate({ url: e.target.value || null })}
                   placeholder="https://..."
-                  className="w-full rounded-lg border border-dark-600 bg-dark-700/50 px-3 py-2 text-sm text-dark-100 placeholder-dark-500 transition-colors focus:border-accent-500 focus:outline-none"
+                  className="border-dark-600 bg-dark-700/50 text-dark-100 placeholder-dark-500 focus:border-accent-500 w-full rounded-lg border px-3 py-2 text-sm transition-colors focus:outline-none"
                 />
               </div>
               <div>
-                <label className="mb-1.5 block text-xs font-medium text-dark-300">
+                <label className="text-dark-300 mb-1.5 block text-xs font-medium">
                   {t('admin.menuEditor.openIn')}
                 </label>
                 <div className="flex gap-1.5">
@@ -254,13 +254,13 @@ function ButtonChip({
 
           {/* Localized labels */}
           <div>
-            <label className="mb-1.5 block text-xs font-medium text-dark-300">
+            <label className="text-dark-300 mb-1.5 block text-xs font-medium">
               {t('admin.buttons.customLabels')}
             </label>
             <div className="space-y-2">
               {BOT_LOCALES.map((locale) => (
                 <div key={locale} className="flex items-center gap-2">
-                  <span className="w-7 shrink-0 text-center text-[10px] font-semibold uppercase text-dark-500">
+                  <span className="text-dark-500 w-7 shrink-0 text-center text-[10px] font-semibold uppercase">
                     {locale}
                   </span>
                   <input
@@ -273,11 +273,11 @@ function ButtonChip({
                     }
                     placeholder={t('admin.menuEditor.buttonTextPlaceholder')}
                     maxLength={100}
-                    className="w-full rounded-lg border border-dark-600 bg-dark-700/50 px-3 py-1.5 text-sm text-dark-100 placeholder-dark-500 transition-colors focus:border-accent-500 focus:outline-none"
+                    className="border-dark-600 bg-dark-700/50 text-dark-100 placeholder-dark-500 focus:border-accent-500 w-full rounded-lg border px-3 py-1.5 text-sm transition-colors focus:outline-none"
                   />
                 </div>
               ))}
-              <p className="text-[10px] text-dark-500">{t('admin.menuEditor.customLabelsHint')}</p>
+              <p className="text-dark-500 text-[10px]">{t('admin.menuEditor.customLabelsHint')}</p>
             </div>
           </div>
         </div>
@@ -333,21 +333,21 @@ function SortableRow({
     <div
       ref={setNodeRef}
       style={style}
-      className={`overflow-hidden rounded-2xl border bg-dark-800/50 transition-all ${
-        isDragging ? 'border-accent-500/50 shadow-xl shadow-accent-500/20' : 'border-dark-700/50'
+      className={`bg-dark-800/50 overflow-hidden rounded-2xl border transition-all ${
+        isDragging ? 'border-accent-500/50 shadow-accent-500/20 shadow-xl' : 'border-dark-700/50'
       }`}
     >
       {/* Row header */}
-      <div className="flex items-center gap-3 border-b border-dark-700/30 px-4 py-3">
+      <div className="border-dark-700/30 flex items-center gap-3 border-b px-4 py-3">
         <button
           {...attributes}
           {...listeners}
-          className="flex-shrink-0 cursor-grab touch-none rounded-lg p-1.5 text-dark-500 hover:bg-dark-700/50 hover:text-dark-300 active:cursor-grabbing"
+          className="text-dark-500 hover:bg-dark-700/50 hover:text-dark-300 shrink-0 cursor-grab touch-none rounded-lg p-1.5 active:cursor-grabbing"
           title={t('admin.menuEditor.dragToReorder')}
         >
           <GripIcon />
         </button>
-        <span className="text-sm font-semibold text-dark-200">
+        <span className="text-dark-200 text-sm font-semibold">
           {t('admin.menuEditor.row')} {rowIndex + 1}
         </span>
         <div className="flex-1" />
@@ -358,7 +358,7 @@ function SortableRow({
         {!allBuiltin && (
           <button
             onClick={() => onRemoveRow(row.id)}
-            className="rounded-lg p-1.5 text-dark-500 transition-colors hover:bg-error-500/10 hover:text-error-400"
+            className="text-dark-500 hover:bg-error-500/10 hover:text-error-400 rounded-lg p-1.5 transition-colors"
           >
             <TrashIcon className="h-4 w-4" />
           </button>
@@ -414,7 +414,7 @@ function InlineAddPanel({ rowId, usedBuiltinIds, onAddBuiltin, onAddCustom }: In
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed border-dark-700/50 py-2.5 text-sm text-dark-500 transition-colors hover:border-dark-600 hover:text-dark-400"
+        className="border-dark-700/50 text-dark-500 hover:border-dark-600 hover:text-dark-400 flex w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed py-2.5 text-sm transition-colors"
       >
         <PlusIcon className="h-4 w-4" />
         {t('admin.menuEditor.addButton')}
@@ -423,10 +423,10 @@ function InlineAddPanel({ rowId, usedBuiltinIds, onAddBuiltin, onAddCustom }: In
   }
 
   return (
-    <div className="space-y-1 rounded-xl border border-dark-700/50 bg-dark-900/30 p-2">
+    <div className="border-dark-700/50 bg-dark-900/30 space-y-1 rounded-xl border p-2">
       {availableBuiltins.length > 0 && (
         <>
-          <p className="px-2 pb-0.5 text-xs font-medium text-dark-500">
+          <p className="text-dark-500 px-2 pb-0.5 text-xs font-medium">
             {t('admin.menuEditor.builtinButtons')}
           </p>
           {availableBuiltins.map((id) => (
@@ -436,12 +436,12 @@ function InlineAddPanel({ rowId, usedBuiltinIds, onAddBuiltin, onAddCustom }: In
                 onAddBuiltin(rowId, id);
                 setIsOpen(false);
               }}
-              className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-dark-200 transition-colors hover:bg-dark-700/50"
+              className="text-dark-200 hover:bg-dark-700/50 flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors"
             >
               {t(`admin.buttons.sections.${id}`)}
             </button>
           ))}
-          <div className="my-1 border-t border-dark-700/30" />
+          <div className="border-dark-700/30 my-1 border-t" />
         </>
       )}
       <button
@@ -449,14 +449,14 @@ function InlineAddPanel({ rowId, usedBuiltinIds, onAddBuiltin, onAddCustom }: In
           onAddCustom(rowId);
           setIsOpen(false);
         }}
-        className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-dark-200 transition-colors hover:bg-dark-700/50"
+        className="text-dark-200 hover:bg-dark-700/50 flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors"
       >
         <LinkIcon className="h-3.5 w-3.5" />
         {t('admin.menuEditor.addUrlButton')}
       </button>
       <button
         onClick={() => setIsOpen(false)}
-        className="flex w-full items-center justify-center rounded-lg py-1.5 text-xs text-dark-500 transition-colors hover:text-dark-400"
+        className="text-dark-500 hover:text-dark-400 flex w-full items-center justify-center rounded-lg py-1.5 text-xs transition-colors"
       >
         {t('common.cancel')}
       </button>
@@ -708,7 +708,7 @@ export function MenuEditorTab() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center py-12 text-dark-400">
+      <div className="text-dark-400 flex items-center justify-center py-12">
         <svg className="mr-2 h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
           <circle
             className="opacity-25"
@@ -731,7 +731,7 @@ export function MenuEditorTab() {
 
   if (isError) {
     return (
-      <div className="rounded-xl border border-error-500/30 bg-error-500/10 px-4 py-3 text-sm text-error-400">
+      <div className="border-error-500/30 bg-error-500/10 text-error-400 rounded-xl border px-4 py-3 text-sm">
         {t('common.error')}
       </div>
     );
@@ -740,7 +740,7 @@ export function MenuEditorTab() {
   return (
     <div className="space-y-4">
       {/* Drag hint */}
-      <div className="flex items-center gap-2 text-sm text-dark-500">
+      <div className="text-dark-500 flex items-center gap-2 text-sm">
         <GripIcon />
         {t('admin.menuEditor.dragHint')}
       </div>
@@ -776,7 +776,7 @@ export function MenuEditorTab() {
       {/* Add row */}
       <button
         onClick={addRow}
-        className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-dark-700/50 py-4 text-sm font-medium text-dark-500 transition-colors hover:border-dark-600 hover:text-dark-400"
+        className="border-dark-700/50 text-dark-500 hover:border-dark-600 hover:text-dark-400 flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed py-4 text-sm font-medium transition-colors"
       >
         <PlusIcon className="h-4 w-4" />
         {t('admin.menuEditor.addRow')}
@@ -788,14 +788,14 @@ export function MenuEditorTab() {
           <button
             onClick={handleSave}
             disabled={updateMutation.isPending}
-            className="rounded-xl bg-accent-500 px-4 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600 disabled:opacity-50"
+            className="bg-accent-500 text-on-accent hover:bg-accent-600 rounded-xl px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50"
           >
             {updateMutation.isPending ? t('common.saving') : t('common.save')}
           </button>
           <button
             onClick={handleCancel}
             disabled={updateMutation.isPending}
-            className="rounded-xl bg-dark-700 px-4 py-2 text-sm font-medium text-dark-300 transition-colors hover:bg-dark-600 disabled:opacity-50"
+            className="bg-dark-700 text-dark-300 hover:bg-dark-600 rounded-xl px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50"
           >
             {t('common.cancel')}
           </button>
@@ -811,7 +811,7 @@ export function MenuEditorTab() {
             }
           }}
           disabled={resetMutation.isPending}
-          className="rounded-xl bg-dark-700 px-4 py-2 text-sm text-dark-300 transition-colors hover:bg-dark-600 disabled:opacity-50"
+          className="bg-dark-700 text-dark-300 hover:bg-dark-600 rounded-xl px-4 py-2 text-sm transition-colors disabled:opacity-50"
         >
           {t('admin.buttons.resetAll')}
         </button>

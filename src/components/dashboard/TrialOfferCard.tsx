@@ -37,12 +37,12 @@ export default function TrialOfferCard({
         border: isDark
           ? `1px solid ${g.cardBorder}`
           : isFree
-            ? '1px solid rgba(var(--color-accent-400), 0.2)'
+            ? '1px solid rgba(var(--rt-accent-400), 0.2)'
             : '1px solid rgba(255,184,0,0.2)',
         boxShadow: isDark
           ? g.shadow
           : isFree
-            ? '0 2px 16px rgba(var(--color-accent-400), 0.12), 0 0 0 1px rgba(var(--color-accent-400), 0.06)'
+            ? '0 2px 16px rgba(var(--rt-accent-400), 0.12), 0 0 0 1px rgba(var(--rt-accent-400), 0.06)'
             : '0 2px 16px rgba(255,184,0,0.12), 0 0 0 1px rgba(255,184,0,0.06)',
         padding: '32px 28px 28px',
       }}
@@ -56,7 +56,7 @@ export default function TrialOfferCard({
           height: 300,
           borderRadius: '50%',
           background: isFree
-            ? 'radial-gradient(circle, rgba(var(--color-accent-400), 0.08) 0%, transparent 70%)'
+            ? 'radial-gradient(circle, rgba(var(--rt-accent-400), 0.08) 0%, transparent 70%)'
             : 'radial-gradient(circle, rgba(255,184,0,0.07) 0%, transparent 70%)',
           transition: 'background 0.5s ease',
         }}
@@ -83,40 +83,32 @@ export default function TrialOfferCard({
         style={{
           background: isDark
             ? isFree
-              ? 'linear-gradient(135deg, rgba(var(--color-accent-900), 0.5), rgba(var(--color-accent-950), 0.6))'
+              ? 'linear-gradient(135deg, rgba(var(--rt-accent-900), 0.5), rgba(var(--rt-accent-950), 0.6))'
               : 'linear-gradient(135deg, #3a3020, #282418)'
             : isFree
-              ? 'linear-gradient(135deg, rgba(var(--color-accent-400), 0.15), rgba(var(--color-accent-400), 0.08))'
+              ? 'linear-gradient(135deg, rgba(var(--rt-accent-400), 0.15), rgba(var(--rt-accent-400), 0.08))'
               : 'linear-gradient(135deg, rgba(255,184,0,0.15), rgba(255,184,0,0.08))',
           border: isFree
-            ? '1px solid rgba(var(--color-accent-400), 0.25)'
+            ? '1px solid rgba(var(--rt-accent-400), 0.25)'
             : '1px solid rgba(255,184,0,0.25)',
           transition: 'all 0.5s ease',
         }}
       >
         {isFree ? (
-          <span
-            className="flex"
-            style={{ color: 'rgb(var(--color-accent-400))' }}
-            aria-hidden="true"
-          >
+          <span className="flex" style={{ color: 'rgb(var(--rt-accent-400))' }} aria-hidden="true">
             <SparklesIcon className="h-[26px] w-[26px]" />
           </span>
         ) : (
-          <span
-            className="flex"
-            style={{ color: 'rgb(var(--color-urgent-400))' }}
-            aria-hidden="true"
-          >
+          <span className="flex" style={{ color: 'rgb(var(--rt-urgent-400))' }} aria-hidden="true">
             <BoltIcon className="h-[26px] w-[26px]" />
           </span>
         )}
         {/* Glow effect */}
         <div
-          className="absolute inset-[-1px] animate-trial-glow rounded-2xl"
+          className="animate-trial-glow absolute -inset-px rounded-2xl"
           style={{
             boxShadow: isFree
-              ? '0 0 20px rgba(var(--color-accent-400), 0.15)'
+              ? '0 0 20px rgba(var(--rt-accent-400), 0.15)'
               : '0 0 20px rgba(255,184,0,0.12)',
           }}
           aria-hidden="true"
@@ -124,10 +116,10 @@ export default function TrialOfferCard({
       </div>
 
       {/* Title */}
-      <h2 className="mb-1.5 text-[22px] font-bold tracking-tight text-dark-50">
+      <h2 className="text-dark-50 mb-1.5 text-[22px] font-bold tracking-tight">
         {isFree ? t('dashboard.trialOffer.freeTitle') : t('dashboard.trialOffer.paidTitle')}
       </h2>
-      <p className="mb-5 text-sm text-dark-50/40">
+      <p className="text-dark-50/40 mb-5 text-sm">
         {isFree ? t('dashboard.trialOffer.freeDesc') : t('dashboard.trialOffer.paidDesc')}
       </p>
 
@@ -141,14 +133,14 @@ export default function TrialOfferCard({
           }}
         >
           <span
-            className="text-[32px] font-extrabold leading-none tracking-tight"
-            style={{ color: 'rgb(var(--color-urgent-400))' }}
+            className="text-[32px] leading-none font-extrabold tracking-tight"
+            style={{ color: 'rgb(var(--rt-urgent-400))' }}
           >
             {trialInfo.price_rubles.toFixed(0)}
           </span>
           <span
             className="text-base font-semibold opacity-70"
-            style={{ color: 'rgb(var(--color-urgent-400))' }}
+            style={{ color: 'rgb(var(--rt-urgent-400))' }}
           >
             {currencySymbol}
           </span>
@@ -169,10 +161,10 @@ export default function TrialOfferCard({
           },
         ].map((stat, i) => (
           <div key={i} className="text-center">
-            <div className="text-4xl font-extrabold leading-none tracking-tight text-dark-50">
+            <div className="text-dark-50 text-4xl leading-none font-extrabold tracking-tight">
               {stat.value}
             </div>
-            <div className="mt-1 text-xs font-medium text-dark-50/30">{stat.label}</div>
+            <div className="text-dark-50/30 mt-1 text-xs font-medium">{stat.label}</div>
           </div>
         ))}
       </div>
@@ -184,7 +176,7 @@ export default function TrialOfferCard({
           style={{ background: g.innerBg, border: `1px solid ${g.innerBorder}` }}
         >
           <div className="flex items-center justify-between">
-            <span className="text-sm text-dark-50/40">{t('balance.currentBalance')}</span>
+            <span className="text-dark-50/40 text-sm">{t('balance.currentBalance')}</span>
             <span
               className={`font-display text-sm font-semibold ${canAfford ? 'text-success-400' : 'text-warning-400'}`}
             >
@@ -192,7 +184,7 @@ export default function TrialOfferCard({
             </span>
           </div>
           {!canAfford && (
-            <div className="text-xs text-warning-400">
+            <div className="text-warning-400 text-xs">
               {t('subscription.trial.insufficientBalance')}
             </div>
           )}
@@ -201,7 +193,7 @@ export default function TrialOfferCard({
 
       {/* Error */}
       {trialError && (
-        <div className="mb-4 rounded-xl border border-error-500/30 bg-error-500/10 p-3 text-center text-sm text-error-400">
+        <div className="border-error-500/30 bg-error-500/10 text-error-400 mb-4 rounded-xl border p-3 text-center text-sm">
           {trialError}
         </div>
       )}
@@ -245,15 +237,15 @@ export default function TrialOfferCard({
             isDark
               ? {
                   background:
-                    'linear-gradient(135deg, rgba(var(--color-accent-400), 0.12) 0%, rgba(var(--color-accent-400), 0.04) 100%)',
-                  border: '1px solid rgba(var(--color-accent-400), 0.25)',
+                    'linear-gradient(135deg, rgba(var(--rt-accent-400), 0.12) 0%, rgba(var(--rt-accent-400), 0.04) 100%)',
+                  border: '1px solid rgba(var(--rt-accent-400), 0.25)',
                   color: '#fff',
                 }
               : {
                   background:
-                    'linear-gradient(135deg, rgb(var(--color-accent-400)), rgb(var(--color-accent-500)))',
+                    'linear-gradient(135deg, rgb(var(--rt-accent-400)), rgb(var(--rt-accent-500)))',
                   color: '#0a2a1e',
-                  boxShadow: '0 4px 20px rgba(var(--color-accent-400), 0.25)',
+                  boxShadow: '0 4px 20px rgba(var(--rt-accent-400), 0.25)',
                 }
           }
         >

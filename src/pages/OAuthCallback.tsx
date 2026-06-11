@@ -142,20 +142,20 @@ export default function OAuthCallback() {
 
     return (
       <div className="min-h-viewport flex items-center justify-center px-4 py-8">
-        <div className="fixed inset-0 bg-gradient-to-br from-dark-950 via-dark-900 to-dark-950" />
+        <div className="from-dark-950 via-dark-900 to-dark-950 fixed inset-0 bg-linear-to-br" />
         <div className="relative w-full max-w-md text-center">
           <div className="card">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-success-500/20">
-              <CheckIcon className="h-8 w-8 text-success-400" />
+            <div className="bg-success-500/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
+              <CheckIcon className="text-success-400 h-8 w-8" />
             </div>
-            <h2 className="mb-2 text-lg font-semibold text-dark-50">
+            <h2 className="text-dark-50 mb-2 text-lg font-semibold">
               {t('profile.accounts.linkSuccess')}
             </h2>
-            <p className="mb-6 text-sm text-dark-400">{t('profile.accounts.returnToTelegram')}</p>
+            <p className="text-dark-400 mb-6 text-sm">{t('profile.accounts.returnToTelegram')}</p>
             {telegramLink && (
               <a
                 href={telegramLink}
-                className="btn-primary inline-block w-full rounded-lg bg-accent-500 px-6 py-3 text-center font-medium text-dark-950 no-underline transition-colors hover:bg-accent-400"
+                className="btn-primary bg-accent-500 text-dark-950 hover:bg-accent-400 inline-block w-full rounded-lg px-6 py-3 text-center font-medium no-underline transition-colors"
               >
                 {t('profile.accounts.openTelegram')}
               </a>
@@ -176,7 +176,7 @@ export default function OAuthCallback() {
       isServerMode && telegramLink ? (
         <a
           href={telegramLink}
-          className="btn-primary inline-block w-full rounded-lg bg-accent-500 px-6 py-3 text-center font-medium text-dark-950 no-underline transition-colors hover:bg-accent-400"
+          className="btn-primary bg-accent-500 text-dark-950 hover:bg-accent-400 inline-block w-full rounded-lg px-6 py-3 text-center font-medium no-underline transition-colors"
         >
           {t('profile.accounts.openTelegram')}
         </a>
@@ -198,14 +198,14 @@ export default function OAuthCallback() {
 
     return (
       <div className="min-h-viewport flex items-center justify-center px-4 py-8">
-        <div className="fixed inset-0 bg-gradient-to-br from-dark-950 via-dark-900 to-dark-950" />
+        <div className="from-dark-950 via-dark-900 to-dark-950 fixed inset-0 bg-linear-to-br" />
         <div className="relative w-full max-w-md text-center">
           <div className="card">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-error-500/20">
-              <ExclamationIcon className="h-8 w-8 text-error-400" />
+            <div className="bg-error-500/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
+              <ExclamationIcon className="text-error-400 h-8 w-8" />
             </div>
-            <h2 className="mb-2 text-lg font-semibold text-dark-50">{t('auth.loginFailed')}</h2>
-            <p className="mb-6 text-sm text-dark-400">{error}</p>
+            <h2 className="text-dark-50 mb-2 text-lg font-semibold">{t('auth.loginFailed')}</h2>
+            <p className="text-dark-400 mb-6 text-sm">{error}</p>
             {errorAction}
           </div>
         </div>
@@ -215,11 +215,11 @@ export default function OAuthCallback() {
 
   return (
     <div className="min-h-viewport flex items-center justify-center">
-      <div className="fixed inset-0 bg-gradient-to-br from-dark-950 via-dark-900 to-dark-950" />
+      <div className="from-dark-950 via-dark-900 to-dark-950 fixed inset-0 bg-linear-to-br" />
       <div className="relative text-center">
-        <div className="mx-auto mb-4 h-10 w-10 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
-        <h2 className="text-lg font-semibold text-dark-50">{t('auth.authenticating')}</h2>
-        <p className="mt-2 text-sm text-dark-400">{t('common.loading')}</p>
+        <div className="border-accent-500 mx-auto mb-4 h-10 w-10 animate-spin rounded-full border-2 border-t-transparent" />
+        <h2 className="text-dark-50 text-lg font-semibold">{t('auth.authenticating')}</h2>
+        <p className="text-dark-400 mt-2 text-sm">{t('common.loading')}</p>
       </div>
     </div>
   );

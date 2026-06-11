@@ -77,10 +77,10 @@ export function DeviceReductionSheet({
       >
         <div className="flex items-center justify-between">
           <div>
-            <div className="font-medium text-dark-100">
+            <div className="text-dark-100 font-medium">
               {t('subscription.additionalOptions.reduceDevices')}
             </div>
-            <div className="mt-1 text-sm text-dark-400">
+            <div className="text-dark-400 mt-1 text-sm">
               {t('subscription.additionalOptions.reduceDevicesDescription')}
             </div>
           </div>
@@ -95,12 +95,12 @@ export function DeviceReductionSheet({
       className={`rounded-xl border p-5 ${isDark ? 'border-dark-700/50 bg-dark-800/50' : 'border-champagne-300/60 bg-champagne-200/40'}`}
     >
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="font-medium text-dark-100">
+        <h3 className="text-dark-100 font-medium">
           {t('subscription.additionalOptions.reduceDevicesTitle')}
         </h3>
         <button
           onClick={onClose}
-          className="text-sm text-dark-400 hover:text-dark-200"
+          className="text-dark-400 hover:text-dark-200 text-sm"
           aria-label={t('common.close', 'Close')}
         >
           ✕
@@ -108,7 +108,7 @@ export function DeviceReductionSheet({
       </div>
 
       {deviceReductionInfo?.available === false ? (
-        <div className="py-4 text-center text-sm text-dark-400">
+        <div className="text-dark-400 py-4 text-center text-sm">
           {deviceReductionInfo.reason || t('subscription.additionalOptions.reduceUnavailable')}
         </div>
       ) : deviceReductionInfo ? (
@@ -133,14 +133,14 @@ export function DeviceReductionSheet({
                   deviceReductionInfo.connected_devices_count,
                 )
               }
-              className="btn-secondary flex h-12 w-12 items-center justify-center !p-0 text-2xl"
+              className="btn-secondary flex h-12 w-12 items-center justify-center p-0! text-2xl"
               aria-label={t('subscription.additionalOptions.decrementDevices', 'Уменьшить')}
             >
               -
             </button>
             <div className="text-center">
-              <div className="text-4xl font-bold text-dark-100">{targetDeviceLimit}</div>
-              <div className="text-sm text-dark-500">
+              <div className="text-dark-100 text-4xl font-bold">{targetDeviceLimit}</div>
+              <div className="text-dark-500 text-sm">
                 {t('subscription.additionalOptions.devicesUnit')}
               </div>
             </div>
@@ -151,14 +151,14 @@ export function DeviceReductionSheet({
                 )
               }
               disabled={targetDeviceLimit >= deviceReductionInfo.current_device_limit - 1}
-              className="btn-secondary flex h-12 w-12 items-center justify-center !p-0 text-2xl"
+              className="btn-secondary flex h-12 w-12 items-center justify-center p-0! text-2xl"
               aria-label={t('subscription.additionalOptions.incrementDevices', 'Увеличить')}
             >
               +
             </button>
           </div>
 
-          <div className="space-y-1 text-center text-sm text-dark-400">
+          <div className="text-dark-400 space-y-1 text-center text-sm">
             <div>
               {t('subscription.additionalOptions.currentDeviceLimit', {
                 count: deviceReductionInfo.current_device_limit,
@@ -177,7 +177,7 @@ export function DeviceReductionSheet({
           </div>
 
           {deviceReductionInfo.connected_devices_count > deviceReductionInfo.min_device_limit && (
-            <div className="rounded-lg bg-warning-500/10 p-3 text-center text-sm text-warning-400">
+            <div className="bg-warning-500/10 text-warning-400 rounded-lg p-3 text-center text-sm">
               {t('subscription.additionalOptions.disconnectDevicesFirst', {
                 count: deviceReductionInfo.connected_devices_count,
               })}
@@ -185,7 +185,7 @@ export function DeviceReductionSheet({
           )}
 
           <div className="text-center">
-            <div className="text-sm text-dark-400">
+            <div className="text-dark-400 text-sm">
               {t('subscription.additionalOptions.newDeviceLimit', {
                 count: targetDeviceLimit,
               })}
@@ -213,14 +213,14 @@ export function DeviceReductionSheet({
           </button>
 
           {reduceMutation.isError && (
-            <div className="text-center text-sm text-error-400">
+            <div className="text-error-400 text-center text-sm">
               {getErrorMessage(reduceMutation.error)}
             </div>
           )}
         </div>
       ) : (
         <div className="flex items-center justify-center py-4">
-          <span className="h-5 w-5 animate-spin rounded-full border-2 border-accent-400/30 border-t-accent-400" />
+          <span className="border-accent-400/30 border-t-accent-400 h-5 w-5 animate-spin rounded-full border-2" />
         </div>
       )}
     </div>

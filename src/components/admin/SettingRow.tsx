@@ -52,26 +52,26 @@ export function SettingRow({
   })();
 
   return (
-    <div className="group rounded-2xl border border-dark-700/40 bg-dark-800/40 p-4 transition-all hover:border-dark-600/60 hover:bg-dark-800/60 sm:p-5">
+    <div className="group border-dark-700/40 bg-dark-800/40 hover:border-dark-600/60 hover:bg-dark-800/60 rounded-2xl border p-4 transition-all sm:p-5">
       {/* Header row - name, badges, favorite */}
       <div className="mb-3 flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <h3 className="text-base font-semibold text-dark-100">{displayName}</h3>
+            <h3 className="text-dark-100 text-base font-semibold">{displayName}</h3>
             {setting.has_override && (
-              <span className="rounded-full bg-warning-500/20 px-2 py-0.5 text-xs font-medium text-warning-400">
+              <span className="bg-warning-500/20 text-warning-400 rounded-full px-2 py-0.5 text-xs font-medium">
                 {t('admin.settings.modified')}
               </span>
             )}
             {setting.read_only && (
-              <span className="flex items-center gap-1 rounded-full bg-dark-600/50 px-2 py-0.5 text-xs font-medium text-dark-400">
+              <span className="bg-dark-600/50 text-dark-400 flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium">
                 <LockIcon />
                 {t('admin.settings.readOnly')}
               </span>
             )}
             {setting.env_locked && !setting.read_only && (
               <span
-                className="flex items-center gap-1 rounded-full bg-dark-600/50 px-2 py-0.5 text-xs font-medium text-dark-400"
+                className="bg-dark-600/50 text-dark-400 flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium"
                 title={t('admin.settings.envLockedHint')}
               >
                 <LockIcon />
@@ -80,17 +80,17 @@ export function SettingRow({
             )}
           </div>
           {description && (
-            <p className="mt-1.5 text-sm leading-relaxed text-dark-400">{description}</p>
+            <p className="text-dark-400 mt-1.5 text-sm leading-relaxed">{description}</p>
           )}
         </div>
 
         {/* Favorite button */}
         <button
           onClick={onToggleFavorite}
-          className={`flex-shrink-0 rounded-xl p-2 transition-all ${
+          className={`shrink-0 rounded-xl p-2 transition-all ${
             isFavorite
               ? 'bg-warning-500/15 text-warning-400 hover:bg-warning-500/25'
-              : 'text-dark-500 opacity-0 hover:bg-dark-700/50 hover:text-warning-400 group-hover:opacity-100'
+              : 'text-dark-500 hover:bg-dark-700/50 hover:text-warning-400 opacity-0 group-hover:opacity-100'
           }`}
           title={
             isFavorite
@@ -104,23 +104,23 @@ export function SettingRow({
 
       {/* Setting key (muted) */}
       <div className="mb-3">
-        <code className="rounded bg-dark-900/50 px-2 py-1 font-mono text-xs text-dark-500">
+        <code className="bg-dark-900/50 text-dark-500 rounded px-2 py-1 font-mono text-xs">
           {setting.key}
         </code>
       </div>
 
       {/* Control section */}
       <div
-        className={`${isLongValue ? '' : 'flex items-center justify-between gap-3'} border-t border-dark-700/30 pt-3`}
+        className={`${isLongValue ? '' : 'flex items-center justify-between gap-3'} border-dark-700/30 border-t pt-3`}
       >
         {locked ? (
           // Read-only / env-locked display
           <div className="flex flex-col gap-1.5">
-            <div className="flex items-center gap-2 rounded-lg bg-dark-700/30 px-4 py-2.5 text-dark-300">
-              <span className="break-all font-mono text-sm">{String(setting.current ?? '-')}</span>
+            <div className="bg-dark-700/30 text-dark-300 flex items-center gap-2 rounded-lg px-4 py-2.5">
+              <span className="font-mono text-sm break-all">{String(setting.current ?? '-')}</span>
             </div>
             {setting.env_locked && !setting.read_only && (
-              <p className="text-xs leading-relaxed text-dark-500">
+              <p className="text-dark-500 text-xs leading-relaxed">
                 {t('admin.settings.envLockedHint')}
               </p>
             )}
@@ -128,7 +128,7 @@ export function SettingRow({
         ) : setting.type === 'bool' ? (
           // Boolean toggle
           <div className="flex items-center justify-between gap-3">
-            <span className="text-sm text-dark-400">
+            <span className="text-dark-400 text-sm">
               {setting.current === true || setting.current === 'true'
                 ? t('admin.settings.enabled')
                 : t('admin.settings.disabled')}
@@ -148,7 +148,7 @@ export function SettingRow({
                 <button
                   onClick={onReset}
                   disabled={isResetting}
-                  className="rounded-lg p-2 text-dark-400 transition-colors hover:bg-dark-700 hover:text-dark-200 disabled:opacity-50"
+                  className="text-dark-400 hover:bg-dark-700 hover:text-dark-200 rounded-lg p-2 transition-colors disabled:opacity-50"
                   title={t('admin.settings.reset')}
                 >
                   <RefreshIcon />
@@ -167,7 +167,7 @@ export function SettingRow({
               <button
                 onClick={onReset}
                 disabled={isResetting}
-                className="flex-shrink-0 rounded-lg p-2 text-dark-400 transition-colors hover:bg-dark-700 hover:text-dark-200 disabled:opacity-50"
+                className="text-dark-400 hover:bg-dark-700 hover:text-dark-200 shrink-0 rounded-lg p-2 transition-colors disabled:opacity-50"
                 title={t('admin.settings.reset')}
               >
                 <RefreshIcon />
@@ -183,7 +183,7 @@ export function SettingRow({
           <button
             onClick={onReset}
             disabled={isResetting}
-            className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-dark-400 transition-colors hover:bg-dark-700 hover:text-dark-200 disabled:opacity-50"
+            className="text-dark-400 hover:bg-dark-700 hover:text-dark-200 flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm transition-colors disabled:opacity-50"
             title={t('admin.settings.reset')}
           >
             <RefreshIcon />

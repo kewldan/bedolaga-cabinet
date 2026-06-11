@@ -108,14 +108,14 @@ export default function SubscriptionCardExpired({
         r: 255,
         g: 184,
         b: 0,
-        hex: 'rgb(var(--color-urgent-400))',
+        hex: 'rgb(var(--rt-urgent-400))',
         gradient: 'linear-gradient(135deg, #FFB800, #FF8C00)',
       }
     : {
         r: 255,
         g: 59,
         b: 92,
-        hex: 'rgb(var(--color-critical-500))',
+        hex: 'rgb(var(--rt-critical-500))',
         gradient: 'linear-gradient(135deg, #FF3B5C, #FF6B35)',
       };
 
@@ -164,7 +164,7 @@ export default function SubscriptionCardExpired({
       {/* Header */}
       <div className="mb-5 flex items-center gap-3">
         <div
-          className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-[14px]"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px]"
           style={{
             background: `rgba(${accent.r},${accent.g},${accent.b},0.1)`,
             border: `1px solid rgba(${accent.r},${accent.g},${accent.b},0.15)`,
@@ -177,7 +177,7 @@ export default function SubscriptionCardExpired({
             <ClockIcon className="h-[22px] w-[22px]" />
           )}
         </div>
-        <h2 className="text-lg font-bold tracking-tight text-dark-50">
+        <h2 className="text-dark-50 text-lg font-bold tracking-tight">
           {isLimited
             ? t('subscription.trafficLimitedTitle')
             : isDisabledDaily
@@ -190,7 +190,7 @@ export default function SubscriptionCardExpired({
 
       {/* Limited description */}
       {isLimited && (
-        <p className="mb-4 text-sm text-dark-50/60">
+        <p className="text-dark-50/60 mb-4 text-sm">
           {t('subscription.trafficLimitedDescription')}
         </p>
       )}
@@ -205,19 +205,19 @@ export default function SubscriptionCardExpired({
         }}
       >
         <div className="flex items-center">
-          <div className="mb-0.5 font-mono text-[10px] font-medium uppercase tracking-wider text-dark-50/30">
+          <div className="text-dark-50/30 mb-0.5 font-mono text-[10px] font-medium tracking-wider uppercase">
             {isLimited
               ? t('dashboard.expired.activeUntil')
               : t('dashboard.expired.expiredDate', {
                   context: subscription.is_trial ? 'trial' : '',
                 })}
           </div>
-          <div className="ml-3 text-base font-bold tracking-tight text-dark-50/50">
+          <div className="text-dark-50/50 ml-3 text-base font-bold tracking-tight">
             {formattedDate}
           </div>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="text-[10px] font-medium uppercase tracking-wider text-dark-50/30">
+          <span className="text-dark-50/30 text-[10px] font-medium tracking-wider uppercase">
             {t('dashboard.expired.balance')}
           </span>
           <span
@@ -231,7 +231,7 @@ export default function SubscriptionCardExpired({
       {/* Renew error */}
       {renewError && (
         <div
-          className="mb-4 rounded-xl border border-error-500/30 bg-error-500/10 p-3 text-center text-sm text-error-400"
+          className="border-error-500/30 bg-error-500/10 text-error-400 mb-4 rounded-xl border p-3 text-center text-sm"
           role="alert"
         >
           {renewError}

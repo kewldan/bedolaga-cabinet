@@ -25,7 +25,7 @@ export default function PurchaseCTAButton({
   // Daily tariffs renew automatically — no manual renewal button needed in multi-tariff
   if (isMultiTariff && isDaily && !isExpired) return null;
 
-  const accentColor = isExpired ? 'rgb(var(--color-critical-500))' : 'rgb(var(--color-accent-400))';
+  const accentColor = isExpired ? 'rgb(var(--rt-critical-500))' : 'rgb(var(--rt-accent-400))';
 
   const buttonText = isExpired
     ? t('subscription.getSubscription')
@@ -62,31 +62,29 @@ export default function PurchaseCTAButton({
           style={{
             background: isExpired
               ? 'linear-gradient(135deg, rgba(255,59,92,0.08), rgba(255,107,53,0.06))'
-              : 'linear-gradient(135deg, rgba(var(--color-accent-400), 0.08), rgba(var(--color-accent-400), 0.06))',
+              : 'linear-gradient(135deg, rgba(var(--rt-accent-400), 0.08), rgba(var(--rt-accent-400), 0.06))',
           }}
         >
           {/* Left: icon + text */}
           <div className="flex items-center gap-3">
             {/* Sparkle icon */}
             <div
-              className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
               style={{
-                background: isExpired
-                  ? 'rgba(255,59,92,0.12)'
-                  : 'rgba(var(--color-accent-400), 0.12)',
+                background: isExpired ? 'rgba(255,59,92,0.12)' : 'rgba(var(--rt-accent-400), 0.12)',
                 color: accentColor,
               }}
             >
               <SubscriptionIcon className="h-[18px] w-[18px]" />
             </div>
             <div>
-              <div className="text-[15px] font-semibold text-dark-50">{buttonText}</div>
-              <div className="text-[12px] text-dark-50/40">{hintText}</div>
+              <div className="text-dark-50 text-[15px] font-semibold">{buttonText}</div>
+              <div className="text-dark-50/40 text-[12px]">{hintText}</div>
             </div>
           </div>
 
           {/* Right: chevron */}
-          <ChevronRightIcon className="h-5 w-5 flex-shrink-0 text-dark-50/30 transition-transform duration-300 group-hover:translate-x-1" />
+          <ChevronRightIcon className="text-dark-50/30 h-5 w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
         </div>
       </HoverBorderGradient>
     </Link>

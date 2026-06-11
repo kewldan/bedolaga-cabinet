@@ -262,23 +262,23 @@ function ReplacementFaqItem({
   const sanitizedAnswer = useMemo(() => sanitizeRichHtml(item.a), [item.a]);
 
   return (
-    <div className="overflow-hidden rounded-xl border border-dark-700 bg-dark-800/50 transition-all hover:border-dark-600">
+    <div className="border-dark-700 bg-dark-800/50 hover:border-dark-600 overflow-hidden rounded-xl border transition-all">
       <button
         type="button"
         onClick={onToggle}
         className="flex min-h-[52px] w-full items-center justify-between gap-3 px-5 py-4 text-left"
         aria-expanded={isOpen}
       >
-        <span className="text-sm font-medium text-dark-100 sm:text-base">{item.q}</span>
+        <span className="text-dark-100 text-sm font-medium sm:text-base">{item.q}</span>
         <ChevronIcon expanded={isOpen} />
       </button>
       <div
         style={{ height }}
         className="overflow-hidden transition-[height] duration-300 ease-in-out"
       >
-        <div ref={contentRef} className="border-t border-dark-700/50 px-5 pb-4 pt-3">
+        <div ref={contentRef} className="border-dark-700/50 border-t px-5 pt-3 pb-4">
           <div
-            className="prose prose-sm max-w-none text-dark-300"
+            className="prose prose-sm text-dark-300 max-w-none"
             dangerouslySetInnerHTML={{ __html: sanitizedAnswer }}
           />
         </div>
@@ -470,24 +470,24 @@ export default function Info() {
     if (infoPageLoading) {
       return (
         <div className="flex justify-center py-8">
-          <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+          <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
         </div>
       );
     }
 
     if (!infoPage) {
-      return <div className="py-8 text-center text-dark-400">{t('info.noContent')}</div>;
+      return <div className="text-dark-400 py-8 text-center">{t('info.noContent')}</div>;
     }
 
     if (infoPage.page_type === 'faq') {
       if (infoPageFaqItems.length === 0) {
-        return <div className="py-8 text-center text-dark-400">{t('info.noFaq')}</div>;
+        return <div className="text-dark-400 py-8 text-center">{t('info.noFaq')}</div>;
       }
       return <ReplacementFaqView items={infoPageFaqItems} />;
     }
 
     if (!infoPageHtml) {
-      return <div className="py-8 text-center text-dark-400">{t('info.noContent')}</div>;
+      return <div className="text-dark-400 py-8 text-center">{t('info.noContent')}</div>;
     }
 
     return (
@@ -507,7 +507,7 @@ export default function Info() {
     if (!replacementsLoaded) {
       return (
         <div className="flex justify-center py-8">
-          <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+          <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
         </div>
       );
     }
@@ -521,13 +521,13 @@ export default function Info() {
       if (faqLoading) {
         return (
           <div className="flex justify-center py-8">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+            <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
           </div>
         );
       }
 
       if (!faqPages || faqPages.length === 0) {
-        return <div className="py-8 text-center text-dark-400">{t('info.noFaq')}</div>;
+        return <div className="text-dark-400 py-8 text-center">{t('info.noFaq')}</div>;
       }
 
       return (
@@ -536,13 +536,13 @@ export default function Info() {
             <div key={faq.id} className="bento-card overflow-hidden p-0">
               <button
                 onClick={() => toggleFaq(faq.id)}
-                className="flex min-h-[52px] w-full items-center justify-between px-4 py-3 text-left transition-colors hover:bg-dark-800/50"
+                className="hover:bg-dark-800/50 flex min-h-[52px] w-full items-center justify-between px-4 py-3 text-left transition-colors"
               >
                 <span className="font-medium">{faq.title}</span>
                 <ChevronIcon expanded={expandedFaq === faq.id} />
               </button>
               {expandedFaq === faq.id && (
-                <div className="prose prose-invert max-w-none px-4 pb-4 text-dark-300">
+                <div className="prose prose-invert text-dark-300 max-w-none px-4 pb-4">
                   <div dangerouslySetInnerHTML={{ __html: formatContent(faq.content) }} />
                 </div>
               )}
@@ -556,13 +556,13 @@ export default function Info() {
       if (rulesLoading) {
         return (
           <div className="flex justify-center py-8">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+            <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
           </div>
         );
       }
 
       if (!rules?.content) {
-        return <div className="py-8 text-center text-dark-400">{t('info.noContent')}</div>;
+        return <div className="text-dark-400 py-8 text-center">{t('info.noContent')}</div>;
       }
 
       return (
@@ -572,7 +572,7 @@ export default function Info() {
             dangerouslySetInnerHTML={{ __html: formatContent(rules.content) }}
           />
           {rules.updated_at && (
-            <p className="mt-6 border-t border-dark-700 pt-4 text-sm text-dark-400">
+            <p className="border-dark-700 text-dark-400 mt-6 border-t pt-4 text-sm">
               {t('info.updatedAt')}: {new Date(rules.updated_at).toLocaleDateString()}
             </p>
           )}
@@ -584,13 +584,13 @@ export default function Info() {
       if (privacyLoading) {
         return (
           <div className="flex justify-center py-8">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+            <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
           </div>
         );
       }
 
       if (!privacy?.content) {
-        return <div className="py-8 text-center text-dark-400">{t('info.noContent')}</div>;
+        return <div className="text-dark-400 py-8 text-center">{t('info.noContent')}</div>;
       }
 
       return (
@@ -600,7 +600,7 @@ export default function Info() {
             dangerouslySetInnerHTML={{ __html: formatContent(privacy.content) }}
           />
           {privacy.updated_at && (
-            <p className="mt-6 border-t border-dark-700 pt-4 text-sm text-dark-400">
+            <p className="border-dark-700 text-dark-400 mt-6 border-t pt-4 text-sm">
               {t('info.updatedAt')}: {new Date(privacy.updated_at).toLocaleDateString()}
             </p>
           )}
@@ -612,13 +612,13 @@ export default function Info() {
       if (offerLoading) {
         return (
           <div className="flex justify-center py-8">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+            <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
           </div>
         );
       }
 
       if (!offer?.content) {
-        return <div className="py-8 text-center text-dark-400">{t('info.noContent')}</div>;
+        return <div className="text-dark-400 py-8 text-center">{t('info.noContent')}</div>;
       }
 
       return (
@@ -628,7 +628,7 @@ export default function Info() {
             dangerouslySetInnerHTML={{ __html: formatContent(offer.content) }}
           />
           {offer.updated_at && (
-            <p className="mt-6 border-t border-dark-700 pt-4 text-sm text-dark-400">
+            <p className="border-dark-700 text-dark-400 mt-6 border-t pt-4 text-sm">
               {t('info.updatedAt')}: {new Date(offer.updated_at).toLocaleDateString()}
             </p>
           )}
@@ -640,13 +640,13 @@ export default function Info() {
       if (loyaltyLoading) {
         return (
           <div className="flex justify-center py-8">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+            <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
           </div>
         );
       }
 
       if (!loyaltyData || loyaltyData.tiers.length === 0) {
-        return <div className="py-8 text-center text-dark-400">{t('info.noLoyaltyTiers')}</div>;
+        return <div className="text-dark-400 py-8 text-center">{t('info.noLoyaltyTiers')}</div>;
       }
 
       const formatCurrency = (amount: number) => {
@@ -661,20 +661,20 @@ export default function Info() {
       const getStatusBadge = (tier: LoyaltyTierInfo) => {
         if (tier.is_current) {
           return (
-            <span className="rounded-full bg-accent-500/20 px-2 py-1 text-xs font-medium text-accent-400">
+            <span className="bg-accent-500/20 text-accent-400 rounded-full px-2 py-1 text-xs font-medium">
               {t('info.statusCurrent')}
             </span>
           );
         }
         if (tier.is_achieved) {
           return (
-            <span className="rounded-full bg-success-500/20 px-2 py-1 text-xs font-medium text-success-400">
+            <span className="bg-success-500/20 text-success-400 rounded-full px-2 py-1 text-xs font-medium">
               {t('info.statusAchieved')}
             </span>
           );
         }
         return (
-          <span className="rounded-full bg-dark-600 px-2 py-1 text-xs font-medium text-dark-400">
+          <span className="bg-dark-600 text-dark-400 rounded-full px-2 py-1 text-xs font-medium">
             {t('info.statusLocked')}
           </span>
         );
@@ -693,18 +693,18 @@ export default function Info() {
         <div className="space-y-6">
           {/* Progress Card */}
           <div className="bento-card p-5">
-            <h3 className="mb-4 text-lg font-semibold text-dark-50">{t('info.yourProgress')}</h3>
+            <h3 className="text-dark-50 mb-4 text-lg font-semibold">{t('info.yourProgress')}</h3>
 
             <div className="mb-4 grid grid-cols-2 gap-4">
-              <div className="rounded-xl bg-dark-800/50 p-3">
-                <div className="mb-1 text-xs text-dark-400">{t('info.totalSpent')}</div>
-                <div className="truncate text-base font-bold text-dark-50 sm:text-lg">
+              <div className="bg-dark-800/50 rounded-xl p-3">
+                <div className="text-dark-400 mb-1 text-xs">{t('info.totalSpent')}</div>
+                <div className="text-dark-50 truncate text-base font-bold sm:text-lg">
                   {formatCurrency(loyaltyData.current_spent_rubles)}
                 </div>
               </div>
-              <div className="rounded-xl bg-dark-800/50 p-3">
-                <div className="mb-1 text-xs text-dark-400">{t('info.currentStatus')}</div>
-                <div className="truncate text-base font-bold text-accent-400 sm:text-lg">
+              <div className="bg-dark-800/50 rounded-xl p-3">
+                <div className="text-dark-400 mb-1 text-xs">{t('info.currentStatus')}</div>
+                <div className="text-accent-400 truncate text-base font-bold sm:text-lg">
                   {loyaltyData.current_tier_name || '-'}
                 </div>
               </div>
@@ -713,7 +713,7 @@ export default function Info() {
             {/* Progress bar to next tier */}
             {loyaltyData.next_tier_name && loyaltyData.next_tier_threshold_rubles ? (
               <div>
-                <div className="mb-2 flex flex-col gap-1 text-xs text-dark-400 sm:flex-row sm:justify-between">
+                <div className="text-dark-400 mb-2 flex flex-col gap-1 text-xs sm:flex-row sm:justify-between">
                   <span>
                     {t('info.nextStatus')}: {loyaltyData.next_tier_name}
                   </span>
@@ -727,18 +727,18 @@ export default function Info() {
                     )}
                   </span>
                 </div>
-                <div className="h-3 overflow-hidden rounded-full bg-dark-700">
+                <div className="bg-dark-700 h-3 overflow-hidden rounded-full">
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-accent-500 to-accent-400 transition-all duration-500"
+                    className="from-accent-500 to-accent-400 h-full rounded-full bg-linear-to-r transition-all duration-500"
                     style={{ width: `${Math.min(100, loyaltyData.progress_percent)}%` }}
                   />
                 </div>
-                <div className="mt-1 text-right text-xs text-dark-400">
+                <div className="text-dark-400 mt-1 text-right text-xs">
                   {loyaltyData.progress_percent.toFixed(1)}%
                 </div>
               </div>
             ) : (
-              <div className="py-2 text-center font-medium text-success-400">
+              <div className="text-success-400 py-2 text-center font-medium">
                 {t('info.allStatusesAchieved')}
               </div>
             )}
@@ -751,7 +751,7 @@ export default function Info() {
                 key={tier.id}
                 className={`bento-card p-4 transition-all ${
                   tier.is_current
-                    ? 'bg-accent-500/5 ring-2 ring-accent-500/50'
+                    ? 'bg-accent-500/5 ring-accent-500/50 ring-2'
                     : tier.is_achieved
                       ? 'bg-success-500/5'
                       : 'opacity-70'
@@ -771,8 +771,8 @@ export default function Info() {
                       <StarIcon />
                     </div>
                     <div className="min-w-0">
-                      <h4 className="truncate font-semibold text-dark-50">{tier.name}</h4>
-                      <p className="text-xs text-dark-400">
+                      <h4 className="text-dark-50 truncate font-semibold">{tier.name}</h4>
+                      <p className="text-dark-400 text-xs">
                         {t('info.threshold')}: {formatCurrency(tier.threshold_rubles)}
                       </p>
                     </div>
@@ -782,28 +782,28 @@ export default function Info() {
 
                 {/* Discounts */}
                 {hasAnyDiscount(tier) ? (
-                  <div className="rounded-xl bg-dark-800/50 p-3">
-                    <div className="mb-2 text-xs text-dark-400">{t('info.discounts')}:</div>
+                  <div className="bg-dark-800/50 rounded-xl p-3">
+                    <div className="text-dark-400 mb-2 text-xs">{t('info.discounts')}:</div>
                     <div className="flex flex-wrap gap-2">
                       {tier.server_discount_percent > 0 && (
-                        <span className="rounded-lg bg-dark-700 px-2 py-1 text-xs text-dark-200">
+                        <span className="bg-dark-700 text-dark-200 rounded-lg px-2 py-1 text-xs">
                           {t('info.serverDiscount')}: -{tier.server_discount_percent}%
                         </span>
                       )}
                       {tier.traffic_discount_percent > 0 && (
-                        <span className="rounded-lg bg-dark-700 px-2 py-1 text-xs text-dark-200">
+                        <span className="bg-dark-700 text-dark-200 rounded-lg px-2 py-1 text-xs">
                           {t('info.trafficDiscount')}: -{tier.traffic_discount_percent}%
                         </span>
                       )}
                       {tier.device_discount_percent > 0 && (
-                        <span className="rounded-lg bg-dark-700 px-2 py-1 text-xs text-dark-200">
+                        <span className="bg-dark-700 text-dark-200 rounded-lg px-2 py-1 text-xs">
                           {t('info.deviceDiscount')}: -{tier.device_discount_percent}%
                         </span>
                       )}
                       {Object.entries(tier.period_discounts).map(([days, percent]) => (
                         <span
                           key={days}
-                          className="rounded-lg bg-dark-700 px-2 py-1 text-xs text-dark-200"
+                          className="bg-dark-700 text-dark-200 rounded-lg px-2 py-1 text-xs"
                         >
                           {t('info.periodDiscount', { days })}: -{percent}%
                         </span>
@@ -811,7 +811,7 @@ export default function Info() {
                     </div>
                   </div>
                 ) : (
-                  <div className="text-xs italic text-dark-500">{t('info.noDiscounts')}</div>
+                  <div className="text-dark-500 text-xs italic">{t('info.noDiscounts')}</div>
                 )}
               </div>
             ))}
@@ -827,7 +827,7 @@ export default function Info() {
     <div className="space-y-6">
       <div className="flex items-center gap-3">
         <InfoIcon className="h-6 w-6" />
-        <h1 className="text-2xl font-bold text-dark-50 sm:text-3xl">{t('info.title')}</h1>
+        <h1 className="text-dark-50 text-2xl font-bold sm:text-3xl">{t('info.title')}</h1>
       </div>
 
       {/* Tabs */}

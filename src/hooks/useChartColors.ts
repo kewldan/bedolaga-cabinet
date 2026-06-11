@@ -4,13 +4,13 @@ import { rgbToHex } from '../utils/colorConversion';
 
 /** CSS variable names for chart theme colors */
 const CSS_VARS = {
-  earnings: '--color-success-400',
-  referrals: '--color-accent-400',
-  grid: '--color-dark-700',
-  tooltipBg: '--color-dark-800',
-  tooltipBorder: '--color-dark-600',
-  tick: '--color-dark-400',
-  label: '--color-dark-300',
+  earnings: '--rt-success-400',
+  referrals: '--rt-accent-400',
+  grid: '--rt-dark-700',
+  tooltipBg: '--rt-dark-800',
+  tooltipBorder: '--rt-dark-600',
+  tick: '--rt-dark-400',
+  label: '--rt-dark-300',
 } as const;
 
 /** Fallback hex colors (default dark theme) */

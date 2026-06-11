@@ -189,7 +189,7 @@ export default function Support() {
   if (configLoading) {
     return (
       <div className="flex items-center justify-center py-24">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+        <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
       </div>
     );
   }
@@ -265,11 +265,11 @@ export default function Support() {
     return (
       <div className="mx-auto mt-12 max-w-md">
         <Card className="text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-dark-800">
-            <ChatIcon className="h-8 w-8 text-dark-400" />
+          <div className="bg-dark-800 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
+            <ChatIcon className="text-dark-400 h-8 w-8" />
           </div>
-          <h2 className="mb-2 text-xl font-semibold text-dark-100">{supportMessage.title}</h2>
-          <p className="mb-6 text-dark-400">{supportMessage.message}</p>
+          <h2 className="text-dark-100 mb-2 text-xl font-semibold">{supportMessage.title}</h2>
+          <p className="text-dark-400 mb-6">{supportMessage.message}</p>
           <Button onClick={supportMessage.buttonAction} fullWidth>
             {supportMessage.buttonText}
           </Button>
@@ -295,27 +295,27 @@ export default function Support() {
                 src={att.preview}
                 alt="Preview"
                 loading="lazy"
-                className="h-16 w-16 rounded-lg border border-dark-700 object-cover"
+                className="border-dark-700 h-16 w-16 rounded-lg border object-cover"
               />
             ) : (
-              <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-dark-700 text-xs text-dark-400">
+              <div className="bg-dark-700 text-dark-400 flex h-16 w-16 items-center justify-center rounded-lg text-xs">
                 {att.file.name.slice(-6)}
               </div>
             )}
             {att.uploading && (
-              <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-dark-950/50">
-                <span className="h-4 w-4 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+              <div className="bg-dark-950/50 absolute inset-0 flex items-center justify-center rounded-lg">
+                <span className="border-accent-500 h-4 w-4 animate-spin rounded-full border-2 border-t-transparent" />
               </div>
             )}
             {att.error && (
-              <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-error-500/30">
-                <span className="text-xs text-error-300">!</span>
+              <div className="bg-error-500/30 absolute inset-0 flex items-center justify-center rounded-lg">
+                <span className="text-error-300 text-xs">!</span>
               </div>
             )}
             <button
               type="button"
               onClick={() => onRemove(idx)}
-              className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-dark-600 text-dark-300 hover:bg-error-500 hover:text-white"
+              className="bg-dark-600 text-dark-300 hover:bg-error-500 absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full hover:text-white"
             >
               <CloseIcon className="h-4 w-4" />
             </button>
@@ -335,7 +335,7 @@ export default function Support() {
         variants={staggerItem}
         className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
       >
-        <h1 className="text-2xl font-bold text-dark-50 sm:text-3xl">{t('support.title')}</h1>
+        <h1 className="text-dark-50 text-2xl font-bold sm:text-3xl">{t('support.title')}</h1>
         <Button
           onClick={() => {
             setShowCreateForm(true);
@@ -353,12 +353,12 @@ export default function Support() {
         <motion.div variants={staggerItem}>
           <Card className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-dark-800">
-                <ChatIcon className="h-5 w-5 text-dark-400" />
+              <div className="bg-dark-800 flex h-10 w-10 items-center justify-center rounded-xl">
+                <ChatIcon className="text-dark-400 h-5 w-5" />
               </div>
               <div>
-                <div className="text-sm font-medium text-dark-100">{t('support.contactUs')}</div>
-                <div className="text-xs text-dark-400">{supportConfig.support_username}</div>
+                <div className="text-dark-100 text-sm font-medium">{t('support.contactUs')}</div>
+                <div className="text-dark-400 text-xs">{supportConfig.support_username}</div>
               </div>
             </div>
             <Button
@@ -380,11 +380,11 @@ export default function Support() {
       <motion.div variants={staggerItem} className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Tickets List */}
         <Card className="lg:col-span-1">
-          <h2 className="mb-4 text-lg font-semibold text-dark-100">{t('support.yourTickets')}</h2>
+          <h2 className="text-dark-100 mb-4 text-lg font-semibold">{t('support.yourTickets')}</h2>
 
           {isLoading ? (
             <div className="flex items-center justify-center py-12">
-              <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+              <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
             </div>
           ) : tickets?.items && tickets.items.length > 0 ? (
             <div className="space-y-2">
@@ -396,19 +396,19 @@ export default function Support() {
                     setShowCreateForm(false);
                     clearReplyAttachments();
                   }}
-                  className={`w-full rounded-bento border p-4 text-left transition-all ${
+                  className={`rounded-bento w-full border p-4 text-left transition-all ${
                     selectedTicket?.id === ticket.id
                       ? 'border-accent-500 bg-accent-500/10'
                       : 'border-dark-700/50 bg-dark-800/30 hover:border-dark-600'
                   }`}
                 >
                   <div className="mb-2 flex items-start justify-between gap-2">
-                    <div className="truncate font-medium text-dark-100">{ticket.title}</div>
-                    <span className={`${getStatusBadge(ticket.status)} flex-shrink-0`}>
+                    <div className="text-dark-100 truncate font-medium">{ticket.title}</div>
+                    <span className={`${getStatusBadge(ticket.status)} shrink-0`}>
                       {getStatusLabel(ticket.status)}
                     </span>
                   </div>
-                  <div className="text-xs text-dark-500">
+                  <div className="text-dark-500 text-xs">
                     {new Date(ticket.updated_at).toLocaleDateString()}
                   </div>
                 </button>
@@ -416,8 +416,8 @@ export default function Support() {
             </div>
           ) : (
             <div className="py-12 text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-dark-800">
-                <ChatIcon className="h-8 w-8 text-dark-500" />
+              <div className="bg-dark-800 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
+                <ChatIcon className="text-dark-500 h-8 w-8" />
               </div>
               <div className="text-dark-400">{t('support.noTickets')}</div>
             </div>
@@ -428,7 +428,7 @@ export default function Support() {
         <Card className="lg:col-span-2">
           {showCreateForm ? (
             <div>
-              <h2 className="mb-6 text-lg font-semibold text-dark-100">
+              <h2 className="text-dark-100 mb-6 text-lg font-semibold">
                 {t('support.createTicket')}
               </h2>
               <form
@@ -506,7 +506,7 @@ export default function Support() {
                       type="button"
                       onClick={() => createFileInputRef.current?.click()}
                       disabled={createAttachments.some((a) => a.uploading)}
-                      className="mt-2 flex items-center gap-2 text-sm text-dark-400 transition-colors hover:text-dark-200 disabled:opacity-50"
+                      className="text-dark-400 hover:text-dark-200 mt-2 flex items-center gap-2 text-sm transition-colors disabled:opacity-50"
                     >
                       <ImageIcon />
                       {t('support.attachImage')}{' '}
@@ -516,7 +516,7 @@ export default function Support() {
                 </div>
 
                 {rateLimitError && (
-                  <div className="rounded-xl border border-error-500/30 bg-error-500/10 p-3 text-sm text-error-400">
+                  <div className="border-error-500/30 bg-error-500/10 text-error-400 rounded-xl border p-3 text-sm">
                     {rateLimitError}
                   </div>
                 )}
@@ -545,16 +545,16 @@ export default function Support() {
             </div>
           ) : selectedTicket ? (
             <div className="flex h-full flex-col">
-              <div className="mb-6 flex flex-col gap-2 border-b border-dark-800/50 pb-4 sm:flex-row sm:items-start sm:justify-between">
+              <div className="border-dark-800/50 mb-6 flex flex-col gap-2 border-b pb-4 sm:flex-row sm:items-start sm:justify-between">
                 <div>
-                  <h2 className="text-lg font-semibold text-dark-100">
+                  <h2 className="text-dark-100 text-lg font-semibold">
                     {ticketDetail?.title || selectedTicket.title}
                   </h2>
                   <div className="mt-2 flex flex-wrap items-center gap-2">
                     <span className={getStatusBadge(ticketDetail?.status || selectedTicket.status)}>
                       {getStatusLabel(ticketDetail?.status || selectedTicket.status)}
                     </span>
-                    <span className="text-xs text-dark-500">
+                    <span className="text-dark-500 text-xs">
                       {t('support.created')}{' '}
                       {new Date(selectedTicket.created_at).toLocaleDateString()}
                     </span>
@@ -565,7 +565,7 @@ export default function Support() {
               {/* Messages */}
               {detailLoading ? (
                 <div className="flex items-center justify-center py-12">
-                  <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+                  <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
                 </div>
               ) : ticketDetail?.messages ? (
                 <div className="scrollbar-hide mb-6 max-h-96 flex-1 space-y-4 overflow-y-auto">
@@ -574,8 +574,8 @@ export default function Support() {
                       key={msg.id}
                       className={`rounded-xl p-4 ${
                         msg.is_from_admin
-                          ? 'ml-4 border border-accent-500/20 bg-accent-500/10'
-                          : 'mr-4 border border-dark-700/30 bg-dark-800/50'
+                          ? 'border-accent-500/20 bg-accent-500/10 ml-4 border'
+                          : 'border-dark-700/30 bg-dark-800/50 mr-4 border'
                       }`}
                     >
                       <div className="mb-2 flex items-center justify-between">
@@ -584,13 +584,13 @@ export default function Support() {
                         >
                           {msg.is_from_admin ? t('support.supportTeam') : t('support.you')}
                         </span>
-                        <span className="text-xs text-dark-500">
+                        <span className="text-dark-500 text-xs">
                           {new Date(msg.created_at).toLocaleString()}
                         </span>
                       </div>
                       {msg.message_text && (
                         <div
-                          className="whitespace-pre-wrap text-dark-200 [&_a]:text-accent-400 [&_a]:underline"
+                          className="text-dark-200 [&_a]:text-accent-400 whitespace-pre-wrap [&_a]:underline"
                           dangerouslySetInnerHTML={{ __html: linkifyText(msg.message_text) }}
                         />
                       )}
@@ -618,7 +618,7 @@ export default function Support() {
                     }
                     replyMutation.mutate();
                   }}
-                  className="border-t border-dark-800/50 pt-4"
+                  className="border-dark-800/50 border-t pt-4"
                 >
                   <div className="space-y-3">
                     <div className="flex gap-3">
@@ -662,7 +662,7 @@ export default function Support() {
                           type="button"
                           onClick={() => replyFileInputRef.current?.click()}
                           disabled={replyAttachments.some((a) => a.uploading)}
-                          className="flex items-center gap-2 text-sm text-dark-400 transition-colors hover:text-dark-200 disabled:opacity-50"
+                          className="text-dark-400 hover:text-dark-200 flex items-center gap-2 text-sm transition-colors disabled:opacity-50"
                         >
                           <ImageIcon />
                           {t('support.attachImage')}{' '}
@@ -683,7 +683,7 @@ export default function Support() {
                       </Button>
                     </div>
                     {rateLimitError && (
-                      <div className="mt-2 rounded-lg border border-error-500/30 bg-error-500/10 p-2 text-sm text-error-400">
+                      <div className="border-error-500/30 bg-error-500/10 text-error-400 mt-2 rounded-lg border p-2 text-sm">
                         {rateLimitError}
                       </div>
                     )}
@@ -692,16 +692,16 @@ export default function Support() {
               )}
 
               {ticketDetail?.is_reply_blocked && (
-                <div className="border-t border-dark-800/50 py-4 text-center text-sm text-dark-500">
+                <div className="border-dark-800/50 text-dark-500 border-t py-4 text-center text-sm">
                   {t('support.repliesDisabled')}
                 </div>
               )}
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-16">
-              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-dark-800">
+              <div className="bg-dark-800 mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
                 <svg
-                  className="h-8 w-8 text-dark-500"
+                  className="text-dark-500 h-8 w-8"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

@@ -106,13 +106,13 @@ function wrap(frame: Frame, key: number): ReactNode {
       return <s key={k}>{frame.children}</s>;
     case 'code':
       return (
-        <code key={k} className="rounded bg-dark-950/30 px-1 font-mono text-[0.92em]">
+        <code key={k} className="bg-dark-950/30 rounded px-1 font-mono text-[0.92em]">
           {frame.children}
         </code>
       );
     case 'pre':
       return (
-        <pre key={k} className="my-1 rounded bg-dark-950/30 p-2 font-mono text-[0.92em]">
+        <pre key={k} className="bg-dark-950/30 my-1 rounded p-2 font-mono text-[0.92em]">
           {frame.children}
         </pre>
       );
@@ -190,7 +190,7 @@ export function TelegramPreview({
   if (!open) return null;
   return createPortal(
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-dark-950/70 p-4"
+      className="bg-dark-950/70 fixed inset-0 z-9999 flex items-center justify-center p-4"
       onClick={onClose}
     >
       <div
@@ -209,7 +209,7 @@ export function TelegramPreview({
           <button
             onClick={onClose}
             aria-label={t('common.close', 'Закрыть')}
-            className="flex h-9 w-9 items-center justify-center rounded text-dark-400 hover:bg-dark-700"
+            className="text-dark-400 hover:bg-dark-700 flex h-9 w-9 items-center justify-center rounded"
           >
             ✕
           </button>
@@ -228,11 +228,11 @@ export function TelegramPreview({
               <video src={mediaUrl} controls className="mb-2 max-h-72 w-full rounded-lg" />
             )}
             {text ? (
-              <div className="whitespace-pre-wrap break-words text-[15px] leading-snug">
+              <div className="text-[15px] leading-snug wrap-break-word whitespace-pre-wrap">
                 {rendered}
               </div>
             ) : (
-              <div className="text-sm italic text-white/60">
+              <div className="text-sm text-white/60 italic">
                 {t('admin.broadcasts.previewEmpty', '— пусто —')}
               </div>
             )}
@@ -268,7 +268,7 @@ export function EmailPreview({ open, onClose, subject, htmlContent }: EmailPrevi
   const emptyHtml = `<p style="color:#999;font-family:sans-serif">${t('admin.broadcasts.previewEmpty', '— пусто —')}</p>`;
   return createPortal(
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-dark-950/70 p-4"
+      className="bg-dark-950/70 fixed inset-0 z-9999 flex items-center justify-center p-4"
       onClick={onClose}
     >
       <div
@@ -282,7 +282,7 @@ export function EmailPreview({ open, onClose, subject, htmlContent }: EmailPrevi
       >
         <div className="flex items-center justify-between border-b border-gray-200 p-4">
           <div className="min-w-0 flex-1">
-            <div className="text-xs uppercase tracking-wider text-gray-400">
+            <div className="text-xs tracking-wider text-gray-400 uppercase">
               {t('admin.broadcasts.emailSubject', 'Тема')}
             </div>
             <div className="truncate text-base font-semibold text-gray-900">
