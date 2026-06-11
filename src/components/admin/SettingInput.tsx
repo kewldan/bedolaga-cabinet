@@ -120,10 +120,7 @@ export function SettingInput({ setting, onUpdate, disabled }: SettingInputProps)
             >
               {t('admin.settings.cancelButton')}
             </button>
-            <button
-              onClick={handleSave}
-              className="flex items-center gap-1.5 rounded-xl bg-accent-500 px-3 py-1.5 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600"
-            >
+            <button onClick={handleSave} className="btn-primary">
               <CheckIcon />
               {t('admin.settings.saveButton')}
             </button>
@@ -157,11 +154,7 @@ export function SettingInput({ setting, onUpdate, disabled }: SettingInputProps)
           placeholder={t('admin.settings.inputPlaceholder')}
           className="w-48 rounded-lg border border-accent-500 bg-dark-700 px-3 py-2 text-sm text-dark-100 focus:ring-2 focus:ring-accent-500/30 focus:outline-none sm:w-56"
         />
-        <button
-          onClick={handleSave}
-          className="rounded-xl bg-accent-500 p-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600"
-          title={t('admin.settings.saveHint')}
-        >
+        <button onClick={handleSave} className="btn-primary" title={t('admin.settings.saveHint')}>
           <CheckIcon />
         </button>
         <button

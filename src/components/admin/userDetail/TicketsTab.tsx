@@ -348,7 +348,7 @@ function ChatView({
             onClick={onReply}
             disabled={!replyText.trim() || replySending}
             aria-label={t('admin.tickets.sendReply', 'Send reply')}
-            className="min-h-[44px] min-w-[44px] shrink-0 self-end rounded-xl bg-accent-500 px-4 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600 disabled:opacity-50 sm:min-h-0 sm:min-w-0"
+            className="btn-primary min-w-[44px] shrink-0 self-end"
           >
             {replySending ? (
               <div className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />

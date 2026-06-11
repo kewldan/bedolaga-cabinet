@@ -630,10 +630,7 @@ export default function Wheel() {
                     >
                       {t('common.cancel')}
                     </button>
-                    <button
-                      onClick={handleDirectStarsPay}
-                      className="rounded-xl bg-accent-500 px-4 py-2.5 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600"
-                    >
+                    <button onClick={handleDirectStarsPay} className="btn-primary">
                       {t('wheel.payStars', { count: config.spin_cost_stars ?? 0 })}
                     </button>
                   </div>

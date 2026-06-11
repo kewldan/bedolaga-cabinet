@@ -421,10 +421,7 @@ export default function AdminLandings() {
               {t('admin.landings.saveOrder')}
             </button>
           )}
-          <button
-            onClick={() => navigate('/admin/landings/create')}
-            className="flex items-center justify-center gap-2 rounded-lg bg-accent-500 px-4 py-2 text-on-accent transition-colors hover:bg-accent-600"
-          >
+          <button onClick={() => navigate('/admin/landings/create')} className="btn-primary">
             <PlusIcon />
             {t('admin.landings.create')}
           </button>

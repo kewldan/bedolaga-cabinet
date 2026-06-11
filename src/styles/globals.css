@@ -918,6 +918,11 @@
   }
 }
 
+@utility btn-primary-lg {
+  /* Крупный hero-CTA (полноширинные кнопки покупки/продления) */
+  @apply btn-primary rounded-2xl p-3.5 font-semibold;
+}
+
 @utility btn-secondary {
   @apply btn border border-dark-700 bg-dark-800 text-dark-200 hover:border-dark-600 hover:bg-dark-700 hover:text-dark-100 focus-visible:ring-dark-500 active:bg-dark-600;
 

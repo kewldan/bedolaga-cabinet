@@ -120,10 +120,7 @@ export default function AdminPromocodeStats() {
             )}
           </div>
         </div>
-        <button
-          onClick={() => navigate(`/admin/promocodes/${id}/edit`)}
-          className="flex items-center justify-center gap-2 rounded-lg bg-accent-500 px-4 py-2 text-on-accent transition-colors hover:bg-accent-600"
-        >
+        <button onClick={() => navigate(`/admin/promocodes/${id}/edit`)} className="btn-primary">
           <EditIcon />
           {t('admin.promocodes.modal.edit')}
         </button>

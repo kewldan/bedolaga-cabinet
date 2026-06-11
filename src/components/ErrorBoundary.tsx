@@ -72,10 +72,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
             <p className="mb-6 text-dark-400">
               An unexpected error occurred. Please try reloading the page.
             </p>
-            <button
-              onClick={() => window.location.reload()}
-              className="rounded-xl bg-accent-500 px-6 py-3 font-medium text-on-accent transition-colors hover:bg-accent-600"
-            >
+            <button onClick={() => window.location.reload()} className="btn-primary-lg">
               Reload page
             </button>
           </div>
@@ -108,10 +105,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
               ? 'App was updated. Reloading...'
               : this.state.error?.message || 'An unexpected error occurred'}
           </p>
-          <button
-            onClick={() => window.location.reload()}
-            className="rounded-xl bg-accent-500 px-6 py-3 font-medium text-on-accent transition-colors hover:bg-accent-600"
-          >
+          <button onClick={() => window.location.reload()} className="btn-primary-lg">
             {isChunk ? 'Reload' : 'Try again'}
           </button>
         </div>

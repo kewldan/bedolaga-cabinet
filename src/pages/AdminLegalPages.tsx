@@ -221,7 +221,7 @@ function DocumentEditor({
       <button
         onClick={() => saveMutation.mutate()}
         disabled={saveMutation.isPending}
-        className="min-h-[44px] rounded-lg bg-accent-500 px-6 py-2.5 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600 disabled:opacity-50"
+        className="btn-primary"
       >
         {saveMutation.isPending ? t('admin.legalPages.saving') : t('admin.legalPages.save')}
       </button>
@@ -321,7 +321,7 @@ function RulesEditor({ onDirtyChange }: { onDirtyChange: (dirty: boolean) => voi
       <button
         onClick={() => saveMutation.mutate()}
         disabled={saveMutation.isPending}
-        className="min-h-[44px] rounded-lg bg-accent-500 px-6 py-2.5 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600 disabled:opacity-50"
+        className="btn-primary"
       >
         {saveMutation.isPending ? t('admin.legalPages.saving') : t('admin.legalPages.save')}
       </button>
@@ -604,7 +604,7 @@ function FaqEditor({ onDirtyChange }: { onDirtyChange: (dirty: boolean) => void 
           <button
             onClick={() => createMutation.mutate()}
             disabled={createMutation.isPending}
-            className="flex min-h-[44px] items-center gap-2 rounded-lg bg-accent-500 px-4 py-2.5 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600 disabled:opacity-50"
+            className="btn-primary"
           >
             <PlusIcon />
             <span className="hidden sm:inline">{t('admin.legalPages.addQuestion')}</span>

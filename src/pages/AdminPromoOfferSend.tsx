@@ -197,10 +197,7 @@ export default function AdminPromoOfferSend() {
           <h3 className="mb-2 text-lg font-semibold text-dark-100">{result.title}</h3>
           <p className="mb-6 whitespace-pre-wrap text-dark-400">{result.message}</p>
           <div className="flex justify-center gap-3">
-            <button
-              onClick={() => navigate('/admin/promo-offers')}
-              className="rounded-lg bg-accent-500 px-6 py-2 text-on-accent transition-colors hover:bg-accent-600"
-            >
+            <button onClick={() => navigate('/admin/promo-offers')} className="btn-primary">
               {t('admin.promoOffers.backToList')}
             </button>
             {result.isSuccess && (
@@ -439,9 +436,7 @@ export default function AdminPromoOfferSend() {
                   {selectedTemplate.message_text}
                 </div>
                 <div className="mt-4">
-                  <span className="inline-block rounded-lg bg-accent-500 px-4 py-2 text-sm text-on-accent">
-                    {selectedTemplate.button_text}
-                  </span>
+                  <span className="btn-primary">{selectedTemplate.button_text}</span>
                 </div>
               </div>
             </div>

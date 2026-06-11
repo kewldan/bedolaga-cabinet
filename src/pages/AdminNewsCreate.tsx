@@ -558,7 +558,7 @@ export default function AdminNewsCreate() {
         <button
           onClick={handleSave}
           disabled={saveMutation.isPending || !title.trim() || !slug.trim() || !selectedCategory}
-          className="min-h-[44px] rounded-xl bg-accent-500 px-6 py-2.5 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600 disabled:cursor-not-allowed disabled:opacity-50"
+          className="btn-primary"
         >
           {saveMutation.isPending ? t('news.admin.saving') : t('news.admin.save')}
         </button>
@@ -912,7 +912,7 @@ export default function AdminNewsCreate() {
         <button
           onClick={handleSave}
           disabled={saveMutation.isPending || !title.trim() || !slug.trim() || !selectedCategory}
-          className="min-h-[44px] w-full rounded-xl bg-accent-500 py-3 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600 disabled:cursor-not-allowed disabled:opacity-50"
+          className="btn-primary w-full"
         >
           {saveMutation.isPending ? t('news.admin.saving') : t('news.admin.save')}
         </button>

@@ -513,10 +513,7 @@ export default function Subscription() {
         <p className="mb-4 text-sm text-dark-50/60">
           {t('subscription.notFoundDesc', 'Возможно, подписка была удалена или не существует')}
         </p>
-        <button
-          onClick={() => navigate('/subscriptions')}
-          className="rounded-xl bg-accent-500 px-6 py-2.5 text-sm font-medium text-on-accent"
-        >
+        <button onClick={() => navigate('/subscriptions')} className="btn-primary">
           {t('subscription.backToList', 'Мои подписки')}
         </button>
       </div>

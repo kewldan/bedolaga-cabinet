@@ -82,11 +82,7 @@ function SuccessState({ amountKopeks }: { amountKopeks: number | null }) {
         <AmountDisplay amountKopeks={amountKopeks} label={t('balance.topUpResult.topUpAmount')} />
       )}
 
-      <button
-        type="button"
-        onClick={handleGoToBalance}
-        className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent-500 px-6 py-3 text-sm font-medium text-on-accent transition-colors hover:bg-accent-400"
-      >
+      <button type="button" onClick={handleGoToBalance} className="btn-primary w-full">
         {t('balance.topUpResult.goToBalance')}
       </button>
     </motion.div>
@@ -159,11 +155,7 @@ function TimeoutState({ onRetry, onGoBack }: { onRetry: () => void; onGoBack: ()
         <p className="mt-2 text-sm text-dark-400">{t('balance.topUpResult.timeoutDesc')}</p>
       </div>
       <div className="flex w-full flex-col gap-3">
-        <button
-          type="button"
-          onClick={onRetry}
-          className="w-full rounded-xl bg-accent-500 px-6 py-3 text-sm font-medium text-on-accent transition-colors hover:bg-accent-400"
-        >
+        <button type="button" onClick={onRetry} className="btn-primary w-full">
           {t('common.retry')}
         </button>
         <button

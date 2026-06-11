@@ -316,10 +316,7 @@ export default function Dashboard() {
               {t('subscriptions.buyAnother', 'Купить ещё тариф')}
             </Link>
           ) : (
-            <Link
-              to="/subscription/purchase"
-              className="flex w-full items-center justify-center gap-2 rounded-2xl bg-accent-500 p-3.5 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-600"
-            >
+            <Link to="/subscription/purchase" className="btn-primary-lg w-full">
               <span className="text-base">+</span>{' '}
               {t('subscriptions.browsePlans', 'Посмотреть тарифы и купить подписку')}
             </Link>
@@ -379,10 +376,7 @@ export default function Dashboard() {
               trialError={trialError}
             />
           )}
-          <Link
-            to="/subscription/purchase"
-            className="flex w-full items-center justify-center gap-2 rounded-2xl bg-accent-500 p-3.5 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-600"
-          >
+          <Link to="/subscription/purchase" className="btn-primary-lg w-full">
             <span className="text-base">+</span>{' '}
             {t('subscriptions.browsePlans', 'Посмотреть тарифы и купить подписку')}
           </Link>

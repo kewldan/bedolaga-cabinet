@@ -268,7 +268,7 @@ function SuccessState({
           href={botLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent-500 px-6 py-3 text-sm font-medium text-on-accent transition-colors hover:bg-accent-400"
+          className="btn-primary-lg w-full"
         >
           {t('landing.openBot')}
         </a>
@@ -492,7 +492,7 @@ function GiftPendingActivationState({
           href={botLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent-500 px-6 py-3 text-sm font-medium text-on-accent transition-colors hover:bg-accent-400"
+          className="btn-primary-lg w-full"
         >
           {t('landing.openBot')}
         </a>
@@ -542,11 +542,7 @@ function PollTimedOutState({ onRetry }: { onRetry: () => void }) {
           )}
         </p>
       </div>
-      <button
-        type="button"
-        onClick={onRetry}
-        className="rounded-xl bg-accent-500 px-6 py-3 text-sm font-medium text-on-accent transition-colors hover:bg-accent-400"
-      >
+      <button type="button" onClick={onRetry} className="btn-primary">
         {t('common.retry', 'Retry')}
       </button>
     </motion.div>

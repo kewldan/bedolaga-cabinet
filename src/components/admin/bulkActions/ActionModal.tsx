@@ -619,10 +619,7 @@ export function ActionModal({
 
             <ErrorDetails result={modal.result} />
 
-            <button
-              onClick={onClose}
-              className="w-full rounded-xl bg-accent-500 px-4 py-2.5 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-600"
-            >
+            <button onClick={onClose} className="btn-primary w-full">
               {t('common.close')}
             </button>
           </div>
@@ -637,17 +634,13 @@ export function ActionModal({
             <div className="mb-6">{renderInputs()}</div>
 
             <div className="flex gap-3">
-              <button
-                onClick={onClose}
-                disabled={modal.loading}
-                className="min-h-[44px] flex-1 rounded-xl border border-dark-700 bg-dark-800 px-4 py-2.5 text-sm font-medium text-dark-300 transition-colors hover:bg-dark-700 disabled:opacity-50"
-              >
+              <button onClick={onClose} disabled={modal.loading} className="btn-secondary flex-1">
                 {t('admin.bulkActions.cancel')}
               </button>
               <button
                 onClick={handleSubmit}
                 disabled={isConfirmDisabled}
-                className="flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-xl bg-accent-500 px-4 py-2.5 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-600 disabled:opacity-50"
+                className="btn-primary flex-1"
               >
                 {t('admin.bulkActions.confirm')}
               </button>

@@ -424,7 +424,7 @@ function AddChannelForm({
           <button
             onClick={handleSubmit}
             disabled={!channelId.trim() || isLoading}
-            className="flex items-center gap-2 rounded-xl bg-accent-500 px-4 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600 disabled:cursor-not-allowed disabled:opacity-50"
+            className="btn-primary"
           >
             <CheckIcon />
             {t('admin.channelSubscriptions.form.submit')}
@@ -496,11 +496,7 @@ function EditChannelForm({
         />
 
         <div className="flex gap-2 pt-1">
-          <button
-            onClick={handleSubmit}
-            disabled={isLoading}
-            className="flex items-center gap-2 rounded-xl bg-accent-500 px-4 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600 disabled:cursor-not-allowed disabled:opacity-50"
-          >
+          <button onClick={handleSubmit} disabled={isLoading} className="btn-primary">
             <CheckIcon />
             {t('admin.channelSubscriptions.form.save')}
           </button>
@@ -641,7 +637,7 @@ export default function AdminChannelSubscriptions() {
             <button
               onClick={() => setShowAddForm(true)}
               aria-label={t('admin.channelSubscriptions.addChannel')}
-              className="flex items-center gap-2 rounded-lg bg-accent-500 px-4 py-2 text-on-accent transition-colors hover:bg-accent-600"
+              className="btn-primary"
             >
               <PlusIcon />
               <span className="hidden sm:inline">{t('admin.channelSubscriptions.addChannel')}</span>

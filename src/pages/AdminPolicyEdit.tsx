@@ -754,11 +754,7 @@ export default function AdminPolicyEdit() {
             >
               {t('admin.policies.form.cancel')}
             </button>
-            <button
-              type="submit"
-              disabled={isSaving}
-              className="rounded-xl bg-accent-500 px-4 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600 disabled:opacity-50"
-            >
+            <button type="submit" disabled={isSaving} className="btn-primary">
               {isSaving ? t('admin.policies.form.saving') : t('admin.policies.form.save')}
             </button>
           </div>

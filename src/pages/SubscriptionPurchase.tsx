@@ -119,10 +119,7 @@ export default function SubscriptionPurchase() {
           <p className="mb-4 text-dark-300">
             {t('subscription.loadError', 'Не удалось загрузить варианты подписки')}
           </p>
-          <button
-            onClick={() => refetchOptions()}
-            className="rounded-xl bg-accent-500 px-6 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600"
-          >
+          <button onClick={() => refetchOptions()} className="btn-primary">
             {t('common.retry')}
           </button>
         </div>
@@ -320,10 +317,7 @@ export default function SubscriptionPurchase() {
             <p className="mb-4 text-dark-300">
               {t('subscription.noOptionsAvailable', 'Нет доступных вариантов подписки')}
             </p>
-            <button
-              onClick={() => refetchOptions()}
-              className="rounded-xl bg-accent-500 px-6 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600"
-            >
+            <button onClick={() => refetchOptions()} className="btn-primary">
               {t('common.retry')}
             </button>
           </div>

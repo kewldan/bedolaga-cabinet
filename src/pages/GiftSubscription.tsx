@@ -959,11 +959,7 @@ function SentGiftCard({ gift }: { gift: SentGift }) {
           </div>
 
           {/* Share button — copies message and shows toast */}
-          <button
-            type="button"
-            onClick={handleShare}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent-500 px-4 py-3 text-sm font-bold tracking-wider text-on-accent uppercase transition-colors hover:bg-accent-400 active:scale-[0.98]"
-          >
+          <button type="button" onClick={handleShare} className="btn-primary w-full">
             <ExportIcon className="h-4 w-4" />
             {t('gift.shareGift')}
           </button>

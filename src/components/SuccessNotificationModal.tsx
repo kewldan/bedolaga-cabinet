@@ -279,10 +279,7 @@ export default function SuccessNotificationModal() {
           {/* Action buttons */}
           <div className="space-y-2 pt-2">
             {isSubscription && (
-              <button
-                onClick={handleGoToSubscription}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent-500 py-3.5 text-sm font-bold text-on-accent shadow-lg shadow-accent-500/25 transition-colors hover:bg-accent-400 active:bg-accent-600"
-              >
+              <button onClick={handleGoToSubscription} className="btn-primary w-full">
                 <RocketIcon className="h-8 w-8" />
                 <span>{t('successNotification.goToSubscription', 'Go to Subscription')}</span>
               </button>
@@ -299,10 +296,7 @@ export default function SuccessNotificationModal() {
             )}
 
             {isDevicesPurchased && (
-              <button
-                onClick={handleGoToSubscription}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent-500 py-3.5 text-sm font-bold text-on-accent shadow-lg shadow-accent-500/25 transition-colors hover:bg-accent-400 active:bg-accent-600"
-              >
+              <button onClick={handleGoToSubscription} className="btn-primary w-full">
                 <DevicesIcon className="h-8 w-8" />
                 <span>{t('successNotification.goToSubscription', 'Go to Subscription')}</span>
               </button>

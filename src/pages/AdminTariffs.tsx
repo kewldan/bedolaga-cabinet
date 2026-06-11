@@ -326,10 +326,7 @@ export default function AdminTariffs() {
               {t('admin.tariffs.saveOrder')}
             </button>
           )}
-          <button
-            onClick={() => navigate('/admin/tariffs/create')}
-            className="flex items-center justify-center gap-2 rounded-lg bg-accent-500 px-4 py-2 text-on-accent transition-colors hover:bg-accent-600"
-          >
+          <button onClick={() => navigate('/admin/tariffs/create')} className="btn-primary">
             <PlusIcon />
             {t('admin.tariffs.create')}
           </button>

@@ -115,10 +115,7 @@ export default function AdminBroadcasts() {
           >
             <RefreshIcon />
           </button>
-          <button
-            onClick={() => navigate('/admin/broadcasts/create')}
-            className="flex items-center gap-2 rounded-lg bg-accent-500 px-4 py-2 text-on-accent transition-colors hover:bg-accent-600"
-          >
+          <button onClick={() => navigate('/admin/broadcasts/create')} className="btn-primary">
             <PlusIcon />
             <span className="hidden sm:inline">{t('admin.broadcasts.create')}</span>
           </button>

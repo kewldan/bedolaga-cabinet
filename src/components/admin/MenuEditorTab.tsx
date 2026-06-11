@@ -785,11 +785,7 @@ export function MenuEditorTab() {
       {/* Save / Cancel */}
       {hasUnsavedChanges && (
         <div className="flex flex-wrap items-center gap-3">
-          <button
-            onClick={handleSave}
-            disabled={updateMutation.isPending}
-            className="rounded-xl bg-accent-500 px-4 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600 disabled:opacity-50"
-          >
+          <button onClick={handleSave} disabled={updateMutation.isPending} className="btn-primary">
             {updateMutation.isPending ? t('common.saving') : t('common.save')}
           </button>
           <button

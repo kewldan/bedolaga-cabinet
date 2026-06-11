@@ -91,10 +91,7 @@ export default function AdminPromoOffers() {
             <p className="text-sm text-dark-400">{t('admin.promoOffers.subtitle')}</p>
           </div>
         </div>
-        <button
-          onClick={() => navigate('/admin/promo-offers/send')}
-          className="flex items-center justify-center gap-2 rounded-lg bg-accent-500 px-4 py-2 text-on-accent transition-colors hover:bg-accent-600"
-        >
+        <button onClick={() => navigate('/admin/promo-offers/send')} className="btn-primary">
           <SendIcon />
           {t('admin.promoOffers.sendButton')}
         </button>

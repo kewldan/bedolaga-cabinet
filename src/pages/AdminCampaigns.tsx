@@ -134,10 +134,7 @@ export default function AdminCampaigns() {
             <p className="text-sm text-dark-400">{t('admin.campaigns.subtitle')}</p>
           </div>
         </div>
-        <button
-          onClick={() => navigate('/admin/campaigns/create')}
-          className="flex items-center justify-center gap-2 rounded-lg bg-accent-500 px-4 py-2 text-on-accent transition-colors hover:bg-accent-600"
-        >
+        <button onClick={() => navigate('/admin/campaigns/create')} className="btn-primary">
           <PlusIcon />
           {t('admin.campaigns.createButton')}
         </button>
