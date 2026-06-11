@@ -21,7 +21,7 @@ export default function BlacklistedScreen() {
     >
       {blacklistedInfo?.message && (
         <div className="rounded-xl border border-dark-700/30 bg-dark-800/50 p-4">
-          <p className="mb-1 text-xs font-medium uppercase tracking-wide text-dark-500">
+          <p className="mb-1 text-xs font-medium tracking-wide text-dark-500 uppercase">
             {t('blocking.blacklisted.reason')}:
           </p>
           <p className="text-sm text-dark-300">{blacklistedInfo.message}</p>

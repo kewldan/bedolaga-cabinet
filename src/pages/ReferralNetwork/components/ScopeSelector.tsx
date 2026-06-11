@@ -262,7 +262,7 @@ export function ScopeSelector({ value, onAdd, onRemove, onClear, className }: Sc
           and aria-expanded already announce the popup; AT can navigate into
           it directly. The inner div carries role="listbox". */}
       {isDropdownOpen && (
-        <div className="absolute left-0 right-0 top-full z-50 mt-1 rounded-xl border border-dark-700/50 bg-dark-800 shadow-xl backdrop-blur-md">
+        <div className="absolute top-full right-0 left-0 z-50 mt-1 rounded-xl border border-dark-700/50 bg-dark-800 shadow-xl backdrop-blur-md">
           {/* Max reached banner */}
           {isMaxReached && (
             <div className="border-b border-dark-700/50 px-3 py-1.5 text-center text-xs text-warning-400">
@@ -294,7 +294,7 @@ export function ScopeSelector({ value, onAdd, onRemove, onClear, className }: Sc
             </div>
 
             <div className="relative min-w-0 flex-1">
-              <SearchIcon className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-dark-500" />
+              <SearchIcon className="absolute top-1/2 left-2.5 h-3.5 w-3.5 -translate-y-1/2 text-dark-500" />
               <input
                 ref={inputRef}
                 type="text"
@@ -302,10 +302,10 @@ export function ScopeSelector({ value, onAdd, onRemove, onClear, className }: Sc
                 maxLength={200}
                 onChange={(e) => setSearchInput(e.target.value)}
                 placeholder={placeholders[activeTab]}
-                className="w-full rounded-lg border border-dark-700/50 bg-dark-900/50 py-1.5 pl-8 pr-8 text-sm text-dark-100 placeholder-dark-500 outline-none transition-colors focus:border-accent-500/50 focus:ring-1 focus:ring-accent-500/30"
+                className="w-full rounded-lg border border-dark-700/50 bg-dark-900/50 py-1.5 pr-8 pl-8 text-sm text-dark-100 placeholder-dark-500 transition-colors outline-none focus:border-accent-500/50 focus:ring-1 focus:ring-accent-500/30"
               />
               {isLoading && (
-                <div className="absolute right-2.5 top-1/2 -translate-y-1/2">
+                <div className="absolute top-1/2 right-2.5 -translate-y-1/2">
                   <Spinner size="h-3.5 w-3.5" />
                 </div>
               )}

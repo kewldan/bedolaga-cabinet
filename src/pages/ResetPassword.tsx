@@ -59,18 +59,18 @@ export default function ResetPassword() {
 
   if (!token) {
     return (
-      <div className="min-h-viewport flex items-center justify-center px-4 py-8 sm:py-12">
-        <div className="from-dark-950 via-dark-900 to-dark-950 fixed inset-0 bg-linear-to-br" />
+      <div className="flex min-h-viewport items-center justify-center px-4 py-8 sm:py-12">
+        <div className="fixed inset-0 bg-linear-to-br from-dark-950 via-dark-900 to-dark-950" />
         <div className="fixed top-4 right-4 z-50">
           <LanguageSwitcher />
         </div>
         <div className="relative w-full max-w-md text-center">
           <div className="card">
-            <div className="text-error-400 mb-4 text-5xl">!</div>
-            <h2 className="text-dark-50 mb-2 text-xl font-semibold">
+            <div className="mb-4 text-5xl text-error-400">!</div>
+            <h2 className="mb-2 text-xl font-semibold text-dark-50">
               {t('resetPassword.invalidToken', 'Invalid reset link')}
             </h2>
-            <p className="text-dark-400 mb-6">
+            <p className="mb-6 text-dark-400">
               {t(
                 'resetPassword.tokenExpiredOrInvalid',
                 'This password reset link is invalid or has expired.',
@@ -86,9 +86,9 @@ export default function ResetPassword() {
   }
 
   return (
-    <div className="min-h-viewport flex items-center justify-center px-4 py-8 sm:py-12">
-      <div className="from-dark-950 via-dark-900 to-dark-950 fixed inset-0 bg-linear-to-br" />
-      <div className="from-accent-500/10 fixed inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] via-transparent to-transparent" />
+    <div className="flex min-h-viewport items-center justify-center px-4 py-8 sm:py-12">
+      <div className="fixed inset-0 bg-linear-to-br from-dark-950 via-dark-900 to-dark-950" />
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-accent-500/10 via-transparent to-transparent" />
       <div className="fixed top-4 right-4 z-50">
         <LanguageSwitcher />
       </div>
@@ -97,23 +97,23 @@ export default function ResetPassword() {
         <div className="card">
           {status === 'success' ? (
             <div className="text-center">
-              <div className="bg-success-500/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
-                <CheckIcon className="text-success-400 h-8 w-8" />
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-success-500/20">
+                <CheckIcon className="h-8 w-8 text-success-400" />
               </div>
-              <h2 className="text-dark-50 mb-2 text-xl font-bold">
+              <h2 className="mb-2 text-xl font-bold text-dark-50">
                 {t('resetPassword.success', 'Password changed!')}
               </h2>
-              <p className="text-dark-400 mb-4">
+              <p className="mb-4 text-dark-400">
                 {t('resetPassword.redirectingToLogin', 'Redirecting to login...')}
               </p>
-              <div className="border-accent-500 mx-auto h-6 w-6 animate-spin rounded-full border-2 border-t-transparent" />
+              <div className="mx-auto h-6 w-6 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
             </div>
           ) : (
             <>
-              <h2 className="text-dark-50 mb-2 text-center text-xl font-bold">
+              <h2 className="mb-2 text-center text-xl font-bold text-dark-50">
                 {t('resetPassword.title', 'Set new password')}
               </h2>
-              <p className="text-dark-400 mb-6 text-center">
+              <p className="mb-6 text-center text-dark-400">
                 {t('resetPassword.enterNewPassword', 'Enter your new password below.')}
               </p>
 
@@ -153,7 +153,7 @@ export default function ResetPassword() {
                 {error && (
                   <div
                     role="alert"
-                    className="border-error-500/30 bg-error-500/10 text-error-400 rounded-xl border px-4 py-3 text-sm"
+                    className="rounded-xl border border-error-500/30 bg-error-500/10 px-4 py-3 text-sm text-error-400"
                   >
                     {error}
                   </div>
@@ -178,7 +178,7 @@ export default function ResetPassword() {
               <div className="mt-4 text-center">
                 <Link
                   to="/login"
-                  className="text-dark-400 hover:text-dark-200 text-sm transition-colors"
+                  className="text-sm text-dark-400 transition-colors hover:text-dark-200"
                 >
                   {t('auth.backToLogin', 'Back to login')}
                 </Link>

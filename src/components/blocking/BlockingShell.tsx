@@ -100,7 +100,7 @@ export default function BlockingShell({
       aria-modal="true"
       aria-labelledby={titleId}
       tabIndex={-1}
-      className="bg-dark-950 fixed inset-0 z-100 overflow-y-auto"
+      className="fixed inset-0 z-100 overflow-y-auto bg-dark-950"
     >
       {/* Self-contained backdrop — accent glow behind the card. No app reveal:
           the canvas stays opaque so this remains a hard block. */}
@@ -111,7 +111,7 @@ export default function BlockingShell({
             a.glow,
           )}
         />
-        <div className="bg-dark-800/30 absolute -bottom-24 left-1/2 h-72 w-88 -translate-x-1/2 rounded-full blur-[120px]" />
+        <div className="absolute -bottom-24 left-1/2 h-72 w-88 -translate-x-1/2 rounded-full bg-dark-800/30 blur-[120px]" />
       </div>
 
       {/* Scroll-safe centering: min-h-full + items-center centers when it fits
@@ -124,7 +124,7 @@ export default function BlockingShell({
           transition={scaleTransition}
           aria-live={ariaLive === 'polite' ? 'polite' : undefined}
           aria-atomic={ariaLive === 'polite' ? true : undefined}
-          className="border-dark-700/40 bg-dark-900/80 relative w-full max-w-md overflow-hidden rounded-(--bento-radius) border p-8 text-center shadow-[0_4px_24px_-4px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.05)] backdrop-blur-xl sm:p-10"
+          className="relative w-full max-w-md overflow-hidden rounded-(--bento-radius) border border-dark-700/40 bg-dark-900/80 p-8 text-center shadow-[0_4px_24px_-4px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.05)] backdrop-blur-xl sm:p-10"
         >
           {/* Top accent hairline */}
           <div
@@ -160,11 +160,11 @@ export default function BlockingShell({
             </span>
           </motion.div>
 
-          <h1 id={titleId} className="font-display text-dark-50 text-2xl font-bold tracking-tight">
+          <h1 id={titleId} className="font-display text-2xl font-bold tracking-tight text-dark-50">
             {title}
           </h1>
           {description && (
-            <p className="text-dark-400 mt-3 text-base leading-relaxed">{description}</p>
+            <p className="mt-3 text-base leading-relaxed text-dark-400">{description}</p>
           )}
 
           {children && <div className="mt-6 space-y-3 text-left">{children}</div>}
@@ -188,7 +188,7 @@ export default function BlockingShell({
             </div>
           )}
 
-          {footer && <p className="text-dark-500 mt-6 text-sm">{footer}</p>}
+          {footer && <p className="mt-6 text-sm text-dark-500">{footer}</p>}
         </motion.div>
       </div>
     </div>

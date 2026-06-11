@@ -124,13 +124,13 @@ export function NetworkFilters({ data, className }: NetworkFiltersProps) {
         <FilterIcon className="h-4 w-4" />
         <span className="hidden sm:inline">{t('admin.referralNetwork.filters.title')}</span>
         {hasActiveFilters && (
-          <span className="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-accent-500" />
+          <span className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-accent-500" />
         )}
       </button>
 
       {/* Desktop: absolute dropdown below button */}
       {isOpen && (
-        <div className="absolute right-0 top-full z-50 mt-2 hidden sm:block">
+        <div className="absolute top-full right-0 z-50 mt-2 hidden sm:block">
           <div className="w-64 rounded-xl border border-dark-700/50 bg-dark-900/95 p-4 shadow-xl backdrop-blur-md">
             <div className="mb-3 flex items-center justify-between">
               <h3 className="text-sm font-semibold text-dark-100">

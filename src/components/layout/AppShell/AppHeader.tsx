@@ -176,7 +176,7 @@ export function AppHeader({
     <>
       {/* Header - only on mobile */}
       <header
-        className="glass fixed top-0 right-0 left-0 z-50 shadow-lg shadow-black/10 lg:hidden"
+        className="fixed top-0 right-0 left-0 z-50 glass shadow-lg shadow-black/10 lg:hidden"
         style={{
           paddingTop: isFullscreen
             ? `${Math.max(safeAreaInset.top, contentSafeAreaInset.top) + (telegramPlatform === 'android' ? 48 : 45)}px`
@@ -194,10 +194,10 @@ export function AppHeader({
               onClick={() => setMobileMenuOpen(false)}
               className={cn('flex shrink-0 items-center gap-2.5', !appName && 'mr-4')}
             >
-              <div className="rounded-linear-lg border-dark-700/50 bg-dark-800/80 relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden border shadow-md">
+              <div className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-linear-lg border border-dark-700/50 bg-dark-800/80 shadow-md">
                 <span
                   className={cn(
-                    'text-accent-400 absolute text-lg font-bold transition-opacity duration-200',
+                    'absolute text-lg font-bold text-accent-400 transition-opacity duration-200',
                     hasCustomLogo && logoLoaded ? 'opacity-0' : 'opacity-100',
                   )}
                 >
@@ -216,7 +216,7 @@ export function AppHeader({
                 )}
               </div>
               {appName && (
-                <span className="text-dark-100 text-base font-semibold whitespace-nowrap">
+                <span className="text-base font-semibold whitespace-nowrap text-dark-100">
                   {appName}
                 </span>
               )}
@@ -231,7 +231,7 @@ export function AppHeader({
                     haptic.impact('light');
                     onCommandPaletteOpen();
                   }}
-                  className="btn-icon hidden sm:flex"
+                  className="hidden btn-icon sm:flex"
                   title="Search (⌘K)"
                 >
                   <SearchIcon className="h-5 w-5" />
@@ -246,7 +246,7 @@ export function AppHeader({
                     toggleTheme();
                     setMobileMenuOpen(false);
                   }}
-                  className="rounded-linear-lg border-dark-700/50 bg-dark-800/50 text-dark-400 hover:bg-dark-700 hover:text-accent-400 relative border p-2 transition-all duration-200"
+                  className="relative rounded-linear-lg border border-dark-700/50 bg-dark-800/50 p-2 text-dark-400 transition-all duration-200 hover:bg-dark-700 hover:text-accent-400"
                   title={isDark ? t('theme.light') || 'Light mode' : t('theme.dark') || 'Dark mode'}
                 >
                   <div className="relative h-5 w-5">
@@ -306,23 +306,23 @@ export function AppHeader({
       {/* Mobile menu overlay */}
       {mobileMenuOpen && (
         <div
-          className="animate-fade-in fixed inset-x-0 bottom-0 z-40 lg:hidden"
+          className="fixed inset-x-0 bottom-0 z-40 animate-fade-in lg:hidden"
           style={{ top: headerHeight }}
         >
           {/* Backdrop */}
           <div
-            className="bg-dark-950/60 absolute inset-0"
+            className="absolute inset-0 bg-dark-950/60"
             onClick={() => setMobileMenuOpen(false)}
           />
 
           {/* Menu content */}
           <div
-            className="mobile-menu-content border-dark-800/50 bg-dark-900/95 absolute inset-x-0 top-0 bottom-0 overflow-y-auto overscroll-contain border-t pb-[calc(5rem+env(safe-area-inset-bottom,0))]"
+            className="mobile-menu-content absolute inset-x-0 top-0 bottom-0 overflow-y-auto overscroll-contain border-t border-dark-800/50 bg-dark-900/95 pb-[calc(5rem+env(safe-area-inset-bottom,0))]"
             style={{ WebkitOverflowScrolling: 'touch' }}
           >
             <div className="mx-auto max-w-6xl px-4 py-4">
               {/* User info */}
-              <div className="border-dark-800/50 mb-4 flex items-center justify-between border-b pb-4">
+              <div className="mb-4 flex items-center justify-between border-b border-dark-800/50 pb-4">
                 <div className="flex items-center gap-3">
                   {userPhotoUrl ? (
                     <img
@@ -337,17 +337,17 @@ export function AppHeader({
                   ) : null}
                   <div
                     className={cn(
-                      'bg-dark-700 flex h-10 w-10 items-center justify-center rounded-full',
+                      'flex h-10 w-10 items-center justify-center rounded-full bg-dark-700',
                       userPhotoUrl ? 'hidden' : '',
                     )}
                   >
                     <UserIcon className="h-5 w-5" />
                   </div>
                   <div className="min-w-0">
-                    <div className="text-dark-100 truncate text-sm font-medium">
+                    <div className="truncate text-sm font-medium text-dark-100">
                       {displayName(user)}
                     </div>
-                    <div className="text-dark-500 truncate text-xs">
+                    <div className="truncate text-xs text-dark-500">
                       @{user?.username || `ID: ${user?.telegram_id}`}
                     </div>
                   </div>
@@ -370,8 +370,8 @@ export function AppHeader({
 
                 {isAdmin && (
                   <>
-                    <div className="divider my-3" />
-                    <div className="text-dark-500 px-4 py-1 text-xs font-medium tracking-wider uppercase">
+                    <div className="my-3 divider" />
+                    <div className="px-4 py-1 text-xs font-medium tracking-wider text-dark-500 uppercase">
                       {t('admin.nav.title')}
                     </div>
                     <Link
@@ -390,7 +390,7 @@ export function AppHeader({
                   </>
                 )}
 
-                <div className="divider my-3" />
+                <div className="my-3 divider" />
 
                 <Link
                   to="/profile"
@@ -406,7 +406,7 @@ export function AppHeader({
                     setMobileMenuOpen(false);
                     logout();
                   }}
-                  className="nav-item text-error-400 w-full"
+                  className="nav-item w-full text-error-400"
                 >
                   <LogoutIcon className="h-5 w-5" />
                   {t('nav.logout')}

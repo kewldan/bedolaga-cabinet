@@ -179,7 +179,7 @@ export default function GiftClaim() {
               <p className="text-sm text-dark-300">
                 {t('landing.giftClaim.connectDesc', 'Use this link to connect:')}
               </p>
-              <p className="w-full select-all truncate rounded-lg bg-dark-900/60 px-3 py-2 text-sm text-accent-400">
+              <p className="w-full truncate rounded-lg bg-dark-900/60 px-3 py-2 text-sm text-accent-400 select-all">
                 {result.subscription_url}
               </p>
               <button
@@ -247,7 +247,7 @@ export default function GiftClaim() {
 
         {gift.gift_message && (
           <div className="w-full rounded-xl border border-dark-700/30 bg-dark-800/40 p-4 text-left">
-            <p className="text-sm italic text-dark-200">&ldquo;{gift.gift_message}&rdquo;</p>
+            <p className="text-sm text-dark-200 italic">&ldquo;{gift.gift_message}&rdquo;</p>
           </div>
         )}
 

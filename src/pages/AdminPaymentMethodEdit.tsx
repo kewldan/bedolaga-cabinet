@@ -151,7 +151,7 @@ export default function AdminPaymentMethodEdit() {
 
   if (isLoading) {
     return (
-      <div className="min-h-viewport flex items-center justify-center">
+      <div className="flex min-h-viewport items-center justify-center">
         <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
       </div>
     );
@@ -202,7 +202,7 @@ export default function AdminPaymentMethodEdit() {
       </div>
 
       {/* Form */}
-      <div className="card space-y-6">
+      <div className="space-y-6 card">
         {/* Enable toggle */}
         <div className="flex items-center justify-between">
           <div>

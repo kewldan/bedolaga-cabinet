@@ -468,7 +468,7 @@ export default function AdminBroadcastCreate() {
         </button>
 
         {showFilters && (
-          <div className="absolute left-0 right-0 top-full z-10 mt-1 max-h-64 overflow-y-auto rounded-lg border border-dark-700 bg-dark-800 shadow-xl">
+          <div className="absolute top-full right-0 left-0 z-10 mt-1 max-h-64 overflow-y-auto rounded-lg border border-dark-700 bg-dark-800 shadow-xl">
             {isLoading ? (
               <div className="p-4 text-center text-dark-400">{t('common.loading')}</div>
             ) : (
@@ -585,7 +585,7 @@ export default function AdminBroadcastCreate() {
 
       {/* Telegram section */}
       {telegramEnabled && (
-        <div className="card space-y-6">
+        <div className="space-y-6 card">
           <div className="flex items-center justify-between gap-2">
             <h2 className="text-lg font-semibold text-dark-100">
               {t('admin.broadcasts.telegramSection')}
@@ -624,7 +624,7 @@ export default function AdminBroadcastCreate() {
               placeholder={t('admin.broadcasts.messageTextPlaceholder')}
               rows={6}
               maxLength={4000}
-              className="input min-h-[150px] resize-y"
+              className="min-h-[150px] input resize-y"
             />
             <div className="mt-1 text-right text-xs text-dark-400">{messageText.length}/4000</div>
           </div>
@@ -833,7 +833,7 @@ export default function AdminBroadcastCreate() {
 
       {/* Email section */}
       {emailEnabled && (
-        <div className="card space-y-6">
+        <div className="space-y-6 card">
           <div className="flex items-center justify-between gap-2">
             <h2 className="text-lg font-semibold text-dark-100">
               {t('admin.broadcasts.emailSection')}
@@ -887,7 +887,7 @@ export default function AdminBroadcastCreate() {
               onChange={(e) => setEmailContent(e.target.value)}
               placeholder={t('admin.broadcasts.emailContentPlaceholder')}
               rows={10}
-              className="input min-h-[200px] resize-y font-mono text-sm"
+              className="min-h-[200px] input resize-y font-mono text-sm"
             />
           </div>
 
@@ -911,7 +911,7 @@ export default function AdminBroadcastCreate() {
       )}
 
       {/* Footer */}
-      <div className="card flex items-center justify-between">
+      <div className="flex items-center justify-between card">
         <div className="text-sm text-dark-400">
           {(telegramRecipientsCount !== null || emailRecipientsCount !== null) && (
             <span>

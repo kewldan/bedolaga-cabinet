@@ -164,8 +164,8 @@ export function AppShell({ children }: AppShellProps) {
               // Подсветка-пилюля активного пункта — «приподнята» над треком капсулы
               'absolute inset-0 rounded-full shadow-sm',
               admin
-                ? 'bg-warning-500/15 ring-warning-500/20 ring-1'
-                : 'bg-dark-700/80 ring-dark-600/40 ring-1',
+                ? 'bg-warning-500/15 ring-1 ring-warning-500/20'
+                : 'bg-dark-700/80 ring-1 ring-dark-600/40',
             )}
             transition={{ type: 'spring', stiffness: 500, damping: 35 }}
           />
@@ -190,7 +190,7 @@ export function AppShell({ children }: AppShellProps) {
       <PromptDialogHost />
 
       {/* Desktop Header */}
-      <header className="border-dark-800/50 bg-dark-950/95 fixed top-0 right-0 left-0 z-50 hidden border-b lg:block">
+      <header className="fixed top-0 right-0 left-0 z-50 hidden border-b border-dark-800/50 bg-dark-950/95 lg:block">
         {/* 3-зонный grid: лого | капсула | действия. Колонки 1fr_auto_1fr держат
             капсулу строго по центру вьюпорта НЕЗАВИСИМО от ширины лого/действий,
             а действия — у правого края. Поэтому ничего не «скачет» при переходах
@@ -202,10 +202,10 @@ export function AppShell({ children }: AppShellProps) {
             className="flex shrink-0 items-center gap-2.5 justify-self-start"
             onClick={handleNavClick}
           >
-            <div className="bg-dark-800 relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-lg">
+            <div className="relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-dark-800">
               <span
                 className={cn(
-                  'text-accent-400 absolute text-sm font-bold transition-opacity duration-200',
+                  'absolute text-sm font-bold text-accent-400 transition-opacity duration-200',
                   hasCustomLogo && isLogoPreloaded() ? 'opacity-0' : 'opacity-100',
                 )}
               >
@@ -222,17 +222,17 @@ export function AppShell({ children }: AppShellProps) {
                 />
               )}
             </div>
-            <span className="text-dark-100 text-base font-semibold">{appName}</span>
+            <span className="text-base font-semibold text-dark-100">{appName}</span>
           </Link>
 
           {/* Navigation — единая «капсула» (segmented control): все пункты видны
               всегда, без скролла/сжатия/сворачивания. Центрируется средней
               колонкой grid (justify-self-center), а не auto-margin'ами. */}
-          <nav className="border-dark-800/70 bg-dark-900/50 flex items-center gap-0.5 justify-self-center rounded-full border p-1 shadow-sm backdrop-blur-sm">
+          <nav className="flex items-center gap-0.5 justify-self-center rounded-full border border-dark-800/70 bg-dark-900/50 p-1 shadow-sm backdrop-blur-sm">
             {desktopNav.map((item) => renderNavLink(item.path, item.label, item.icon))}
             {isAdmin && (
               <>
-                <div className="bg-dark-700/60 mx-1 h-5 w-px shrink-0" />
+                <div className="mx-1 h-5 w-px shrink-0 bg-dark-700/60" />
                 {renderNavLink('/admin', t('admin.nav.title'), ShieldIcon, true)}
               </>
             )}
@@ -246,7 +246,7 @@ export function AppShell({ children }: AppShellProps) {
                 toggleTheme();
               }}
               className={cn(
-                'border-dark-700/50 bg-dark-800/50 text-dark-400 hover:bg-dark-700 hover:text-accent-400 rounded-xl border p-2 transition-colors duration-200',
+                'rounded-xl border border-dark-700/50 bg-dark-800/50 p-2 text-dark-400 transition-colors duration-200 hover:bg-dark-700 hover:text-accent-400',
                 !canToggleTheme && 'hidden',
               )}
               aria-label={
@@ -263,7 +263,7 @@ export function AppShell({ children }: AppShellProps) {
                 haptic.impact('light');
                 logout();
               }}
-              className="border-dark-700/50 bg-dark-800/50 text-dark-400 hover:bg-dark-700 hover:text-accent-400 rounded-xl border p-2 transition-colors duration-200"
+              className="rounded-xl border border-dark-700/50 bg-dark-800/50 p-2 text-dark-400 transition-colors duration-200 hover:bg-dark-700 hover:text-accent-400"
               title={t('nav.logout')}
             >
               <LogoutIcon className="h-5 w-5" />

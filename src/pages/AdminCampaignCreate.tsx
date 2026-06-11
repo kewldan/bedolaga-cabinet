@@ -286,7 +286,7 @@ export default function AdminCampaignCreate() {
       )}
 
       {/* Basic Info */}
-      <div className="card space-y-4">
+      <div className="space-y-4 card">
         {/* Name */}
         <div>
           <label htmlFor="campaign-name" className="mb-2 block text-sm font-medium text-dark-300">
@@ -357,7 +357,7 @@ export default function AdminCampaignCreate() {
       </div>
 
       {/* Bonus Type */}
-      <div className="card space-y-4">
+      <div className="space-y-4 card">
         <h2 id="bonus-type-label" className="text-lg font-semibold text-dark-100">
           {t('admin.campaigns.form.bonusType')}
         </h2>
@@ -389,7 +389,7 @@ export default function AdminCampaignCreate() {
       {/* Bonus Settings */}
       {bonusType === 'balance' && (
         <div
-          className={`card space-y-4 border ${bonusTypeConfig.balance.borderColor} ${bonusTypeConfig.balance.bgColor}`}
+          className={`space-y-4 card border ${bonusTypeConfig.balance.borderColor} ${bonusTypeConfig.balance.bgColor}`}
         >
           <h2 className={`text-lg font-semibold ${bonusTypeConfig.balance.color}`}>
             {t('admin.campaigns.form.balanceBonus')}
@@ -410,7 +410,7 @@ export default function AdminCampaignCreate() {
 
       {bonusType === 'subscription' && (
         <div
-          className={`card space-y-4 border ${bonusTypeConfig.subscription.borderColor} ${bonusTypeConfig.subscription.bgColor}`}
+          className={`space-y-4 card border ${bonusTypeConfig.subscription.borderColor} ${bonusTypeConfig.subscription.bgColor}`}
         >
           <h2 className={`text-lg font-semibold ${bonusTypeConfig.subscription.color}`}>
             {t('admin.campaigns.form.trialSubscription')}
@@ -473,7 +473,7 @@ export default function AdminCampaignCreate() {
 
       {bonusType === 'tariff' && (
         <div
-          className={`card space-y-4 border ${bonusTypeConfig.tariff.borderColor} ${bonusTypeConfig.tariff.bgColor}`}
+          className={`space-y-4 card border ${bonusTypeConfig.tariff.borderColor} ${bonusTypeConfig.tariff.bgColor}`}
         >
           <h2 className={`text-lg font-semibold ${bonusTypeConfig.tariff.color}`}>
             {t('admin.campaigns.form.tariff')}
@@ -509,7 +509,7 @@ export default function AdminCampaignCreate() {
       )}
 
       {/* Footer */}
-      <div className="card flex items-center justify-end gap-3">
+      <div className="flex items-center justify-end gap-3 card">
         <button
           onClick={() => navigate(partnerId ? `/admin/partners/${partnerId}` : '/admin/campaigns')}
           className="btn-secondary"

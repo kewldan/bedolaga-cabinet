@@ -173,7 +173,7 @@ export const SheetContent = forwardRef<HTMLDivElement, SheetContentProps>(
                   {/* Drag handle */}
                   {showDragHandle && (
                     <div
-                      className="flex cursor-grab justify-center pb-2 pt-3 active:cursor-grabbing"
+                      className="flex cursor-grab justify-center pt-3 pb-2 active:cursor-grabbing"
                       onPointerDown={(e) => dragControls.start(e)}
                     >
                       <div className="h-1 w-10 rounded-full bg-dark-600" />
@@ -184,10 +184,10 @@ export const SheetContent = forwardRef<HTMLDivElement, SheetContentProps>(
                   {showCloseButton && (
                     <DialogPrimitive.Close
                       className={cn(
-                        'absolute right-4 top-4 rounded-linear p-1.5',
+                        'absolute top-4 right-4 rounded-linear p-1.5',
                         'text-dark-400 opacity-70 transition-all',
                         'hover:bg-dark-800/80 hover:opacity-100',
-                        'focus:outline-none focus:ring-2 focus:ring-accent-500/50',
+                        'focus:ring-2 focus:ring-accent-500/50 focus:outline-none',
                       )}
                     >
                       <CloseIcon />

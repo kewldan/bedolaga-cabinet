@@ -1007,9 +1007,9 @@ export default function AdminInfoPageEditor() {
   if (isEdit && isLoadingPage) {
     return (
       <div className="space-y-6">
-        <div className="skeleton h-8 w-48 rounded-lg" />
-        <div className="skeleton h-12 w-full rounded-xl" />
-        <div className="skeleton h-64 w-full rounded-xl" />
+        <div className="h-8 w-48 skeleton rounded-lg" />
+        <div className="h-12 w-full skeleton rounded-xl" />
+        <div className="h-64 w-full skeleton rounded-xl" />
       </div>
     );
   }

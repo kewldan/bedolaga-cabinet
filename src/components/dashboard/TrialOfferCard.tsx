@@ -105,7 +105,7 @@ export default function TrialOfferCard({
         )}
         {/* Glow effect */}
         <div
-          className="animate-trial-glow absolute -inset-px rounded-2xl"
+          className="absolute -inset-px animate-trial-glow rounded-2xl"
           style={{
             boxShadow: isFree
               ? '0 0 20px rgba(var(--rt-accent-400), 0.15)'
@@ -116,10 +116,10 @@ export default function TrialOfferCard({
       </div>
 
       {/* Title */}
-      <h2 className="text-dark-50 mb-1.5 text-[22px] font-bold tracking-tight">
+      <h2 className="mb-1.5 text-[22px] font-bold tracking-tight text-dark-50">
         {isFree ? t('dashboard.trialOffer.freeTitle') : t('dashboard.trialOffer.paidTitle')}
       </h2>
-      <p className="text-dark-50/40 mb-5 text-sm">
+      <p className="mb-5 text-sm text-dark-50/40">
         {isFree ? t('dashboard.trialOffer.freeDesc') : t('dashboard.trialOffer.paidDesc')}
       </p>
 
@@ -161,10 +161,10 @@ export default function TrialOfferCard({
           },
         ].map((stat, i) => (
           <div key={i} className="text-center">
-            <div className="text-dark-50 text-4xl leading-none font-extrabold tracking-tight">
+            <div className="text-4xl leading-none font-extrabold tracking-tight text-dark-50">
               {stat.value}
             </div>
-            <div className="text-dark-50/30 mt-1 text-xs font-medium">{stat.label}</div>
+            <div className="mt-1 text-xs font-medium text-dark-50/30">{stat.label}</div>
           </div>
         ))}
       </div>
@@ -176,7 +176,7 @@ export default function TrialOfferCard({
           style={{ background: g.innerBg, border: `1px solid ${g.innerBorder}` }}
         >
           <div className="flex items-center justify-between">
-            <span className="text-dark-50/40 text-sm">{t('balance.currentBalance')}</span>
+            <span className="text-sm text-dark-50/40">{t('balance.currentBalance')}</span>
             <span
               className={`font-display text-sm font-semibold ${canAfford ? 'text-success-400' : 'text-warning-400'}`}
             >
@@ -184,7 +184,7 @@ export default function TrialOfferCard({
             </span>
           </div>
           {!canAfford && (
-            <div className="text-warning-400 text-xs">
+            <div className="text-xs text-warning-400">
               {t('subscription.trial.insufficientBalance')}
             </div>
           )}
@@ -193,7 +193,7 @@ export default function TrialOfferCard({
 
       {/* Error */}
       {trialError && (
-        <div className="border-error-500/30 bg-error-500/10 text-error-400 mb-4 rounded-xl border p-3 text-center text-sm">
+        <div className="mb-4 rounded-xl border border-error-500/30 bg-error-500/10 p-3 text-center text-sm text-error-400">
           {trialError}
         </div>
       )}

@@ -177,7 +177,7 @@ function ToastItem({ toast, onClose }: { toast: Toast; onClose: () => void }) {
       tabIndex={0}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      className={`bg-dark-900 pointer-events-auto w-full cursor-pointer overflow-hidden rounded-2xl border shadow-xl shadow-black/30 backdrop-blur-xl ${style.border} animate-slide-in-right focus-visible:ring-accent-500/60 focus-visible:ring-offset-dark-950 transition-transform duration-200 hover:scale-[1.01] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none active:scale-[0.99] sm:max-w-sm`}
+      className={`pointer-events-auto w-full cursor-pointer overflow-hidden rounded-2xl border bg-dark-900 shadow-xl shadow-black/30 backdrop-blur-xl ${style.border} animate-slide-in-right transition-transform duration-200 hover:scale-[1.01] focus-visible:ring-2 focus-visible:ring-accent-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-950 focus-visible:outline-none active:scale-[0.99] sm:max-w-sm`}
     >
       <div className="relative p-4">
         <div className="flex gap-3">
@@ -192,16 +192,16 @@ function ToastItem({ toast, onClose }: { toast: Toast; onClose: () => void }) {
           {/* Content */}
           <div className="min-w-0 flex-1 pt-0.5">
             {toast.title && (
-              <p className="text-dark-100 mb-0.5 text-sm font-semibold">{toast.title}</p>
+              <p className="mb-0.5 text-sm font-semibold text-dark-100">{toast.title}</p>
             )}
-            <p className="text-dark-300 text-sm leading-relaxed">{toast.message}</p>
+            <p className="text-sm leading-relaxed text-dark-300">{toast.message}</p>
           </div>
         </div>
 
         {/* Progress bar — visual countdown until auto-dismiss. scaleX animates
             on the compositor, no layout reflow. aria-hidden because the visual
             timer doesn't carry meaning beyond the toast lifetime. */}
-        <div aria-hidden="true" className="bg-dark-800/50 absolute right-0 bottom-0 left-0 h-0.5">
+        <div aria-hidden="true" className="absolute right-0 bottom-0 left-0 h-0.5 bg-dark-800/50">
           <div
             className={`h-full w-full ${style.progress} opacity-70`}
             style={{

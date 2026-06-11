@@ -108,9 +108,9 @@ export function SettingsSearch({
         onFocus={() => setIsOpen(true)}
         onKeyDown={handleKeyDown}
         placeholder={t('admin.settings.searchPlaceholder')}
-        className="w-48 rounded-xl border border-dark-700 bg-dark-800 py-2 pl-10 pr-10 text-sm text-dark-100 placeholder-dark-500 focus:border-accent-500 focus:outline-none lg:w-64"
+        className="w-48 rounded-xl border border-dark-700 bg-dark-800 py-2 pr-10 pl-10 text-sm text-dark-100 placeholder-dark-500 focus:border-accent-500 focus:outline-none lg:w-64"
       />
-      <div className="absolute left-3 top-1/2 -translate-y-1/2 text-dark-500">
+      <div className="absolute top-1/2 left-3 -translate-y-1/2 text-dark-500">
         <SearchIcon />
       </div>
       {searchQuery && (
@@ -119,7 +119,7 @@ export function SettingsSearch({
             setSearchQuery('');
             setIsOpen(false);
           }}
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-dark-500 transition-colors hover:text-dark-300"
+          className="absolute top-1/2 right-3 -translate-y-1/2 text-dark-500 transition-colors hover:text-dark-300"
         >
           <CloseIcon />
         </button>
@@ -127,7 +127,7 @@ export function SettingsSearch({
 
       {/* Autocomplete dropdown */}
       {isOpen && suggestions.length > 0 && (
-        <div className="absolute right-0 top-full z-50 mt-1 max-h-80 w-80 overflow-y-auto rounded-xl border border-dark-700 bg-dark-800 py-1 shadow-xl">
+        <div className="absolute top-full right-0 z-50 mt-1 max-h-80 w-80 overflow-y-auto rounded-xl border border-dark-700 bg-dark-800 py-1 shadow-xl">
           {suggestions.map((setting, index) => (
             <button
               key={setting.key}
@@ -218,9 +218,9 @@ export function SettingsSearchMobile({
         }}
         onFocus={() => setIsOpen(true)}
         placeholder={t('admin.settings.searchPlaceholder')}
-        className="w-full rounded-xl border border-dark-700 bg-dark-800 py-2 pl-10 pr-10 text-sm text-dark-100 placeholder-dark-500 focus:border-accent-500 focus:outline-none"
+        className="w-full rounded-xl border border-dark-700 bg-dark-800 py-2 pr-10 pl-10 text-sm text-dark-100 placeholder-dark-500 focus:border-accent-500 focus:outline-none"
       />
-      <div className="absolute left-3 top-1/2 -translate-y-1/2 text-dark-500">
+      <div className="absolute top-1/2 left-3 -translate-y-1/2 text-dark-500">
         <SearchIcon />
       </div>
       {searchQuery && (
@@ -229,7 +229,7 @@ export function SettingsSearchMobile({
             setSearchQuery('');
             setIsOpen(false);
           }}
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-dark-500 transition-colors hover:text-dark-300"
+          className="absolute top-1/2 right-3 -translate-y-1/2 text-dark-500 transition-colors hover:text-dark-300"
         >
           <CloseIcon />
         </button>
@@ -237,7 +237,7 @@ export function SettingsSearchMobile({
 
       {/* Autocomplete dropdown */}
       {isOpen && suggestions.length > 0 && (
-        <div className="absolute left-0 right-0 top-full z-50 mt-1 max-h-64 overflow-y-auto rounded-xl border border-dark-700 bg-dark-800 py-1 shadow-xl">
+        <div className="absolute top-full right-0 left-0 z-50 mt-1 max-h-64 overflow-y-auto rounded-xl border border-dark-700 bg-dark-800 py-1 shadow-xl">
           {suggestions.map((setting, index) => (
             <button
               key={setting.key}

@@ -272,7 +272,7 @@ export function ReferralsTab({ user, userId, onUserRefresh }: ReferralsTabProps)
                   </button>
                 </div>
                 {referrerSearchQuery.length >= 2 && referrerSearchResults.length > 0 && (
-                  <div className="absolute left-0 right-0 top-full z-50 mt-1 max-h-60 overflow-y-auto rounded-xl border border-dark-700 bg-dark-800 py-1 shadow-xl">
+                  <div className="absolute top-full right-0 left-0 z-50 mt-1 max-h-60 overflow-y-auto rounded-xl border border-dark-700 bg-dark-800 py-1 shadow-xl">
                     {referrerSearchResults
                       .filter((u) => u.id !== userId)
                       .map((u) => (
@@ -304,7 +304,7 @@ export function ReferralsTab({ user, userId, onUserRefresh }: ReferralsTabProps)
                 {referrerSearchQuery.length >= 2 &&
                   !referrerSearchLoading &&
                   referrerSearchResults.length === 0 && (
-                    <div className="absolute left-0 right-0 top-full z-50 mt-1 rounded-xl border border-dark-700 bg-dark-800 py-4 text-center text-sm text-dark-500 shadow-xl">
+                    <div className="absolute top-full right-0 left-0 z-50 mt-1 rounded-xl border border-dark-700 bg-dark-800 py-4 text-center text-sm text-dark-500 shadow-xl">
                       {t('admin.users.detail.referrals.noUsersFound')}
                     </div>
                   )}
@@ -399,7 +399,7 @@ export function ReferralsTab({ user, userId, onUserRefresh }: ReferralsTabProps)
               </button>
             </div>
             {addReferralSearchQuery.length >= 2 && addReferralSearchResults.length > 0 && (
-              <div className="absolute left-0 right-0 top-full z-50 mt-1 max-h-60 overflow-y-auto rounded-xl border border-dark-700 bg-dark-800 py-1 shadow-xl">
+              <div className="absolute top-full right-0 left-0 z-50 mt-1 max-h-60 overflow-y-auto rounded-xl border border-dark-700 bg-dark-800 py-1 shadow-xl">
                 {addReferralSearchResults
                   .filter((u) => u.id !== userId && !referralsList.some((r) => r.id === u.id))
                   .map((u) => (
@@ -434,7 +434,7 @@ export function ReferralsTab({ user, userId, onUserRefresh }: ReferralsTabProps)
             {addReferralSearchQuery.length >= 2 &&
               !addReferralSearchLoading &&
               addReferralSearchResults.length === 0 && (
-                <div className="absolute left-0 right-0 top-full z-50 mt-1 rounded-xl border border-dark-700 bg-dark-800 py-4 text-center text-sm text-dark-500 shadow-xl">
+                <div className="absolute top-full right-0 left-0 z-50 mt-1 rounded-xl border border-dark-700 bg-dark-800 py-4 text-center text-sm text-dark-500 shadow-xl">
                   {t('admin.users.detail.referrals.noUsersFound')}
                 </div>
               )}

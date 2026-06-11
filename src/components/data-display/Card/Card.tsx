@@ -135,7 +135,7 @@ export type CardTitleProps = HTMLAttributes<HTMLHeadingElement>;
 
 export const CardTitle = forwardRef<HTMLHeadingElement, CardTitleProps>(
   ({ className, ...props }, ref) => (
-    <h3 ref={ref} className={cn('text-dark-100 text-lg font-semibold', className)} {...props} />
+    <h3 ref={ref} className={cn('text-lg font-semibold text-dark-100', className)} {...props} />
   ),
 );
 
@@ -146,7 +146,7 @@ export type CardDescriptionProps = HTMLAttributes<HTMLParagraphElement>;
 
 export const CardDescription = forwardRef<HTMLParagraphElement, CardDescriptionProps>(
   ({ className, ...props }, ref) => (
-    <p ref={ref} className={cn('text-dark-400 text-sm', className)} {...props} />
+    <p ref={ref} className={cn('text-sm text-dark-400', className)} {...props} />
   ),
 );
 

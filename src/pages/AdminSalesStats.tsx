@@ -264,7 +264,7 @@ export default function AdminSalesStats() {
             aria-selected={activeTab === tab.id}
             aria-controls={`panel-${tab.id}`}
             onClick={() => setActiveTab(tab.id)}
-            className={`shrink-0 whitespace-nowrap rounded-lg px-3 py-2.5 text-xs font-medium transition-colors sm:text-sm ${
+            className={`shrink-0 rounded-lg px-3 py-2.5 text-xs font-medium whitespace-nowrap transition-colors sm:text-sm ${
               activeTab === tab.id
                 ? 'bg-dark-700/60 text-dark-100'
                 : 'text-dark-400 hover:text-dark-300'

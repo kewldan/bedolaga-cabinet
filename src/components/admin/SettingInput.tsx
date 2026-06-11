@@ -83,7 +83,7 @@ export function SettingInput({ setting, onUpdate, disabled }: SettingInputProps)
         value={currentValue}
         onChange={(e) => onUpdate(e.target.value)}
         disabled={disabled}
-        className="border-dark-600 bg-dark-700 text-dark-100 focus:border-accent-500 focus:ring-accent-500/30 min-w-[140px] cursor-pointer rounded-lg border px-3 py-2 text-sm focus:ring-1 focus:outline-none disabled:opacity-50"
+        className="min-w-[140px] cursor-pointer rounded-lg border border-dark-600 bg-dark-700 px-3 py-2 text-sm text-dark-100 focus:border-accent-500 focus:ring-1 focus:ring-accent-500/30 focus:outline-none disabled:opacity-50"
       >
         {setting.choices.map((choice, idx) => (
           <option key={idx} value={String(choice.value)}>
@@ -109,20 +109,20 @@ export function SettingInput({ setting, onUpdate, disabled }: SettingInputProps)
           }}
           autoFocus
           placeholder={t('admin.settings.inputPlaceholder')}
-          className="border-accent-500 bg-dark-700 text-dark-100 focus:ring-accent-500/30 min-h-[100px] w-full resize-none rounded-xl border px-4 py-3 font-mono text-sm focus:ring-2 focus:outline-none"
+          className="min-h-[100px] w-full resize-none rounded-xl border border-accent-500 bg-dark-700 px-4 py-3 font-mono text-sm text-dark-100 focus:ring-2 focus:ring-accent-500/30 focus:outline-none"
         />
         <div className="flex items-center justify-between gap-2">
-          <span className="text-dark-500 text-xs">{t('admin.settings.ctrlEnterHint')}</span>
+          <span className="text-xs text-dark-500">{t('admin.settings.ctrlEnterHint')}</span>
           <div className="flex items-center gap-2">
             <button
               onClick={handleCancel}
-              className="bg-dark-600 text-dark-300 hover:bg-dark-500 rounded-lg px-3 py-1.5 text-sm transition-colors"
+              className="rounded-lg bg-dark-600 px-3 py-1.5 text-sm text-dark-300 transition-colors hover:bg-dark-500"
             >
               {t('admin.settings.cancelButton')}
             </button>
             <button
               onClick={handleSave}
-              className="bg-accent-500 text-on-accent hover:bg-accent-600 flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm transition-colors"
+              className="flex items-center gap-1.5 rounded-lg bg-accent-500 px-3 py-1.5 text-sm text-on-accent transition-colors hover:bg-accent-600"
             >
               <CheckIcon />
               {t('admin.settings.saveButton')}
@@ -155,18 +155,18 @@ export function SettingInput({ setting, onUpdate, disabled }: SettingInputProps)
           }}
           autoFocus
           placeholder={t('admin.settings.inputPlaceholder')}
-          className="border-accent-500 bg-dark-700 text-dark-100 focus:ring-accent-500/30 w-48 rounded-lg border px-3 py-2 text-sm focus:ring-2 focus:outline-none sm:w-56"
+          className="w-48 rounded-lg border border-accent-500 bg-dark-700 px-3 py-2 text-sm text-dark-100 focus:ring-2 focus:ring-accent-500/30 focus:outline-none sm:w-56"
         />
         <button
           onClick={handleSave}
-          className="bg-accent-500 text-on-accent hover:bg-accent-600 rounded-lg p-2 transition-colors"
+          className="rounded-lg bg-accent-500 p-2 text-on-accent transition-colors hover:bg-accent-600"
           title={t('admin.settings.saveHint')}
         >
           <CheckIcon />
         </button>
         <button
           onClick={handleCancel}
-          className="bg-dark-600 text-dark-300 hover:bg-dark-500 rounded-lg p-2 transition-colors"
+          className="rounded-lg bg-dark-600 p-2 text-dark-300 transition-colors hover:bg-dark-500"
           title={t('admin.settings.cancelHint')}
         >
           <CloseIcon />
@@ -185,11 +185,11 @@ export function SettingInput({ setting, onUpdate, disabled }: SettingInputProps)
       <button
         onClick={handleStart}
         disabled={disabled}
-        className="group border-dark-600 bg-dark-700/50 text-dark-200 hover:border-dark-500 hover:bg-dark-700 w-full rounded-xl border px-4 py-3 text-left font-mono text-sm transition-colors disabled:opacity-50"
+        className="group w-full rounded-xl border border-dark-600 bg-dark-700/50 px-4 py-3 text-left font-mono text-sm text-dark-200 transition-colors hover:border-dark-500 hover:bg-dark-700 disabled:opacity-50"
       >
         <div className="flex items-start justify-between gap-2">
           <span className="line-clamp-2 flex-1 break-all">{previewValue}</span>
-          <span className="text-dark-500 group-hover:text-accent-400 shrink-0 transition-colors">
+          <span className="shrink-0 text-dark-500 transition-colors group-hover:text-accent-400">
             <EditIcon />
           </span>
         </div>
@@ -202,10 +202,10 @@ export function SettingInput({ setting, onUpdate, disabled }: SettingInputProps)
     <button
       onClick={handleStart}
       disabled={disabled}
-      className="group border-dark-600 bg-dark-700 text-dark-200 hover:border-dark-500 hover:bg-dark-600 flex max-w-[200px] min-w-[100px] items-center gap-2 truncate rounded-lg border px-3 py-2.5 text-left font-mono text-sm transition-colors disabled:opacity-50"
+      className="group flex max-w-[200px] min-w-[100px] items-center gap-2 truncate rounded-lg border border-dark-600 bg-dark-700 px-3 py-2.5 text-left font-mono text-sm text-dark-200 transition-colors hover:border-dark-500 hover:bg-dark-600 disabled:opacity-50"
     >
       <span className="flex-1 truncate">{currentValue || '-'}</span>
-      <span className="text-dark-500 group-focus-within:text-accent-400 group-hover:text-accent-400 opacity-0 transition-colors group-focus-within:opacity-100 group-hover:opacity-100 [@media(hover:none)]:opacity-100">
+      <span className="text-dark-500 opacity-0 transition-colors group-focus-within:text-accent-400 group-focus-within:opacity-100 group-hover:text-accent-400 group-hover:opacity-100 [@media(hover:none)]:opacity-100">
         <EditIcon />
       </span>
     </button>

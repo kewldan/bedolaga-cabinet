@@ -243,27 +243,27 @@ function LogEntryCard({ entry, isExpanded, onToggle }: LogEntryCardProps) {
             {/* User agent */}
             {entry.user_agent && (
               <div>
-                <p className="mb-1 text-xs font-medium uppercase text-dark-500">
+                <p className="mb-1 text-xs font-medium text-dark-500 uppercase">
                   {t('admin.auditLog.details.userAgent')}
                 </p>
-                <p className="break-all text-sm text-dark-300">{entry.user_agent}</p>
+                <p className="text-sm break-all text-dark-300">{entry.user_agent}</p>
               </div>
             )}
 
             {/* Request path */}
             {requestPath && (
               <div>
-                <p className="mb-1 text-xs font-medium uppercase text-dark-500">
+                <p className="mb-1 text-xs font-medium text-dark-500 uppercase">
                   {t('admin.auditLog.details.requestPath')}
                 </p>
-                <p className="break-all font-mono text-sm text-dark-300">{requestPath}</p>
+                <p className="font-mono text-sm break-all text-dark-300">{requestPath}</p>
               </div>
             )}
 
             {/* IP Address */}
             {entry.ip_address && (
               <div>
-                <p className="mb-1 text-xs font-medium uppercase text-dark-500">
+                <p className="mb-1 text-xs font-medium text-dark-500 uppercase">
                   {t('admin.auditLog.details.ipAddress')}
                 </p>
                 <p className="font-mono text-sm text-dark-300">{entry.ip_address}</p>
@@ -272,7 +272,7 @@ function LogEntryCard({ entry, isExpanded, onToggle }: LogEntryCardProps) {
 
             {/* Timestamp */}
             <div>
-              <p className="mb-1 text-xs font-medium uppercase text-dark-500">
+              <p className="mb-1 text-xs font-medium text-dark-500 uppercase">
                 {t('admin.auditLog.details.timestamp')}
               </p>
               <p className="text-sm text-dark-300">{formatAbsoluteTime(entry.created_at)}</p>
@@ -281,7 +281,7 @@ function LogEntryCard({ entry, isExpanded, onToggle }: LogEntryCardProps) {
             {/* Before/after diff */}
             {entry.details && 'before' in entry.details && entry.details.before != null && (
               <div>
-                <p className="mb-1 text-xs font-medium uppercase text-dark-500">
+                <p className="mb-1 text-xs font-medium text-dark-500 uppercase">
                   {t('admin.auditLog.details.before')}
                 </p>
                 <pre className="max-h-40 overflow-auto rounded-lg bg-dark-900 p-2 text-xs text-dark-300">
@@ -292,7 +292,7 @@ function LogEntryCard({ entry, isExpanded, onToggle }: LogEntryCardProps) {
 
             {entry.details && 'after' in entry.details && entry.details.after != null && (
               <div>
-                <p className="mb-1 text-xs font-medium uppercase text-dark-500">
+                <p className="mb-1 text-xs font-medium text-dark-500 uppercase">
                   {t('admin.auditLog.details.after')}
                 </p>
                 <pre className="max-h-40 overflow-auto rounded-lg bg-dark-900 p-2 text-xs text-dark-300">
@@ -306,7 +306,7 @@ function LogEntryCard({ entry, isExpanded, onToggle }: LogEntryCardProps) {
               'query_params' in entry.details &&
               entry.details.query_params != null && (
                 <div className="sm:col-span-2">
-                  <p className="mb-1 text-xs font-medium uppercase text-dark-500">
+                  <p className="mb-1 text-xs font-medium text-dark-500 uppercase">
                     {t('admin.auditLog.details.queryParams')}
                   </p>
                   <pre className="max-h-40 overflow-auto rounded-lg bg-dark-900 p-2 text-xs text-dark-300">
@@ -320,7 +320,7 @@ function LogEntryCard({ entry, isExpanded, onToggle }: LogEntryCardProps) {
               'request_body' in entry.details &&
               entry.details.request_body != null && (
                 <div className="sm:col-span-2">
-                  <p className="mb-1 text-xs font-medium uppercase text-dark-500">
+                  <p className="mb-1 text-xs font-medium text-dark-500 uppercase">
                     {t('admin.auditLog.details.requestBody')}
                   </p>
                   <pre className="max-h-60 overflow-auto rounded-lg bg-dark-900 p-2 text-xs text-dark-300">
@@ -333,7 +333,7 @@ function LogEntryCard({ entry, isExpanded, onToggle }: LogEntryCardProps) {
           {/* Full details JSON */}
           {entry.details && (
             <div className="mt-4">
-              <p className="mb-1 text-xs font-medium uppercase text-dark-500">
+              <p className="mb-1 text-xs font-medium text-dark-500 uppercase">
                 {t('admin.auditLog.details.fullDetails')}
               </p>
               <pre className="max-h-60 overflow-auto rounded-lg bg-dark-900 p-3 text-xs text-dark-300">
@@ -605,7 +605,7 @@ export default function AdminAuditLog() {
                               userId: isSelected ? '' : String(ru.user_id),
                             }))
                           }
-                          className={`flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-1 focus-visible:ring-offset-dark-900 ${
+                          className={`flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm transition-colors focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-1 focus-visible:ring-offset-dark-900 focus-visible:outline-none ${
                             isSelected
                               ? 'border-accent-500 bg-accent-500/20 text-accent-300'
                               : 'border-dark-600 bg-dark-900 text-dark-300 hover:border-dark-500 hover:text-dark-200'
@@ -637,7 +637,7 @@ export default function AdminAuditLog() {
                   {t('admin.auditLog.filters.action')}
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-dark-500">
+                  <span className="absolute top-1/2 left-3 -translate-y-1/2 text-dark-500">
                     <SearchIcon />
                   </span>
                   <input
@@ -645,7 +645,7 @@ export default function AdminAuditLog() {
                     type="text"
                     value={filters.action}
                     onChange={(e) => setFilters((prev) => ({ ...prev, action: e.target.value }))}
-                    className="w-full rounded-lg border border-dark-600 bg-dark-900 py-2 pl-9 pr-3 text-sm text-dark-100 placeholder-dark-500 outline-none transition-colors focus:border-accent-500"
+                    className="w-full rounded-lg border border-dark-600 bg-dark-900 py-2 pr-3 pl-9 text-sm text-dark-100 placeholder-dark-500 transition-colors outline-none focus:border-accent-500"
                     placeholder={t('admin.auditLog.filters.actionPlaceholder')}
                   />
                 </div>
@@ -663,7 +663,7 @@ export default function AdminAuditLog() {
                   id="filter-resource"
                   value={filters.resource}
                   onChange={(e) => setFilters((prev) => ({ ...prev, resource: e.target.value }))}
-                  className="w-full rounded-lg border border-dark-600 bg-dark-900 px-3 py-2 text-sm text-dark-100 outline-none transition-colors focus:border-accent-500"
+                  className="w-full rounded-lg border border-dark-600 bg-dark-900 px-3 py-2 text-sm text-dark-100 transition-colors outline-none focus:border-accent-500"
                 >
                   <option value="">{t('admin.auditLog.filters.allResources')}</option>
                   {RESOURCE_TYPES.map((type) => (
@@ -686,7 +686,7 @@ export default function AdminAuditLog() {
                   id="filter-status"
                   value={filters.status}
                   onChange={(e) => setFilters((prev) => ({ ...prev, status: e.target.value }))}
-                  className="w-full rounded-lg border border-dark-600 bg-dark-900 px-3 py-2 text-sm text-dark-100 outline-none transition-colors focus:border-accent-500"
+                  className="w-full rounded-lg border border-dark-600 bg-dark-900 px-3 py-2 text-sm text-dark-100 transition-colors outline-none focus:border-accent-500"
                 >
                   <option value="">{t('admin.auditLog.filters.allStatuses')}</option>
                   {STATUS_OPTIONS.map((status) => (

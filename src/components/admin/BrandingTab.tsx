@@ -98,8 +98,8 @@ export function BrandingTab({ accentColor = '#3b82f6' }: BrandingTabProps) {
   return (
     <div className="space-y-6">
       {/* Logo & Name */}
-      <div className="border-dark-700/50 bg-dark-800/50 rounded-2xl border p-6">
-        <h3 className="text-dark-100 mb-4 text-lg font-semibold">
+      <div className="rounded-2xl border border-dark-700/50 bg-dark-800/50 p-6">
+        <h3 className="mb-4 text-lg font-semibold text-dark-100">
           {t('admin.settings.logoAndName')}
         </h3>
 
@@ -135,7 +135,7 @@ export function BrandingTab({ accentColor = '#3b82f6' }: BrandingTabProps) {
               <button
                 onClick={() => fileInputRef.current?.click()}
                 disabled={uploadLogoMutation.isPending}
-                className="bg-dark-700 text-dark-200 hover:bg-dark-600 flex flex-1 items-center justify-center gap-1 rounded-xl px-3 py-2 text-sm transition-colors disabled:opacity-50"
+                className="flex flex-1 items-center justify-center gap-1 rounded-xl bg-dark-700 px-3 py-2 text-sm text-dark-200 transition-colors hover:bg-dark-600 disabled:opacity-50"
               >
                 <UploadIcon />
               </button>
@@ -143,7 +143,7 @@ export function BrandingTab({ accentColor = '#3b82f6' }: BrandingTabProps) {
                 <button
                   onClick={() => deleteLogoMutation.mutate()}
                   disabled={deleteLogoMutation.isPending}
-                  className="bg-dark-700 text-dark-400 hover:bg-error-500/20 hover:text-error-400 rounded-xl px-3 py-2 transition-colors disabled:opacity-50"
+                  className="rounded-xl bg-dark-700 px-3 py-2 text-dark-400 transition-colors hover:bg-error-500/20 hover:text-error-400 disabled:opacity-50"
                 >
                   <TrashIcon />
                 </button>
@@ -153,7 +153,7 @@ export function BrandingTab({ accentColor = '#3b82f6' }: BrandingTabProps) {
 
           {/* Name */}
           <div className="flex-1">
-            <label className="text-dark-300 mb-2 block text-sm font-medium">
+            <label className="mb-2 block text-sm font-medium text-dark-300">
               {t('admin.settings.projectName')}
             </label>
             {editingName ? (
@@ -162,26 +162,26 @@ export function BrandingTab({ accentColor = '#3b82f6' }: BrandingTabProps) {
                   type="text"
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
-                  className="border-dark-600 bg-dark-700 text-dark-100 focus:border-accent-500 flex-1 rounded-xl border px-4 py-2 focus:outline-none"
+                  className="flex-1 rounded-xl border border-dark-600 bg-dark-700 px-4 py-2 text-dark-100 focus:border-accent-500 focus:outline-none"
                   maxLength={50}
                 />
                 <button
                   onClick={() => updateBrandingMutation.mutate(newName)}
                   disabled={updateBrandingMutation.isPending}
-                  className="bg-accent-500 text-on-accent hover:bg-accent-600 rounded-xl px-4 py-2 transition-colors disabled:opacity-50"
+                  className="rounded-xl bg-accent-500 px-4 py-2 text-on-accent transition-colors hover:bg-accent-600 disabled:opacity-50"
                 >
                   <CheckIcon />
                 </button>
                 <button
                   onClick={() => setEditingName(false)}
-                  className="bg-dark-700 text-dark-300 hover:bg-dark-600 rounded-xl px-4 py-2 transition-colors"
+                  className="rounded-xl bg-dark-700 px-4 py-2 text-dark-300 transition-colors hover:bg-dark-600"
                 >
                   <CloseIcon />
                 </button>
               </div>
             ) : (
               <div className="flex min-w-0 items-center gap-2">
-                <span className="text-dark-100 min-w-0 truncate text-lg">
+                <span className="min-w-0 truncate text-lg text-dark-100">
                   {branding?.name || t('admin.settings.notSpecified')}
                 </span>
                 <button
@@ -189,7 +189,7 @@ export function BrandingTab({ accentColor = '#3b82f6' }: BrandingTabProps) {
                     setNewName(branding?.name ?? '');
                     setEditingName(true);
                   }}
-                  className="text-dark-400 hover:bg-dark-700 hover:text-dark-200 shrink-0 rounded-lg p-1.5 transition-colors"
+                  className="shrink-0 rounded-lg p-1.5 text-dark-400 transition-colors hover:bg-dark-700 hover:text-dark-200"
                 >
                   <PencilIcon />
                 </button>
@@ -200,23 +200,23 @@ export function BrandingTab({ accentColor = '#3b82f6' }: BrandingTabProps) {
       </div>
 
       {/* Animated Background Editor */}
-      <div className="border-dark-700/50 bg-dark-800/50 rounded-2xl border p-6">
+      <div className="rounded-2xl border border-dark-700/50 bg-dark-800/50 p-6">
         <BackgroundEditor />
       </div>
 
       {/* Fullscreen & Email toggles */}
-      <div className="border-dark-700/50 bg-dark-800/50 rounded-2xl border p-6">
-        <h3 className="text-dark-100 mb-4 text-lg font-semibold">
+      <div className="rounded-2xl border border-dark-700/50 bg-dark-800/50 p-6">
+        <h3 className="mb-4 text-lg font-semibold text-dark-100">
           {t('admin.settings.interfaceOptions')}
         </h3>
 
         <div className="space-y-4">
-          <div className="bg-dark-700/30 flex items-center justify-between rounded-xl p-4">
+          <div className="flex items-center justify-between rounded-xl bg-dark-700/30 p-4">
             <div>
-              <span className="text-dark-100 font-medium">
+              <span className="font-medium text-dark-100">
                 {t('admin.settings.autoFullscreen')}
               </span>
-              <p className="text-dark-400 text-sm">{t('admin.settings.autoFullscreenDesc')}</p>
+              <p className="text-sm text-dark-400">{t('admin.settings.autoFullscreenDesc')}</p>
             </div>
             <Toggle
               checked={fullscreenSettings?.enabled ?? false}
@@ -227,10 +227,10 @@ export function BrandingTab({ accentColor = '#3b82f6' }: BrandingTabProps) {
             />
           </div>
 
-          <div className="bg-dark-700/30 flex items-center justify-between rounded-xl p-4">
+          <div className="flex items-center justify-between rounded-xl bg-dark-700/30 p-4">
             <div>
-              <span className="text-dark-100 font-medium">{t('admin.settings.emailAuth')}</span>
-              <p className="text-dark-400 text-sm">{t('admin.settings.emailAuthDesc')}</p>
+              <span className="font-medium text-dark-100">{t('admin.settings.emailAuth')}</span>
+              <p className="text-sm text-dark-400">{t('admin.settings.emailAuthDesc')}</p>
             </div>
             <Toggle
               checked={emailAuthSettings?.enabled ?? true}
@@ -239,10 +239,10 @@ export function BrandingTab({ accentColor = '#3b82f6' }: BrandingTabProps) {
             />
           </div>
 
-          <div className="bg-dark-700/30 flex items-center justify-between rounded-xl p-4">
+          <div className="flex items-center justify-between rounded-xl bg-dark-700/30 p-4">
             <div>
-              <span className="text-dark-100 font-medium">{t('admin.settings.giftEnabled')}</span>
-              <p className="text-dark-400 text-sm">{t('admin.settings.giftEnabledDesc')}</p>
+              <span className="font-medium text-dark-100">{t('admin.settings.giftEnabled')}</span>
+              <p className="text-sm text-dark-400">{t('admin.settings.giftEnabledDesc')}</p>
             </div>
             <Toggle
               checked={giftSettings?.enabled ?? false}

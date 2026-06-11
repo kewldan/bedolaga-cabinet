@@ -49,12 +49,12 @@ export function ReferralNetwork() {
         } as React.CSSProperties
       }
     >
-      <div className="border-dark-700/50 bg-dark-900/90 z-20 border-b backdrop-blur-md">
+      <div className="z-20 border-b border-dark-700/50 bg-dark-900/90 backdrop-blur-md">
         {/* Mobile: two rows — title on top, selector below */}
         <div className="flex flex-col gap-1.5 px-3 py-2 sm:flex-row sm:items-center sm:gap-3 sm:px-4 sm:py-3">
           <div className="flex items-center gap-2">
             <AdminBackButton />
-            <h1 className="text-dark-100 shrink-0 text-sm font-bold sm:text-base">
+            <h1 className="shrink-0 text-sm font-bold text-dark-100 sm:text-base">
               {t('admin.referralNetwork.title')}
             </h1>
           </div>
@@ -74,7 +74,7 @@ export function ReferralNetwork() {
           <div className="absolute inset-0 z-10 flex items-center justify-center">
             <div className="text-center">
               <svg
-                className="text-dark-600 mx-auto mb-4 h-12 w-12"
+                className="mx-auto mb-4 h-12 w-12 text-dark-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -86,7 +86,7 @@ export function ReferralNetwork() {
                   d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"
                 />
               </svg>
-              <p className="text-dark-500 max-w-xs text-sm">
+              <p className="max-w-xs text-sm text-dark-500">
                 {t('admin.referralNetwork.scope.emptyState')}
               </p>
             </div>
@@ -97,8 +97,8 @@ export function ReferralNetwork() {
         {hasScope && isLoading && (
           <div className="absolute inset-0 z-10 flex items-center justify-center">
             <div className="text-center">
-              <div className="border-dark-600 border-t-accent-400 mx-auto mb-3 h-8 w-8 animate-spin rounded-full border-2" />
-              <p className="text-dark-400 text-sm">{t('admin.referralNetwork.loading')}</p>
+              <div className="mx-auto mb-3 h-8 w-8 animate-spin rounded-full border-2 border-dark-600 border-t-accent-400" />
+              <p className="text-sm text-dark-400">{t('admin.referralNetwork.loading')}</p>
             </div>
           </div>
         )}
@@ -106,7 +106,7 @@ export function ReferralNetwork() {
         {/* Error state */}
         {hasScope && isError && (
           <div className="absolute inset-0 z-10 flex items-center justify-center">
-            <p className="text-error-400 text-sm">{t('admin.referralNetwork.error')}</p>
+            <p className="text-sm text-error-400">{t('admin.referralNetwork.error')}</p>
           </div>
         )}
 
@@ -116,7 +116,7 @@ export function ReferralNetwork() {
           networkData.users.length === 0 &&
           networkData.campaigns.length === 0 && (
             <div className="absolute inset-0 z-10 flex items-center justify-center">
-              <p className="text-dark-500 text-sm">{t('admin.referralNetwork.empty')}</p>
+              <p className="text-sm text-dark-500">{t('admin.referralNetwork.empty')}</p>
             </div>
           )}
 
@@ -143,7 +143,7 @@ export function ReferralNetwork() {
 
         {/* Detail panel (slide-in from right) */}
         <div
-          className={`border-dark-700/50 bg-dark-900/95 absolute top-0 right-0 z-30 flex h-full w-full flex-col border-l backdrop-blur-md transition-transform duration-300 ease-in-out sm:w-[400px] ${
+          className={`absolute top-0 right-0 z-30 flex h-full w-full flex-col border-l border-dark-700/50 bg-dark-900/95 backdrop-blur-md transition-transform duration-300 ease-in-out sm:w-[400px] ${
             isPanelOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >

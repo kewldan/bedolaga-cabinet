@@ -902,7 +902,7 @@ export function SubscriptionTab(props: SubscriptionTabProps) {
                                 onEditingDeviceNameChange('');
                               }
                             }}
-                            className="w-full rounded-md bg-dark-900/70 px-2 py-1 text-xs font-medium text-dark-50 outline-none ring-1 ring-dark-600/60 focus:ring-accent-500/50"
+                            className="w-full rounded-md bg-dark-900/70 px-2 py-1 text-xs font-medium text-dark-50 ring-1 ring-dark-600/60 outline-none focus:ring-accent-500/50"
                           />
                         ) : (
                           <div className="truncate text-xs font-medium text-dark-200">
@@ -1020,7 +1020,7 @@ export function SubscriptionTab(props: SubscriptionTabProps) {
             </button>
 
             {requestHistoryExpanded && (
-              <div className="border-t border-dark-700/50 px-4 pb-4 pt-3">
+              <div className="border-t border-dark-700/50 px-4 pt-3 pb-4">
                 {/* Subscription selector for multi-tariff */}
                 {userSubscriptions.length > 1 && (
                   <div className="mb-3">
@@ -1057,10 +1057,10 @@ export function SubscriptionTab(props: SubscriptionTabProps) {
                       <table className="w-full min-w-[480px] text-left text-sm">
                         <thead>
                           <tr className="border-b border-dark-700/50 text-xs text-dark-500">
-                            <th className="pb-2 pr-3 font-medium">
+                            <th className="pr-3 pb-2 font-medium">
                               {t('admin.users.detail.requestAt')}
                             </th>
-                            <th className="pb-2 pr-3 font-medium">
+                            <th className="pr-3 pb-2 font-medium">
                               {t('admin.users.detail.requestIp')}
                             </th>
                             <th className="pb-2 font-medium">
@@ -1074,10 +1074,10 @@ export function SubscriptionTab(props: SubscriptionTabProps) {
                               key={record.id}
                               className={`border-b border-dark-700/30 ${idx % 2 === 0 ? 'bg-dark-800/30' : ''}`}
                             >
-                              <td className="whitespace-nowrap py-2.5 pr-3 text-dark-200">
+                              <td className="py-2.5 pr-3 whitespace-nowrap text-dark-200">
                                 {formatDate(record.requestAt)}
                               </td>
-                              <td className="whitespace-nowrap py-2.5 pr-3 font-mono text-xs text-dark-300">
+                              <td className="py-2.5 pr-3 font-mono text-xs whitespace-nowrap text-dark-300">
                                 {record.requestIp || '—'}
                               </td>
                               <td

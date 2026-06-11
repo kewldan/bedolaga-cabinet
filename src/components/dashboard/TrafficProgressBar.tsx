@@ -58,14 +58,14 @@ export default function TrafficProgressBar({
           }}
         >
           <div
-            className="animate-unlimited-flow absolute inset-0"
+            className="absolute inset-0 animate-unlimited-flow"
             style={{
               background: `linear-gradient(90deg, rgba(${zone.mainVarRaw}, 0.31), ${zone.mainVar}, rgba(${zone.mainVarRaw}, 0.31))`,
               backgroundSize: '200% 100%',
             }}
           />
           <div
-            className="animate-traffic-shimmer absolute inset-0"
+            className="absolute inset-0 animate-traffic-shimmer"
             style={{
               background:
                 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%)',
@@ -133,7 +133,7 @@ export default function TrafficProgressBar({
           />
           {/* Shimmer overlay */}
           <div
-            className="animate-traffic-shimmer absolute inset-0"
+            className="absolute inset-0 animate-traffic-shimmer"
             style={{
               background:
                 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%)',
@@ -188,7 +188,7 @@ export default function TrafficProgressBar({
       {/* Scale labels */}
       {!compact && limitGb > 0 && (
         <div
-          className="text-dark-50/20 mt-1.5 flex justify-between px-0.5 font-mono text-[10px] font-medium"
+          className="mt-1.5 flex justify-between px-0.5 font-mono text-[10px] font-medium text-dark-50/20"
           aria-hidden="true"
         >
           {[0, 25, 50, 75, 100].map((v) => (

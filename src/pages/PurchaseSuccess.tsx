@@ -62,7 +62,7 @@ function CopyableField({ label, value }: { label: string; value: string }) {
     <div className="flex items-center gap-2 rounded-xl bg-dark-800/50 px-4 py-3">
       <div className="min-w-0 flex-1 text-left">
         <p className="text-xs text-dark-400">{label}</p>
-        <p className="mt-0.5 break-all font-mono text-sm text-dark-100">{value}</p>
+        <p className="mt-0.5 font-mono text-sm break-all text-dark-100">{value}</p>
       </div>
       <button
         type="button"
@@ -256,7 +256,7 @@ function SuccessState({
           </p>
         )}
         {isGift && giftMessage && (
-          <p className="mt-2 text-sm italic text-dark-400">
+          <p className="mt-2 text-sm text-dark-400 italic">
             {t('landing.giftMessage')}: {giftMessage}
           </p>
         )}
@@ -376,7 +376,7 @@ function PendingActivationState({
         )}
         <p className="mt-2 text-sm text-dark-400">{t('landing.pendingActivationDesc')}</p>
         {isGift && giftMessage && (
-          <p className="mt-2 text-sm italic text-dark-400">
+          <p className="mt-2 text-sm text-dark-400 italic">
             {t('landing.giftMessage')}: {giftMessage}
           </p>
         )}
@@ -480,7 +480,7 @@ function GiftPendingActivationState({
           </p>
         )}
         {giftMessage && (
-          <p className="mt-2 text-sm italic text-dark-400">
+          <p className="mt-2 text-sm text-dark-400 italic">
             {t('landing.giftMessage')}: {giftMessage}
           </p>
         )}

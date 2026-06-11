@@ -24,7 +24,7 @@ function GiftStatusBadge({ status }: { status: string }) {
 
   return (
     <span
-      className={`rounded-full border px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider ${styles[status] || fallback}`}
+      className={`rounded-full border px-2 py-0.5 text-[10px] font-medium tracking-wider uppercase ${styles[status] || fallback}`}
     >
       {label}
     </span>
@@ -151,7 +151,7 @@ function GiftCard({
 
       {/* Gift message */}
       {gift.gift_message && (
-        <div className="mt-3 rounded-lg bg-dark-900/50 p-2.5 text-xs italic text-dark-400">
+        <div className="mt-3 rounded-lg bg-dark-900/50 p-2.5 text-xs text-dark-400 italic">
           &ldquo;{gift.gift_message}&rdquo;
         </div>
       )}

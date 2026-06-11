@@ -62,7 +62,7 @@ export function LocaleTabs({
               <span>{meta.flag}</span>
               <span>{meta.name}</span>
               {filled && !isActive && (
-                <span className="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-success-500" />
+                <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-success-500" />
               )}
             </button>
           );

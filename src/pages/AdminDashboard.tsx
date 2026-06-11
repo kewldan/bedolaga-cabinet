@@ -68,16 +68,16 @@ function NodeCard({ node, onRestart, onToggle, isLoading }: NodeCardProps) {
 
   return (
     <div
-      className={`bg-dark-800/50 rounded-xl border ${node.is_disabled ? 'border-dark-700' : node.is_connected ? 'border-success-500/30' : 'border-error-500/30'} hover:border-dark-600 p-4 transition-colors`}
+      className={`rounded-xl border bg-dark-800/50 ${node.is_disabled ? 'border-dark-700' : node.is_connected ? 'border-success-500/30' : 'border-error-500/30'} p-4 transition-colors hover:border-dark-600`}
     >
       <div className="mb-3 flex items-start justify-between">
         <div className="flex items-center gap-3">
           <div
-            className={`h-3 w-3 rounded-full ${node.is_disabled ? 'bg-dark-500' : node.is_connected ? 'bg-success-500 animate-pulse' : 'bg-error-500'}`}
+            className={`h-3 w-3 rounded-full ${node.is_disabled ? 'bg-dark-500' : node.is_connected ? 'animate-pulse bg-success-500' : 'bg-error-500'}`}
           />
           <div>
-            <div className="text-dark-100 font-medium">{node.name}</div>
-            <div className="text-dark-500 text-xs">{node.address}</div>
+            <div className="font-medium text-dark-100">{node.name}</div>
+            <div className="text-xs text-dark-500">{node.address}</div>
           </div>
         </div>
         <span className={`rounded-full px-2 py-1 text-xs ${getStatusColor()}`}>
@@ -89,7 +89,7 @@ function NodeCard({ node, onRestart, onToggle, isLoading }: NodeCardProps) {
       {(node.versions?.xray || node.xray_uptime > 0) && (
         <div className="mb-3 flex items-center gap-3 text-xs">
           {node.versions?.xray && (
-            <span className="bg-dark-700/50 text-dark-300 rounded px-2 py-1">
+            <span className="rounded bg-dark-700/50 px-2 py-1 text-dark-300">
               Xray {node.versions.xray}
             </span>
           )}
@@ -101,24 +101,24 @@ function NodeCard({ node, onRestart, onToggle, isLoading }: NodeCardProps) {
 
       {/* Error Message */}
       {hasError && (
-        <div className="border-error-500/20 bg-error-500/10 mb-3 rounded-lg border p-2">
+        <div className="mb-3 rounded-lg border border-error-500/20 bg-error-500/10 p-2">
           <div className="flex items-start gap-2">
             <ExclamationIcon className="h-4 w-4" />
-            <span className="text-error-400 text-xs break-all">{node.last_status_message}</span>
+            <span className="text-xs break-all text-error-400">{node.last_status_message}</span>
           </div>
         </div>
       )}
 
       <div className="mb-3 grid grid-cols-2 gap-3">
-        <div className="bg-dark-900/50 rounded-lg p-2.5">
-          <div className="text-dark-500 mb-0.5 text-xs">
+        <div className="rounded-lg bg-dark-900/50 p-2.5">
+          <div className="mb-0.5 text-xs text-dark-500">
             {t('adminDashboard.nodes.usersOnline')}
           </div>
-          <div className="text-dark-100 text-lg font-semibold">{node.users_online}</div>
+          <div className="text-lg font-semibold text-dark-100">{node.users_online}</div>
         </div>
-        <div className="bg-dark-900/50 rounded-lg p-2.5">
-          <div className="text-dark-500 mb-0.5 text-xs">{t('adminDashboard.nodes.traffic')}</div>
-          <div className="text-dark-100 text-lg font-semibold">
+        <div className="rounded-lg bg-dark-900/50 p-2.5">
+          <div className="mb-0.5 text-xs text-dark-500">{t('adminDashboard.nodes.traffic')}</div>
+          <div className="text-lg font-semibold text-dark-100">
             {formatTraffic(node.traffic_used_bytes)}
           </div>
         </div>
@@ -140,7 +140,7 @@ function NodeCard({ node, onRestart, onToggle, isLoading }: NodeCardProps) {
         <button
           onClick={() => onRestart(node.uuid)}
           disabled={isLoading || node.is_disabled}
-          className="bg-accent-500/20 text-accent-400 hover:bg-accent-500/30 flex items-center justify-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors disabled:opacity-50"
+          className="flex items-center justify-center gap-1.5 rounded-lg bg-accent-500/20 px-3 py-2 text-sm font-medium text-accent-400 transition-colors hover:bg-accent-500/30 disabled:opacity-50"
         >
           <RestartIcon className="h-4 w-4" />
         </button>
@@ -155,7 +155,7 @@ function RevenueChart({ data }: { data: { date: string; amount_rubles: number }[
 
   if (!data || data.length === 0) {
     return (
-      <div className="text-dark-500 flex h-48 items-center justify-center">
+      <div className="flex h-48 items-center justify-center text-dark-500">
         {t('common.noData')}
       </div>
     );
@@ -175,16 +175,16 @@ function RevenueChart({ data }: { data: { date: string; amount_rubles: number }[
         return (
           <div key={item.date} className="group">
             <div className="mb-1 flex items-center justify-between">
-              <span className="text-dark-300 text-sm font-medium capitalize">
+              <span className="text-sm font-medium text-dark-300 capitalize">
                 {dayName}, {dayNum}
               </span>
-              <span className="text-dark-100 text-sm font-semibold">
+              <span className="text-sm font-semibold text-dark-100">
                 {formatAmount(item.amount_rubles)} {currencySymbol}
               </span>
             </div>
-            <div className="bg-dark-700/50 h-3 overflow-hidden rounded-full">
+            <div className="h-3 overflow-hidden rounded-full bg-dark-700/50">
               <div
-                className="from-accent-600 to-accent-400 group-hover:from-accent-500 group-hover:to-accent-300 h-full rounded-full bg-linear-to-r transition-all duration-500 ease-out"
+                className="h-full rounded-full bg-linear-to-r from-accent-600 to-accent-400 transition-all duration-500 ease-out group-hover:from-accent-500 group-hover:to-accent-300"
                 style={{ width: `${Math.max(percentage, 2)}%` }}
               />
             </div>
@@ -262,7 +262,7 @@ export default function AdminDashboard() {
   if (loading && !stats) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
       </div>
     );
   }
@@ -287,20 +287,20 @@ export default function AdminDashboard() {
           {!capabilities.hasBackButton && (
             <button
               onClick={() => navigate('/admin')}
-              className="border-dark-700 bg-dark-800 hover:border-dark-600 flex h-10 w-10 items-center justify-center rounded-xl border transition-colors"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-dark-700 bg-dark-800 transition-colors hover:border-dark-600"
             >
               <BackIcon />
             </button>
           )}
           <div>
-            <h1 className="text-dark-100 text-2xl font-bold">{t('adminDashboard.title')}</h1>
+            <h1 className="text-2xl font-bold text-dark-100">{t('adminDashboard.title')}</h1>
             <p className="text-dark-400">{t('adminDashboard.subtitle')}</p>
           </div>
         </div>
         <button
           onClick={() => statsQuery.refetch()}
           disabled={loading}
-          className="bg-dark-800 text-dark-300 hover:bg-dark-700 hover:text-dark-100 flex items-center gap-2 rounded-lg px-4 py-2 transition-colors disabled:opacity-50"
+          className="flex items-center gap-2 rounded-lg bg-dark-800 px-4 py-2 text-dark-300 transition-colors hover:bg-dark-700 hover:text-dark-100 disabled:opacity-50"
         >
           <RefreshIcon className="h-5 w-5" />
           {t('adminDashboard.refresh')}
@@ -337,33 +337,33 @@ export default function AdminDashboard() {
       </div>
 
       {/* Nodes Section */}
-      <div className="border-dark-700 bg-dark-800/30 rounded-xl border p-5">
+      <div className="rounded-xl border border-dark-700 bg-dark-800/30 p-5">
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="bg-accent-500/20 text-accent-400 rounded-lg p-2.5">
+            <div className="rounded-lg bg-accent-500/20 p-2.5 text-accent-400">
               <ServerIcon />
             </div>
             <div>
-              <h2 className="text-dark-100 text-lg font-semibold">
+              <h2 className="text-lg font-semibold text-dark-100">
                 {t('adminDashboard.nodes.title')}
               </h2>
-              <p className="text-dark-400 text-sm">
+              <p className="text-sm text-dark-400">
                 {stats?.nodes.online || 0} {t('adminDashboard.nodes.online').toLowerCase()} /{' '}
                 {stats?.nodes.total || 0} {t('adminDashboard.stats.total').toLowerCase()}
               </p>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-dark-400 flex items-center gap-1.5 text-xs">
-              <span className="bg-success-500 h-2 w-2 rounded-full"></span>
+            <span className="flex items-center gap-1.5 text-xs text-dark-400">
+              <span className="h-2 w-2 rounded-full bg-success-500"></span>
               {stats?.nodes.online || 0}
             </span>
-            <span className="text-dark-400 flex items-center gap-1.5 text-xs">
-              <span className="bg-error-500 h-2 w-2 rounded-full"></span>
+            <span className="flex items-center gap-1.5 text-xs text-dark-400">
+              <span className="h-2 w-2 rounded-full bg-error-500"></span>
               {stats?.nodes.offline || 0}
             </span>
-            <span className="text-dark-400 flex items-center gap-1.5 text-xs">
-              <span className="bg-dark-500 h-2 w-2 rounded-full"></span>
+            <span className="flex items-center gap-1.5 text-xs text-dark-400">
+              <span className="h-2 w-2 rounded-full bg-dark-500"></span>
               {stats?.nodes.disabled || 0}
             </span>
           </div>
@@ -385,7 +385,7 @@ export default function AdminDashboard() {
             {stats.nodes.nodes.length > 3 && (
               <button
                 onClick={() => setShowAllNodes(!showAllNodes)}
-                className="bg-dark-700/50 text-dark-300 hover:bg-dark-700 hover:text-dark-100 mt-4 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-3 transition-colors"
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-dark-700/50 px-4 py-3 text-dark-300 transition-colors hover:bg-dark-700 hover:text-dark-100"
               >
                 <span
                   className={`transform transition-transform ${showAllNodes ? 'rotate-180' : ''}`}
@@ -399,27 +399,27 @@ export default function AdminDashboard() {
             )}
           </>
         ) : (
-          <div className="text-dark-500 py-8 text-center">{t('adminDashboard.nodes.noNodes')}</div>
+          <div className="py-8 text-center text-dark-500">{t('adminDashboard.nodes.noNodes')}</div>
         )}
       </div>
 
       {/* Revenue and Subscriptions */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Revenue Chart */}
-        <div className="border-dark-700 bg-dark-800/30 rounded-xl border p-5">
+        <div className="rounded-xl border border-dark-700 bg-dark-800/30 p-5">
           <div className="mb-4 flex items-center gap-3">
-            <div className="bg-warning-500/20 text-warning-400 rounded-lg p-2.5">
+            <div className="rounded-lg bg-warning-500/20 p-2.5 text-warning-400">
               <ChartBarIcon />
             </div>
             <div>
-              <h2 className="text-dark-100 text-lg font-semibold">
+              <h2 className="text-lg font-semibold text-dark-100">
                 {t('adminDashboard.revenue.title')}
               </h2>
-              <p className="text-dark-400 text-sm">{t('adminDashboard.revenue.last7Days')}</p>
+              <p className="text-sm text-dark-400">{t('adminDashboard.revenue.last7Days')}</p>
             </div>
           </div>
           <RevenueChart data={stats?.revenue_chart || []} />
-          <div className="border-dark-700 mt-4 grid grid-cols-2 gap-4 border-t pt-4">
+          <div className="mt-4 grid grid-cols-2 gap-4 border-t border-dark-700 pt-4">
             <StatCard
               label={t('adminDashboard.stats.incomeTotal')}
               value={`${formatAmount(stats?.financial.income_total_rubles || 0)} ${currencySymbol}`}
@@ -436,16 +436,16 @@ export default function AdminDashboard() {
         </div>
 
         {/* Subscription Stats */}
-        <div className="border-dark-700 bg-dark-800/30 rounded-xl border p-5">
+        <div className="rounded-xl border border-dark-700 bg-dark-800/30 p-5">
           <div className="mb-4 flex items-center gap-3">
-            <div className="bg-accent-500/20 text-accent-400 rounded-lg p-2.5">
+            <div className="rounded-lg bg-accent-500/20 p-2.5 text-accent-400">
               <SparklesIcon />
             </div>
             <div>
-              <h2 className="text-dark-100 text-lg font-semibold">
+              <h2 className="text-lg font-semibold text-dark-100">
                 {t('adminDashboard.subscriptions.title')}
               </h2>
-              <p className="text-dark-400 text-sm">{t('adminDashboard.subscriptions.subtitle')}</p>
+              <p className="text-sm text-dark-400">{t('adminDashboard.subscriptions.subtitle')}</p>
             </div>
           </div>
 
@@ -477,8 +477,8 @@ export default function AdminDashboard() {
               />
             </div>
 
-            <div className="border-dark-700 border-t pt-4">
-              <div className="text-dark-300 mb-3 text-sm font-medium">
+            <div className="border-t border-dark-700 pt-4">
+              <div className="mb-3 text-sm font-medium text-dark-300">
                 {t('adminDashboard.subscriptions.newSubscriptions')}
               </div>
               <div className="grid grid-cols-3 gap-3">
@@ -504,12 +504,12 @@ export default function AdminDashboard() {
             </div>
 
             {stats?.subscriptions.trial_to_paid_conversion !== undefined && (
-              <div className="border-accent-500/20 bg-accent-500/10 rounded-lg border p-4">
+              <div className="rounded-lg border border-accent-500/20 bg-accent-500/10 p-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-dark-300 text-sm">
+                  <span className="text-sm text-dark-300">
                     {t('adminDashboard.subscriptions.conversion')}
                   </span>
-                  <span className="text-accent-400 text-lg font-bold">
+                  <span className="text-lg font-bold text-accent-400">
                     {stats.subscriptions.trial_to_paid_conversion.toFixed(1)}%
                   </span>
                 </div>
@@ -521,39 +521,39 @@ export default function AdminDashboard() {
 
       {/* Tariff Stats */}
       {stats?.tariff_stats && stats.tariff_stats.tariffs.length > 0 && (
-        <div className="border-dark-700 bg-dark-800/30 rounded-xl border p-5">
+        <div className="rounded-xl border border-dark-700 bg-dark-800/30 p-5">
           <div className="mb-4 flex items-center gap-3">
-            <div className="bg-success-500/20 text-success-400 rounded-lg p-2.5">
+            <div className="rounded-lg bg-success-500/20 p-2.5 text-success-400">
               <TagIcon />
             </div>
             <div>
-              <h2 className="text-dark-100 text-lg font-semibold">
+              <h2 className="text-lg font-semibold text-dark-100">
                 {t('adminDashboard.tariffs.title')}
               </h2>
-              <p className="text-dark-400 text-sm">{t('adminDashboard.tariffs.subtitle')}</p>
+              <p className="text-sm text-dark-400">{t('adminDashboard.tariffs.subtitle')}</p>
             </div>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-dark-700 border-b">
-                  <th className="text-dark-500 px-2 py-3 text-left text-xs font-medium">
+                <tr className="border-b border-dark-700">
+                  <th className="px-2 py-3 text-left text-xs font-medium text-dark-500">
                     {t('adminDashboard.tariffs.tariffName')}
                   </th>
-                  <th className="text-dark-500 px-2 py-3 text-center text-xs font-medium">
+                  <th className="px-2 py-3 text-center text-xs font-medium text-dark-500">
                     {t('adminDashboard.tariffs.activeSubscriptions')}
                   </th>
-                  <th className="text-dark-500 px-2 py-3 text-center text-xs font-medium">
+                  <th className="px-2 py-3 text-center text-xs font-medium text-dark-500">
                     {t('adminDashboard.tariffs.trialSubscriptions')}
                   </th>
-                  <th className="text-dark-500 px-2 py-3 text-center text-xs font-medium">
+                  <th className="px-2 py-3 text-center text-xs font-medium text-dark-500">
                     {t('adminDashboard.tariffs.purchasedToday')}
                   </th>
-                  <th className="text-dark-500 px-2 py-3 text-center text-xs font-medium">
+                  <th className="px-2 py-3 text-center text-xs font-medium text-dark-500">
                     {t('adminDashboard.tariffs.purchasedWeek')}
                   </th>
-                  <th className="text-dark-500 px-2 py-3 text-center text-xs font-medium">
+                  <th className="px-2 py-3 text-center text-xs font-medium text-dark-500">
                     {t('adminDashboard.tariffs.purchasedMonth')}
                   </th>
                 </tr>
@@ -562,18 +562,18 @@ export default function AdminDashboard() {
                 {stats.tariff_stats.tariffs.map((tariff) => (
                   <tr
                     key={tariff.tariff_id}
-                    className="border-dark-700/50 hover:bg-dark-800/50 border-b transition-colors"
+                    className="border-b border-dark-700/50 transition-colors hover:bg-dark-800/50"
                   >
                     <td className="px-2 py-3">
-                      <span className="text-dark-100 font-medium">{tariff.tariff_name}</span>
+                      <span className="font-medium text-dark-100">{tariff.tariff_name}</span>
                     </td>
                     <td className="px-2 py-3 text-center">
-                      <span className="text-success-400 font-semibold">
+                      <span className="font-semibold text-success-400">
                         {tariff.active_subscriptions}
                       </span>
                     </td>
                     <td className="px-2 py-3 text-center">
-                      <span className="text-warning-400 font-semibold">
+                      <span className="font-semibold text-warning-400">
                         {tariff.trial_subscriptions}
                       </span>
                     </td>
@@ -598,17 +598,17 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Top Referrers */}
         {referrers && (referrers.by_earnings.length > 0 || referrers.by_invited.length > 0) && (
-          <div className="border-dark-700 bg-dark-800/30 rounded-xl border p-4 sm:p-5">
+          <div className="rounded-xl border border-dark-700 bg-dark-800/30 p-4 sm:p-5">
             <div className="mb-4 flex items-center justify-between">
               <div className="flex items-center gap-2 sm:gap-3">
-                <div className="bg-accent-500/20 text-accent-400 rounded-lg p-2 sm:p-2.5">
+                <div className="rounded-lg bg-accent-500/20 p-2 text-accent-400 sm:p-2.5">
                   <UsersIcon />
                 </div>
                 <div>
-                  <h2 className="text-dark-100 text-base font-semibold sm:text-lg">
+                  <h2 className="text-base font-semibold text-dark-100 sm:text-lg">
                     {t('adminDashboard.topReferrers.title')}
                   </h2>
-                  <p className="text-dark-400 text-xs sm:text-sm">
+                  <p className="text-xs text-dark-400 sm:text-sm">
                     {referrers.total_referrers}{' '}
                     {t('adminDashboard.topReferrers.stats', { count: referrers.total_referrals })}
                   </p>
@@ -646,18 +646,18 @@ export default function AdminDashboard() {
                 .map((ref, idx) => (
                   <div
                     key={ref.user_id}
-                    className="bg-dark-900/50 hover:bg-dark-800/50 flex items-center justify-between gap-2 rounded-lg p-2 transition-colors sm:p-3"
+                    className="flex items-center justify-between gap-2 rounded-lg bg-dark-900/50 p-2 transition-colors hover:bg-dark-800/50 sm:p-3"
                   >
                     <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
-                      <span className="bg-dark-700 text-dark-300 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold sm:h-6 sm:w-6 sm:text-xs">
+                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-dark-700 text-[10px] font-bold text-dark-300 sm:h-6 sm:w-6 sm:text-xs">
                         {idx + 1}
                       </span>
                       <div className="min-w-0">
-                        <div className="text-dark-100 truncate text-xs font-medium sm:text-sm">
+                        <div className="truncate text-xs font-medium text-dark-100 sm:text-sm">
                           {ref.display_name}
                         </div>
                         {ref.username && (
-                          <div className="text-dark-500 truncate text-[10px] sm:text-xs">
+                          <div className="truncate text-[10px] text-dark-500 sm:text-xs">
                             @{ref.username}
                           </div>
                         )}
@@ -666,19 +666,19 @@ export default function AdminDashboard() {
                     <div className="shrink-0 text-right">
                       {referrersTab === 'earnings' ? (
                         <>
-                          <div className="text-success-400 text-xs font-semibold sm:text-sm">
+                          <div className="text-xs font-semibold text-success-400 sm:text-sm">
                             {formatAmount(ref.earnings_total_kopeks / 100)} {currencySymbol}
                           </div>
-                          <div className="text-dark-500 text-[10px] sm:text-xs">
+                          <div className="text-[10px] text-dark-500 sm:text-xs">
                             {ref.invited_count} {t('adminDashboard.topReferrers.invites')}
                           </div>
                         </>
                       ) : (
                         <>
-                          <div className="text-accent-400 text-xs font-semibold sm:text-sm">
+                          <div className="text-xs font-semibold text-accent-400 sm:text-sm">
                             {ref.invited_count} {t('adminDashboard.topReferrers.people')}
                           </div>
-                          <div className="text-dark-500 text-[10px] sm:text-xs">
+                          <div className="text-[10px] text-dark-500 sm:text-xs">
                             {formatAmount(ref.earnings_total_kopeks / 100)} {currencySymbol}
                           </div>
                         </>
@@ -689,7 +689,7 @@ export default function AdminDashboard() {
             </div>
 
             {/* Period Stats */}
-            <div className="border-dark-700 mt-4 grid grid-cols-3 gap-2 border-t pt-4 sm:gap-3">
+            <div className="mt-4 grid grid-cols-3 gap-2 border-t border-dark-700 pt-4 sm:gap-3">
               <StatCard
                 label={t('adminDashboard.period.today')}
                 value={`${formatAmount(
@@ -729,16 +729,16 @@ export default function AdminDashboard() {
 
         {/* Top Campaigns */}
         {campaigns && campaigns.campaigns.length > 0 && (
-          <div className="border-dark-700 bg-dark-800/30 rounded-xl border p-4 sm:p-5">
+          <div className="rounded-xl border border-dark-700 bg-dark-800/30 p-4 sm:p-5">
             <div className="mb-4 flex items-center gap-2 sm:gap-3">
-              <div className="bg-warning-500/20 text-warning-400 rounded-lg p-2 sm:p-2.5">
+              <div className="rounded-lg bg-warning-500/20 p-2 text-warning-400 sm:p-2.5">
                 <MegaphoneIcon />
               </div>
               <div>
-                <h2 className="text-dark-100 text-base font-semibold sm:text-lg">
+                <h2 className="text-base font-semibold text-dark-100 sm:text-lg">
                   {t('adminDashboard.topCampaigns.title')}
                 </h2>
-                <p className="text-dark-400 text-xs sm:text-sm">
+                <p className="text-xs text-dark-400 sm:text-sm">
                   {campaigns.total_campaigns}{' '}
                   {t('adminDashboard.topCampaigns.stats', { count: campaigns.total_registrations })}
                 </p>
@@ -749,26 +749,26 @@ export default function AdminDashboard() {
               {campaigns.campaigns.slice(0, 5).map((campaign, idx) => (
                 <div
                   key={campaign.id}
-                  className="bg-dark-900/50 hover:bg-dark-800/50 flex items-center justify-between gap-2 rounded-lg p-2 transition-colors sm:p-3"
+                  className="flex items-center justify-between gap-2 rounded-lg bg-dark-900/50 p-2 transition-colors hover:bg-dark-800/50 sm:p-3"
                 >
                   <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
-                    <span className="bg-dark-700 text-dark-300 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold sm:h-6 sm:w-6 sm:text-xs">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-dark-700 text-[10px] font-bold text-dark-300 sm:h-6 sm:w-6 sm:text-xs">
                       {idx + 1}
                     </span>
                     <div className="min-w-0">
-                      <div className="text-dark-100 truncate text-xs font-medium sm:text-sm">
+                      <div className="truncate text-xs font-medium text-dark-100 sm:text-sm">
                         {campaign.name}
                       </div>
-                      <div className="text-dark-500 truncate text-[10px] sm:text-xs">
+                      <div className="truncate text-[10px] text-dark-500 sm:text-xs">
                         ?start={campaign.start_parameter}
                       </div>
                     </div>
                   </div>
                   <div className="shrink-0 text-right">
-                    <div className="text-warning-400 text-xs font-semibold sm:text-sm">
+                    <div className="text-xs font-semibold text-warning-400 sm:text-sm">
                       {formatAmount(campaign.total_revenue_kopeks / 100)} {currencySymbol}
                     </div>
-                    <div className="text-dark-500 text-[10px] sm:text-xs">
+                    <div className="text-[10px] text-dark-500 sm:text-xs">
                       {campaign.registrations} · {campaign.conversion_rate.toFixed(0)}%
                     </div>
                   </div>
@@ -776,12 +776,12 @@ export default function AdminDashboard() {
               ))}
             </div>
 
-            <div className="border-dark-700 mt-4 border-t pt-4">
+            <div className="mt-4 border-t border-dark-700 pt-4">
               <div className="flex items-center justify-between">
-                <span className="text-dark-400 text-xs sm:text-sm">
+                <span className="text-xs text-dark-400 sm:text-sm">
                   {t('adminDashboard.topCampaigns.total')}
                 </span>
-                <span className="text-warning-400 text-sm font-bold sm:text-base">
+                <span className="text-sm font-bold text-warning-400 sm:text-base">
                   {formatAmount(campaigns.total_revenue_kopeks / 100)} {currencySymbol}
                 </span>
               </div>
@@ -792,17 +792,17 @@ export default function AdminDashboard() {
 
       {/* Recent Payments */}
       {payments && payments.payments.length > 0 && (
-        <div className="border-dark-700 bg-dark-800/30 rounded-xl border p-4 sm:p-5">
+        <div className="rounded-xl border border-dark-700 bg-dark-800/30 p-4 sm:p-5">
           <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="bg-success-500/20 text-success-400 rounded-lg p-2 sm:p-2.5">
+              <div className="rounded-lg bg-success-500/20 p-2 text-success-400 sm:p-2.5">
                 <BanknotesIcon />
               </div>
               <div>
-                <h2 className="text-dark-100 text-base font-semibold sm:text-lg">
+                <h2 className="text-base font-semibold text-dark-100 sm:text-lg">
                   {t('adminDashboard.recentPayments.title')}
                 </h2>
-                <p className="text-dark-400 text-xs sm:text-sm">
+                <p className="text-xs text-dark-400 sm:text-sm">
                   {t('adminDashboard.recentPayments.today', {
                     amount: `${formatAmount(payments.total_today_kopeks / 100)} ${currencySymbol}`,
                   })}
@@ -822,20 +822,20 @@ export default function AdminDashboard() {
           <div className="hidden overflow-x-auto md:block">
             <table className="w-full">
               <thead>
-                <tr className="border-dark-700 border-b">
-                  <th className="text-dark-500 px-2 py-3 text-left text-xs font-medium">
+                <tr className="border-b border-dark-700">
+                  <th className="px-2 py-3 text-left text-xs font-medium text-dark-500">
                     {t('adminDashboard.table.user')}
                   </th>
-                  <th className="text-dark-500 px-2 py-3 text-left text-xs font-medium">
+                  <th className="px-2 py-3 text-left text-xs font-medium text-dark-500">
                     {t('adminDashboard.table.type')}
                   </th>
-                  <th className="text-dark-500 px-2 py-3 text-right text-xs font-medium">
+                  <th className="px-2 py-3 text-right text-xs font-medium text-dark-500">
                     {t('adminDashboard.table.amount')}
                   </th>
-                  <th className="text-dark-500 px-2 py-3 text-left text-xs font-medium">
+                  <th className="px-2 py-3 text-left text-xs font-medium text-dark-500">
                     {t('adminDashboard.table.method')}
                   </th>
-                  <th className="text-dark-500 px-2 py-3 text-right text-xs font-medium">
+                  <th className="px-2 py-3 text-right text-xs font-medium text-dark-500">
                     {t('adminDashboard.table.date')}
                   </th>
                 </tr>
@@ -844,18 +844,18 @@ export default function AdminDashboard() {
                 {payments.payments.slice(0, 10).map((payment) => (
                   <tr
                     key={payment.id}
-                    className="border-dark-700/50 hover:bg-dark-800/50 border-b transition-colors"
+                    className="border-b border-dark-700/50 transition-colors hover:bg-dark-800/50"
                   >
                     <td className="px-2 py-3">
                       <button
                         onClick={() => navigate(`/admin/users/${payment.user_id}`)}
                         className="text-left transition-colors hover:opacity-80"
                       >
-                        <div className="text-dark-100 decoration-dark-600 hover:decoration-dark-400 text-sm font-medium underline underline-offset-2">
+                        <div className="text-sm font-medium text-dark-100 underline decoration-dark-600 underline-offset-2 hover:decoration-dark-400">
                           {payment.display_name}
                         </div>
                         {payment.username && (
-                          <div className="text-dark-500 text-xs">@{payment.username}</div>
+                          <div className="text-xs text-dark-500">@{payment.username}</div>
                         )}
                       </button>
                     </td>
@@ -871,15 +871,15 @@ export default function AdminDashboard() {
                       </span>
                     </td>
                     <td className="px-2 py-3 text-right">
-                      <span className="text-dark-100 font-semibold">
+                      <span className="font-semibold text-dark-100">
                         {formatAmount(payment.amount_rubles)} {currencySymbol}
                       </span>
                     </td>
                     <td className="px-2 py-3">
-                      <span className="text-dark-400 text-xs">{payment.payment_method || '-'}</span>
+                      <span className="text-xs text-dark-400">{payment.payment_method || '-'}</span>
                     </td>
                     <td className="px-2 py-3 text-right">
-                      <span className="text-dark-400 text-xs">
+                      <span className="text-xs text-dark-400">
                         {new Date(payment.created_at).toLocaleString('ru-RU', {
                           day: '2-digit',
                           month: '2-digit',
@@ -897,7 +897,7 @@ export default function AdminDashboard() {
           {/* Mobile Cards */}
           <div className="space-y-2 md:hidden">
             {payments.payments.slice(0, 10).map((payment) => (
-              <div key={payment.id} className="bg-dark-900/50 rounded-lg p-3">
+              <div key={payment.id} className="rounded-lg bg-dark-900/50 p-3">
                 <div className="mb-2 flex items-center justify-between">
                   <div className="flex min-w-0 flex-1 items-center gap-2">
                     <span
@@ -911,16 +911,16 @@ export default function AdminDashboard() {
                     </span>
                     <button
                       onClick={() => navigate(`/admin/users/${payment.user_id}`)}
-                      className="text-dark-100 decoration-dark-600 hover:decoration-dark-400 truncate text-sm font-medium underline underline-offset-2 transition-colors"
+                      className="truncate text-sm font-medium text-dark-100 underline decoration-dark-600 underline-offset-2 transition-colors hover:decoration-dark-400"
                     >
                       {payment.display_name}
                     </button>
                   </div>
-                  <span className="text-dark-100 ml-2 text-sm font-semibold whitespace-nowrap">
+                  <span className="ml-2 text-sm font-semibold whitespace-nowrap text-dark-100">
                     {formatAmount(payment.amount_rubles)} {currencySymbol}
                   </span>
                 </div>
-                <div className="text-dark-500 flex items-center justify-between text-xs">
+                <div className="flex items-center justify-between text-xs text-dark-500">
                   <span>{payment.payment_method || '-'}</span>
                   <span>
                     {new Date(payment.created_at).toLocaleString('ru-RU', {
@@ -939,26 +939,26 @@ export default function AdminDashboard() {
 
       {/* System Info */}
       {systemInfo && (
-        <div className="border-dark-700 bg-dark-800 rounded-xl border p-4">
-          <h3 className="text-dark-300 mb-3 text-sm font-semibold">
+        <div className="rounded-xl border border-dark-700 bg-dark-800 p-4">
+          <h3 className="mb-3 text-sm font-semibold text-dark-300">
             {t('adminDashboard.systemInfo.title')}
           </h3>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
             <div>
               <span className="text-dark-500">{t('adminDashboard.systemInfo.cabinet')}: </span>
-              <span className="text-dark-200 font-medium">v{CABINET_VERSION}</span>
+              <span className="font-medium text-dark-200">v{CABINET_VERSION}</span>
             </div>
             <div>
               <span className="text-dark-500">{t('adminDashboard.systemInfo.bot')}: </span>
-              <span className="text-dark-200 font-medium">v{systemInfo.bot_version}</span>
+              <span className="font-medium text-dark-200">v{systemInfo.bot_version}</span>
             </div>
             <div>
               <span className="text-dark-500">{t('adminDashboard.systemInfo.python')}: </span>
-              <span className="text-dark-200 font-medium">{systemInfo.python_version}</span>
+              <span className="font-medium text-dark-200">{systemInfo.python_version}</span>
             </div>
             <div>
               <span className="text-dark-500">{t('adminDashboard.systemInfo.uptime')}: </span>
-              <span className="text-dark-200 font-medium">
+              <span className="font-medium text-dark-200">
                 {(() => {
                   const s = systemInfo.uptime_seconds;
                   const d = Math.floor(s / 86400);
@@ -970,11 +970,11 @@ export default function AdminDashboard() {
             </div>
             <div>
               <span className="text-dark-500">{t('adminDashboard.systemInfo.users')}: </span>
-              <span className="text-dark-200 font-medium">{systemInfo.users_total}</span>
+              <span className="font-medium text-dark-200">{systemInfo.users_total}</span>
             </div>
             <div>
               <span className="text-dark-500">{t('adminDashboard.systemInfo.activeSubs')}: </span>
-              <span className="text-dark-200 font-medium">{systemInfo.subscriptions_active}</span>
+              <span className="font-medium text-dark-200">{systemInfo.subscriptions_active}</span>
             </div>
           </div>
         </div>

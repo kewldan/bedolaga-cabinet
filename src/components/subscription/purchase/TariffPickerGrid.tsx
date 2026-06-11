@@ -159,7 +159,7 @@ export function TariffPickerGrid({
                   <div>
                     <div className="text-lg font-semibold text-dark-100">{tariff.name}</div>
                     {tariff.description && (
-                      <div className="mt-1 whitespace-pre-line text-sm text-dark-400">
+                      <div className="mt-1 text-sm whitespace-pre-line text-dark-400">
                         {tariff.description}
                       </div>
                     )}

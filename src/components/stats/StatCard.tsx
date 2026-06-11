@@ -68,7 +68,7 @@ export function StatCard({
         )}
         <div className="min-w-0 flex-1">
           {loading ? (
-            <div className="skeleton h-7 w-20 rounded" />
+            <div className="h-7 w-20 skeleton rounded" />
           ) : (
             <>
               <div className={`truncate text-lg font-semibold sm:text-xl ${valueClass}`}>

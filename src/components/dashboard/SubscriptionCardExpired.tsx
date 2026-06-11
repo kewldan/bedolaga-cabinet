@@ -177,7 +177,7 @@ export default function SubscriptionCardExpired({
             <ClockIcon className="h-[22px] w-[22px]" />
           )}
         </div>
-        <h2 className="text-dark-50 text-lg font-bold tracking-tight">
+        <h2 className="text-lg font-bold tracking-tight text-dark-50">
           {isLimited
             ? t('subscription.trafficLimitedTitle')
             : isDisabledDaily
@@ -190,7 +190,7 @@ export default function SubscriptionCardExpired({
 
       {/* Limited description */}
       {isLimited && (
-        <p className="text-dark-50/60 mb-4 text-sm">
+        <p className="mb-4 text-sm text-dark-50/60">
           {t('subscription.trafficLimitedDescription')}
         </p>
       )}
@@ -205,19 +205,19 @@ export default function SubscriptionCardExpired({
         }}
       >
         <div className="flex items-center">
-          <div className="text-dark-50/30 mb-0.5 font-mono text-[10px] font-medium tracking-wider uppercase">
+          <div className="mb-0.5 font-mono text-[10px] font-medium tracking-wider text-dark-50/30 uppercase">
             {isLimited
               ? t('dashboard.expired.activeUntil')
               : t('dashboard.expired.expiredDate', {
                   context: subscription.is_trial ? 'trial' : '',
                 })}
           </div>
-          <div className="text-dark-50/50 ml-3 text-base font-bold tracking-tight">
+          <div className="ml-3 text-base font-bold tracking-tight text-dark-50/50">
             {formattedDate}
           </div>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="text-dark-50/30 text-[10px] font-medium tracking-wider uppercase">
+          <span className="text-[10px] font-medium tracking-wider text-dark-50/30 uppercase">
             {t('dashboard.expired.balance')}
           </span>
           <span
@@ -231,7 +231,7 @@ export default function SubscriptionCardExpired({
       {/* Renew error */}
       {renewError && (
         <div
-          className="border-error-500/30 bg-error-500/10 text-error-400 mb-4 rounded-xl border p-3 text-center text-sm"
+          className="mb-4 rounded-xl border border-error-500/30 bg-error-500/10 p-3 text-center text-sm text-error-400"
           role="alert"
         >
           {renewError}

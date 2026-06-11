@@ -136,7 +136,7 @@ export function CommandPalette({
               <DialogPrimitive.Content asChild>
                 <motion.div
                   className={cn(
-                    'fixed left-1/2 top-[15%] z-50 w-full max-w-lg -translate-x-1/2',
+                    'fixed top-[15%] left-1/2 z-50 w-full max-w-lg -translate-x-1/2',
                     'overflow-hidden rounded-linear-lg border border-dark-700/50 bg-dark-900/95 backdrop-blur-linear',
                     'shadow-2xl',
                     'focus:outline-none',

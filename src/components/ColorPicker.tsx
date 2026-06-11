@@ -257,7 +257,7 @@ export function ColorPicker({ value, onChange, label, description, disabled }: C
   const pickerContent = isOpen ? (
     <div
       ref={pickerRef}
-      className="border-dark-700 bg-dark-900 fixed z-9999 w-[280px] overflow-hidden rounded-2xl border shadow-2xl"
+      className="fixed z-9999 w-[280px] overflow-hidden rounded-2xl border border-dark-700 bg-dark-900 shadow-2xl"
       style={{
         top: pickerPosition.top,
         left: pickerPosition.left,
@@ -272,8 +272,8 @@ export function ColorPicker({ value, onChange, label, description, disabled }: C
         {/* Hue slider */}
         <div className="space-y-1.5">
           <div className="flex items-center justify-between">
-            <span className="text-dark-400 text-xs font-medium">Hue</span>
-            <span className="text-dark-500 text-xs">{hsl.h}°</span>
+            <span className="text-xs font-medium text-dark-400">Hue</span>
+            <span className="text-xs text-dark-500">{hsl.h}°</span>
           </div>
           <input
             type="range"
@@ -293,8 +293,8 @@ export function ColorPicker({ value, onChange, label, description, disabled }: C
         {/* Saturation slider */}
         <div className="space-y-1.5">
           <div className="flex items-center justify-between">
-            <span className="text-dark-400 text-xs font-medium">Saturation</span>
-            <span className="text-dark-500 text-xs">{hsl.s}%</span>
+            <span className="text-xs font-medium text-dark-400">Saturation</span>
+            <span className="text-xs text-dark-500">{hsl.s}%</span>
           </div>
           <input
             type="range"
@@ -313,8 +313,8 @@ export function ColorPicker({ value, onChange, label, description, disabled }: C
         {/* Lightness slider */}
         <div className="space-y-1.5">
           <div className="flex items-center justify-between">
-            <span className="text-dark-400 text-xs font-medium">Lightness</span>
-            <span className="text-dark-500 text-xs">{hsl.l}%</span>
+            <span className="text-xs font-medium text-dark-400">Lightness</span>
+            <span className="text-xs text-dark-500">{hsl.l}%</span>
           </div>
           <input
             type="range"
@@ -332,20 +332,20 @@ export function ColorPicker({ value, onChange, label, description, disabled }: C
 
         {/* Hex input */}
         <div className="flex items-center gap-2">
-          <span className="text-dark-400 text-xs font-medium">HEX</span>
+          <span className="text-xs font-medium text-dark-400">HEX</span>
           <input
             type="text"
             value={localValue}
             onChange={handleHexInputChange}
-            className="border-dark-700 bg-dark-800 text-dark-100 focus:border-accent-500 h-9 flex-1 rounded-lg border px-3 font-mono text-sm uppercase focus:outline-none"
+            className="h-9 flex-1 rounded-lg border border-dark-700 bg-dark-800 px-3 font-mono text-sm text-dark-100 uppercase focus:border-accent-500 focus:outline-none"
             placeholder="#000000"
             maxLength={7}
           />
         </div>
 
         {/* Presets */}
-        <div className="border-dark-700 border-t pt-2">
-          <span className="text-dark-400 mb-2 block text-xs font-medium">Presets</span>
+        <div className="border-t border-dark-700 pt-2">
+          <span className="mb-2 block text-xs font-medium text-dark-400">Presets</span>
           <div className="grid grid-cols-6 gap-1.5">
             {PRESET_COLORS.map((preset) => (
               <button
@@ -353,7 +353,7 @@ export function ColorPicker({ value, onChange, label, description, disabled }: C
                 onClick={() => handlePresetClick(preset)}
                 className={`aspect-square w-full rounded-lg transition-transform hover:scale-110 active:scale-95 ${
                   localValue.toLowerCase() === preset.toLowerCase()
-                    ? 'ring-offset-dark-900 ring-2 ring-white ring-offset-2'
+                    ? 'ring-2 ring-white ring-offset-2 ring-offset-dark-900'
                     : ''
                 }`}
                 style={{ backgroundColor: preset }}
@@ -368,8 +368,8 @@ export function ColorPicker({ value, onChange, label, description, disabled }: C
 
   return (
     <div className="relative min-w-0 overflow-hidden">
-      <label className="text-dark-200 mb-1 block truncate text-sm font-medium">{label}</label>
-      {description && <p className="text-dark-500 mb-2 truncate text-xs">{description}</p>}
+      <label className="mb-1 block truncate text-sm font-medium text-dark-200">{label}</label>
+      {description && <p className="mb-2 truncate text-xs text-dark-500">{description}</p>}
 
       <div className="flex items-center gap-2">
         {/* Color preview button */}
@@ -378,7 +378,7 @@ export function ColorPicker({ value, onChange, label, description, disabled }: C
           type="button"
           onClick={handleOpen}
           disabled={disabled}
-          className="border-dark-700 hover:border-dark-600 h-10 w-10 shrink-0 rounded-xl border-2 shadow-inner transition-all hover:scale-105 disabled:cursor-not-allowed disabled:opacity-50"
+          className="h-10 w-10 shrink-0 rounded-xl border-2 border-dark-700 shadow-inner transition-all hover:scale-105 hover:border-dark-600 disabled:cursor-not-allowed disabled:opacity-50"
           style={{ backgroundColor: localValue || '#000000' }}
           title={localValue}
         />
@@ -389,7 +389,7 @@ export function ColorPicker({ value, onChange, label, description, disabled }: C
           value={localValue}
           onChange={handleHexInputChange}
           disabled={disabled}
-          className="border-dark-700 bg-dark-800 text-dark-100 focus:border-accent-500 h-10 min-w-0 flex-1 rounded-xl border px-2 font-mono text-sm uppercase focus:outline-none disabled:opacity-50"
+          className="h-10 min-w-0 flex-1 rounded-xl border border-dark-700 bg-dark-800 px-2 font-mono text-sm text-dark-100 uppercase focus:border-accent-500 focus:outline-none disabled:opacity-50"
           placeholder="#000000"
           maxLength={7}
         />

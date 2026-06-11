@@ -191,7 +191,7 @@ export default function AdminWithdrawalDetail() {
             {t('admin.withdrawals.detail.paymentDetails')}
           </h3>
           <div className="rounded-lg bg-dark-700/50 p-3">
-            <p className="whitespace-pre-wrap break-all text-sm text-dark-300">
+            <p className="text-sm break-all whitespace-pre-wrap text-dark-300">
               {detail.payment_details || t('admin.withdrawals.detail.noPaymentDetails')}
             </p>
           </div>
@@ -313,7 +313,7 @@ export default function AdminWithdrawalDetail() {
               {t('admin.withdrawals.detail.adminComment')}
             </h3>
             <div className="rounded-lg bg-dark-700/50 p-3">
-              <p className="whitespace-pre-wrap text-sm text-dark-300">{detail.admin_comment}</p>
+              <p className="text-sm whitespace-pre-wrap text-dark-300">{detail.admin_comment}</p>
             </div>
           </div>
         )}

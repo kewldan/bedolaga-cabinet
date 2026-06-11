@@ -100,7 +100,7 @@ export default function SubscriptionPurchase() {
   if (isLoading || optionsLoading) {
     return (
       <div className="flex min-h-64 items-center justify-center">
-        <div className="border-accent-500 h-10 w-10 animate-spin rounded-full border-2 border-t-transparent" />
+        <div className="h-10 w-10 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
       </div>
     );
   }
@@ -108,7 +108,7 @@ export default function SubscriptionPurchase() {
   if (optionsError || (!purchaseOptions && !optionsLoading)) {
     return (
       <div className="space-y-6">
-        <h1 className="text-dark-50 text-2xl font-bold sm:text-3xl">{t('subscription.extend')}</h1>
+        <h1 className="text-2xl font-bold text-dark-50 sm:text-3xl">{t('subscription.extend')}</h1>
         <div
           className="rounded-3xl p-6 text-center"
           style={{
@@ -116,12 +116,12 @@ export default function SubscriptionPurchase() {
             border: `1px solid ${g.cardBorder}`,
           }}
         >
-          <p className="text-dark-300 mb-4">
+          <p className="mb-4 text-dark-300">
             {t('subscription.loadError', 'Не удалось загрузить варианты подписки')}
           </p>
           <button
             onClick={() => refetchOptions()}
-            className="bg-accent-500 text-on-accent hover:bg-accent-600 rounded-xl px-6 py-2 text-sm font-medium transition-colors"
+            className="rounded-xl bg-accent-500 px-6 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600"
           >
             {t('common.retry')}
           </button>
@@ -137,7 +137,7 @@ export default function SubscriptionPurchase() {
         <WebBackButton
           to={subscriptionId ? `/subscriptions/${subscriptionId}` : '/subscriptions'}
         />
-        <h1 className="text-dark-50 text-2xl font-bold sm:text-3xl">
+        <h1 className="text-2xl font-bold text-dark-50 sm:text-3xl">
           {isMultiTariff && !subscriptionId
             ? t('subscription.newTariff', 'Новый тариф')
             : !isMultiTariff && subscription?.is_daily && !subscription?.is_trial
@@ -192,7 +192,7 @@ export default function SubscriptionPurchase() {
                     >
                       {t('subscription.trialUpgrade.title')}
                     </div>
-                    <div className="text-dark-50/40 mt-1 text-[12px]">
+                    <div className="mt-1 text-[12px] text-dark-50/40">
                       {t('subscription.trialUpgrade.description')}
                     </div>
                   </div>
@@ -229,7 +229,7 @@ export default function SubscriptionPurchase() {
                     >
                       {t('subscription.expiredBanner.title')}
                     </div>
-                    <div className="text-dark-50/40 mt-1 text-[12px]">
+                    <div className="mt-1 text-[12px] text-dark-50/40">
                       {t('subscription.expiredBanner.selectTariff')}
                     </div>
                   </div>
@@ -239,14 +239,14 @@ export default function SubscriptionPurchase() {
 
           {/* Legacy subscription notice */}
           {subscription && !subscription.is_trial && !subscription.tariff_id && (
-            <div className="border-accent-500/30 bg-accent-500/10 mb-6 rounded-xl border p-4">
-              <div className="text-accent-400 mb-2 font-medium">
+            <div className="mb-6 rounded-xl border border-accent-500/30 bg-accent-500/10 p-4">
+              <div className="mb-2 font-medium text-accent-400">
                 {t('subscription.legacy.selectTariffTitle')}
               </div>
-              <div className="text-dark-300 text-sm">
+              <div className="text-sm text-dark-300">
                 {t('subscription.legacy.selectTariffDescription')}
               </div>
-              <div className="text-dark-500 mt-2 text-xs">
+              <div className="mt-2 text-xs text-dark-500">
                 {t('subscription.legacy.currentSubContinues')}
               </div>
             </div>
@@ -317,12 +317,12 @@ export default function SubscriptionPurchase() {
               border: `1px solid ${g.cardBorder}`,
             }}
           >
-            <p className="text-dark-300 mb-4">
+            <p className="mb-4 text-dark-300">
               {t('subscription.noOptionsAvailable', 'Нет доступных вариантов подписки')}
             </p>
             <button
               onClick={() => refetchOptions()}
-              className="bg-accent-500 text-on-accent hover:bg-accent-600 rounded-xl px-6 py-2 text-sm font-medium transition-colors"
+              className="rounded-xl bg-accent-500 px-6 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600"
             >
               {t('common.retry')}
             </button>

@@ -166,7 +166,7 @@ function CollisionMechanism({
           repeatDelay: beamOptions.repeatDelay,
         }}
         className={cn(
-          'absolute left-0 top-20 m-auto h-14 w-px rounded-full',
+          'absolute top-20 left-0 m-auto h-14 w-px rounded-full',
           beamOptions.className,
         )}
         style={{

@@ -74,10 +74,10 @@ export function DateField({ value, onChange, placeholder, min, max, className }:
           type="button"
           className={
             className ??
-            'border-dark-600 bg-dark-800 text-dark-200 hover:border-dark-500 flex min-w-32 items-center justify-start gap-2 rounded-lg border px-3 py-1.5 text-sm whitespace-nowrap transition-colors'
+            'flex min-w-32 items-center justify-start gap-2 rounded-lg border border-dark-600 bg-dark-800 px-3 py-1.5 text-sm whitespace-nowrap text-dark-200 transition-colors hover:border-dark-500'
           }
         >
-          <CalendarIcon className="text-dark-500 h-4 w-4 shrink-0" />
+          <CalendarIcon className="h-4 w-4 shrink-0 text-dark-500" />
           <span className={`truncate ${selected ? '' : 'text-dark-500'}`}>
             {display || placeholder}
           </span>
@@ -88,7 +88,7 @@ export function DateField({ value, onChange, placeholder, min, max, className }:
           align="start"
           sideOffset={6}
           collisionPadding={8}
-          className="rdp-dark border-dark-700 bg-dark-800 z-50 max-w-[calc(100vw-1rem)] rounded-xl border p-2 shadow-xl"
+          className="rdp-dark z-50 max-w-[calc(100vw-1rem)] rounded-xl border border-dark-700 bg-dark-800 p-2 shadow-xl"
         >
           <DayPicker
             mode="single"

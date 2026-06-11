@@ -255,7 +255,7 @@ export default function Dashboard() {
     <div className="space-y-6">
       {/* Header */}
       <div data-onboarding="welcome">
-        <h1 className="text-dark-50 text-2xl font-bold sm:text-3xl">
+        <h1 className="text-2xl font-bold text-dark-50 sm:text-3xl">
           {t('dashboard.welcome', { name: displayName(user) })}
         </h1>
         <div className="mt-1 flex flex-wrap items-center gap-2">
@@ -288,7 +288,7 @@ export default function Dashboard() {
             <span className="text-sm font-medium opacity-60">
               {t('dashboard.subscriptions', 'Подписки')}
             </span>
-            <Link to="/subscriptions" className="text-accent-400 text-xs hover:underline">
+            <Link to="/subscriptions" className="text-xs text-accent-400 hover:underline">
               {t('dashboard.manageAll', 'Управление')} →
             </Link>
           </div>
@@ -310,7 +310,7 @@ export default function Dashboard() {
           {hasActivePaid ? (
             <Link
               to="/subscription/purchase"
-              className="bg-accent-500/15 text-accent-400 hover:bg-accent-500/25 flex w-full items-center justify-center gap-2 rounded-2xl p-3.5 text-sm font-medium transition-all"
+              className="flex w-full items-center justify-center gap-2 rounded-2xl bg-accent-500/15 p-3.5 text-sm font-medium text-accent-400 transition-all hover:bg-accent-500/25"
             >
               <span className="text-base">+</span>{' '}
               {t('subscriptions.buyAnother', 'Купить ещё тариф')}
@@ -318,7 +318,7 @@ export default function Dashboard() {
           ) : (
             <Link
               to="/subscription/purchase"
-              className="bg-accent-500 text-on-accent hover:bg-accent-600 flex w-full items-center justify-center gap-2 rounded-2xl p-3.5 text-sm font-semibold transition-colors"
+              className="flex w-full items-center justify-center gap-2 rounded-2xl bg-accent-500 p-3.5 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-600"
             >
               <span className="text-base">+</span>{' '}
               {t('subscriptions.browsePlans', 'Посмотреть тарифы и купить подписку')}
@@ -333,14 +333,14 @@ export default function Dashboard() {
           {subLoading ? (
             <div className="bento-card">
               <div className="mb-4 flex items-center justify-between">
-                <div className="skeleton h-5 w-20" />
-                <div className="skeleton h-6 w-16 rounded-full" />
+                <div className="h-5 w-20 skeleton" />
+                <div className="h-6 w-16 skeleton rounded-full" />
               </div>
-              <div className="skeleton mb-3 h-10 w-32" />
-              <div className="skeleton mb-3 h-4 w-40" />
-              <div className="skeleton h-3 w-full rounded-full" />
+              <div className="mb-3 h-10 w-32 skeleton" />
+              <div className="mb-3 h-4 w-40 skeleton" />
+              <div className="h-3 w-full skeleton rounded-full" />
               <div className="mt-5">
-                <div className="skeleton h-12 w-full rounded-xl" />
+                <div className="h-12 w-full skeleton rounded-xl" />
               </div>
             </div>
           ) : subscription?.is_expired ||
@@ -381,7 +381,7 @@ export default function Dashboard() {
           )}
           <Link
             to="/subscription/purchase"
-            className="bg-accent-500 text-on-accent hover:bg-accent-600 flex w-full items-center justify-center gap-2 rounded-2xl p-3.5 text-sm font-semibold transition-colors"
+            className="flex w-full items-center justify-center gap-2 rounded-2xl bg-accent-500 p-3.5 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-600"
           >
             <span className="text-base">+</span>{' '}
             {t('subscriptions.browsePlans', 'Посмотреть тарифы и купить подписку')}
@@ -402,15 +402,15 @@ export default function Dashboard() {
 
       {/* Fortune Wheel Banner */}
       {wheelConfig?.is_enabled && (
-        <Link to="/wheel" className="bento-card-hover group flex items-center justify-between">
+        <Link to="/wheel" className="group bento-card-hover flex items-center justify-between">
           <div className="flex items-center gap-4">
             <span className="text-3xl">🎰</span>
             <div className="min-w-0 flex-1">
-              <h3 className="text-dark-100 text-base font-semibold">{t('wheel.banner.title')}</h3>
-              <p className="text-dark-400 text-sm">{t('wheel.banner.description')}</p>
+              <h3 className="text-base font-semibold text-dark-100">{t('wheel.banner.title')}</h3>
+              <p className="text-sm text-dark-400">{t('wheel.banner.description')}</p>
             </div>
           </div>
-          <div className="text-dark-500 group-hover:text-accent-400 shrink-0 transition-all duration-300 group-hover:translate-x-1">
+          <div className="shrink-0 text-dark-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent-400">
             <ChevronRightIcon />
           </div>
         </Link>

@@ -118,19 +118,19 @@ function NodeTrafficBreakdown({
 }) {
   return (
     <div className="space-y-1">
-      <p className="text-dark-500 text-[10px] font-medium tracking-wide uppercase">{title}</p>
+      <p className="text-[10px] font-medium tracking-wide text-dark-500 uppercase">{title}</p>
       {[...items]
         .sort((a, b) => b.totalBytes - a.totalBytes)
         .map((it) => (
           <div
             key={it.tag}
-            className="bg-dark-900/50 flex items-center justify-between gap-3 rounded-lg px-2.5 py-1.5"
+            className="flex items-center justify-between gap-3 rounded-lg bg-dark-900/50 px-2.5 py-1.5"
           >
-            <span className="text-dark-200 min-w-0 flex-1 truncate text-xs">{it.tag}</span>
-            <div className="text-dark-400 flex shrink-0 gap-2.5 font-mono text-[11px]">
+            <span className="min-w-0 flex-1 truncate text-xs text-dark-200">{it.tag}</span>
+            <div className="flex shrink-0 gap-2.5 font-mono text-[11px] text-dark-400">
               <span>↓ {formatBytes(it.downloadBytes)}</span>
               <span>↑ {formatBytes(it.uploadBytes)}</span>
-              <span className="text-dark-300 font-medium">{formatBytes(it.totalBytes)}</span>
+              <span className="font-medium text-dark-300">{formatBytes(it.totalBytes)}</span>
             </div>
           </div>
         ))}
@@ -195,7 +195,7 @@ function NodeCard({ node, providerName, realtime, onAction, isLoading }: NodeCar
 
   return (
     <div
-      className={`border-dark-700 bg-dark-800/50 hover:border-dark-600 rounded-xl border p-3.5 transition-colors ${
+      className={`rounded-xl border border-dark-700 bg-dark-800/50 p-3.5 transition-colors hover:border-dark-600 ${
         hasBreakdown ? 'cursor-pointer' : ''
       }`}
       onClick={hasBreakdown ? () => setExpanded((v) => !v) : undefined}
@@ -207,16 +207,16 @@ function NodeCard({ node, providerName, realtime, onAction, isLoading }: NodeCar
             className={`h-2 w-2 shrink-0 rounded-full ${dotColor} ${isUp ? 'animate-pulse' : ''}`}
             title={statusText}
           />
-          <span className="bg-dark-700/60 text-dark-300 flex shrink-0 items-center gap-1 rounded-md px-1.5 py-0.5 text-[11px]">
+          <span className="flex shrink-0 items-center gap-1 rounded-md bg-dark-700/60 px-1.5 py-0.5 text-[11px] text-dark-300">
             <UsersIcon className="h-3 w-3" />
             {node.users_online ?? 0}
           </span>
           <span className="shrink-0 text-base leading-none">
             {getCountryFlag(node.country_code)}
           </span>
-          <h3 className="text-dark-100 truncate font-semibold">{node.name}</h3>
+          <h3 className="truncate font-semibold text-dark-100">{node.name}</h3>
           {(providerLabel || providerFavicon) && (
-            <span className="bg-accent-500/15 text-accent-300 flex max-w-28 min-w-0 shrink items-center gap-1 rounded-md px-1.5 py-0.5 text-[10px] font-medium tracking-wide uppercase">
+            <span className="flex max-w-28 min-w-0 shrink items-center gap-1 rounded-md bg-accent-500/15 px-1.5 py-0.5 text-[10px] font-medium tracking-wide text-accent-300 uppercase">
               {providerFavicon && (
                 <img
                   src={providerFavicon}
@@ -239,7 +239,7 @@ function NodeCard({ node, providerName, realtime, onAction, isLoading }: NodeCar
               onAction(node.uuid, 'restart');
             }}
             disabled={isLoading || node.is_disabled}
-            className="bg-dark-700 text-dark-300 hover:bg-dark-600 hover:text-dark-100 rounded-lg p-1.5 transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+            className="rounded-lg bg-dark-700 p-1.5 text-dark-300 transition-colors hover:bg-dark-600 hover:text-dark-100 disabled:cursor-not-allowed disabled:opacity-50"
             title={t('admin.remnawave.nodes.restart', 'Restart')}
           >
             <ArrowPathIcon className="h-3.5 w-3.5" />
@@ -269,7 +269,7 @@ function NodeCard({ node, providerName, realtime, onAction, isLoading }: NodeCar
           </button>
           {hasBreakdown && (
             <ChevronRightIcon
-              className={`text-dark-500 h-4 w-4 transition-transform ${
+              className={`h-4 w-4 text-dark-500 transition-transform ${
                 expanded ? 'rotate-90' : ''
               }`}
             />
@@ -278,17 +278,17 @@ function NodeCard({ node, providerName, realtime, onAction, isLoading }: NodeCar
       </div>
 
       {/* Address + traffic + uptime */}
-      <div className="text-dark-400 mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px]">
-        <span className="text-dark-500 flex max-w-full min-w-0 items-center gap-1 font-mono">
+      <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-dark-400">
+        <span className="flex max-w-full min-w-0 items-center gap-1 font-mono text-dark-500">
           <GlobeIcon className="h-3 w-3 shrink-0" />
           <span className="truncate">{node.address}</span>
         </span>
         <span className="flex items-center gap-1.5">
           <span className="text-dark-300">{formatBytes(used)}</span>
           {trafficPct !== null && (
-            <span className="bg-dark-700 h-1 w-16 overflow-hidden rounded-full">
+            <span className="h-1 w-16 overflow-hidden rounded-full bg-dark-700">
               <span
-                className="bg-accent-500 block h-full rounded-full"
+                className="block h-full rounded-full bg-accent-500"
                 style={{ width: `${trafficPct}%` }}
               />
             </span>
@@ -296,7 +296,7 @@ function NodeCard({ node, providerName, realtime, onAction, isLoading }: NodeCar
           <span className="text-dark-500">/ {limit > 0 ? formatBytes(limit) : '∞'}</span>
         </span>
         {node.xray_uptime > 0 && (
-          <span className="text-dark-500 flex items-center gap-1">
+          <span className="flex items-center gap-1 text-dark-500">
             <StatUptimeIcon className="h-3 w-3" />
             {formatUptime(node.xray_uptime)}
           </span>
@@ -308,22 +308,22 @@ function NodeCard({ node, providerName, realtime, onAction, isLoading }: NodeCar
       {(ramPct !== null || loadAvg || rx > 0 || tx > 0 || node.versions) && (
         <>
           {/* Mobile: processor · traffic · versions */}
-          <div className="border-dark-700/60 text-dark-500 mt-2 space-y-1 border-t pt-2 font-mono text-[10.5px] tabular-nums sm:hidden">
+          <div className="mt-2 space-y-1 border-t border-dark-700/60 pt-2 font-mono text-[10.5px] text-dark-500 tabular-nums sm:hidden">
             {(loadAvg || ramPct !== null) && (
               <div className="flex items-center gap-3">
                 {loadAvg && (
                   <span className="flex items-center gap-1" title="load average 1 / 5 / 15 min">
-                    <CpuIcon className="text-dark-500 h-3 w-3 shrink-0" />
+                    <CpuIcon className="h-3 w-3 shrink-0 text-dark-500" />
                     {loadAvg}
                   </span>
                 )}
                 {ramPct !== null && (
                   <span className="flex items-center gap-1.5" title="RAM">
-                    <MemoryIcon className="text-dark-500 h-3 w-3 shrink-0" />
+                    <MemoryIcon className="h-3 w-3 shrink-0 text-dark-500" />
                     <span className={ramColorClass}>{ramPct}%</span>
-                    <span className="bg-dark-700 h-1 w-10 overflow-hidden rounded-full">
+                    <span className="h-1 w-10 overflow-hidden rounded-full bg-dark-700">
                       <span
-                        className="bg-dark-400 block h-full rounded-full"
+                        className="block h-full rounded-full bg-dark-400"
                         style={{ width: `${ramPct}%` }}
                       />
                     </span>
@@ -334,17 +334,17 @@ function NodeCard({ node, providerName, realtime, onAction, isLoading }: NodeCar
             {(rx > 0 || tx > 0) && (
               <div className="flex items-center gap-4">
                 <span className="flex items-center gap-1">
-                  <DownloadIcon className="text-success-400/70 h-3 w-3 shrink-0" />
+                  <DownloadIcon className="h-3 w-3 shrink-0 text-success-400/70" />
                   {formatSpeed(rx)}
                 </span>
                 <span className="flex items-center gap-1">
-                  <UploadIcon className="text-accent-400/70 h-3 w-3 shrink-0" />
+                  <UploadIcon className="h-3 w-3 shrink-0 text-accent-400/70" />
                   {formatSpeed(tx)}
                 </span>
               </div>
             )}
             {(node.versions?.node || node.versions?.xray) && (
-              <div className="text-dark-600 flex items-center gap-3">
+              <div className="flex items-center gap-3 text-dark-600">
                 {node.versions?.node && (
                   <span className="flex items-center gap-1" title="remnanode">
                     <RemnawaveIcon className="h-3 w-3 shrink-0" />
@@ -362,14 +362,14 @@ function NodeCard({ node, providerName, realtime, onAction, isLoading }: NodeCar
           </div>
 
           {/* Desktop: single wrap row (original) */}
-          <div className="border-dark-700/60 text-dark-500 mt-2 hidden flex-wrap items-center gap-x-3 gap-y-1 border-t pt-2 font-mono text-[10.5px] tabular-nums sm:flex">
+          <div className="mt-2 hidden flex-wrap items-center gap-x-3 gap-y-1 border-t border-dark-700/60 pt-2 font-mono text-[10.5px] text-dark-500 tabular-nums sm:flex">
             {ramPct !== null && (
               <span className="flex items-center gap-1.5" title="RAM">
-                <MemoryIcon className="text-dark-500 h-3 w-3" />
+                <MemoryIcon className="h-3 w-3 text-dark-500" />
                 <span className={ramColorClass}>{ramPct}%</span>
-                <span className="bg-dark-700 h-1 w-10 overflow-hidden rounded-full">
+                <span className="h-1 w-10 overflow-hidden rounded-full bg-dark-700">
                   <span
-                    className="bg-dark-400 block h-full rounded-full"
+                    className="block h-full rounded-full bg-dark-400"
                     style={{ width: `${ramPct}%` }}
                   />
                 </span>
@@ -377,22 +377,22 @@ function NodeCard({ node, providerName, realtime, onAction, isLoading }: NodeCar
             )}
             {loadAvg && (
               <span className="flex items-center gap-1" title="load average 1 / 5 / 15 min">
-                <CpuIcon className="text-dark-500 h-3 w-3" />
+                <CpuIcon className="h-3 w-3 text-dark-500" />
                 {loadAvg}
               </span>
             )}
             <span className="flex items-center gap-2">
               <span className="flex items-center gap-0.5">
-                <DownloadIcon className="text-success-400/70 h-3 w-3" />
+                <DownloadIcon className="h-3 w-3 text-success-400/70" />
                 {formatSpeed(rx)}
               </span>
               <span className="flex items-center gap-0.5">
-                <UploadIcon className="text-accent-400/70 h-3 w-3" />
+                <UploadIcon className="h-3 w-3 text-accent-400/70" />
                 {formatSpeed(tx)}
               </span>
             </span>
             {(node.versions?.node || node.versions?.xray) && (
-              <span className="text-dark-600 ml-auto flex items-center gap-2.5">
+              <span className="ml-auto flex items-center gap-2.5 text-dark-600">
                 {node.versions?.node && (
                   <span className="flex items-center gap-1" title="remnanode">
                     <RemnawaveIcon className="h-3 w-3" />
@@ -414,7 +414,7 @@ function NodeCard({ node, providerName, realtime, onAction, isLoading }: NodeCar
       {/* Per-node traffic accordion (merged from the former Traffic tab) */}
       {expanded && hasBreakdown && (
         <div
-          className="border-dark-700/60 mt-3 space-y-3 border-t pt-3"
+          className="mt-3 space-y-3 border-t border-dark-700/60 pt-3"
           onClick={(e) => e.stopPropagation()}
         >
           {inbounds.length > 0 && (
@@ -446,30 +446,30 @@ function SquadCard({ squad, onClick }: SquadCardProps) {
   return (
     <div
       onClick={onClick}
-      className="border-dark-700 bg-dark-800/50 hover:border-dark-600 cursor-pointer rounded-xl border p-4 transition-colors"
+      className="cursor-pointer rounded-xl border border-dark-700 bg-dark-800/50 p-4 transition-colors hover:border-dark-600"
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2">
             <span className="text-lg">{getCountryFlag(squad.country_code)}</span>
-            <h3 className="text-dark-100 truncate font-medium">
+            <h3 className="truncate font-medium text-dark-100">
               <Twemoji options={{ className: 'twemoji', folder: 'svg', ext: '.svg' }}>
                 {squad.display_name || squad.name}
               </Twemoji>
             </h3>
             {squad.is_synced ? (
-              <span className="bg-success-500/20 text-success-400 rounded-full px-2 py-0.5 text-xs">
+              <span className="rounded-full bg-success-500/20 px-2 py-0.5 text-xs text-success-400">
                 {t('admin.remnawave.squads.synced', 'Synced')}
               </span>
             ) : (
-              <span className="bg-warning-500/20 text-warning-400 rounded-full px-2 py-0.5 text-xs">
+              <span className="rounded-full bg-warning-500/20 px-2 py-0.5 text-xs text-warning-400">
                 {t('admin.remnawave.squads.notSynced', 'Not synced')}
               </span>
             )}
           </div>
-          <p className="text-dark-500 mt-1 truncate text-xs">{squad.name}</p>
+          <p className="mt-1 truncate text-xs text-dark-500">{squad.name}</p>
 
-          <div className="text-dark-400 mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs">
+          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-dark-400">
             <span className="flex items-center gap-1">
               <UsersIcon className="h-3.5 w-3.5" />
               {t('admin.remnawave.squads.membersCount', '{{count}} members', {
@@ -496,7 +496,7 @@ function SquadCard({ squad, onClick }: SquadCardProps) {
           </div>
         </div>
 
-        <ChevronRightIcon className="text-dark-500 h-5 w-5 shrink-0" />
+        <ChevronRightIcon className="h-5 w-5 shrink-0 text-dark-500" />
       </div>
     </div>
   );
@@ -514,11 +514,11 @@ function SyncCard({ title, description, onAction, isLoading, lastResult }: SyncC
   const { t } = useTranslation();
 
   return (
-    <div className="border-dark-700 bg-dark-800/50 rounded-xl border p-4">
+    <div className="rounded-xl border border-dark-700 bg-dark-800/50 p-4">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <h3 className="text-dark-100 font-medium">{title}</h3>
-          <p className="text-dark-400 mt-1 text-xs">{description}</p>
+          <h3 className="font-medium text-dark-100">{title}</h3>
+          <p className="mt-1 text-xs text-dark-400">{description}</p>
           {lastResult && (
             <p
               className={`mt-2 text-xs ${lastResult.success ? 'text-success-400' : 'text-error-400'}`}
@@ -530,7 +530,7 @@ function SyncCard({ title, description, onAction, isLoading, lastResult }: SyncC
         <button
           onClick={onAction}
           disabled={isLoading}
-          className="bg-accent-500/20 text-accent-400 hover:bg-accent-500/30 flex shrink-0 items-center gap-2 rounded-lg px-3 py-1.5 transition-colors disabled:opacity-50"
+          className="flex shrink-0 items-center gap-2 rounded-lg bg-accent-500/20 px-3 py-1.5 text-accent-400 transition-colors hover:bg-accent-500/30 disabled:opacity-50"
         >
           <RefreshIcon spinning={isLoading} />
           {isLoading
@@ -562,18 +562,18 @@ function BreakdownCard({
 }) {
   const max = Math.max(1, ...items.map((i) => i.count));
   return (
-    <div className="border-dark-700 bg-dark-800/50 rounded-xl border p-4">
-      <h4 className="text-dark-200 mb-3 text-sm font-medium">{title}</h4>
+    <div className="rounded-xl border border-dark-700 bg-dark-800/50 p-4">
+      <h4 className="mb-3 text-sm font-medium text-dark-200">{title}</h4>
       <div className={wide ? 'grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2' : 'space-y-2'}>
         {items.slice(0, wide ? 16 : 8).map((it) => (
           <div key={it.label}>
             <div className="flex items-center justify-between text-xs">
-              <span className="text-dark-300 truncate">{it.label}</span>
-              <span className="text-dark-400 ml-2 shrink-0">{it.count}</span>
+              <span className="truncate text-dark-300">{it.label}</span>
+              <span className="ml-2 shrink-0 text-dark-400">{it.count}</span>
             </div>
-            <div className="bg-dark-700 mt-1 h-1.5 rounded-full">
+            <div className="mt-1 h-1.5 rounded-full bg-dark-700">
               <div
-                className="bg-accent-500 h-1.5 rounded-full"
+                className="h-1.5 rounded-full bg-accent-500"
                 style={{ width: `${(it.count / max) * 100}%` }}
               />
             </div>
@@ -610,7 +610,7 @@ function OverviewTab({
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
       </div>
     );
   }
@@ -619,7 +619,7 @@ function OverviewTab({
     return (
       <div className="py-12 text-center">
         <p className="text-dark-400">{t('admin.remnawave.noData', 'Failed to load data')}</p>
-        <button onClick={onRefresh} className="btn-primary mt-4">
+        <button onClick={onRefresh} className="mt-4 btn-primary">
           {t('common.retry', 'Retry')}
         </button>
       </div>
@@ -635,7 +635,7 @@ function OverviewTab({
     <div className="space-y-6">
       {/* System Stats */}
       <div>
-        <h3 className="text-dark-300 mb-3 flex items-center gap-2 text-sm font-medium">
+        <h3 className="mb-3 flex items-center gap-2 text-sm font-medium text-dark-300">
           <ChartIcon className="h-4 w-4" />
           {t('admin.remnawave.overview.system', 'System')}
         </h3>
@@ -669,7 +669,7 @@ function OverviewTab({
 
       {/* Bandwidth */}
       <div>
-        <h3 className="text-dark-300 mb-3 flex items-center gap-2 text-sm font-medium">
+        <h3 className="mb-3 flex items-center gap-2 text-sm font-medium text-dark-300">
           <ChartIcon className="h-4 w-4" />
           {t('admin.remnawave.overview.bandwidth', 'Inbound Traffic')}
         </h3>
@@ -697,7 +697,7 @@ function OverviewTab({
 
       {/* Server Info */}
       <div>
-        <h3 className="text-dark-300 mb-3 flex items-center gap-2 text-sm font-medium">
+        <h3 className="mb-3 flex items-center gap-2 text-sm font-medium text-dark-300">
           <ServerIcon className="h-4 w-4" />
           {t('admin.remnawave.overview.server', 'Server')}
         </h3>
@@ -726,7 +726,7 @@ function OverviewTab({
 
       {/* Traffic Periods */}
       <div>
-        <h3 className="text-dark-300 mb-3 flex items-center gap-2 text-sm font-medium">
+        <h3 className="mb-3 flex items-center gap-2 text-sm font-medium text-dark-300">
           <ChartIcon className="h-4 w-4" />
           {t('admin.remnawave.overview.traffic', 'Traffic Statistics')}
         </h3>
@@ -766,7 +766,7 @@ function OverviewTab({
 
       {/* Users by Status */}
       <div>
-        <h3 className="text-dark-300 mb-3 flex items-center gap-2 text-sm font-medium">
+        <h3 className="mb-3 flex items-center gap-2 text-sm font-medium text-dark-300">
           <UsersIcon className="h-4 w-4" />
           {t('admin.remnawave.overview.usersByStatus', 'Users by Status')}
         </h3>
@@ -786,7 +786,7 @@ function OverviewTab({
       {/* Panel recap */}
       {recap && (
         <div>
-          <h3 className="text-dark-300 mb-3 flex items-center gap-2 text-sm font-medium">
+          <h3 className="mb-3 flex items-center gap-2 text-sm font-medium text-dark-300">
             <RemnawaveIcon className="h-4 w-4" />
             {t('admin.remnawave.overview.panel', 'Панель')}
           </h3>
@@ -827,7 +827,7 @@ function OverviewTab({
       {/* Devices breakdown */}
       {devicesStats && (devicesStats.by_platform.length > 0 || devicesStats.by_app.length > 0) && (
         <div>
-          <h3 className="text-dark-300 mb-3 flex items-center gap-2 text-sm font-medium">
+          <h3 className="mb-3 flex items-center gap-2 text-sm font-medium text-dark-300">
             <DevicesIcon className="h-4 w-4" />
             {t('admin.remnawave.overview.devices', 'Устройства')} ·{' '}
             {devicesStats.total_hwid_devices} ({devicesStats.average_devices_per_user.toFixed(1)}/
@@ -858,23 +858,23 @@ function OverviewTab({
       {/* Top consumers */}
       {topConsumers && topConsumers.users.length > 0 && (
         <div>
-          <h3 className="text-dark-300 mb-3 flex items-center gap-2 text-sm font-medium">
+          <h3 className="mb-3 flex items-center gap-2 text-sm font-medium text-dark-300">
             <ChartIcon className="h-4 w-4" />
             {t('admin.remnawave.overview.topConsumers', 'Топ потребителей')} ·{' '}
             {topConsumers.period_days}
             {t('admin.remnawave.overview.daysShort', 'д')}
           </h3>
-          <div className="divide-dark-700 border-dark-700 bg-dark-800/50 divide-y rounded-xl border">
+          <div className="divide-y divide-dark-700 rounded-xl border border-dark-700 bg-dark-800/50">
             {topConsumers.users.map((u, i) => (
               <div
                 key={u.username}
                 className="flex items-center justify-between px-4 py-2.5 text-sm"
               >
                 <span className="flex min-w-0 items-center gap-2">
-                  <span className="text-dark-500 w-5 shrink-0">{i + 1}</span>
-                  <span className="text-dark-100 truncate">{u.username}</span>
+                  <span className="w-5 shrink-0 text-dark-500">{i + 1}</span>
+                  <span className="truncate text-dark-100">{u.username}</span>
                 </span>
-                <span className="text-accent-400 shrink-0 font-medium">
+                <span className="shrink-0 font-medium text-accent-400">
                   {formatBytes(u.total_bytes)}
                 </span>
               </div>
@@ -886,7 +886,7 @@ function OverviewTab({
       {/* Panel health */}
       {health && health.instances > 0 && (
         <div>
-          <h3 className="text-dark-300 mb-3 flex items-center gap-2 text-sm font-medium">
+          <h3 className="mb-3 flex items-center gap-2 text-sm font-medium text-dark-300">
             <ServerIcon className="h-4 w-4" />
             {t('admin.remnawave.overview.panelHealth', 'Здоровье панели')}
             {health.instances > 1 ? ` · ${health.instances}` : ''}
@@ -924,7 +924,7 @@ function OverviewTab({
       {/* Subscription requests by app */}
       {subRequests && subRequests.by_app.length > 0 && (
         <div>
-          <h3 className="text-dark-300 mb-3 flex items-center gap-2 text-sm font-medium">
+          <h3 className="mb-3 flex items-center gap-2 text-sm font-medium text-dark-300">
             <SubscriptionIcon className="h-4 w-4" />
             {t('admin.remnawave.overview.subRequests', 'Запросы подписки (по клиентам)')} ·{' '}
             {subRequests.by_app.reduce((acc, a) => acc + a.count, 0)}
@@ -984,7 +984,7 @@ function NodesTab({
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
       </div>
     );
   }
@@ -1029,7 +1029,7 @@ function NodesTab({
       <div className="flex gap-2">
         <button
           onClick={onRefresh}
-          className="bg-dark-700 text-dark-300 hover:bg-dark-600 flex items-center gap-2 rounded-lg px-3 py-1.5 transition-colors"
+          className="flex items-center gap-2 rounded-lg bg-dark-700 px-3 py-1.5 text-dark-300 transition-colors hover:bg-dark-600"
         >
           <RefreshIcon />
           {t('common.refresh', 'Refresh')}
@@ -1037,7 +1037,7 @@ function NodesTab({
         <button
           onClick={onRestartAll}
           disabled={isActionLoading}
-          className="bg-warning-500/20 text-warning-400 hover:bg-warning-500/30 flex items-center gap-2 rounded-lg px-3 py-1.5 transition-colors disabled:opacity-50"
+          className="flex items-center gap-2 rounded-lg bg-warning-500/20 px-3 py-1.5 text-warning-400 transition-colors hover:bg-warning-500/30 disabled:opacity-50"
         >
           <ArrowPathIcon />
           {t('admin.remnawave.nodes.restartAll', 'Restart All')}
@@ -1046,16 +1046,16 @@ function NodesTab({
 
       {/* Realtime traffic totals (merged from the former Traffic tab) */}
       {traffic.total > 0 && (
-        <div className="text-dark-400 flex flex-wrap items-center gap-x-4 gap-y-1 px-1 text-xs">
-          <span className="text-dark-300 font-medium">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 px-1 text-xs text-dark-400">
+          <span className="font-medium text-dark-300">
             {t('admin.remnawave.traffic.realtimeTitle', 'Realtime traffic')}
           </span>
           <span className="flex items-center gap-1">
-            <DownloadIcon className="text-success-400/70 h-3 w-3" />
+            <DownloadIcon className="h-3 w-3 text-success-400/70" />
             {formatBytes(traffic.download)}
           </span>
           <span className="flex items-center gap-1">
-            <UploadIcon className="text-accent-400/70 h-3 w-3" />
+            <UploadIcon className="h-3 w-3 text-accent-400/70" />
             {formatBytes(traffic.upload)}
           </span>
           <span className="text-dark-300">
@@ -1067,7 +1067,7 @@ function NodesTab({
       {/* Nodes List */}
       <div className="space-y-3">
         {nodes.length === 0 ? (
-          <p className="text-dark-400 py-8 text-center">
+          <p className="py-8 text-center text-dark-400">
             {t('admin.remnawave.nodes.noNodes', 'No nodes found')}
           </p>
         ) : (
@@ -1117,7 +1117,7 @@ function SquadsTab({
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
       </div>
     );
   }
@@ -1156,7 +1156,7 @@ function SquadsTab({
       <div className="flex gap-2">
         <button
           onClick={onRefresh}
-          className="bg-dark-700 text-dark-300 hover:bg-dark-600 flex items-center gap-2 rounded-lg px-3 py-1.5 transition-colors"
+          className="flex items-center gap-2 rounded-lg bg-dark-700 px-3 py-1.5 text-dark-300 transition-colors hover:bg-dark-600"
         >
           <RefreshIcon />
           {t('common.refresh', 'Refresh')}
@@ -1164,7 +1164,7 @@ function SquadsTab({
         <button
           onClick={onSync}
           disabled={isSyncing}
-          className="bg-accent-500/20 text-accent-400 hover:bg-accent-500/30 flex items-center gap-2 rounded-lg px-3 py-1.5 transition-colors disabled:opacity-50"
+          className="flex items-center gap-2 rounded-lg bg-accent-500/20 px-3 py-1.5 text-accent-400 transition-colors hover:bg-accent-500/30 disabled:opacity-50"
         >
           <RefreshIcon spinning={isSyncing} />
           {t('admin.remnawave.squads.syncServers', 'Sync Servers')}
@@ -1174,7 +1174,7 @@ function SquadsTab({
       {/* Squads List */}
       <div className="space-y-3">
         {squads.length === 0 ? (
-          <p className="text-dark-400 py-8 text-center">
+          <p className="py-8 text-center text-dark-400">
             {t('admin.remnawave.squads.noSquads', 'No squads found')}
           </p>
         ) : (
@@ -1211,7 +1211,7 @@ function SyncTab({
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
       </div>
     );
   }
@@ -1220,9 +1220,9 @@ function SyncTab({
     <div className="space-y-6">
       {/* Auto Sync Status */}
       {autoSyncStatus && (
-        <div className="border-dark-700 bg-dark-800/50 rounded-xl border p-4">
+        <div className="rounded-xl border border-dark-700 bg-dark-800/50 p-4">
           <div className="mb-3 flex items-center justify-between">
-            <h3 className="text-dark-100 flex items-center gap-2 font-medium">
+            <h3 className="flex items-center gap-2 font-medium text-dark-100">
               <SyncIcon />
               {t('admin.remnawave.sync.autoSync', 'Auto Sync')}
             </h3>
@@ -1240,16 +1240,16 @@ function SyncTab({
           </div>
 
           <div className="grid grid-cols-2 gap-3 text-sm">
-            <div className="bg-dark-700/50 rounded-lg p-3">
-              <p className="text-dark-500 text-xs">
+            <div className="rounded-lg bg-dark-700/50 p-3">
+              <p className="text-xs text-dark-500">
                 {t('admin.remnawave.sync.schedule', 'Schedule')}
               </p>
-              <p className="text-dark-200 mt-1">
+              <p className="mt-1 text-dark-200">
                 {autoSyncStatus.times.length > 0 ? autoSyncStatus.times.join(', ') : '—'}
               </p>
             </div>
-            <div className="bg-dark-700/50 rounded-lg p-3">
-              <p className="text-dark-500 text-xs">{t('admin.remnawave.sync.status', 'Status')}</p>
+            <div className="rounded-lg bg-dark-700/50 p-3">
+              <p className="text-xs text-dark-500">{t('admin.remnawave.sync.status', 'Status')}</p>
               <p
                 className={`mt-1 ${
                   autoSyncStatus.is_running
@@ -1266,21 +1266,21 @@ function SyncTab({
                     : autoSyncStatus.last_run_error || '—'}
               </p>
             </div>
-            <div className="bg-dark-700/50 rounded-lg p-3">
-              <p className="text-dark-500 text-xs">
+            <div className="rounded-lg bg-dark-700/50 p-3">
+              <p className="text-xs text-dark-500">
                 {t('admin.remnawave.sync.lastRun', 'Last Run')}
               </p>
-              <p className="text-dark-200 mt-1">
+              <p className="mt-1 text-dark-200">
                 {autoSyncStatus.last_run_finished_at
                   ? new Date(autoSyncStatus.last_run_finished_at).toLocaleString()
                   : '—'}
               </p>
             </div>
-            <div className="bg-dark-700/50 rounded-lg p-3">
-              <p className="text-dark-500 text-xs">
+            <div className="rounded-lg bg-dark-700/50 p-3">
+              <p className="text-xs text-dark-500">
                 {t('admin.remnawave.sync.nextRun', 'Next Run')}
               </p>
-              <p className="text-dark-200 mt-1">
+              <p className="mt-1 text-dark-200">
                 {autoSyncStatus.next_run ? new Date(autoSyncStatus.next_run).toLocaleString() : '—'}
               </p>
             </div>
@@ -1289,7 +1289,7 @@ function SyncTab({
           <button
             onClick={onRunAutoSync}
             disabled={loadingStates.autoSync || autoSyncStatus.is_running}
-            className="bg-accent-500/20 text-accent-400 hover:bg-accent-500/30 mt-4 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors disabled:opacity-50"
+            className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-accent-500/20 px-4 py-2.5 text-sm font-medium text-accent-400 transition-colors hover:bg-accent-500/30 disabled:opacity-50"
           >
             <RefreshIcon spinning={loadingStates.autoSync || autoSyncStatus.is_running} />
             {autoSyncStatus.is_running
@@ -1540,19 +1540,19 @@ export default function AdminRemnawave() {
           {!capabilities.hasBackButton && (
             <button
               onClick={() => navigate('/admin')}
-              className="border-dark-700 bg-dark-800 hover:border-dark-600 flex h-10 w-10 items-center justify-center rounded-xl border transition-colors"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-dark-700 bg-dark-800 transition-colors hover:border-dark-600"
             >
               <BackIcon className="text-dark-400" />
             </button>
           )}
-          <div className="bg-accent-500/20 rounded-lg p-2">
-            <RemnawaveIcon className="text-accent-400 h-6 w-6" />
+          <div className="rounded-lg bg-accent-500/20 p-2">
+            <RemnawaveIcon className="h-6 w-6 text-accent-400" />
           </div>
           <div>
-            <h1 className="text-dark-100 text-xl font-semibold">
+            <h1 className="text-xl font-semibold text-dark-100">
               {t('admin.remnawave.title', 'Remnawave')}
             </h1>
-            <p className="text-dark-400 text-sm">
+            <p className="text-sm text-dark-400">
               {t('admin.remnawave.subtitle', 'Panel management and statistics')}
             </p>
           </div>
@@ -1575,13 +1575,13 @@ export default function AdminRemnawave() {
 
       {/* Configuration Error */}
       {status?.configuration_error && (
-        <div className="border-error-500/30 bg-error-500/10 mb-4 rounded-xl border p-4">
-          <p className="text-error-400 text-sm">{status.configuration_error}</p>
+        <div className="mb-4 rounded-xl border border-error-500/30 bg-error-500/10 p-4">
+          <p className="text-sm text-error-400">{status.configuration_error}</p>
         </div>
       )}
 
       {/* Tabs */}
-      <div className="bg-dark-800/50 mb-6 flex gap-1 overflow-x-auto rounded-xl p-1">
+      <div className="mb-6 flex gap-1 overflow-x-auto rounded-xl bg-dark-800/50 p-1">
         {tabs.map((tab) => (
           <button
             key={tab.id}

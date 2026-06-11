@@ -157,7 +157,7 @@ export default function AdminPromoGroupCreate() {
       </div>
 
       {/* Form */}
-      <div className="card space-y-4">
+      <div className="space-y-4 card">
         {/* Name */}
         <div>
           <label htmlFor="pg-name" className="mb-2 block text-sm font-medium text-dark-300">

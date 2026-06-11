@@ -64,21 +64,21 @@ export function AnalyticsTab() {
     <div className="space-y-6">
       {/* Error message */}
       {error && (
-        <div className="border-error-500/30 bg-error-500/10 text-error-400 rounded-2xl border p-4 text-sm">
+        <div className="rounded-2xl border border-error-500/30 bg-error-500/10 p-4 text-sm text-error-400">
           {error}
         </div>
       )}
 
       {/* Yandex Metrika */}
-      <div className="border-dark-700/50 bg-dark-800/50 rounded-2xl border p-6">
+      <div className="rounded-2xl border border-dark-700/50 bg-dark-800/50 p-6">
         <div className="mb-1 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="from-warning-500/20 to-error-500/20 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-linear-to-br">
-              <svg className="text-warning-400 h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-warning-500/20 to-error-500/20">
+              <svg className="h-5 w-5 text-warning-400" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
               </svg>
             </div>
-            <h3 className="text-dark-100 text-lg font-semibold">
+            <h3 className="text-lg font-semibold text-dark-100">
               {t('admin.settings.yandexMetrika')}
             </h3>
           </div>
@@ -93,12 +93,12 @@ export function AnalyticsTab() {
             {yandexActive ? t('admin.settings.counterActive') : t('admin.settings.counterInactive')}
           </span>
         </div>
-        <p className="text-dark-400 mb-5 ml-[52px] text-sm">
+        <p className="mb-5 ml-[52px] text-sm text-dark-400">
           {t('admin.settings.yandexMetrikaDesc')}
         </p>
 
         <div className="space-y-3">
-          <label className="text-dark-300 block text-sm font-medium">
+          <label className="block text-sm font-medium text-dark-300">
             {t('admin.settings.counterId')}
           </label>
           {editingYandex ? (
@@ -108,13 +108,13 @@ export function AnalyticsTab() {
                 value={yandexValue}
                 onChange={(e) => setYandexValue(e.target.value.replace(/\D/g, ''))}
                 placeholder={t('admin.settings.yandexIdPlaceholder')}
-                className="border-dark-600 bg-dark-700 text-dark-100 placeholder-dark-500 focus:border-accent-500 flex-1 rounded-xl border px-4 py-2.5 transition-colors focus:outline-none"
+                className="flex-1 rounded-xl border border-dark-600 bg-dark-700 px-4 py-2.5 text-dark-100 placeholder-dark-500 transition-colors focus:border-accent-500 focus:outline-none"
                 autoFocus
               />
               <button
                 onClick={handleSaveYandex}
                 disabled={updateMutation.isPending}
-                className="bg-accent-500 text-on-accent hover:bg-accent-600 rounded-xl px-4 py-2.5 transition-colors disabled:opacity-50"
+                className="rounded-xl bg-accent-500 px-4 py-2.5 text-on-accent transition-colors hover:bg-accent-600 disabled:opacity-50"
               >
                 <CheckIcon />
               </button>
@@ -123,7 +123,7 @@ export function AnalyticsTab() {
                   setEditingYandex(false);
                   setError(null);
                 }}
-                className="bg-dark-700 text-dark-300 hover:bg-dark-600 rounded-xl px-4 py-2.5 transition-colors"
+                className="rounded-xl bg-dark-700 px-4 py-2.5 text-dark-300 transition-colors hover:bg-dark-600"
               >
                 <CloseIcon />
               </button>
@@ -131,7 +131,7 @@ export function AnalyticsTab() {
           ) : (
             <div className="flex items-center gap-2">
               <span
-                className={`text-base ${analytics?.yandex_metrika_id ? 'text-dark-100 font-mono' : 'text-dark-500'}`}
+                className={`text-base ${analytics?.yandex_metrika_id ? 'font-mono text-dark-100' : 'text-dark-500'}`}
               >
                 {analytics?.yandex_metrika_id || t('admin.settings.notConfigured')}
               </span>
@@ -141,46 +141,46 @@ export function AnalyticsTab() {
                   setEditingYandex(true);
                   setError(null);
                 }}
-                className="text-dark-400 hover:bg-dark-700 hover:text-dark-200 rounded-lg p-1.5 transition-colors"
+                className="rounded-lg p-1.5 text-dark-400 transition-colors hover:bg-dark-700 hover:text-dark-200"
               >
                 <PencilIcon className="h-4 w-4" />
               </button>
             </div>
           )}
-          <p className="text-dark-500 text-xs">{t('admin.settings.yandexIdHint')}</p>
+          <p className="text-xs text-dark-500">{t('admin.settings.yandexIdHint')}</p>
         </div>
         {/* Offline Conversions (inside Yandex block) */}
         {analytics?.offline_conv_enabled && (
           <>
-            <div className="border-dark-700/30 my-5 border-t" />
+            <div className="my-5 border-t border-dark-700/30" />
             <div className="mb-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <svg className="text-warning-400 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="h-4 w-4 text-warning-400" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" />
                 </svg>
-                <span className="text-dark-200 text-sm font-medium">
+                <span className="text-sm font-medium text-dark-200">
                   {t('admin.settings.offlineConv', 'Offline Conversions')}
                 </span>
               </div>
-              <span className="bg-success-500/15 text-success-400 inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium">
-                <span className="bg-success-400 h-1.5 w-1.5 rounded-full" />
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-success-500/15 px-2 py-0.5 text-xs font-medium text-success-400">
+                <span className="h-1.5 w-1.5 rounded-full bg-success-400" />
                 {t('admin.settings.counterActive')}
               </span>
             </div>
             {analytics.offline_conv_counter_id && (
               <div className="mb-2 flex items-center gap-2">
-                <span className="text-dark-400 text-sm">{t('admin.settings.counterId')}:</span>
-                <span className="text-dark-200 font-mono text-sm">
+                <span className="text-sm text-dark-400">{t('admin.settings.counterId')}:</span>
+                <span className="font-mono text-sm text-dark-200">
                   {analytics.offline_conv_counter_id}
                 </span>
               </div>
             )}
             {analytics.offline_conv_measurement_secret_masked && (
               <div className="mb-3 flex items-center gap-2">
-                <span className="text-dark-400 text-sm">
+                <span className="text-sm text-dark-400">
                   {t('admin.settings.apiKey', 'API Key')}:
                 </span>
-                <code className="bg-dark-700/50 text-dark-300 rounded-md px-2 py-0.5 font-mono text-sm">
+                <code className="rounded-md bg-dark-700/50 px-2 py-0.5 font-mono text-sm text-dark-300">
                   {analytics.offline_conv_measurement_secret_masked}
                 </code>
               </div>
@@ -190,17 +190,17 @@ export function AnalyticsTab() {
                 {analytics.offline_conv_goals.map((goal) => (
                   <div
                     key={goal.event_id}
-                    className="border-dark-700/30 bg-dark-900/40 flex items-center justify-between rounded-xl border px-4 py-2.5"
+                    className="flex items-center justify-between rounded-xl border border-dark-700/30 bg-dark-900/40 px-4 py-2.5"
                   >
                     <div className="flex items-center gap-3">
-                      <span className="bg-success-400 inline-flex h-2 w-2 rounded-full" />
-                      <span className="text-dark-200 text-sm">{goal.name}</span>
+                      <span className="inline-flex h-2 w-2 rounded-full bg-success-400" />
+                      <span className="text-sm text-dark-200">{goal.name}</span>
                     </div>
                     <div className="flex items-center gap-4">
-                      <code className="bg-dark-700/50 text-dark-400 rounded-md px-2 py-0.5 text-xs">
+                      <code className="rounded-md bg-dark-700/50 px-2 py-0.5 text-xs text-dark-400">
                         {goal.event_id}
                       </code>
-                      <span className="text-dark-500 text-xs">{goal.dedup}</span>
+                      <span className="text-xs text-dark-500">{goal.dedup}</span>
                     </div>
                   </div>
                 ))}
@@ -211,15 +211,15 @@ export function AnalyticsTab() {
       </div>
 
       {/* Google Ads */}
-      <div className="border-dark-700/50 bg-dark-800/50 rounded-2xl border p-6">
+      <div className="rounded-2xl border border-dark-700/50 bg-dark-800/50 p-6">
         <div className="mb-1 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="from-accent-500/20 to-success-500/20 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-linear-to-br">
-              <svg className="text-accent-400 h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-accent-500/20 to-success-500/20">
+              <svg className="h-5 w-5 text-accent-400" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12.87 15.07l-2.54-2.51.03-.03A17.52 17.52 0 0014.07 6H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" />
               </svg>
             </div>
-            <h3 className="text-dark-100 text-lg font-semibold">{t('admin.settings.googleAds')}</h3>
+            <h3 className="text-lg font-semibold text-dark-100">{t('admin.settings.googleAds')}</h3>
           </div>
           <span
             className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${
@@ -232,12 +232,12 @@ export function AnalyticsTab() {
             {googleActive ? t('admin.settings.counterActive') : t('admin.settings.counterInactive')}
           </span>
         </div>
-        <p className="text-dark-400 mb-5 ml-[52px] text-sm">{t('admin.settings.googleAdsDesc')}</p>
+        <p className="mb-5 ml-[52px] text-sm text-dark-400">{t('admin.settings.googleAdsDesc')}</p>
 
         <div className="space-y-5">
           {/* Conversion ID */}
           <div className="space-y-3">
-            <label className="text-dark-300 block text-sm font-medium">
+            <label className="block text-sm font-medium text-dark-300">
               {t('admin.settings.conversionId')}
             </label>
             {editingGoogleId ? (
@@ -247,13 +247,13 @@ export function AnalyticsTab() {
                   value={googleIdValue}
                   onChange={(e) => setGoogleIdValue(e.target.value)}
                   placeholder={t('admin.settings.googleIdPlaceholder')}
-                  className="border-dark-600 bg-dark-700 text-dark-100 placeholder-dark-500 focus:border-accent-500 flex-1 rounded-xl border px-4 py-2.5 transition-colors focus:outline-none"
+                  className="flex-1 rounded-xl border border-dark-600 bg-dark-700 px-4 py-2.5 text-dark-100 placeholder-dark-500 transition-colors focus:border-accent-500 focus:outline-none"
                   autoFocus
                 />
                 <button
                   onClick={handleSaveGoogleId}
                   disabled={updateMutation.isPending}
-                  className="bg-accent-500 text-on-accent hover:bg-accent-600 rounded-xl px-4 py-2.5 transition-colors disabled:opacity-50"
+                  className="rounded-xl bg-accent-500 px-4 py-2.5 text-on-accent transition-colors hover:bg-accent-600 disabled:opacity-50"
                 >
                   <CheckIcon />
                 </button>
@@ -262,7 +262,7 @@ export function AnalyticsTab() {
                     setEditingGoogleId(false);
                     setError(null);
                   }}
-                  className="bg-dark-700 text-dark-300 hover:bg-dark-600 rounded-xl px-4 py-2.5 transition-colors"
+                  className="rounded-xl bg-dark-700 px-4 py-2.5 text-dark-300 transition-colors hover:bg-dark-600"
                 >
                   <CloseIcon />
                 </button>
@@ -270,7 +270,7 @@ export function AnalyticsTab() {
             ) : (
               <div className="flex min-w-0 items-center gap-2">
                 <span
-                  className={`min-w-0 truncate text-base ${analytics?.google_ads_id ? 'text-dark-100 font-mono' : 'text-dark-500'}`}
+                  className={`min-w-0 truncate text-base ${analytics?.google_ads_id ? 'font-mono text-dark-100' : 'text-dark-500'}`}
                 >
                   {analytics?.google_ads_id || t('admin.settings.notConfigured')}
                 </span>
@@ -280,18 +280,18 @@ export function AnalyticsTab() {
                     setEditingGoogleId(true);
                     setError(null);
                   }}
-                  className="text-dark-400 hover:bg-dark-700 hover:text-dark-200 shrink-0 rounded-lg p-1.5 transition-colors"
+                  className="shrink-0 rounded-lg p-1.5 text-dark-400 transition-colors hover:bg-dark-700 hover:text-dark-200"
                 >
                   <PencilIcon className="h-4 w-4" />
                 </button>
               </div>
             )}
-            <p className="text-dark-500 text-xs">{t('admin.settings.googleIdHint')}</p>
+            <p className="text-xs text-dark-500">{t('admin.settings.googleIdHint')}</p>
           </div>
 
           {/* Conversion Label */}
           <div className="space-y-3">
-            <label className="text-dark-300 block text-sm font-medium">
+            <label className="block text-sm font-medium text-dark-300">
               {t('admin.settings.conversionLabel')}
             </label>
             {editingGoogleLabel ? (
@@ -301,13 +301,13 @@ export function AnalyticsTab() {
                   value={googleLabelValue}
                   onChange={(e) => setGoogleLabelValue(e.target.value)}
                   placeholder={t('admin.settings.googleLabelPlaceholder')}
-                  className="border-dark-600 bg-dark-700 text-dark-100 placeholder-dark-500 focus:border-accent-500 flex-1 rounded-xl border px-4 py-2.5 transition-colors focus:outline-none"
+                  className="flex-1 rounded-xl border border-dark-600 bg-dark-700 px-4 py-2.5 text-dark-100 placeholder-dark-500 transition-colors focus:border-accent-500 focus:outline-none"
                   autoFocus
                 />
                 <button
                   onClick={handleSaveGoogleLabel}
                   disabled={updateMutation.isPending}
-                  className="bg-accent-500 text-on-accent hover:bg-accent-600 rounded-xl px-4 py-2.5 transition-colors disabled:opacity-50"
+                  className="rounded-xl bg-accent-500 px-4 py-2.5 text-on-accent transition-colors hover:bg-accent-600 disabled:opacity-50"
                 >
                   <CheckIcon />
                 </button>
@@ -316,7 +316,7 @@ export function AnalyticsTab() {
                     setEditingGoogleLabel(false);
                     setError(null);
                   }}
-                  className="bg-dark-700 text-dark-300 hover:bg-dark-600 rounded-xl px-4 py-2.5 transition-colors"
+                  className="rounded-xl bg-dark-700 px-4 py-2.5 text-dark-300 transition-colors hover:bg-dark-600"
                 >
                   <CloseIcon />
                 </button>
@@ -324,7 +324,7 @@ export function AnalyticsTab() {
             ) : (
               <div className="flex min-w-0 items-center gap-2">
                 <span
-                  className={`min-w-0 truncate text-base ${analytics?.google_ads_label ? 'text-dark-100 font-mono' : 'text-dark-500'}`}
+                  className={`min-w-0 truncate text-base ${analytics?.google_ads_label ? 'font-mono text-dark-100' : 'text-dark-500'}`}
                 >
                   {analytics?.google_ads_label || t('admin.settings.notConfigured')}
                 </span>
@@ -334,20 +334,20 @@ export function AnalyticsTab() {
                     setEditingGoogleLabel(true);
                     setError(null);
                   }}
-                  className="text-dark-400 hover:bg-dark-700 hover:text-dark-200 shrink-0 rounded-lg p-1.5 transition-colors"
+                  className="shrink-0 rounded-lg p-1.5 text-dark-400 transition-colors hover:bg-dark-700 hover:text-dark-200"
                 >
                   <PencilIcon className="h-4 w-4" />
                 </button>
               </div>
             )}
-            <p className="text-dark-500 text-xs">{t('admin.settings.googleLabelHint')}</p>
+            <p className="text-xs text-dark-500">{t('admin.settings.googleLabelHint')}</p>
           </div>
         </div>
       </div>
 
       {/* Info block */}
-      <div className="border-dark-700/30 bg-dark-800/30 rounded-2xl border p-4">
-        <p className="text-dark-500 text-sm leading-relaxed">{t('admin.settings.analyticsHint')}</p>
+      <div className="rounded-2xl border border-dark-700/30 bg-dark-800/30 p-4">
+        <p className="text-sm leading-relaxed text-dark-500">{t('admin.settings.analyticsHint')}</p>
       </div>
     </div>
   );

@@ -384,7 +384,7 @@ export default function AdminRoleEdit() {
                 type="text"
                 value={formData.name}
                 onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
-                className="w-full rounded-lg border border-dark-600 bg-dark-900 px-3 py-2 text-dark-100 placeholder-dark-500 outline-none transition-colors focus:border-accent-500"
+                className="w-full rounded-lg border border-dark-600 bg-dark-900 px-3 py-2 text-dark-100 placeholder-dark-500 transition-colors outline-none focus:border-accent-500"
                 placeholder={t('admin.roles.form.namePlaceholder')}
                 autoFocus
               />
@@ -402,7 +402,7 @@ export default function AdminRoleEdit() {
                 id="role-description"
                 value={formData.description}
                 onChange={(e) => setFormData((prev) => ({ ...prev, description: e.target.value }))}
-                className="w-full rounded-lg border border-dark-600 bg-dark-900 px-3 py-2 text-dark-100 placeholder-dark-500 outline-none transition-colors focus:border-accent-500"
+                className="w-full rounded-lg border border-dark-600 bg-dark-900 px-3 py-2 text-dark-100 placeholder-dark-500 transition-colors outline-none focus:border-accent-500"
                 placeholder={t('admin.roles.form.descriptionPlaceholder')}
                 rows={2}
               />

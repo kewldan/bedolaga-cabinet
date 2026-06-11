@@ -395,7 +395,7 @@
 
 @utility bento-card {
   /* ========== BENTO DESIGN SYSTEM ========== */
-  @apply border-dark-700/40 bg-dark-900/70 border;
+  @apply border border-dark-700/40 bg-dark-900/70;
   border-radius: var(--bento-radius);
   padding: var(--bento-padding);
   /* Glass Border - Inset Highlight */
@@ -589,7 +589,7 @@
 
   /* Glass effect - Light (optimized for mobile) */
   & .glass {
-    @apply border-champagne-300/40 bg-champagne-50/90 border;
+    @apply border border-champagne-300/40 bg-champagne-50/90;
   }
 
   @media (min-width: 1024px) {
@@ -604,11 +604,11 @@
   }
 
   & .btn-primary {
-    @apply bg-champagne-700 shadow-champagne-500/20 hover:bg-champagne-600 hover:shadow-champagne-500/30 focus-visible:ring-champagne-500 active:bg-champagne-800 text-white shadow-lg hover:shadow-xl;
+    @apply bg-champagne-700 text-white shadow-lg shadow-champagne-500/20 hover:bg-champagne-600 hover:shadow-xl hover:shadow-champagne-500/30 focus-visible:ring-champagne-500 active:bg-champagne-800;
   }
 
   & .btn-secondary {
-    @apply border-champagne-300 bg-champagne-50 text-champagne-800 hover:border-champagne-400 hover:bg-champagne-100 hover:text-champagne-900 focus-visible:ring-champagne-400 active:bg-champagne-200 border;
+    @apply border border-champagne-300 bg-champagne-50 text-champagne-800 hover:border-champagne-400 hover:bg-champagne-100 hover:text-champagne-900 focus-visible:ring-champagne-400 active:bg-champagne-200;
   }
 
   & .btn-ghost {
@@ -616,7 +616,7 @@
   }
 
   & .btn-danger {
-    @apply border-error-200 bg-error-50 text-error-600 hover:border-error-300 hover:bg-error-100 active:bg-error-200 border;
+    @apply border border-error-200 bg-error-50 text-error-600 hover:border-error-300 hover:bg-error-100 active:bg-error-200;
   }
 
   & .btn-icon {
@@ -625,7 +625,7 @@
 
   /* Inputs - Light */
   & .input {
-    @apply border-champagne-300 bg-champagne-50 text-champagne-900 placeholder-champagne-400 focus:border-accent-400 focus:ring-accent-300/30 rounded-xl border;
+    @apply rounded-xl border border-champagne-300 bg-champagne-50 text-champagne-900 placeholder-champagne-400 focus:border-accent-400 focus:ring-accent-300/30;
   }
 
   & .input-error {
@@ -638,23 +638,23 @@
 
   /* Badge - Light */
   & .badge-success {
-    @apply border-success-200 bg-success-50 text-success-700 border;
+    @apply border border-success-200 bg-success-50 text-success-700;
   }
 
   & .badge-warning {
-    @apply border-warning-200 bg-warning-50 text-warning-700 border;
+    @apply border border-warning-200 bg-warning-50 text-warning-700;
   }
 
   & .badge-error {
-    @apply border-error-200 bg-error-50 text-error-700 border;
+    @apply border border-error-200 bg-error-50 text-error-700;
   }
 
   & .badge-info {
-    @apply border-accent-200 bg-accent-50 text-accent-700 border;
+    @apply border border-accent-200 bg-accent-50 text-accent-700;
   }
 
   & .badge-neutral {
-    @apply border-champagne-300 bg-champagne-200/50 text-champagne-700 border;
+    @apply border border-champagne-300 bg-champagne-200/50 text-champagne-700;
   }
 
   /* Stat card - Light */
@@ -702,7 +702,7 @@
 
   /* Divider - Light */
   & .divider {
-    @apply border-champagne-200 border-t;
+    @apply border-t border-champagne-200;
   }
 
   & .skeleton {
@@ -771,7 +771,7 @@
   }
 
   & .prose tg-spoiler {
-    @apply bg-champagne-300 hover:text-champagne-800 text-transparent hover:bg-transparent;
+    @apply bg-champagne-300 text-transparent hover:bg-transparent hover:text-champagne-800;
   }
 
   & .prose blockquote {
@@ -783,7 +783,7 @@
   }
 
   & .prose pre {
-    @apply border-champagne-300 bg-champagne-100 border;
+    @apply border border-champagne-300 bg-champagne-100;
   }
 
   & .prose hr {
@@ -803,15 +803,15 @@
   }
 
   & .prose iframe {
-    @apply border-champagne-300 border;
+    @apply border border-champagne-300;
   }
 
   & .prose video {
-    @apply border-champagne-300 border;
+    @apply border border-champagne-300;
   }
 
   & .prose img {
-    @apply border-champagne-300 border;
+    @apply border border-champagne-300;
   }
 }
 
@@ -819,7 +819,7 @@
   /* ========== DARK THEME COMPONENTS (default) ========== */
 
   /* Cards - Dark (unified style) */
-  @apply border-dark-700/40 bg-dark-900/70 border p-5 transition-colors duration-200 sm:p-6;
+  @apply border border-dark-700/40 bg-dark-900/70 p-5 transition-colors duration-200 sm:p-6;
   border-radius: var(--bento-radius);
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
 
@@ -846,7 +846,7 @@
 }
 
 @utility card-hover {
-  @apply card hover:border-dark-600/50 hover:bg-dark-800/60 cursor-pointer active:scale-[0.98];
+  @apply cursor-pointer card hover:border-dark-600/50 hover:bg-dark-800/60 active:scale-[0.98];
 
   .light & {
     @apply hover:border-champagne-400/50 hover:bg-champagne-50 hover:shadow-md;
@@ -854,7 +854,7 @@
 }
 
 @utility card-glow {
-  @apply card hover:border-accent-500/30 hover:shadow-glow cursor-pointer;
+  @apply cursor-pointer card hover:border-accent-500/30 hover:shadow-glow;
 
   .light & {
     @apply hover:border-accent-400/40 hover:shadow-lg;
@@ -862,19 +862,19 @@
 }
 
 @utility card-animated {
-  @apply card animate-slide-up;
+  @apply animate-slide-up card;
 }
 
 @utility glass {
   /* Glass effect - Dark (optimized for mobile) */
-  @apply border-dark-700/30 bg-dark-900/80 border;
+  @apply border border-dark-700/30 bg-dark-900/80;
   @media (min-width: 1024px) {
     @apply bg-dark-900/30 backdrop-blur-xl;
   }
 
   /* Glass effect - Light (optimized for mobile) */
   .light & {
-    @apply border-champagne-300/40 bg-champagne-50/90 border;
+    @apply border border-champagne-300/40 bg-champagne-50/90;
   }
 
   @media (min-width: 1024px) {
@@ -891,7 +891,7 @@
      min-h-[44px] on mobile (WCAG 2.5.5 AAA touch target floor), keeping
      visual at py-2 / ~36px on desktop where mouse precision rules.
      Cascades to every .btn-primary / .btn-secondary / .btn-ghost / .btn-danger. */
-  @apply ease-smooth focus-visible:ring-offset-dark-900 inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 sm:min-h-0;
+  @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium duration-200 ease-smooth focus:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-900 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 sm:min-h-0;
   transition-property: color, background-color, border-color, box-shadow, transform, opacity;
 
   /* Buttons - Light */
@@ -902,7 +902,7 @@
 
 @utility btn-icon {
   /* Same logic for icon-only buttons. */
-  @apply text-dark-400 hover:bg-dark-800 hover:text-dark-100 focus-visible:ring-accent-500/50 min-h-[44px] min-w-[44px] rounded-lg p-2 duration-200 focus:outline-hidden focus-visible:ring-2 active:scale-95 sm:min-h-0 sm:min-w-0;
+  @apply min-h-[44px] min-w-[44px] rounded-lg p-2 text-dark-400 duration-200 hover:bg-dark-800 hover:text-dark-100 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-accent-500/50 active:scale-95 sm:min-h-0 sm:min-w-0;
   transition-property: color, background-color, transform;
 
   .light & {
@@ -911,18 +911,18 @@
 }
 
 @utility btn-primary {
-  @apply btn bg-accent-500 text-on-accent shadow-accent-500/25 hover:bg-accent-400 hover:shadow-accent-500/30 focus-visible:ring-accent-500 active:bg-accent-600 shadow-lg hover:shadow-xl;
+  @apply btn bg-accent-500 text-on-accent shadow-lg shadow-accent-500/25 hover:bg-accent-400 hover:shadow-xl hover:shadow-accent-500/30 focus-visible:ring-accent-500 active:bg-accent-600;
 
   .light & {
-    @apply bg-champagne-700 shadow-champagne-500/20 hover:bg-champagne-600 hover:shadow-champagne-500/30 focus-visible:ring-champagne-500 active:bg-champagne-800 text-white shadow-lg hover:shadow-xl;
+    @apply bg-champagne-700 text-white shadow-lg shadow-champagne-500/20 hover:bg-champagne-600 hover:shadow-xl hover:shadow-champagne-500/30 focus-visible:ring-champagne-500 active:bg-champagne-800;
   }
 }
 
 @utility btn-secondary {
-  @apply btn border-dark-700 bg-dark-800 text-dark-200 hover:border-dark-600 hover:bg-dark-700 hover:text-dark-100 focus-visible:ring-dark-500 active:bg-dark-600 border;
+  @apply btn border border-dark-700 bg-dark-800 text-dark-200 hover:border-dark-600 hover:bg-dark-700 hover:text-dark-100 focus-visible:ring-dark-500 active:bg-dark-600;
 
   .light & {
-    @apply border-champagne-300 bg-champagne-50 text-champagne-800 hover:border-champagne-400 hover:bg-champagne-100 hover:text-champagne-900 focus-visible:ring-champagne-400 active:bg-champagne-200 border;
+    @apply border border-champagne-300 bg-champagne-50 text-champagne-800 hover:border-champagne-400 hover:bg-champagne-100 hover:text-champagne-900 focus-visible:ring-champagne-400 active:bg-champagne-200;
   }
 }
 
@@ -935,26 +935,26 @@
 }
 
 @utility btn-danger {
-  @apply btn border-error-500/30 bg-error-500/10 text-error-400 hover:border-error-500/50 hover:bg-error-500/20 focus-visible:ring-error-500 active:bg-error-500/30 border;
+  @apply btn border border-error-500/30 bg-error-500/10 text-error-400 hover:border-error-500/50 hover:bg-error-500/20 focus-visible:ring-error-500 active:bg-error-500/30;
 
   .light & {
-    @apply border-error-200 bg-error-50 text-error-600 hover:border-error-300 hover:bg-error-100 active:bg-error-200 border;
+    @apply border border-error-200 bg-error-50 text-error-600 hover:border-error-300 hover:bg-error-100 active:bg-error-200;
   }
 }
 
 @utility btn-highlight {
   /* Highlighted button for onboarding */
-  @apply animate-spotlight relative z-10;
+  @apply relative z-10 animate-spotlight;
 }
 
 @utility input {
   /* Inputs - Dark */
-  @apply border-dark-700/50 bg-dark-800/50 text-dark-100 placeholder-dark-500 focus:border-accent-500/50 focus:ring-accent-500/20 w-full rounded-xl border px-4 py-3 text-sm duration-200 focus:ring-2 focus:outline-hidden;
+  @apply w-full rounded-xl border border-dark-700/50 bg-dark-800/50 px-4 py-3 text-sm text-dark-100 placeholder-dark-500 duration-200 focus:border-accent-500/50 focus:ring-2 focus:ring-accent-500/20 focus:outline-hidden;
   transition-property: color, background-color, border-color, box-shadow;
 
   /* Inputs - Light */
   .light & {
-    @apply border-champagne-300 bg-champagne-50 text-champagne-900 placeholder-champagne-400 focus:border-accent-400 focus:ring-accent-300/30 rounded-xl border;
+    @apply rounded-xl border border-champagne-300 bg-champagne-50 text-champagne-900 placeholder-champagne-400 focus:border-accent-400 focus:ring-accent-300/30;
   }
 }
 
@@ -967,7 +967,7 @@
 }
 
 @utility label {
-  @apply text-dark-300 mb-2 block text-sm font-medium;
+  @apply mb-2 block text-sm font-medium text-dark-300;
 
   .light & {
     @apply text-champagne-700;
@@ -980,49 +980,49 @@
 }
 
 @utility badge-success {
-  @apply badge border-success-500/30 bg-success-500/15 text-success-400 border;
+  @apply badge border border-success-500/30 bg-success-500/15 text-success-400;
 
   /* Badge - Light */
   .light & {
-    @apply border-success-200 bg-success-50 text-success-700 border;
+    @apply border border-success-200 bg-success-50 text-success-700;
   }
 }
 
 @utility badge-warning {
-  @apply badge border-warning-500/30 bg-warning-500/15 text-warning-400 border;
+  @apply badge border border-warning-500/30 bg-warning-500/15 text-warning-400;
 
   .light & {
-    @apply border-warning-200 bg-warning-50 text-warning-700 border;
+    @apply border border-warning-200 bg-warning-50 text-warning-700;
   }
 }
 
 @utility badge-error {
-  @apply badge border-error-500/30 bg-error-500/15 text-error-400 border;
+  @apply badge border border-error-500/30 bg-error-500/15 text-error-400;
 
   .light & {
-    @apply border-error-200 bg-error-50 text-error-700 border;
+    @apply border border-error-200 bg-error-50 text-error-700;
   }
 }
 
 @utility badge-info {
-  @apply badge border-accent-500/30 bg-accent-500/15 text-accent-400 border;
+  @apply badge border border-accent-500/30 bg-accent-500/15 text-accent-400;
 
   .light & {
-    @apply border-accent-200 bg-accent-50 text-accent-700 border;
+    @apply border border-accent-200 bg-accent-50 text-accent-700;
   }
 }
 
 @utility badge-neutral {
-  @apply badge border-dark-600/50 bg-dark-700/50 text-dark-300 border;
+  @apply badge border border-dark-600/50 bg-dark-700/50 text-dark-300;
 
   .light & {
-    @apply border-champagne-300 bg-champagne-200/50 text-champagne-700 border;
+    @apply border border-champagne-300 bg-champagne-200/50 text-champagne-700;
   }
 }
 
 @utility stat-value {
   /* Stat card - Dark */
-  @apply text-dark-50 text-2xl font-bold sm:text-3xl;
+  @apply text-2xl font-bold text-dark-50 sm:text-3xl;
 
   /* Stat card - Light */
   .light & {
@@ -1031,7 +1031,7 @@
 }
 
 @utility stat-label {
-  @apply text-dark-400 mt-1 text-sm;
+  @apply mt-1 text-sm text-dark-400;
 
   .light & {
     @apply text-champagne-600;
@@ -1040,7 +1040,7 @@
 
 @utility nav-item {
   /* Navigation - Dark */
-  @apply text-dark-400 hover:bg-dark-800/50 hover:text-dark-100 flex items-center gap-3 rounded-xl px-4 py-3 duration-200;
+  @apply flex items-center gap-3 rounded-xl px-4 py-3 text-dark-400 duration-200 hover:bg-dark-800/50 hover:text-dark-100;
   transition-property: color, background-color;
 
   /* Navigation - Light */
@@ -1058,7 +1058,7 @@
 }
 
 @utility bottom-nav {
-  @apply bg-dark-900/95 fixed z-50;
+  @apply fixed z-50 bg-dark-900/95;
   bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   left: 16px;
   right: 16px;
@@ -1088,7 +1088,7 @@
 }
 
 @utility bottom-nav-item {
-  @apply text-dark-500 flex min-w-[56px] flex-1 shrink-0 flex-col items-center justify-center rounded-2xl px-3 py-2.5 duration-200;
+  @apply flex min-w-[56px] flex-1 shrink-0 flex-col items-center justify-center rounded-2xl px-3 py-2.5 text-dark-500 duration-200;
   transition-property: color, background-color;
 
   &:hover {
@@ -1105,7 +1105,7 @@
 }
 
 @utility bottom-nav-item-active {
-  @apply bg-accent-500/15 text-accent-400 flex min-w-[56px] flex-1 shrink-0 flex-col items-center justify-center rounded-2xl px-3 py-2.5 duration-200;
+  @apply flex min-w-[56px] flex-1 shrink-0 flex-col items-center justify-center rounded-2xl bg-accent-500/15 px-3 py-2.5 text-accent-400 duration-200;
   transition-property: color, background-color;
 
   .light & {
@@ -1115,11 +1115,11 @@
 
 @utility divider {
   /* Divider - Dark */
-  @apply border-dark-800/50 border-t;
+  @apply border-t border-dark-800/50;
 
   /* Divider - Light */
   .light & {
-    @apply border-champagne-200 border-t;
+    @apply border-t border-champagne-200;
   }
 }
 
@@ -1191,7 +1191,7 @@
 
 @utility skeleton {
   /* Skeleton loader */
-  @apply bg-dark-800 animate-pulse rounded-lg;
+  @apply animate-pulse rounded-lg bg-dark-800;
 
   .light & {
     @apply bg-champagne-300;
@@ -1200,7 +1200,7 @@
 
 @utility link {
   /* Link */
-  @apply text-accent-400 hover:text-accent-300 transition-colors duration-200;
+  @apply text-accent-400 transition-colors duration-200 hover:text-accent-300;
 
   .light & {
     @apply text-accent-600 hover:text-accent-500;
@@ -1209,22 +1209,22 @@
 
 @utility prose {
   /* Prose styles for formatted content */
-  @apply text-dark-200 leading-relaxed;
+  @apply leading-relaxed text-dark-200;
 
   & h1 {
-    @apply text-dark-50 mt-6 mb-4 text-2xl font-bold first:mt-0;
+    @apply mt-6 mb-4 text-2xl font-bold text-dark-50 first:mt-0;
   }
 
   & h2 {
-    @apply text-dark-50 mt-6 mb-3 text-xl font-semibold first:mt-0;
+    @apply mt-6 mb-3 text-xl font-semibold text-dark-50 first:mt-0;
   }
 
   & h3 {
-    @apply text-dark-100 mt-5 mb-2 text-lg font-semibold first:mt-0;
+    @apply mt-5 mb-2 text-lg font-semibold text-dark-100 first:mt-0;
   }
 
   & h4 {
-    @apply text-dark-100 mt-4 mb-2 text-base font-semibold first:mt-0;
+    @apply mt-4 mb-2 text-base font-semibold text-dark-100 first:mt-0;
   }
 
   & p {
@@ -1259,15 +1259,15 @@
   }
 
   & a {
-    @apply text-accent-400 hover:text-accent-300 underline underline-offset-2 transition-colors;
+    @apply text-accent-400 underline underline-offset-2 transition-colors hover:text-accent-300;
   }
 
   & strong {
-    @apply text-dark-100 font-semibold;
+    @apply font-semibold text-dark-100;
   }
 
   & b {
-    @apply text-dark-100 font-semibold;
+    @apply font-semibold text-dark-100;
   }
 
   & em {
@@ -1291,19 +1291,19 @@
   }
 
   & tg-spoiler {
-    @apply bg-dark-600 hover:text-dark-200 cursor-pointer rounded-sm px-1 text-transparent transition-colors hover:bg-transparent;
+    @apply cursor-pointer rounded-sm bg-dark-600 px-1 text-transparent transition-colors hover:bg-transparent hover:text-dark-200;
   }
 
   & blockquote {
-    @apply border-accent-500/50 bg-dark-800/30 text-dark-300 my-4 rounded-r-lg border-l-4 py-2 pl-4 italic;
+    @apply my-4 rounded-r-lg border-l-4 border-accent-500/50 bg-dark-800/30 py-2 pl-4 text-dark-300 italic;
   }
 
   & code {
-    @apply bg-dark-800 text-accent-300 rounded-sm px-1.5 py-0.5 font-mono text-sm;
+    @apply rounded-sm bg-dark-800 px-1.5 py-0.5 font-mono text-sm text-accent-300;
   }
 
   & pre {
-    @apply bg-dark-800 mb-4 overflow-x-auto rounded-xl p-4;
+    @apply mb-4 overflow-x-auto rounded-xl bg-dark-800 p-4;
   }
 
   & pre code {
@@ -1311,7 +1311,7 @@
   }
 
   & hr {
-    @apply border-dark-700 my-6;
+    @apply my-6 border-dark-700;
   }
 
   & table {
@@ -1322,11 +1322,11 @@
   }
 
   & th {
-    @apply border-dark-700 bg-dark-800 text-dark-100 border p-3 text-left font-semibold;
+    @apply border border-dark-700 bg-dark-800 p-3 text-left font-semibold text-dark-100;
   }
 
   & td {
-    @apply border-dark-700 text-dark-300 border p-3;
+    @apply border border-dark-700 p-3 text-dark-300;
   }
 
   & img {
@@ -1334,7 +1334,7 @@
   }
 
   & mark {
-    @apply bg-warning-500/30 text-dark-100 rounded-sm px-1;
+    @apply rounded-sm bg-warning-500/30 px-1 text-dark-100;
   }
 
   & iframe {
@@ -1403,7 +1403,7 @@
   }
 
   .light & tg-spoiler {
-    @apply bg-champagne-300 hover:text-champagne-800 text-transparent hover:bg-transparent;
+    @apply bg-champagne-300 text-transparent hover:bg-transparent hover:text-champagne-800;
   }
 
   .light & blockquote {
@@ -1415,7 +1415,7 @@
   }
 
   .light & pre {
-    @apply border-champagne-300 bg-champagne-100 border;
+    @apply border border-champagne-300 bg-champagne-100;
   }
 
   .light & hr {
@@ -1435,15 +1435,15 @@
   }
 
   .light & iframe {
-    @apply border-champagne-300 border;
+    @apply border border-champagne-300;
   }
 
   .light & video {
-    @apply border-champagne-300 border;
+    @apply border border-champagne-300;
   }
 
   .light & img {
-    @apply border-champagne-300 border;
+    @apply border border-champagne-300;
   }
 }
 
@@ -1490,7 +1490,7 @@
 
 @utility text-gradient {
   /* Text gradient */
-  @apply from-accent-400 to-accent-600 bg-linear-to-r bg-clip-text text-transparent;
+  @apply bg-linear-to-r from-accent-400 to-accent-600 bg-clip-text text-transparent;
 }
 
 @utility glow-accent {
@@ -1802,7 +1802,7 @@
   /* Dark theme (default) */
   body,
   .dark body {
-    @apply bg-dark-950 text-dark-100 font-sans antialiased;
+    @apply bg-dark-950 font-sans text-dark-100 antialiased;
     overscroll-behavior-y: contain;
     /* iOS smooth scrolling */
     -webkit-overflow-scrolling: touch;
@@ -1837,7 +1837,7 @@
 
   /* Light theme - Champagne */
   .light body {
-    @apply bg-champagne-200 text-champagne-900 font-sans antialiased;
+    @apply bg-champagne-200 font-sans text-champagne-900 antialiased;
     overscroll-behavior-y: contain;
     -webkit-overflow-scrolling: touch;
   }
@@ -1884,7 +1884,7 @@
   }
 
   .dark ::-webkit-scrollbar-thumb {
-    @apply bg-dark-700 rounded-full;
+    @apply rounded-full bg-dark-700;
   }
 
   .dark ::-webkit-scrollbar-thumb:hover {
@@ -1901,7 +1901,7 @@
   }
 
   .light ::-webkit-scrollbar-thumb {
-    @apply bg-champagne-400 rounded-full;
+    @apply rounded-full bg-champagne-400;
   }
 
   .light ::-webkit-scrollbar-thumb:hover {
@@ -1932,7 +1932,7 @@
   button:focus-visible,
   a:focus-visible,
   [role='button']:focus-visible {
-    @apply ring-accent-500/50 ring-offset-dark-900 ring-2 ring-offset-2;
+    @apply ring-2 ring-accent-500/50 ring-offset-2 ring-offset-dark-900;
   }
 }
 
@@ -2249,13 +2249,13 @@ input[type='checkbox']:hover:not(:checked) {
 }
 
 .onboarding-tooltip {
-  @apply border-accent-500/30 bg-dark-900 shadow-accent-500/10 pointer-events-auto absolute max-w-xs rounded-2xl border p-5 shadow-xl sm:max-w-sm;
+  @apply pointer-events-auto absolute max-w-xs rounded-2xl border border-accent-500/30 bg-dark-900 p-5 shadow-xl shadow-accent-500/10 sm:max-w-sm;
   animation: scaleInBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .onboarding-tooltip::before {
   content: '';
-  @apply border-accent-500/30 bg-dark-900 absolute h-3 w-3 border-t border-l;
+  @apply absolute h-3 w-3 border-t border-l border-accent-500/30 bg-dark-900;
   transform: rotate(45deg);
 }
 
@@ -2271,7 +2271,7 @@ input[type='checkbox']:hover:not(:checked) {
 }
 
 .light .onboarding-tooltip {
-  @apply border-champagne-400/50 shadow-champagne-500/20 bg-white;
+  @apply border-champagne-400/50 bg-white shadow-champagne-500/20;
 }
 
 .light .onboarding-tooltip::before {

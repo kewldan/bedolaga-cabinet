@@ -75,7 +75,7 @@ export function StatusFilter({
       </button>
 
       {open && (
-        <div className="absolute left-0 top-full z-30 mt-1 w-56 rounded-xl border border-dark-700 bg-dark-800 py-1 shadow-xl">
+        <div className="absolute top-full left-0 z-30 mt-1 w-56 rounded-xl border border-dark-700 bg-dark-800 py-1 shadow-xl">
           <button
             onClick={selectAll}
             className={`flex w-full items-center gap-2 px-3 py-2 text-left text-xs transition-colors hover:bg-dark-700 ${

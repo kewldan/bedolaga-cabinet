@@ -90,7 +90,7 @@ export default function RenewSubscription() {
   if (isLoading) {
     return (
       <div className="flex min-h-64 items-center justify-center">
-        <div className="border-accent-500 h-10 w-10 animate-spin rounded-full border-2 border-t-transparent" />
+        <div className="h-10 w-10 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
       </div>
     );
   }
@@ -170,7 +170,7 @@ export default function RenewSubscription() {
                       {option.period_days} {t('common.units.days', 'дней')}
                     </span>
                     {option.discount_percent > 0 && (
-                      <span className="bg-success-400/15 text-success-400 ml-2 rounded-full px-2 py-0.5 text-[10px] font-semibold">
+                      <span className="ml-2 rounded-full bg-success-400/15 px-2 py-0.5 text-[10px] font-semibold text-success-400">
                         -{option.discount_percent}%
                       </span>
                     )}
@@ -195,7 +195,7 @@ export default function RenewSubscription() {
                   </div>
                 </div>
                 {!canAfford && (
-                  <div className="text-error-400 mt-1 text-[11px]">
+                  <div className="mt-1 text-[11px] text-error-400">
                     {t(
                       'subscription.insufficientBalanceAmount',
                       'Недостаточно средств. Не хватает {{missing}}',
@@ -216,7 +216,7 @@ export default function RenewSubscription() {
 
       {/* Error */}
       {error && !missingAmount && (
-        <div className="bg-error-400/10 text-error-400 rounded-xl p-3 text-center text-sm">
+        <div className="rounded-xl bg-error-400/10 p-3 text-center text-sm text-error-400">
           {error}
         </div>
       )}
@@ -226,7 +226,7 @@ export default function RenewSubscription() {
         <button
           onClick={() => handleRenew(selectedPeriod)}
           disabled={renewMutation.isPending}
-          className="bg-accent-500 text-on-accent hover:bg-accent-600 w-full rounded-2xl py-3.5 text-base font-semibold transition-colors disabled:opacity-50"
+          className="w-full rounded-2xl bg-accent-500 py-3.5 text-base font-semibold text-on-accent transition-colors hover:bg-accent-600 disabled:opacity-50"
         >
           {renewMutation.isPending
             ? t('common.processing', 'Обработка...')

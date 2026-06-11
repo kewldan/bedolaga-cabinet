@@ -95,7 +95,7 @@ export default function ReferralWithdrawalRequest() {
             </label>
             <textarea
               id="rw-payment-details"
-              className="input min-h-[80px] w-full"
+              className="min-h-[80px] input w-full"
               value={form.payment_details}
               onChange={(e) => setForm({ ...form, payment_details: e.target.value })}
               placeholder={t('referral.withdrawal.fields.paymentDetailsPlaceholder')}

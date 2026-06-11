@@ -91,7 +91,7 @@ export function MobileBottomNav({
               />
             )}
             <item.icon className="relative z-10 h-5 w-5" />
-            <span className="relative z-10 mt-1 whitespace-nowrap text-2xs">{item.label}</span>
+            <span className="relative z-10 mt-1 text-2xs whitespace-nowrap">{item.label}</span>
           </Link>
         ))}
       </div>

@@ -79,7 +79,7 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
               <DialogPrimitive.Content
                 ref={ref}
                 className={cn(
-                  'fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2',
+                  'fixed top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2',
                   'max-h-[85vh] w-full max-w-lg',
                   'grid gap-4 overflow-auto',
                   'rounded-linear-lg border border-dark-700/50 bg-dark-900/95 backdrop-blur-linear',
@@ -101,10 +101,10 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
                   {showCloseButton && (
                     <DialogPrimitive.Close
                       className={cn(
-                        'absolute right-4 top-4 rounded-linear p-1.5',
+                        'absolute top-4 right-4 rounded-linear p-1.5',
                         'text-dark-400 opacity-70 transition-all',
                         'hover:bg-dark-800/80 hover:opacity-100',
-                        'focus:outline-none focus:ring-2 focus:ring-accent-500/50',
+                        'focus:ring-2 focus:ring-accent-500/50 focus:outline-none',
                       )}
                     >
                       <CloseIcon />

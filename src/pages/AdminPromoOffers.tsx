@@ -264,7 +264,7 @@ export default function AdminPromoOffers() {
                         </div>
                       </div>
                     </div>
-                    <div className="pl-13 flex items-center gap-1 text-xs text-dark-500 sm:pl-0">
+                    <div className="flex items-center gap-1 pl-13 text-xs text-dark-500 sm:pl-0">
                       <ClockIcon className="h-4 w-4" />
                       {formatDateTime(log.created_at)}
                     </div>

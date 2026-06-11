@@ -221,7 +221,7 @@ export function ButtonsTab() {
                 <div className="flex shrink-0 items-center gap-2">
                   {/* Live preview chip */}
                   <div
-                    className={`whitespace-nowrap rounded-lg px-2.5 py-1.5 text-xs font-medium ${
+                    className={`rounded-lg px-2.5 py-1.5 text-xs font-medium whitespace-nowrap ${
                       cfg.style === 'default'
                         ? 'bg-dark-600 text-dark-300'
                         : cfg.style === 'success'
@@ -293,7 +293,7 @@ export function ButtonsTab() {
                   <div className="mt-2 space-y-2">
                     {BOT_LOCALES.map((locale) => (
                       <div key={locale} className="flex items-center gap-2">
-                        <span className="w-7 shrink-0 text-center text-[10px] font-semibold uppercase text-dark-500">
+                        <span className="w-7 shrink-0 text-center text-[10px] font-semibold text-dark-500 uppercase">
                           {locale}
                         </span>
                         <input

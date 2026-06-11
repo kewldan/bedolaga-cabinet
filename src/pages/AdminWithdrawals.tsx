@@ -79,7 +79,7 @@ export default function AdminWithdrawals() {
           <button
             key={filter}
             onClick={() => setStatusFilter(filter)}
-            className={`whitespace-nowrap rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+            className={`rounded-lg px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
               statusFilter === filter
                 ? 'bg-accent-500 text-on-accent'
                 : 'bg-dark-800/40 text-dark-400 hover:bg-dark-700/50 hover:text-dark-200'

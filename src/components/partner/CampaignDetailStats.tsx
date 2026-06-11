@@ -41,7 +41,7 @@ export function CampaignDetailStats({ campaignId }: CampaignDetailStatsProps) {
     return (
       <div className="pt-2 text-center">
         <div className="text-sm text-error-400">{t('referral.partner.stats.noData')}</div>
-        <button onClick={() => refetch()} className="btn-secondary mt-2 px-4 py-1 text-xs">
+        <button onClick={() => refetch()} className="mt-2 btn-secondary px-4 py-1 text-xs">
           {t('common.retry')}
         </button>
       </div>

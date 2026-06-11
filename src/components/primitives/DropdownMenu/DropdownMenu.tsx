@@ -27,8 +27,8 @@ export const DropdownMenuSubTrigger = forwardRef<HTMLDivElement, DropdownMenuSub
     <DropdownMenuPrimitive.SubTrigger
       ref={ref}
       className={cn(
-        'rounded-linear flex cursor-pointer items-center gap-2 px-2 py-2 select-none',
-        'text-dark-200 text-sm outline-none',
+        'flex cursor-pointer items-center gap-2 rounded-linear px-2 py-2 select-none',
+        'text-sm text-dark-200 outline-none',
         'focus:bg-dark-800/80 focus:text-dark-100',
         'data-[state=open]:bg-dark-800/80',
         inset && 'pl-8',
@@ -55,8 +55,8 @@ export const DropdownMenuSubContent = forwardRef<HTMLDivElement, DropdownMenuSub
       ref={ref}
       className={cn(
         'z-50 min-w-32 overflow-hidden',
-        'rounded-linear-lg border-dark-700/50 bg-dark-900/95 backdrop-blur-linear border',
-        'text-dark-100 shadow-linear-lg p-1',
+        'rounded-linear-lg border border-dark-700/50 bg-dark-900/95 backdrop-blur-linear',
+        'p-1 text-dark-100 shadow-linear-lg',
         className,
       )}
       asChild
@@ -91,8 +91,8 @@ export const DropdownMenuContent = forwardRef<HTMLDivElement, DropdownMenuConten
           sideOffset={sideOffset}
           className={cn(
             'z-50 min-w-32 overflow-hidden',
-            'rounded-linear-lg border-dark-700/50 bg-dark-900/95 backdrop-blur-linear border',
-            'text-dark-100 shadow-linear-lg p-1',
+            'rounded-linear-lg border border-dark-700/50 bg-dark-900/95 backdrop-blur-linear',
+            'p-1 text-dark-100 shadow-linear-lg',
             className,
           )}
           onCloseAutoFocus={() => haptic.impact('light')}
@@ -130,7 +130,7 @@ export const DropdownMenuItem = forwardRef<HTMLDivElement, DropdownMenuItemProps
       <DropdownMenuPrimitive.Item
         ref={ref}
         className={cn(
-          'rounded-linear relative flex cursor-pointer items-center gap-2 px-2 py-2 select-none',
+          'relative flex cursor-pointer items-center gap-2 rounded-linear px-2 py-2 select-none',
           'text-sm transition-colors duration-150 outline-none',
           destructive
             ? 'text-error-400 focus:bg-error-500/10 focus:text-error-300'
@@ -158,8 +158,8 @@ export const DropdownMenuCheckboxItem = forwardRef<HTMLDivElement, DropdownMenuC
     <DropdownMenuPrimitive.CheckboxItem
       ref={ref}
       className={cn(
-        'rounded-linear relative flex cursor-pointer items-center py-2 pr-2 pl-8 select-none',
-        'text-dark-200 text-sm transition-colors duration-150 outline-none',
+        'relative flex cursor-pointer items-center rounded-linear py-2 pr-2 pl-8 select-none',
+        'text-sm text-dark-200 transition-colors duration-150 outline-none',
         'focus:bg-dark-800/80 focus:text-dark-100',
         'data-disabled:pointer-events-none data-disabled:opacity-50',
         className,
@@ -189,8 +189,8 @@ export const DropdownMenuRadioItem = forwardRef<HTMLDivElement, DropdownMenuRadi
     <DropdownMenuPrimitive.RadioItem
       ref={ref}
       className={cn(
-        'rounded-linear relative flex cursor-pointer items-center py-2 pr-2 pl-8 select-none',
-        'text-dark-200 text-sm transition-colors duration-150 outline-none',
+        'relative flex cursor-pointer items-center rounded-linear py-2 pr-2 pl-8 select-none',
+        'text-sm text-dark-200 transition-colors duration-150 outline-none',
         'focus:bg-dark-800/80 focus:text-dark-100',
         'data-disabled:pointer-events-none data-disabled:opacity-50',
         className,
@@ -220,7 +220,7 @@ export const DropdownMenuLabel = forwardRef<HTMLDivElement, DropdownMenuLabelPro
   ({ className, inset, ...props }, ref) => (
     <DropdownMenuPrimitive.Label
       ref={ref}
-      className={cn('text-dark-400 px-2 py-1.5 text-xs font-medium', inset && 'pl-8', className)}
+      className={cn('px-2 py-1.5 text-xs font-medium text-dark-400', inset && 'pl-8', className)}
       {...props}
     />
   ),
@@ -237,7 +237,7 @@ export const DropdownMenuSeparator = forwardRef<HTMLDivElement, DropdownMenuSepa
   ({ className, ...props }, ref) => (
     <DropdownMenuPrimitive.Separator
       ref={ref}
-      className={cn('bg-dark-700/50 -mx-1 my-1 h-px', className)}
+      className={cn('-mx-1 my-1 h-px bg-dark-700/50', className)}
       {...props}
     />
   ),
@@ -249,7 +249,7 @@ DropdownMenuSeparator.displayName = 'DropdownMenuSeparator';
 export type DropdownMenuShortcutProps = React.HTMLAttributes<HTMLSpanElement>;
 
 export const DropdownMenuShortcut = ({ className, ...props }: DropdownMenuShortcutProps) => (
-  <span className={cn('text-dark-400 ml-auto text-xs tracking-widest', className)} {...props} />
+  <span className={cn('ml-auto text-xs tracking-widest text-dark-400', className)} {...props} />
 );
 
 DropdownMenuShortcut.displayName = 'DropdownMenuShortcut';

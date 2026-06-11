@@ -288,7 +288,7 @@ export default function AdminTariffCreate() {
         <div className="grid gap-4 sm:grid-cols-2">
           <button
             onClick={() => setTariffType('period')}
-            className="card group p-6 text-left transition-colors hover:border-accent-500/50"
+            className="group card p-6 text-left transition-colors hover:border-accent-500/50"
           >
             <div className="flex items-center gap-4">
               <div className="rounded-lg bg-accent-500/20 p-3 text-accent-400 group-hover:bg-accent-500/30">
@@ -302,7 +302,7 @@ export default function AdminTariffCreate() {
           </button>
           <button
             onClick={() => setTariffType('daily')}
-            className="card group p-6 text-left transition-colors hover:border-warning-500/50"
+            className="group card p-6 text-left transition-colors hover:border-warning-500/50"
           >
             <div className="flex items-center gap-4">
               <div className="rounded-lg bg-warning-500/20 p-3 text-warning-400 group-hover:bg-warning-500/30">
@@ -351,7 +351,7 @@ export default function AdminTariffCreate() {
 
       {/* Tabs */}
       <div
-        className="scrollbar-hide -mx-4 flex gap-2 overflow-x-auto px-4 py-1"
+        className="-mx-4 scrollbar-hide flex gap-2 overflow-x-auto px-4 py-1"
         style={{ WebkitOverflowScrolling: 'touch' }}
       >
         {(isDaily
@@ -361,7 +361,7 @@ export default function AdminTariffCreate() {
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`shrink-0 whitespace-nowrap rounded-xl px-4 py-2.5 text-sm font-medium transition-all ${
+            className={`shrink-0 rounded-xl px-4 py-2.5 text-sm font-medium whitespace-nowrap transition-all ${
               activeTab === tab
                 ? isDaily
                   ? 'bg-warning-500/15 text-warning-400 ring-1 ring-warning-500/30'
@@ -379,7 +379,7 @@ export default function AdminTariffCreate() {
 
       {/* Content */}
       {activeTab === 'basic' && (
-        <div className="card space-y-4">
+        <div className="space-y-4 card">
           {/* Name */}
           <div>
             <label htmlFor="tariff-name" className="mb-2 block text-sm font-medium text-dark-300">
@@ -417,7 +417,7 @@ export default function AdminTariffCreate() {
               id="tariff-description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="input min-h-[80px] resize-none"
+              className="min-h-[80px] input resize-none"
               placeholder={t('admin.tariffs.descriptionPlaceholder')}
             />
           </div>
@@ -531,7 +531,7 @@ export default function AdminTariffCreate() {
       )}
 
       {activeTab === 'periods' && !isDaily && (
-        <div className="card space-y-4">
+        <div className="space-y-4 card">
           <p className="text-sm text-dark-400">{t('admin.tariffs.periodsTabHint')}</p>
 
           {/* Add new period */}
@@ -639,7 +639,7 @@ export default function AdminTariffCreate() {
         <div className="space-y-4">
           {/* External Squad */}
           {externalSquads.length > 0 && (
-            <div className="card space-y-4">
+            <div className="space-y-4 card">
               <h4 className="text-sm font-medium text-dark-200">
                 {t('admin.tariffs.externalSquadTitle')}
               </h4>
@@ -711,7 +711,7 @@ export default function AdminTariffCreate() {
           )}
 
           {/* Servers */}
-          <div className="card space-y-4">
+          <div className="space-y-4 card">
             <h4 className="text-sm font-medium text-dark-200">{t('admin.tariffs.serversTitle')}</h4>
             <p className="text-sm text-dark-400">{t('admin.tariffs.serversTabHint')}</p>
             {servers.length === 0 ? (
@@ -766,7 +766,7 @@ export default function AdminTariffCreate() {
       {activeTab === 'extra' && (
         <div className="space-y-4">
           {/* Device addon */}
-          <div className="card space-y-3">
+          <div className="space-y-3 card">
             <h4 className="text-sm font-medium text-dark-200">
               {t('admin.tariffs.extraDeviceTitle')}
             </h4>
@@ -810,7 +810,7 @@ export default function AdminTariffCreate() {
           </div>
 
           {/* Traffic topup */}
-          <div className="card space-y-3">
+          <div className="space-y-3 card">
             <div className="flex items-center justify-between">
               <h4 className="text-sm font-medium text-dark-200">
                 {t('admin.tariffs.extraTrafficTitle')}
@@ -989,7 +989,7 @@ export default function AdminTariffCreate() {
           </div>
 
           {/* Traffic reset mode */}
-          <div className="card space-y-3">
+          <div className="space-y-3 card">
             <h4 className="text-sm font-medium text-dark-200">
               {t('admin.tariffs.trafficResetModeTitle')}
             </h4>
@@ -1026,7 +1026,7 @@ export default function AdminTariffCreate() {
           </div>
 
           {/* Promo Groups */}
-          <div className="card space-y-4">
+          <div className="space-y-4 card">
             <h4 className="text-sm font-medium text-dark-200">
               {t('admin.tariffs.promoGroupsTitle')}
             </h4>
@@ -1072,7 +1072,7 @@ export default function AdminTariffCreate() {
           </div>
 
           {/* Tariff status */}
-          <div className="card space-y-3">
+          <div className="space-y-3 card">
             <h4 className="text-sm font-medium text-dark-200">{t('admin.tariffs.statusTitle')}</h4>
             {/* Active toggle */}
             <div className="flex items-center justify-between rounded-lg bg-dark-800 p-3">
@@ -1129,7 +1129,7 @@ export default function AdminTariffCreate() {
       )}
 
       {/* Footer */}
-      <div className="card space-y-3">
+      <div className="space-y-3 card">
         {validationErrors.length > 0 && (
           <div className="rounded-lg border border-error-500/30 bg-error-500/10 p-3">
             <p className="mb-1 text-sm font-medium text-error-400">

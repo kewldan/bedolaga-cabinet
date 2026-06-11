@@ -73,10 +73,10 @@ export function DeviceTopupSheet({
       >
         <div className="flex items-center justify-between">
           <div>
-            <div className="text-dark-100 font-medium">
+            <div className="font-medium text-dark-100">
               {t('subscription.additionalOptions.buyDevices')}
             </div>
-            <div className="text-dark-400 mt-1 text-sm">
+            <div className="mt-1 text-sm text-dark-400">
               {t('subscription.additionalOptions.currentDeviceLimit', {
                 count: subscription.device_limit,
               })}
@@ -93,10 +93,10 @@ export function DeviceTopupSheet({
       className={`rounded-xl border p-5 ${isDark ? 'border-dark-700/50 bg-dark-800/50' : 'border-champagne-300/60 bg-champagne-200/40'}`}
     >
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-dark-100 font-medium">{t('subscription.buyDevices')}</h3>
+        <h3 className="font-medium text-dark-100">{t('subscription.buyDevices')}</h3>
         <button
           onClick={onClose}
-          className="text-dark-400 hover:text-dark-200 text-sm"
+          className="text-sm text-dark-400 hover:text-dark-200"
           aria-label={t('common.close', 'Close')}
         >
           ✕
@@ -104,7 +104,7 @@ export function DeviceTopupSheet({
       </div>
 
       {devicePriceData?.available === false ? (
-        <div className="text-dark-400 py-4 text-center text-sm">
+        <div className="py-4 text-center text-sm text-dark-400">
           {devicePriceData.reason || t('subscription.additionalOptions.devicesUnavailable')}
         </div>
       ) : (
@@ -120,8 +120,8 @@ export function DeviceTopupSheet({
               -
             </button>
             <div className="text-center">
-              <div className="text-dark-100 text-4xl font-bold">{devicesToAdd}</div>
-              <div className="text-dark-500 text-sm">
+              <div className="text-4xl font-bold text-dark-100">{devicesToAdd}</div>
+              <div className="text-sm text-dark-500">
                 {t('subscription.additionalOptions.devicesUnit')}
               </div>
             </div>
@@ -141,7 +141,7 @@ export function DeviceTopupSheet({
           </div>
 
           {devicePriceData?.max_device_limit && (
-            <div className="text-dark-400 text-center text-sm">
+            <div className="text-center text-sm text-dark-400">
               {t('subscription.additionalOptions.currentDeviceLimit', {
                 count: devicePriceData.current_device_limit || subscription.device_limit,
               })}{' '}
@@ -155,7 +155,7 @@ export function DeviceTopupSheet({
           {/* Price info */}
           {devicePriceData?.available && devicePriceData.price_per_device_label && (
             <div className="text-center">
-              <div className="text-dark-400 mb-2 text-sm">
+              <div className="mb-2 text-sm text-dark-400">
                 {devicePriceData.discount_percent &&
                 devicePriceData.discount_percent > 0 &&
                 devicePriceData.original_price_per_device_kopeks ? (
@@ -173,21 +173,21 @@ export function DeviceTopupSheet({
               </div>
               {devicePriceData.discount_percent && devicePriceData.discount_percent > 0 && (
                 <div className="mb-2">
-                  <span className="bg-success-500/20 text-success-400 inline-block rounded-full px-2.5 py-0.5 text-sm font-medium">
+                  <span className="inline-block rounded-full bg-success-500/20 px-2.5 py-0.5 text-sm font-medium text-success-400">
                     -{devicePriceData.discount_percent}%
                   </span>
                 </div>
               )}
               {devicePriceData.total_price_kopeks === 0 ? (
-                <div className="text-success-400 text-2xl font-bold">
+                <div className="text-2xl font-bold text-success-400">
                   {t('subscription.switchTariff.free')}
                 </div>
               ) : (
-                <div className="text-accent-400 text-2xl font-bold">
+                <div className="text-2xl font-bold text-accent-400">
                   {devicePriceData.discount_percent &&
                     devicePriceData.discount_percent > 0 &&
                     devicePriceData.base_total_price_kopeks && (
-                      <span className="text-dark-500 mr-2 text-lg line-through">
+                      <span className="mr-2 text-lg text-dark-500 line-through">
                         {formatPrice(devicePriceData.base_total_price_kopeks)}
                       </span>
                     )}
@@ -236,7 +236,7 @@ export function DeviceTopupSheet({
           </button>
 
           {devicePurchaseMutation.isError && (
-            <div className="text-error-400 text-center text-sm">
+            <div className="text-center text-sm text-error-400">
               {getErrorMessage(devicePurchaseMutation.error)}
             </div>
           )}

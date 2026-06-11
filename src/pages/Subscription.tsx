@@ -95,7 +95,7 @@ const CountdownTimer = memo(function CountdownTimer({
             : `1px solid ${g.innerBorder}`,
       }}
     >
-      <div className="text-dark-50/35 mb-2 flex items-center gap-1.5 text-[10px] font-medium tracking-wider uppercase">
+      <div className="mb-2 flex items-center gap-1.5 text-[10px] font-medium tracking-wider text-dark-50/35 uppercase">
         <div
           className="flex h-6 w-6 items-center justify-center rounded-[7px]"
           style={{
@@ -138,7 +138,7 @@ const CountdownTimer = memo(function CountdownTimer({
                 >
                   {countdown.days}
                 </span>
-                <span className="text-dark-50/25 mr-1 text-[10px] font-medium">
+                <span className="mr-1 text-[10px] font-medium text-dark-50/25">
                   {t('subscription.daysShort')}
                 </span>
               </>
@@ -174,7 +174,7 @@ const CountdownTimer = memo(function CountdownTimer({
               {String(countdown.seconds).padStart(2, '0')}
             </span>
           </div>
-          <div className="text-dark-50/25 text-[10px] font-medium">
+          <div className="text-[10px] font-medium text-dark-50/25">
             {t('subscription.expiresAt')}: {formattedDate}
           </div>
         </div>
@@ -498,7 +498,7 @@ export default function Subscription() {
   if (isLoading) {
     return (
       <div className="flex min-h-64 items-center justify-center">
-        <div className="border-accent-500 h-10 w-10 animate-spin rounded-full border-2 border-t-transparent" />
+        <div className="h-10 w-10 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
       </div>
     );
   }
@@ -507,15 +507,15 @@ export default function Subscription() {
     return (
       <div className="mx-auto max-w-lg p-4 text-center">
         <div className="mb-4 text-4xl">😕</div>
-        <h2 className="text-dark-50 mb-2 text-xl font-bold">
+        <h2 className="mb-2 text-xl font-bold text-dark-50">
           {t('subscription.notFound', 'Подписка не найдена')}
         </h2>
-        <p className="text-dark-50/60 mb-4 text-sm">
+        <p className="mb-4 text-sm text-dark-50/60">
           {t('subscription.notFoundDesc', 'Возможно, подписка была удалена или не существует')}
         </p>
         <button
           onClick={() => navigate('/subscriptions')}
-          className="bg-accent-500 text-on-accent rounded-xl px-6 py-2.5 text-sm font-medium"
+          className="rounded-xl bg-accent-500 px-6 py-2.5 text-sm font-medium text-on-accent"
         >
           {t('subscription.backToList', 'Мои подписки')}
         </button>
@@ -528,7 +528,7 @@ export default function Subscription() {
       {/* Page title */}
       <div className="flex items-center gap-3">
         <WebBackButton to={isMultiTariff ? '/subscriptions' : '/'} />
-        <h1 className="text-dark-50 text-2xl font-bold sm:text-3xl">
+        <h1 className="text-2xl font-bold text-dark-50 sm:text-3xl">
           {isMultiTariff && subscription?.tariff_name
             ? subscription.tariff_name
             : t('subscription.title')}
@@ -592,7 +592,7 @@ export default function Subscription() {
                   </div>
 
                   {/* Plan name */}
-                  <h2 className="text-dark-50 text-lg font-bold tracking-tight">
+                  <h2 className="text-lg font-bold tracking-tight text-dark-50">
                     {subscription.tariff_name || t('subscription.currentPlan')}
                   </h2>
                 </div>
@@ -668,7 +668,7 @@ export default function Subscription() {
                       >
                         {t('subscription.trafficLimitedTitle')}
                       </p>
-                      <p className="text-dark-400 mt-1 text-xs">
+                      <p className="mt-1 text-xs text-dark-400">
                         {t('subscription.trafficLimitedDescription')}
                       </p>
                     </div>
@@ -712,7 +712,7 @@ export default function Subscription() {
                       >
                         {t('subscription.trialInfo.title')}
                       </div>
-                      <div className="text-dark-50/40 mt-1 text-[12px]">
+                      <div className="mt-1 text-[12px] text-dark-50/40">
                         {t('subscription.trialInfo.description')}
                       </div>
                       <div className="mt-3 flex flex-wrap gap-4">
@@ -725,7 +725,7 @@ export default function Subscription() {
                               ? t('subscription.days', { count: subscription.days_left })
                               : `${subscription.hours_left}${t('subscription.hours')} ${subscription.minutes_left}${t('subscription.minutes')}`}
                           </span>
-                          <span className="text-dark-50/30 text-[11px]">
+                          <span className="text-[11px] text-dark-50/30">
                             {t('subscription.trialInfo.remaining')}
                           </span>
                         </div>
@@ -736,7 +736,7 @@ export default function Subscription() {
                           >
                             {subscription.traffic_limit_gb || '∞'} {t('common.units.gb')}
                           </span>
-                          <span className="text-dark-50/30 text-[11px]">
+                          <span className="text-[11px] text-dark-50/30">
                             {t('subscription.traffic')}
                           </span>
                         </div>
@@ -747,7 +747,7 @@ export default function Subscription() {
                           >
                             {subscription.device_limit === 0 ? '∞' : subscription.device_limit}
                           </span>
-                          <span className="text-dark-50/30 text-[11px]">
+                          <span className="text-[11px] text-dark-50/30">
                             {t('subscription.devices')}
                           </span>
                         </div>
@@ -760,11 +760,11 @@ export default function Subscription() {
               {/* ─── Traffic Progress ─── */}
               <div className="mb-6">
                 <div className="mb-2.5 flex items-center justify-between">
-                  <span className="text-dark-50/40 text-[11px] font-medium tracking-wider uppercase">
+                  <span className="text-[11px] font-medium tracking-wider text-dark-50/40 uppercase">
                     {t('subscription.traffic')}
                   </span>
                   <div className="flex items-center gap-2">
-                    <span className="text-dark-50/30 font-mono text-[11px]">
+                    <span className="font-mono text-[11px] text-dark-50/30">
                       {isUnlimited
                         ? formatTraffic(usedGb)
                         : `${formatTraffic(usedGb)} / ${formatTraffic(subscription.traffic_limit_gb)}`}
@@ -772,7 +772,7 @@ export default function Subscription() {
                     <button
                       onClick={() => refreshTrafficMutation.mutate()}
                       disabled={refreshTrafficMutation.isPending || trafficRefreshCooldown > 0}
-                      className="text-dark-50/30 hover:bg-dark-50/5 hover:text-dark-50/50 flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+                      className="flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium text-dark-50/30 transition-colors hover:bg-dark-50/5 hover:text-dark-50/50 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       <RefreshIcon
                         className="h-3 w-3"
@@ -786,7 +786,7 @@ export default function Subscription() {
                 </div>
                 {subscription.traffic_reset_mode &&
                   subscription.traffic_reset_mode !== 'NO_RESET' && (
-                    <div className="text-dark-50/25 mb-2 text-[10px]">
+                    <div className="mb-2 text-[10px] text-dark-50/25">
                       {t(`subscription.trafficReset.${subscription.traffic_reset_mode}`)}
                     </div>
                   )}
@@ -822,10 +822,10 @@ export default function Subscription() {
                     <DevicesIcon className="h-4 w-4" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className="text-dark-50 text-sm font-semibold tracking-tight">
+                    <div className="text-sm font-semibold tracking-tight text-dark-50">
                       {t('dashboard.connectDevice')}
                     </div>
-                    <div className="text-dark-50/30 mt-0.5 text-[11px]">
+                    <div className="mt-0.5 text-[11px] text-dark-50/30">
                       {subscription.device_limit === 0
                         ? t('dashboard.devicesConnectedUnlimited', { used: connectedDevices })
                         : t('dashboard.devicesOfMax', {
@@ -844,7 +844,7 @@ export default function Subscription() {
                   </div>
                   {subscription.device_limit === 0 ? (
                     <div
-                      className="text-dark-50/40 flex shrink-0 items-center text-lg"
+                      className="flex shrink-0 items-center text-lg text-dark-50/40"
                       aria-hidden="true"
                     >
                       ∞
@@ -892,7 +892,7 @@ export default function Subscription() {
               {displayedConnectionUrl && !shouldHideConnectionLink && (
                 <div className="mb-5 flex gap-2">
                   <code
-                    className="text-dark-50/30 block min-w-0 flex-1 truncate rounded-[10px] px-3 py-2 font-mono text-[11px] whitespace-nowrap"
+                    className="block min-w-0 flex-1 truncate rounded-[10px] px-3 py-2 font-mono text-[11px] whitespace-nowrap text-dark-50/30"
                     style={{
                       background: g.codeBg,
                       border: `1px solid ${g.codeBorder}`,
@@ -931,14 +931,14 @@ export default function Subscription() {
               {/* ─── Locations ─── */}
               {subscription.servers && subscription.servers.length > 0 && (
                 <div className="mb-5">
-                  <div className="text-dark-50/35 mb-2 text-[10px] font-medium tracking-wider uppercase">
+                  <div className="mb-2 text-[10px] font-medium tracking-wider text-dark-50/35 uppercase">
                     {t('subscription.locationsLabel')}
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {subscription.servers.map((server) => (
                       <span
                         key={server.uuid}
-                        className="text-dark-50/50 inline-flex items-center gap-1.5 rounded-[8px] px-2.5 py-1 text-[11px] font-medium"
+                        className="inline-flex items-center gap-1.5 rounded-[8px] px-2.5 py-1 text-[11px] font-medium text-dark-50/50"
                         style={{
                           background: g.innerBorder,
                           border: `1px solid ${g.trackBg}`,
@@ -959,7 +959,7 @@ export default function Subscription() {
               {/* ─── Purchased Traffic Packages ─── */}
               {subscription.traffic_purchases && subscription.traffic_purchases.length > 0 && (
                 <div className="mb-5">
-                  <div className="text-dark-50/35 mb-2 text-[10px] font-medium tracking-wider uppercase">
+                  <div className="mb-2 text-[10px] font-medium tracking-wider text-dark-50/35 uppercase">
                     {t('subscription.purchasedTraffic')}
                   </div>
                   <div className="space-y-2">
@@ -980,7 +980,7 @@ export default function Subscription() {
                             >
                               <DownloadIcon className="h-3.5 w-3.5" />
                             </div>
-                            <span className="text-dark-50 text-sm font-semibold">
+                            <span className="text-sm font-semibold text-dark-50">
                               {purchase.traffic_gb} {t('common.units.gb')}
                             </span>
                           </div>
@@ -995,7 +995,7 @@ export default function Subscription() {
                                 ? t('subscription.expired')
                                 : t('subscription.days', { count: purchase.days_remaining })}
                             </div>
-                            <div className="text-dark-50/20 mt-0.5 font-mono text-[9px]">
+                            <div className="mt-0.5 font-mono text-[9px] text-dark-50/20">
                               {t('subscription.trafficResetAt')}:{' '}
                               {new Date(purchase.expires_at).toLocaleDateString(undefined, {
                                 day: '2-digit',
@@ -1010,13 +1010,13 @@ export default function Subscription() {
                           style={{ background: g.trackBg }}
                         >
                           <div
-                            className="bg-accent-500 absolute inset-0 origin-left rounded-full transition-transform duration-500"
+                            className="absolute inset-0 origin-left rounded-full bg-accent-500 transition-transform duration-500"
                             style={{
                               transform: `scaleX(${purchase.progress_percent / 100})`,
                             }}
                           />
                         </div>
-                        <div className="text-dark-50/20 mt-1 flex justify-between font-mono text-[9px]">
+                        <div className="mt-1 flex justify-between font-mono text-[9px] text-dark-50/20">
                           <span>{new Date(purchase.created_at).toLocaleDateString()}</span>
                           <span>{new Date(purchase.expires_at).toLocaleDateString()}</span>
                         </div>
@@ -1036,10 +1036,10 @@ export default function Subscription() {
                   }}
                 >
                   <div>
-                    <div className="text-dark-50 text-sm font-semibold">
+                    <div className="text-sm font-semibold text-dark-50">
                       {t('subscription.autoRenewal')}
                     </div>
-                    <div className="text-dark-50/30 mt-0.5 text-[11px]">
+                    <div className="mt-0.5 text-[11px] text-dark-50/30">
                       {t('subscription.daysBeforeExpiry', {
                         count: subscription.autopay_days_before,
                       })}
@@ -1089,7 +1089,7 @@ export default function Subscription() {
           >
             <TrashIcon className="h-8 w-8" />
           </div>
-          <div className="text-dark-50/30 text-sm">{t('subscription.noSubscription')}</div>
+          <div className="text-sm text-dark-50/30">{t('subscription.noSubscription')}</div>
         </div>
       )}
 
@@ -1106,10 +1106,10 @@ export default function Subscription() {
         >
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-dark-50 text-base font-bold tracking-tight">
+              <h2 className="text-base font-bold tracking-tight text-dark-50">
                 {t('subscription.pause.title')}
               </h2>
-              <div className="text-dark-50/35 mt-1 text-[12px]">
+              <div className="mt-1 text-[12px] text-dark-50/35">
                 {subscription.is_limited
                   ? t('subscription.trafficLimited')
                   : subscription.status === 'disabled'
@@ -1201,7 +1201,7 @@ export default function Subscription() {
                   >
                     {t('subscription.pause.pausedInfo')}
                   </div>
-                  <div className="text-dark-50/35 mt-1 text-[12px]">
+                  <div className="mt-1 text-[12px] text-dark-50/35">
                     {t('subscription.pause.pausedDescription')}{' '}
                     {new Date(subscription.end_date).toLocaleDateString()} (
                     {t('subscription.pause.days', { count: subscription.days_left })})
@@ -1228,10 +1228,10 @@ export default function Subscription() {
               return (
                 <div className="mt-4">
                   <div className="mb-2 flex items-center justify-between">
-                    <span className="text-dark-50/35 text-[11px] font-medium tracking-wider uppercase">
+                    <span className="text-[11px] font-medium tracking-wider text-dark-50/35 uppercase">
                       {t('subscription.pause.nextCharge')}
                     </span>
-                    <span className="text-dark-50 font-mono text-[12px] font-semibold">
+                    <span className="font-mono text-[12px] font-semibold text-dark-50">
                       {hours > 0
                         ? `${hours}${t('subscription.pause.hours')} ${minutes}${t('subscription.pause.minutes')}`
                         : `${minutes}${t('subscription.pause.minutes')}`}
@@ -1251,7 +1251,7 @@ export default function Subscription() {
                     />
                   </div>
                   {subscription.daily_price_kopeks && (
-                    <div className="text-dark-50/25 mt-2 text-center text-[11px]">
+                    <div className="mt-2 text-center text-[11px] text-dark-50/25">
                       {t('subscription.pause.willBeCharged')}:{' '}
                       {formatPrice(subscription.daily_price_kopeks)}
                     </div>
@@ -1301,7 +1301,7 @@ export default function Subscription() {
               padding: '24px 28px',
             }}
           >
-            <h2 className="text-dark-50 mb-4 text-base font-bold tracking-tight">
+            <h2 className="mb-4 text-base font-bold tracking-tight text-dark-50">
               {t('subscription.additionalOptions.title')}
             </h2>
 
@@ -1384,14 +1384,14 @@ export default function Subscription() {
             <button
               onClick={handleRevoke}
               disabled={revokeMutation.isPending || revokeCooldown > 0}
-              className="border-warning-500/30 bg-warning-500/10 hover:bg-warning-500/20 w-full rounded-xl border p-4 text-left transition-colors disabled:opacity-50"
+              className="w-full rounded-xl border border-warning-500/30 bg-warning-500/10 p-4 text-left transition-colors hover:bg-warning-500/20 disabled:opacity-50"
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-warning-400 font-medium">
+                  <div className="font-medium text-warning-400">
                     {t('subscription.revoke.button')}
                   </div>
-                  <div className="text-dark-400 mt-1 text-sm">
+                  <div className="mt-1 text-sm text-dark-400">
                     {revokeCooldown > 0
                       ? t('subscription.revoke.cooldown', {
                           minutes: Math.floor(revokeCooldown / 60),
@@ -1402,7 +1402,7 @@ export default function Subscription() {
                 </div>
                 <div className="text-warning-400">
                   {revokeMutation.isPending ? (
-                    <div className="border-warning-400/30 h-5 w-5 animate-spin rounded-full border-2 border-t-amber-400" />
+                    <div className="h-5 w-5 animate-spin rounded-full border-2 border-warning-400/30 border-t-amber-400" />
                   ) : (
                     <svg
                       className="h-5 w-5"
@@ -1422,7 +1422,7 @@ export default function Subscription() {
               </div>
             </button>
             {revokeMutation.error && (
-              <p className="text-error-400 mt-2 text-sm">{getErrorMessage(revokeMutation.error)}</p>
+              <p className="mt-2 text-sm text-error-400">{getErrorMessage(revokeMutation.error)}</p>
             )}
           </div>
         )}
@@ -1439,7 +1439,7 @@ export default function Subscription() {
           }}
         >
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-dark-50 text-base font-bold tracking-tight">
+            <h2 className="text-base font-bold tracking-tight text-dark-50">
               {t('subscription.myDevices')}
             </h2>
             {devicesData && devicesData.devices.length > 0 && (
@@ -1477,7 +1477,7 @@ export default function Subscription() {
             </div>
           ) : devicesData && devicesData.devices.length > 0 ? (
             <div className="space-y-2">
-              <div className="text-dark-50/30 mb-2 font-mono text-[11px]">
+              <div className="mb-2 font-mono text-[11px] text-dark-50/30">
                 {devicesData.device_limit === 0
                   ? `${devicesData.total} · ∞`
                   : `${devicesData.total} / ${t('subscription.devices', { count: devicesData.device_limit })}`}
@@ -1541,20 +1541,20 @@ export default function Subscription() {
                                 setEditingDeviceName('');
                               }
                             }}
-                            className="text-dark-50 w-full rounded-md border-none bg-transparent px-2 py-1 text-sm font-semibold outline-none focus:ring-1"
+                            className="w-full rounded-md border-none bg-transparent px-2 py-1 text-sm font-semibold text-dark-50 outline-none focus:ring-1"
                             style={{
                               background: g.trackBg,
                               boxShadow: `inset 0 0 0 1px ${g.innerBorder}`,
                             }}
                           />
                         ) : (
-                          <div className="text-dark-50 truncate text-sm font-semibold">
+                          <div className="truncate text-sm font-semibold text-dark-50">
                             {displayName}
                           </div>
                         )}
-                        <div className="text-dark-50/30 mt-0.5 flex items-center gap-1.5 text-[11px]">
+                        <div className="mt-0.5 flex items-center gap-1.5 text-[11px] text-dark-50/30">
                           <span className="truncate">{device.platform}</span>
-                          <span className="text-dark-50/20 font-mono">
+                          <span className="font-mono text-dark-50/20">
                             {device.hwid.slice(0, 8).toUpperCase()}
                           </span>
                         </div>
@@ -1684,7 +1684,7 @@ export default function Subscription() {
               })}
             </div>
           ) : (
-            <div className="text-dark-50/25 py-8 text-center text-[12px]">
+            <div className="py-8 text-center text-[12px] text-dark-50/25">
               {t('subscription.noDevices')}
             </div>
           )}

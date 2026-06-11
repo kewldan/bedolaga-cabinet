@@ -214,7 +214,7 @@ export function ClassicPurchaseWizard({
       }}
     >
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-dark-50 text-base font-bold tracking-tight">
+        <h2 className="text-base font-bold tracking-tight text-dark-50">
           {subscription && !subscription.is_trial
             ? t('subscription.extend')
             : t('subscription.getSubscription')}
@@ -232,7 +232,7 @@ export function ClassicPurchaseWizard({
         <div className="space-y-6">
           {/* Step Indicator */}
           <div className="mb-6 flex items-center justify-between">
-            <div className="text-dark-400 text-sm">
+            <div className="text-sm text-dark-400">
               {t('subscription.step', { current: currentStepIndex + 1, total: steps.length })}
             </div>
             <div className="flex gap-2">
@@ -247,7 +247,7 @@ export function ClassicPurchaseWizard({
             </div>
           </div>
 
-          <div className="text-dark-100 mb-4 text-lg font-medium">{getStepLabel(currentStep)}</div>
+          <div className="mb-4 text-lg font-medium text-dark-100">{getStepLabel(currentStep)}</div>
 
           {/* Step: Period Selection */}
           {currentStep === 'period' && (
@@ -292,13 +292,13 @@ export function ClassicPurchaseWizard({
                         -{promoPeriod.percent}%
                       </div>
                     )}
-                    <div className="text-dark-100 text-lg font-semibold">{period.label}</div>
+                    <div className="text-lg font-semibold text-dark-100">{period.label}</div>
                     <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
-                      <span className="text-accent-400 font-medium">
+                      <span className="font-medium text-accent-400">
                         {formatPrice(promoPeriod.price)}
                       </span>
                       {promoPeriod.original && promoPeriod.original > promoPeriod.price && (
-                        <span className="text-dark-500 text-sm line-through">
+                        <span className="text-sm text-dark-500 line-through">
                           {formatPrice(promoPeriod.original)}
                         </span>
                       )}
@@ -336,11 +336,11 @@ export function ClassicPurchaseWizard({
                         -{promoTraffic.percent}%
                       </div>
                     )}
-                    <div className="text-dark-100 text-lg font-semibold">{option.label}</div>
+                    <div className="text-lg font-semibold text-dark-100">{option.label}</div>
                     <div className="mt-1 flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
                       <span className="text-accent-400">{formatPrice(promoTraffic.price)}</span>
                       {promoTraffic.original && promoTraffic.original > promoTraffic.price && (
-                        <span className="text-dark-500 text-xs line-through">
+                        <span className="text-xs text-dark-500 line-through">
                           {formatPrice(promoTraffic.original)}
                         </span>
                       )}
@@ -378,7 +378,7 @@ export function ClassicPurchaseWizard({
                           ? 'border-accent-500 bg-accent-500/10'
                           : server.is_available
                             ? 'border-dark-700/50 bg-dark-800/50 hover:border-dark-600'
-                            : 'border-dark-800/30 bg-dark-900/30 cursor-not-allowed opacity-50'
+                            : 'cursor-not-allowed border-dark-800/30 bg-dark-900/30 opacity-50'
                       }`}
                     >
                       {promoServer.percent && promoServer.percent > 0 ? (
@@ -401,18 +401,18 @@ export function ClassicPurchaseWizard({
                           {selectedServers.includes(server.uuid) && <CheckIcon />}
                         </div>
                         <div className="min-w-0">
-                          <div className="text-dark-100 truncate font-medium">
+                          <div className="truncate font-medium text-dark-100">
                             <Twemoji options={{ className: 'twemoji', folder: 'svg', ext: '.svg' }}>
                               {server.name}
                             </Twemoji>
                           </div>
                           <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                            <span className="text-accent-400 text-sm">
+                            <span className="text-sm text-accent-400">
                               {formatPrice(promoServer.price)}
                               {t('subscription.perMonth')}
                             </span>
                             {promoServer.original && promoServer.original > promoServer.price ? (
-                              <span className="text-dark-500 text-xs line-through">
+                              <span className="text-xs text-dark-500 line-through">
                                 {formatPrice(promoServer.original)}
                               </span>
                             ) : null}
@@ -439,8 +439,8 @@ export function ClassicPurchaseWizard({
                   -
                 </button>
                 <div className="text-center">
-                  <div className="text-dark-100 text-5xl font-bold">{selectedDevices}</div>
-                  <div className="text-dark-500 mt-2">{t('subscription.devices')}</div>
+                  <div className="text-5xl font-bold text-dark-100">{selectedDevices}</div>
+                  <div className="mt-2 text-dark-500">{t('subscription.devices')}</div>
                 </div>
                 <button
                   onClick={() =>
@@ -452,7 +452,7 @@ export function ClassicPurchaseWizard({
                   +
                 </button>
               </div>
-              <div className="text-dark-500 mt-4 space-y-1 text-center text-sm">
+              <div className="mt-4 space-y-1 text-center text-sm text-dark-500">
                 <div className="text-accent-400">
                   {t('subscription.devicesFree', { count: selectedPeriod.devices.min })}
                 </div>
@@ -471,14 +471,14 @@ export function ClassicPurchaseWizard({
             <div>
               {previewLoading ? (
                 <div className="flex items-center justify-center py-8">
-                  <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
+                  <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
                 </div>
               ) : preview ? (
-                <div className="bg-dark-800/50 space-y-4 rounded-xl p-5">
+                <div className="space-y-4 rounded-xl bg-dark-800/50 p-5">
                   {activeDiscount?.is_active && activeDiscount.discount_percent && (
-                    <div className="border-warning-500/30 bg-warning-500/10 flex items-center justify-center gap-2 rounded-lg border p-3">
+                    <div className="flex items-center justify-center gap-2 rounded-lg border border-warning-500/30 bg-warning-500/10 p-3">
                       <svg
-                        className="text-warning-400 h-4 w-4"
+                        className="h-4 w-4 text-warning-400"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -490,14 +490,14 @@ export function ClassicPurchaseWizard({
                           d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"
                         />
                       </svg>
-                      <span className="text-warning-400 text-sm font-medium">
+                      <span className="text-sm font-medium text-warning-400">
                         {t('promo.discountApplied')} -{activeDiscount.discount_percent}%
                       </span>
                     </div>
                   )}
 
                   {preview.breakdown.map((item, idx) => (
-                    <div key={idx} className="text-dark-300 flex justify-between">
+                    <div key={idx} className="flex justify-between text-dark-300">
                       <span>{item.label}</span>
                       <span>{item.value}</span>
                     </div>
@@ -510,16 +510,16 @@ export function ClassicPurchaseWizard({
                     );
 
                     return (
-                      <div className="border-dark-700/50 flex items-center justify-between border-t pt-4">
-                        <span className="text-dark-100 text-lg font-semibold">
+                      <div className="flex items-center justify-between border-t border-dark-700/50 pt-4">
+                        <span className="text-lg font-semibold text-dark-100">
                           {t('subscription.total')}
                         </span>
                         <div className="text-right">
-                          <div className="text-accent-400 text-2xl font-bold">
+                          <div className="text-2xl font-bold text-accent-400">
                             {formatPrice(promoTotal.price)}
                           </div>
                           {promoTotal.original && promoTotal.original > promoTotal.price && (
-                            <div className="text-dark-500 text-sm line-through">
+                            <div className="text-sm text-dark-500 line-through">
                               {formatPrice(promoTotal.original)}
                             </div>
                           )}
@@ -529,7 +529,7 @@ export function ClassicPurchaseWizard({
                   })()}
 
                   {preview.discount_label && (
-                    <div className="text-success-400 text-center text-sm">
+                    <div className="text-center text-sm text-success-400">
                       {preview.discount_label}
                     </div>
                   )}
@@ -541,7 +541,7 @@ export function ClassicPurchaseWizard({
                         compact
                       />
                     ) : preview.status_message ? (
-                      <div className="bg-error-500/10 text-error-400 rounded-lg px-4 py-3 text-center text-sm">
+                      <div className="rounded-lg bg-error-500/10 px-4 py-3 text-center text-sm text-error-400">
                         {preview.status_message}
                       </div>
                     ) : null)}
@@ -551,7 +551,7 @@ export function ClassicPurchaseWizard({
           )}
 
           {/* Navigation Buttons */}
-          <div className="border-dark-800/50 flex gap-3 border-t pt-4">
+          <div className="flex gap-3 border-t border-dark-800/50 pt-4">
             {!isFirstStep && (
               <button onClick={goToPrevStep} className="btn-secondary flex-1">
                 {t('common.back')}
@@ -591,7 +591,7 @@ export function ClassicPurchaseWizard({
           </div>
 
           {purchaseMutation.isError && (
-            <div className="text-error-400 text-center text-sm">
+            <div className="text-center text-sm text-error-400">
               {getErrorMessage(purchaseMutation.error)}
             </div>
           )}

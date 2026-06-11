@@ -94,7 +94,7 @@ export default function SubscriptionCardActive({
               {isUnlimited ? t('dashboard.unlimited') : t(zone.labelKey)}
             </span>
             {subscription.is_trial && (
-              <span className="border-accent-400/25 bg-accent-400/10 text-accent-400 inline-flex items-center gap-1 rounded-md border px-2 py-0.5 font-mono text-[9px] font-bold tracking-widest uppercase">
+              <span className="inline-flex items-center gap-1 rounded-md border border-accent-400/25 bg-accent-400/10 px-2 py-0.5 font-mono text-[9px] font-bold tracking-widest text-accent-400 uppercase">
                 <svg
                   width="10"
                   height="10"
@@ -116,7 +116,7 @@ export default function SubscriptionCardActive({
           </div>
 
           {/* Title */}
-          <h2 className="text-dark-50 text-lg font-bold tracking-tight">
+          <h2 className="text-lg font-bold tracking-tight text-dark-50">
             {t('dashboard.trafficUsageTitle')}
           </h2>
         </div>
@@ -131,17 +131,17 @@ export default function SubscriptionCardActive({
               >
                 &#8734;
               </div>
-              <div className="text-dark-50/30 mt-1 font-mono text-[11px]">
+              <div className="mt-1 font-mono text-[11px] text-dark-50/30">
                 {formatTraffic(usedGb)} {t('dashboard.usedSuffix')}
               </div>
             </>
           ) : (
             <>
-              <div className="font-display text-dark-50 text-[38px] leading-none font-extrabold tracking-tight">
+              <div className="font-display text-[38px] leading-none font-extrabold tracking-tight text-dark-50">
                 {animatedPercent.toFixed(0)}
-                <span className="text-dark-50/35 ml-px text-lg font-medium">%</span>
+                <span className="ml-px text-lg font-medium text-dark-50/35">%</span>
               </div>
-              <div className="text-dark-50/30 mt-0.5 font-mono text-[11px]">
+              <div className="mt-0.5 font-mono text-[11px] text-dark-50/30">
                 {formatTraffic(usedGb)} / {formatTraffic(subscription.traffic_limit_gb)}
               </div>
             </>
@@ -200,10 +200,10 @@ export default function SubscriptionCardActive({
 
           {/* Text */}
           <div className="min-w-0 flex-1">
-            <div className="text-dark-50 text-sm font-semibold tracking-tight">
+            <div className="text-sm font-semibold tracking-tight text-dark-50">
               {t('dashboard.connectDevice')}
             </div>
-            <div className="text-dark-50/30 mt-0.5 text-[11px]">
+            <div className="mt-0.5 text-[11px] text-dark-50/30">
               {subscription.device_limit === 0
                 ? t('dashboard.devicesConnectedUnlimited', { used: connectedDevices })
                 : t('dashboard.devicesOfMax', {
@@ -223,7 +223,7 @@ export default function SubscriptionCardActive({
 
           {/* Device indicator */}
           {subscription.device_limit === 0 ? (
-            <div className="text-dark-50/40 flex shrink-0 items-center text-lg" aria-hidden="true">
+            <div className="flex shrink-0 items-center text-lg text-dark-50/40" aria-hidden="true">
               ∞
             </div>
           ) : subscription.device_limit <= 10 ? (
@@ -280,10 +280,10 @@ export default function SubscriptionCardActive({
           >
             {t('dashboard.tariff')}
           </div>
-          <div className="text-dark-50 min-w-0 truncate text-base leading-tight font-bold tracking-tight">
+          <div className="min-w-0 truncate text-base leading-tight font-bold tracking-tight text-dark-50">
             {subscription.tariff_name || t('subscription.currentPlan')}
           </div>
-          <div className="text-dark-50/30 mt-0.5 font-mono text-[10px]">
+          <div className="mt-0.5 font-mono text-[10px] text-dark-50/30">
             {t('dashboard.validUntil', { date: formattedDate })}
           </div>
         </Link>
@@ -299,7 +299,7 @@ export default function SubscriptionCardActive({
                 : `1px solid ${g.innerBorder}`,
           }}
         >
-          <div className="text-dark-50/35 mb-1 flex items-center gap-1.5 text-[10px] font-medium tracking-wider uppercase">
+          <div className="mb-1 flex items-center gap-1.5 text-[10px] font-medium tracking-wider text-dark-50/35 uppercase">
             <div
               className="flex h-6 w-6 items-center justify-center rounded-[7px] transition-colors duration-300"
               style={{
@@ -324,7 +324,7 @@ export default function SubscriptionCardActive({
             >
               {daysLeft}
             </span>
-            <span className="text-dark-50/25 text-xs font-medium">
+            <span className="text-xs font-medium text-dark-50/25">
               {t('subscription.daysShort')}
             </span>
           </div>
@@ -336,7 +336,7 @@ export default function SubscriptionCardActive({
         <button
           onClick={() => refreshTrafficMutation.mutate()}
           disabled={refreshTrafficMutation.isPending || trafficRefreshCooldown > 0}
-          className="text-dark-50/35 hover:bg-dark-50/5 hover:text-dark-50/50 flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+          className="flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium text-dark-50/35 transition-colors hover:bg-dark-50/5 hover:text-dark-50/50 disabled:cursor-not-allowed disabled:opacity-50"
           aria-label={t('common.refresh')}
         >
           <RefreshIcon
@@ -346,7 +346,7 @@ export default function SubscriptionCardActive({
         </button>
         <Link
           to={`/subscriptions/${subscription.id}`}
-          className="text-dark-50/25 hover:text-dark-50/40 text-[11px] font-medium transition-colors"
+          className="text-[11px] font-medium text-dark-50/25 transition-colors hover:text-dark-50/40"
         >
           {t('dashboard.viewSubscription')} &rarr;
         </Link>
@@ -359,10 +359,10 @@ export default function SubscriptionCardActive({
           style={{ background: g.innerBg, border: `1px solid ${g.innerBorder}` }}
         >
           <div className="mb-2.5 flex items-center justify-between">
-            <span className="text-dark-50/40 text-[11px] font-medium tracking-wider uppercase">
+            <span className="text-[11px] font-medium tracking-wider text-dark-50/40 uppercase">
               {t('dashboard.usageLast14Days')}
             </span>
-            <span className="text-dark-50/25 font-mono text-[11px]">
+            <span className="font-mono text-[11px] text-dark-50/25">
               {t('dashboard.maxUsage', { amount: formatTraffic(Math.max(...dailyUsage)) })}
             </span>
           </div>

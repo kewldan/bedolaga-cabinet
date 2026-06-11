@@ -23,9 +23,9 @@ export function QuickToggles({ settings, onUpdate, disabled, className }: QuickT
 
   return (
     <div
-      className={cn('border-dark-700/40 bg-dark-800/30 rounded-xl border px-3 py-2.5', className)}
+      className={cn('rounded-xl border border-dark-700/40 bg-dark-800/30 px-3 py-2.5', className)}
     >
-      <span className="text-dark-500 mb-2 block text-[10px] font-semibold tracking-wider uppercase">
+      <span className="mb-2 block text-[10px] font-semibold tracking-wider text-dark-500 uppercase">
         {t('admin.settings.quickToggles')}
       </span>
       <div className="flex flex-wrap gap-2">

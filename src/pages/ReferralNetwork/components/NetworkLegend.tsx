@@ -30,7 +30,7 @@ export function NetworkLegend({ className }: NetworkLegendProps) {
       className={`rounded-xl border border-dark-700/50 bg-dark-900/80 p-3 backdrop-blur-md ${className ?? ''}`}
     >
       {/* Fill = Subscription status */}
-      <h4 className="mb-1.5 text-[10px] font-medium uppercase tracking-wider text-dark-500">
+      <h4 className="mb-1.5 text-[10px] font-medium tracking-wider text-dark-500 uppercase">
         {t('admin.referralNetwork.legend.fillTitle')}
       </h4>
       <div className="space-y-1">

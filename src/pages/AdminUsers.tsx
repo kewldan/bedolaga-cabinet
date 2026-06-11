@@ -48,10 +48,10 @@ function UserRow({ user, onClick, formatAmount }: UserRowProps) {
   return (
     <div
       onClick={onClick}
-      className="border-dark-700 bg-dark-800/50 hover:border-dark-600 hover:bg-dark-800 flex cursor-pointer items-start gap-3 rounded-xl border p-3 transition-all sm:items-center sm:gap-4 sm:p-4"
+      className="flex cursor-pointer items-start gap-3 rounded-xl border border-dark-700 bg-dark-800/50 p-3 transition-all hover:border-dark-600 hover:bg-dark-800 sm:items-center sm:gap-4 sm:p-4"
     >
       {/* Avatar */}
-      <div className="from-accent-500 to-accent-700 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-linear-to-br text-sm font-medium text-white sm:text-base">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-accent-500 to-accent-700 text-sm font-medium text-white sm:text-base">
         {user.first_name?.[0] || user.username?.[0] || '?'}
       </div>
 
@@ -59,14 +59,14 @@ function UserRow({ user, onClick, formatAmount }: UserRowProps) {
       <div className="min-w-0 flex-1">
         {/* Name and username */}
         <div className="mb-1 flex flex-col gap-0.5 sm:flex-row sm:items-center sm:gap-2">
-          <span className="text-dark-100 truncate font-medium">{user.full_name}</span>
+          <span className="truncate font-medium text-dark-100">{user.full_name}</span>
           {user.username && (
-            <span className="text-dark-500 truncate text-xs sm:text-xs">@{user.username}</span>
+            <span className="truncate text-xs text-dark-500 sm:text-xs">@{user.username}</span>
           )}
         </div>
 
         {/* Telegram ID - full width on mobile */}
-        <div className="text-dark-400 mb-1 flex items-center gap-1 text-xs sm:mb-0">
+        <div className="mb-1 flex items-center gap-1 text-xs text-dark-400 sm:mb-0">
           <TelegramIcon />
           <span className="truncate">{user.telegram_id}</span>
         </div>
@@ -100,10 +100,10 @@ function UserRow({ user, onClick, formatAmount }: UserRowProps) {
 
       {/* Balance - smaller on mobile, show inline */}
       <div className="shrink-0 text-right">
-        <div className="text-dark-100 text-sm font-medium sm:text-base">
+        <div className="text-sm font-medium text-dark-100 sm:text-base">
           {formatAmount(user.balance_rubles)}
         </div>
-        <div className="text-dark-500 hidden text-xs sm:block">
+        <div className="hidden text-xs text-dark-500 sm:block">
           {user.purchase_count > 0
             ? t('admin.users.purchaseCount', { count: user.purchase_count })
             : t('admin.users.noPurchases')}
@@ -165,14 +165,14 @@ export default function AdminUsers() {
           {!capabilities.hasBackButton && (
             <button
               onClick={() => navigate('/admin')}
-              className="border-dark-700 bg-dark-800 hover:border-dark-600 flex h-10 w-10 items-center justify-center rounded-xl border transition-colors"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-dark-700 bg-dark-800 transition-colors hover:border-dark-600"
             >
               <BackIcon />
             </button>
           )}
           <div>
-            <h1 className="text-dark-100 text-xl font-bold">{t('admin.users.title')}</h1>
-            <p className="text-dark-400 text-sm">{t('admin.users.subtitle')}</p>
+            <h1 className="text-xl font-bold text-dark-100">{t('admin.users.title')}</h1>
+            <p className="text-sm text-dark-400">{t('admin.users.subtitle')}</p>
           </div>
         </div>
         <button
@@ -180,7 +180,7 @@ export default function AdminUsers() {
             usersQuery.refetch();
             statsQuery.refetch();
           }}
-          className="hover:bg-dark-700 rounded-lg p-2 transition-colors"
+          className="rounded-lg p-2 transition-colors hover:bg-dark-700"
         >
           <RefreshIcon className={loading ? 'animate-spin' : ''} />
         </button>
@@ -236,9 +236,9 @@ export default function AdminUsers() {
                   setOffset(0);
                 }}
                 placeholder={t('admin.users.search')}
-                className="border-dark-700 bg-dark-800 text-dark-100 placeholder-dark-500 focus:border-dark-600 w-full rounded-xl border py-2 pr-4 pl-10 focus:outline-none"
+                className="w-full rounded-xl border border-dark-700 bg-dark-800 py-2 pr-4 pl-10 text-dark-100 placeholder-dark-500 focus:border-dark-600 focus:outline-none"
               />
-              <div className="text-dark-500 absolute top-1/2 left-3 -translate-y-1/2">
+              <div className="absolute top-1/2 left-3 -translate-y-1/2 text-dark-500">
                 <SearchIcon />
               </div>
             </div>
@@ -253,9 +253,9 @@ export default function AdminUsers() {
                   setOffset(0);
                 }}
                 placeholder={t('admin.users.searchEmail')}
-                className="border-dark-700 bg-dark-800 text-dark-100 placeholder-dark-500 focus:border-dark-600 w-full rounded-xl border py-2 pr-4 pl-10 focus:outline-none"
+                className="w-full rounded-xl border border-dark-700 bg-dark-800 py-2 pr-4 pl-10 text-dark-100 placeholder-dark-500 focus:border-dark-600 focus:outline-none"
               />
-              <div className="text-dark-500 absolute top-1/2 left-3 -translate-y-1/2">
+              <div className="absolute top-1/2 left-3 -translate-y-1/2 text-dark-500">
                 <SearchIcon />
               </div>
             </div>
@@ -269,7 +269,7 @@ export default function AdminUsers() {
               setStatusFilter(e.target.value);
               setOffset(0);
             }}
-            className="border-dark-700 bg-dark-800 text-dark-100 rounded-xl border px-3 py-2"
+            className="rounded-xl border border-dark-700 bg-dark-800 px-3 py-2 text-dark-100"
           >
             <option value="">{t('admin.users.filters.allStatuses')}</option>
             <option value="active">{t('admin.users.status.active')}</option>
@@ -282,7 +282,7 @@ export default function AdminUsers() {
               setSortBy(e.target.value);
               setOffset(0);
             }}
-            className="border-dark-700 bg-dark-800 text-dark-100 rounded-xl border px-3 py-2"
+            className="rounded-xl border border-dark-700 bg-dark-800 px-3 py-2 text-dark-100"
           >
             <option value="created_at">{t('admin.users.filters.byDate')}</option>
             <option value="balance">{t('admin.users.filters.byBalance')}</option>
@@ -296,10 +296,10 @@ export default function AdminUsers() {
       <div className="mb-4 space-y-2">
         {loading ? (
           <div className="flex justify-center py-12">
-            <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
+            <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
           </div>
         ) : users.length === 0 ? (
-          <div className="text-dark-400 py-12 text-center">{t('admin.users.noData')}</div>
+          <div className="py-12 text-center text-dark-400">{t('admin.users.noData')}</div>
         ) : (
           users.map((user) => (
             <UserRow
@@ -315,7 +315,7 @@ export default function AdminUsers() {
       {/* Pagination */}
       {totalPages > 1 && (
         <div className="flex items-center justify-between">
-          <div className="text-dark-400 text-sm">
+          <div className="text-sm text-dark-400">
             {t('admin.users.pagination.showing', {
               from: offset + 1,
               to: Math.min(offset + limit, total),
@@ -326,17 +326,17 @@ export default function AdminUsers() {
             <button
               onClick={() => setOffset(Math.max(0, offset - limit))}
               disabled={offset === 0}
-              className="border-dark-700 bg-dark-800 hover:bg-dark-700 rounded-lg border p-2 transition-colors disabled:opacity-50"
+              className="rounded-lg border border-dark-700 bg-dark-800 p-2 transition-colors hover:bg-dark-700 disabled:opacity-50"
             >
               <ChevronLeftIcon />
             </button>
-            <span className="text-dark-300 px-3 py-2">
+            <span className="px-3 py-2 text-dark-300">
               {currentPage} / {totalPages}
             </span>
             <button
               onClick={() => setOffset(offset + limit)}
               disabled={offset + limit >= total}
-              className="border-dark-700 bg-dark-800 hover:bg-dark-700 rounded-lg border p-2 transition-colors disabled:opacity-50"
+              className="rounded-lg border border-dark-700 bg-dark-800 p-2 transition-colors hover:bg-dark-700 disabled:opacity-50"
             >
               <ChevronRightIcon />
             </button>

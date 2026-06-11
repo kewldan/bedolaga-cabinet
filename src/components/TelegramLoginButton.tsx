@@ -422,7 +422,7 @@ export default function TelegramLoginButton({ referralCode }: TelegramLoginButto
 
   if (!botUsername || botUsername === 'your_bot') {
     return (
-      <div className="text-dark-400 py-4 text-center text-sm">
+      <div className="py-4 text-center text-sm text-dark-400">
         {t('auth.telegramNotConfigured')}
       </div>
     );
@@ -439,7 +439,7 @@ export default function TelegramLoginButton({ referralCode }: TelegramLoginButto
     return (
       <div className="flex flex-col items-center space-y-5">
         {/* Info message */}
-        <p className="text-dark-400 max-w-xs text-center text-xs">
+        <p className="max-w-xs text-center text-xs text-dark-400">
           {t('auth.telegramWidgetBlocked')}
         </p>
 
@@ -450,7 +450,7 @@ export default function TelegramLoginButton({ referralCode }: TelegramLoginButto
               <div className="rounded-2xl bg-white p-4">
                 <QRCodeSVG value={deepLinkUrl} size={180} level="M" includeMargin={false} />
               </div>
-              <p className="text-dark-500 text-[11px]">{t('auth.scanQrToLogin')}</p>
+              <p className="text-[11px] text-dark-500">{t('auth.scanQrToLogin')}</p>
             </div>
 
             {/* Open bot button */}
@@ -468,7 +468,7 @@ export default function TelegramLoginButton({ referralCode }: TelegramLoginButto
 
             {/* Manual command */}
             <div className="flex w-full max-w-xs flex-col items-center space-y-1.5">
-              <p className="text-dark-500 text-[11px]">{t('auth.orSendCommand')}</p>
+              <p className="text-[11px] text-dark-500">{t('auth.orSendCommand')}</p>
               <button
                 type="button"
                 onClick={() => {
@@ -480,10 +480,10 @@ export default function TelegramLoginButton({ referralCode }: TelegramLoginButto
                     })
                     .catch(() => {});
                 }}
-                className="group border-dark-700 bg-dark-800/50 hover:border-dark-600 flex w-full items-center justify-between rounded-lg border px-3 py-2 transition-colors"
+                className="group flex w-full items-center justify-between rounded-lg border border-dark-700 bg-dark-800/50 px-3 py-2 transition-colors hover:border-dark-600"
               >
-                <code className="text-dark-300 truncate text-xs">{startCommand}</code>
-                <span className="text-dark-500 group-hover:text-dark-300 ml-2 shrink-0 text-[10px] transition-colors">
+                <code className="truncate text-xs text-dark-300">{startCommand}</code>
+                <span className="ml-2 shrink-0 text-[10px] text-dark-500 transition-colors group-hover:text-dark-300">
                   {copied ? t('auth.commandCopied') : t('common.copy')}
                 </span>
               </button>
@@ -491,26 +491,26 @@ export default function TelegramLoginButton({ referralCode }: TelegramLoginButto
 
             {/* Polling status */}
             {deepLinkPolling && (
-              <div className="text-dark-400 flex items-center gap-2 text-xs">
-                <span className="border-accent-500 h-3 w-3 animate-spin rounded-full border-2 border-t-transparent" />
+              <div className="flex items-center gap-2 text-xs text-dark-400">
+                <span className="h-3 w-3 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
                 {t('auth.waitingForConfirmation')}
               </div>
             )}
           </>
         ) : deepLinkError ? (
           <div className="flex flex-col items-center space-y-2">
-            <p className="text-error-500 text-xs">{deepLinkError}</p>
+            <p className="text-xs text-error-500">{deepLinkError}</p>
             <button
               type="button"
               onClick={startDeepLinkAuth}
-              className="text-accent-400 hover:text-accent-300 text-sm transition-colors"
+              className="text-sm text-accent-400 transition-colors hover:text-accent-300"
             >
               {t('auth.tryAgain')}
             </button>
           </div>
         ) : (
-          <div className="text-dark-400 flex items-center gap-2 text-xs">
-            <span className="border-accent-500 h-3 w-3 animate-spin rounded-full border-2 border-t-transparent" />
+          <div className="flex items-center gap-2 text-xs text-dark-400">
+            <span className="h-3 w-3 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
             {t('common.loading')}
           </div>
         )}
@@ -542,14 +542,14 @@ export default function TelegramLoginButton({ referralCode }: TelegramLoginButto
             </svg>
             {oidcLoading ? t('common.loading') : t('auth.loginWithTelegram')}
           </button>
-          {oidcError && <p className="text-error-500 text-xs">{oidcError}</p>}
+          {oidcError && <p className="text-xs text-error-500">{oidcError}</p>}
         </div>
       ) : (
         <div ref={containerRef} className="flex justify-center" />
       )}
 
       <div className="text-center">
-        <p className="text-dark-400 mb-2 text-xs">{t('auth.orOpenInApp')}</p>
+        <p className="mb-2 text-xs text-dark-400">{t('auth.orOpenInApp')}</p>
         <a
           href={
             referralCode

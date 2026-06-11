@@ -48,7 +48,7 @@ export default function ConnectionQR() {
       <div className="flex flex-col items-center">
         <div className="flex w-full max-w-sm flex-col items-center px-6">
           {appName && (
-            <p className="mb-3 text-sm font-medium uppercase tracking-wider text-dark-400">
+            <p className="mb-3 text-sm font-medium tracking-wider text-dark-400 uppercase">
               {appName}
             </p>
           )}

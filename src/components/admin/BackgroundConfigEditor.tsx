@@ -37,7 +37,7 @@ function SettingField({
             onChange={(e) => onChange(parseFloat(e.target.value))}
             className="w-24 accent-accent-500"
           />
-          <span className="w-16 text-right text-xs tabular-nums text-dark-400">{displayVal}</span>
+          <span className="w-16 text-right text-xs text-dark-400 tabular-nums">{displayVal}</span>
         </div>
       </div>
     );
@@ -193,7 +193,7 @@ export function BackgroundConfigEditor({ value: config, onChange }: BackgroundCo
             <div className="space-y-4">
               {Array.from(categories.entries()).map(([category, defs]) => (
                 <div key={category}>
-                  <span className="mb-2 block text-xs font-medium uppercase tracking-wider text-dark-500">
+                  <span className="mb-2 block text-xs font-medium tracking-wider text-dark-500 uppercase">
                     {t(`admin.backgrounds.category${category.toUpperCase()}`)}
                   </span>
                   <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
@@ -257,7 +257,7 @@ export function BackgroundConfigEditor({ value: config, onChange }: BackgroundCo
                     onChange={(e) => updateConfig({ opacity: parseFloat(e.target.value) })}
                     className="w-24 accent-accent-500"
                   />
-                  <span className="w-14 text-right text-xs tabular-nums text-dark-400">
+                  <span className="w-14 text-right text-xs text-dark-400 tabular-nums">
                     {config.opacity}
                   </span>
                 </div>
@@ -275,7 +275,7 @@ export function BackgroundConfigEditor({ value: config, onChange }: BackgroundCo
                     onChange={(e) => updateConfig({ blur: Number(e.target.value) })}
                     className="w-24 accent-accent-500"
                   />
-                  <span className="w-14 text-right text-xs tabular-nums text-dark-400">
+                  <span className="w-14 text-right text-xs text-dark-400 tabular-nums">
                     {config.blur}px
                   </span>
                 </div>

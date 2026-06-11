@@ -68,7 +68,7 @@ export function AccordionBlock({
               }`}
             >
               <div className="px-4 pb-4">
-                <p className="whitespace-pre-line text-sm leading-relaxed text-dark-400">
+                <p className="text-sm leading-relaxed whitespace-pre-line text-dark-400">
                   {getLocalizedText(block.description)}
                 </p>
                 {renderBlockButtons(block.buttons, 'light')}

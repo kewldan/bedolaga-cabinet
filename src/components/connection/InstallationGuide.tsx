@@ -275,7 +275,7 @@ export default function InstallationGuide({
                   if (app) setSelectedApp(app);
                 }
               }}
-              className={`appearance-none rounded-xl border py-2 pr-8 text-sm font-medium outline-none transition-colors ${
+              className={`appearance-none rounded-xl border py-2 pr-8 text-sm font-medium transition-colors outline-none ${
                 isLight
                   ? 'border-dark-700/60 bg-white/80 text-dark-200 shadow-sm hover:border-dark-600'
                   : 'border-dark-700 bg-dark-800 text-dark-200 hover:border-dark-600'

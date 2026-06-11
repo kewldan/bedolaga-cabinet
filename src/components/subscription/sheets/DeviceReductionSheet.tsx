@@ -77,10 +77,10 @@ export function DeviceReductionSheet({
       >
         <div className="flex items-center justify-between">
           <div>
-            <div className="text-dark-100 font-medium">
+            <div className="font-medium text-dark-100">
               {t('subscription.additionalOptions.reduceDevices')}
             </div>
-            <div className="text-dark-400 mt-1 text-sm">
+            <div className="mt-1 text-sm text-dark-400">
               {t('subscription.additionalOptions.reduceDevicesDescription')}
             </div>
           </div>
@@ -95,12 +95,12 @@ export function DeviceReductionSheet({
       className={`rounded-xl border p-5 ${isDark ? 'border-dark-700/50 bg-dark-800/50' : 'border-champagne-300/60 bg-champagne-200/40'}`}
     >
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-dark-100 font-medium">
+        <h3 className="font-medium text-dark-100">
           {t('subscription.additionalOptions.reduceDevicesTitle')}
         </h3>
         <button
           onClick={onClose}
-          className="text-dark-400 hover:text-dark-200 text-sm"
+          className="text-sm text-dark-400 hover:text-dark-200"
           aria-label={t('common.close', 'Close')}
         >
           ✕
@@ -108,7 +108,7 @@ export function DeviceReductionSheet({
       </div>
 
       {deviceReductionInfo?.available === false ? (
-        <div className="text-dark-400 py-4 text-center text-sm">
+        <div className="py-4 text-center text-sm text-dark-400">
           {deviceReductionInfo.reason || t('subscription.additionalOptions.reduceUnavailable')}
         </div>
       ) : deviceReductionInfo ? (
@@ -139,8 +139,8 @@ export function DeviceReductionSheet({
               -
             </button>
             <div className="text-center">
-              <div className="text-dark-100 text-4xl font-bold">{targetDeviceLimit}</div>
-              <div className="text-dark-500 text-sm">
+              <div className="text-4xl font-bold text-dark-100">{targetDeviceLimit}</div>
+              <div className="text-sm text-dark-500">
                 {t('subscription.additionalOptions.devicesUnit')}
               </div>
             </div>
@@ -158,7 +158,7 @@ export function DeviceReductionSheet({
             </button>
           </div>
 
-          <div className="text-dark-400 space-y-1 text-center text-sm">
+          <div className="space-y-1 text-center text-sm text-dark-400">
             <div>
               {t('subscription.additionalOptions.currentDeviceLimit', {
                 count: deviceReductionInfo.current_device_limit,
@@ -177,7 +177,7 @@ export function DeviceReductionSheet({
           </div>
 
           {deviceReductionInfo.connected_devices_count > deviceReductionInfo.min_device_limit && (
-            <div className="bg-warning-500/10 text-warning-400 rounded-lg p-3 text-center text-sm">
+            <div className="rounded-lg bg-warning-500/10 p-3 text-center text-sm text-warning-400">
               {t('subscription.additionalOptions.disconnectDevicesFirst', {
                 count: deviceReductionInfo.connected_devices_count,
               })}
@@ -185,7 +185,7 @@ export function DeviceReductionSheet({
           )}
 
           <div className="text-center">
-            <div className="text-dark-400 text-sm">
+            <div className="text-sm text-dark-400">
               {t('subscription.additionalOptions.newDeviceLimit', {
                 count: targetDeviceLimit,
               })}
@@ -213,14 +213,14 @@ export function DeviceReductionSheet({
           </button>
 
           {reduceMutation.isError && (
-            <div className="text-error-400 text-center text-sm">
+            <div className="text-center text-sm text-error-400">
               {getErrorMessage(reduceMutation.error)}
             </div>
           )}
         </div>
       ) : (
         <div className="flex items-center justify-center py-4">
-          <span className="border-accent-400/30 border-t-accent-400 h-5 w-5 animate-spin rounded-full border-2" />
+          <span className="h-5 w-5 animate-spin rounded-full border-2 border-accent-400/30 border-t-accent-400" />
         </div>
       )}
     </div>

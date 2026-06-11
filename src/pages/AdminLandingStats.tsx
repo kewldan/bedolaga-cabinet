@@ -536,7 +536,7 @@ export default function AdminLandingStats() {
                 setPurchaseStatusFilter(e.target.value as PurchaseItemStatus | 'all');
                 setPurchaseOffset(0);
               }}
-              className="rounded-lg border border-dark-600 bg-dark-900 px-3 py-1.5 text-sm text-dark-200 outline-none transition-colors focus:border-accent-500"
+              className="rounded-lg border border-dark-600 bg-dark-900 px-3 py-1.5 text-sm text-dark-200 transition-colors outline-none focus:border-accent-500"
               aria-label={t('admin.landings.purchases.allStatuses')}
             >
               {PURCHASE_STATUS_OPTIONS.map((opt) => (

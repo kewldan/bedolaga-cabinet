@@ -210,9 +210,9 @@ function FaqAccordionItem({
         style={{ height }}
         className="overflow-hidden transition-[height] duration-300 ease-in-out"
       >
-        <div ref={contentRef} className="border-t border-dark-700/50 px-5 pb-4 pt-3">
+        <div ref={contentRef} className="border-t border-dark-700/50 px-5 pt-3 pb-4">
           <div
-            className="prose prose-sm max-w-none text-dark-300"
+            className="prose-sm prose max-w-none text-dark-300"
             dangerouslySetInnerHTML={{ __html: sanitizedAnswer }}
           />
         </div>
@@ -343,13 +343,13 @@ export default function InfoPageView() {
   if (isLoading) {
     return (
       <div className="space-y-6">
-        <div className="skeleton h-8 w-32 rounded-lg" />
-        <div className="skeleton h-10 w-3/4 rounded-lg" />
-        <div className="skeleton h-64 w-full rounded-xl" />
+        <div className="h-8 w-32 skeleton rounded-lg" />
+        <div className="h-10 w-3/4 skeleton rounded-lg" />
+        <div className="h-64 w-full skeleton rounded-xl" />
         <div className="space-y-3">
-          <div className="skeleton h-4 w-full rounded" />
-          <div className="skeleton h-4 w-5/6 rounded" />
-          <div className="skeleton h-4 w-4/6 rounded" />
+          <div className="h-4 w-full skeleton rounded" />
+          <div className="h-4 w-5/6 skeleton rounded" />
+          <div className="h-4 w-4/6 skeleton rounded" />
         </div>
       </div>
     );
@@ -391,7 +391,7 @@ export default function InfoPageView() {
       {/* Page header */}
       <div>
         {page.icon && <span className="mb-2 inline-block text-3xl">{page.icon}</span>}
-        <h1 className="text-2xl font-extrabold leading-tight text-dark-50 sm:text-3xl">
+        <h1 className="text-2xl leading-tight font-extrabold text-dark-50 sm:text-3xl">
           {resolvedTitle}
         </h1>
       </div>

@@ -49,10 +49,10 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
           {showCloseButton && (
             <PopoverPrimitive.Close
               className={cn(
-                'absolute right-2 top-2 rounded-linear p-1.5',
+                'absolute top-2 right-2 rounded-linear p-1.5',
                 'text-dark-400 opacity-70 transition-all',
                 'hover:bg-dark-800/80 hover:opacity-100',
-                'focus:outline-none focus:ring-2 focus:ring-accent-500/50',
+                'focus:ring-2 focus:ring-accent-500/50 focus:outline-none',
               )}
             >
               <CloseIcon />

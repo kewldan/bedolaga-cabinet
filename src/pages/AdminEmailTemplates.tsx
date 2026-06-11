@@ -47,22 +47,22 @@ function TemplateCard({
   return (
     <button
       onClick={onClick}
-      className="group border-dark-700 bg-dark-800 hover:border-accent-500/50 w-full rounded-xl border p-3 text-left transition-all duration-200 sm:p-4"
+      className="group w-full rounded-xl border border-dark-700 bg-dark-800 p-3 text-left transition-all duration-200 hover:border-accent-500/50 sm:p-4"
     >
       <div className="flex items-start justify-between gap-2 sm:gap-3">
         <div className="min-w-0 flex-1">
-          <h3 className="text-dark-100 group-hover:text-accent-400 truncate text-sm font-medium transition-colors">
+          <h3 className="truncate text-sm font-medium text-dark-100 transition-colors group-hover:text-accent-400">
             {label}
           </h3>
-          <p className="text-dark-400 mt-1 line-clamp-2 text-xs">{description}</p>
+          <p className="mt-1 line-clamp-2 text-xs text-dark-400">{description}</p>
         </div>
         <div className="mt-0.5 flex shrink-0 items-center gap-1 sm:gap-1.5">
           {Object.entries(template.languages).map(([lang, status]) => (
             <span
               key={lang}
-              className={`text-2xs inline-flex h-5 w-6 items-center justify-center rounded font-medium sm:w-7 ${
+              className={`inline-flex h-5 w-6 items-center justify-center rounded text-2xs font-medium sm:w-7 ${
                 status.has_custom
-                  ? 'bg-accent-500/20 text-accent-400 ring-accent-500/30 ring-1'
+                  ? 'bg-accent-500/20 text-accent-400 ring-1 ring-accent-500/30'
                   : 'bg-dark-700 text-dark-400'
               }`}
               title={`${LANG_FULL_LABELS[lang] || lang}: ${status.has_custom ? 'Custom' : 'Default'}`}
@@ -74,8 +74,8 @@ function TemplateCard({
       </div>
       {customCount > 0 && (
         <div className="mt-2">
-          <span className="bg-accent-500/10 text-2xs text-accent-400 inline-flex items-center gap-1 rounded-full px-2 py-0.5">
-            <span className="bg-accent-400 h-1.5 w-1.5 rounded-full" />
+          <span className="inline-flex items-center gap-1 rounded-full bg-accent-500/10 px-2 py-0.5 text-2xs text-accent-400">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent-400" />
             {customCount} custom
           </span>
         </div>
@@ -246,26 +246,26 @@ function TemplateEditor({
         <div className="flex min-w-0 items-start gap-2 sm:items-center sm:gap-3">
           <button
             onClick={onClose}
-            className="hover:bg-dark-700 mt-0.5 shrink-0 rounded-lg p-1 transition-colors sm:mt-0"
+            className="mt-0.5 shrink-0 rounded-lg p-1 transition-colors hover:bg-dark-700 sm:mt-0"
           >
             <BackIcon />
           </button>
           <div className="min-w-0">
-            <h2 className="text-dark-100 truncate text-base font-semibold sm:text-lg">{label}</h2>
-            <p className="text-dark-400 line-clamp-2 text-xs">
+            <h2 className="truncate text-base font-semibold text-dark-100 sm:text-lg">{label}</h2>
+            <p className="line-clamp-2 text-xs text-dark-400">
               {detail.description[interfaceLang] || detail.description['en'] || ''}
             </p>
           </div>
         </div>
         {langData && !langData.is_default && (
-          <span className="bg-accent-500/15 text-2xs text-accent-400 ring-accent-500/25 shrink-0 rounded-full px-2 py-1 font-medium ring-1 sm:px-2.5 sm:text-xs">
+          <span className="shrink-0 rounded-full bg-accent-500/15 px-2 py-1 text-2xs font-medium text-accent-400 ring-1 ring-accent-500/25 sm:px-2.5 sm:text-xs">
             Custom
           </span>
         )}
       </div>
 
       {/* Language tabs */}
-      <div className="bg-dark-900 flex items-center gap-1 overflow-x-auto rounded-lg p-1">
+      <div className="flex items-center gap-1 overflow-x-auto rounded-lg bg-dark-900 p-1">
         {Object.keys(detail.languages).map((lang) => {
           const isActive = lang === activeLang;
           const langInfo = detail.languages[lang];
@@ -286,7 +286,7 @@ function TemplateEditor({
               <span className="sm:hidden">{LANG_LABELS[lang] || lang}</span>
               <span className="hidden sm:inline">{LANG_FULL_LABELS[lang] || lang}</span>
               {!langInfo.is_default && (
-                <span className="bg-accent-400 h-1.5 w-1.5 shrink-0 rounded-full" />
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-400" />
               )}
             </button>
           );
@@ -294,7 +294,7 @@ function TemplateEditor({
       </div>
 
       {/* Editor / Preview tabs */}
-      <div className="bg-dark-900 flex items-center gap-1 rounded-lg p-1">
+      <div className="flex items-center gap-1 rounded-lg bg-dark-900 p-1">
         <button
           onClick={() => setActiveTab('editor')}
           className={`flex flex-1 items-center justify-center gap-1.5 rounded-md px-3 py-2 text-xs font-medium transition-all duration-150 sm:text-sm ${
@@ -322,15 +322,15 @@ function TemplateEditor({
       {activeTab === 'preview' ? (
         <div className="space-y-2">
           {previewSubject && (
-            <div className="border-dark-700 bg-dark-900/60 rounded-lg border px-3 py-2">
-              <span className="text-dark-400 text-xs">{t('admin.emailTemplates.subject')}: </span>
-              <span className="text-dark-100 text-sm">{previewSubject}</span>
+            <div className="rounded-lg border border-dark-700 bg-dark-900/60 px-3 py-2">
+              <span className="text-xs text-dark-400">{t('admin.emailTemplates.subject')}: </span>
+              <span className="text-sm text-dark-100">{previewSubject}</span>
             </div>
           )}
-          <div className="border-dark-700 overflow-hidden rounded-xl border bg-white">
+          <div className="overflow-hidden rounded-xl border border-dark-700 bg-white">
             {previewMutation.isPending ? (
-              <div className="bg-dark-800 flex h-[420px] items-center justify-center">
-                <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
+              <div className="flex h-[420px] items-center justify-center bg-dark-800">
+                <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
               </div>
             ) : (
               <iframe
@@ -347,7 +347,7 @@ function TemplateEditor({
         <>
           {/* Subject */}
           <div>
-            <label className="text-dark-300 mb-2 block text-sm font-medium">
+            <label className="mb-2 block text-sm font-medium text-dark-300">
               {t('admin.emailTemplates.subject')}
             </label>
             <input
@@ -364,17 +364,17 @@ function TemplateEditor({
 
           {/* Context variables hint: type-specific + common (available in all templates) */}
           {(detail.context_vars.length > 0 || (detail.common_context_vars?.length ?? 0) > 0) && (
-            <div className="border-dark-700 bg-dark-900/60 space-y-2.5 rounded-lg border p-2.5 sm:p-3">
+            <div className="space-y-2.5 rounded-lg border border-dark-700 bg-dark-900/60 p-2.5 sm:p-3">
               {detail.context_vars.length > 0 && (
                 <div>
-                  <p className="text-dark-300 mb-1.5 text-xs font-medium">
+                  <p className="mb-1.5 text-xs font-medium text-dark-300">
                     {t('admin.emailTemplates.variables')}
                   </p>
                   <div className="flex flex-wrap gap-1 sm:gap-1.5">
                     {detail.context_vars.map((v) => (
                       <code
                         key={v}
-                        className="bg-dark-700 text-accent-400 hover:bg-dark-600 cursor-pointer rounded px-2 py-0.5 font-mono text-xs transition-colors"
+                        className="cursor-pointer rounded bg-dark-700 px-2 py-0.5 font-mono text-xs text-accent-400 transition-colors hover:bg-dark-600"
                         title={t('admin.emailTemplates.clickToInsert')}
                         onClick={() => insertVariable(v)}
                       >
@@ -386,14 +386,14 @@ function TemplateEditor({
               )}
               {(detail.common_context_vars?.length ?? 0) > 0 && (
                 <div>
-                  <p className="text-dark-400 mb-1.5 text-xs font-medium">
+                  <p className="mb-1.5 text-xs font-medium text-dark-400">
                     {t('admin.emailTemplates.variablesCommon')}
                   </p>
                   <div className="flex flex-wrap gap-1 sm:gap-1.5">
                     {detail.common_context_vars!.map((v) => (
                       <code
                         key={v}
-                        className="bg-dark-800 text-dark-300 ring-dark-600 hover:bg-dark-700 hover:text-accent-400 cursor-pointer rounded px-2 py-0.5 font-mono text-xs ring-1 transition-colors"
+                        className="cursor-pointer rounded bg-dark-800 px-2 py-0.5 font-mono text-xs text-dark-300 ring-1 ring-dark-600 transition-colors hover:bg-dark-700 hover:text-accent-400"
                         title={t('admin.emailTemplates.clickToInsert')}
                         onClick={() => insertVariable(v)}
                       >
@@ -409,12 +409,12 @@ function TemplateEditor({
           {/* Body HTML editor */}
           <div>
             <div className="mb-2 flex items-center justify-between gap-2">
-              <label className="text-dark-300 block text-sm font-medium">
+              <label className="block text-sm font-medium text-dark-300">
                 {t('admin.emailTemplates.body')}
               </label>
               <button
                 onClick={insertDefaultTemplate}
-                className="text-dark-400 hover:text-accent-400 text-xs underline-offset-2 transition-colors hover:underline"
+                className="text-xs text-dark-400 underline-offset-2 transition-colors hover:text-accent-400 hover:underline"
               >
                 {t('admin.emailTemplates.insertDefault')}
               </button>
@@ -427,11 +427,11 @@ function TemplateEditor({
                 setIsDirty(true);
               }}
               rows={12}
-              className="input min-h-[200px] resize-y font-mono text-xs leading-relaxed sm:min-h-[300px] sm:text-sm"
+              className="min-h-[200px] input resize-y font-mono text-xs leading-relaxed sm:min-h-[300px] sm:text-sm"
               placeholder="<h2>Title</h2><p>Content...</p>"
               spellCheck={false}
             />
-            <p className="text-2xs text-dark-500 mt-1">{t('admin.emailTemplates.bodyHint')}</p>
+            <p className="mt-1 text-2xs text-dark-500">{t('admin.emailTemplates.bodyHint')}</p>
           </div>
         </>
       )}
@@ -442,7 +442,7 @@ function TemplateEditor({
           <button
             onClick={() => saveMutation.mutate()}
             disabled={!isDirty || saveMutation.isPending}
-            className="bg-accent-500 text-on-accent hover:bg-accent-600 inline-flex items-center justify-center gap-1.5 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-40 sm:px-4 sm:py-2"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-accent-500 px-3 py-2.5 text-sm font-medium text-on-accent transition-colors hover:bg-accent-600 disabled:cursor-not-allowed disabled:opacity-40 sm:px-4 sm:py-2"
           >
             <SaveIcon className="h-4 w-4" />
             {saveMutation.isPending ? t('common.loading') : t('common.save')}
@@ -456,7 +456,7 @@ function TemplateEditor({
                 }
               }}
               disabled={resetMutation.isPending}
-              className="bg-dark-700 text-warning-400 hover:bg-dark-600 inline-flex items-center justify-center gap-1.5 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors disabled:opacity-40 sm:px-4 sm:py-2"
+              className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-dark-700 px-3 py-2.5 text-sm font-medium text-warning-400 transition-colors hover:bg-dark-600 disabled:opacity-40 sm:px-4 sm:py-2"
             >
               <ResetIcon className="h-4 w-4" />
               <span className="truncate">{t('admin.emailTemplates.resetDefault')}</span>
@@ -466,8 +466,8 @@ function TemplateEditor({
       </div>
 
       {/* Test email */}
-      <div className="border-dark-700 bg-dark-900/60 rounded-lg border p-2.5 sm:p-3">
-        <p className="text-dark-300 mb-2 text-xs font-medium">
+      <div className="rounded-lg border border-dark-700 bg-dark-900/60 p-2.5 sm:p-3">
+        <p className="mb-2 text-xs font-medium text-dark-300">
           {t('admin.emailTemplates.sendTest')}
         </p>
         <div className="flex flex-col gap-2 sm:flex-row">
@@ -481,13 +481,13 @@ function TemplateEditor({
           <button
             onClick={() => testMutation.mutate()}
             disabled={testMutation.isPending}
-            className="bg-dark-700 text-dark-200 hover:bg-dark-600 inline-flex items-center justify-center gap-1.5 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors disabled:opacity-40 sm:px-4 sm:py-2"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-dark-700 px-3 py-2.5 text-sm font-medium text-dark-200 transition-colors hover:bg-dark-600 disabled:opacity-40 sm:px-4 sm:py-2"
           >
             <SendIcon className="h-4 w-4" />
             {testMutation.isPending ? t('common.loading') : t('admin.emailTemplates.sendTest')}
           </button>
         </div>
-        <p className="text-2xs text-dark-500 mt-1.5">{t('admin.emailTemplates.testHint')}</p>
+        <p className="mt-1.5 text-2xs text-dark-500">{t('admin.emailTemplates.testHint')}</p>
       </div>
     </div>
   );
@@ -517,16 +517,16 @@ export default function AdminEmailTemplates() {
     <div className="mx-auto max-w-4xl space-y-4 px-3 py-4 sm:space-y-6 sm:px-4 sm:py-6">
       {/* Page Header */}
       <div className="flex items-center gap-2 sm:gap-3">
-        <AdminBackButton className="border-dark-700 bg-dark-800 hover:bg-dark-700 shrink-0 rounded-xl border p-1.5 transition-colors sm:p-2" />
+        <AdminBackButton className="shrink-0 rounded-xl border border-dark-700 bg-dark-800 p-1.5 transition-colors hover:bg-dark-700 sm:p-2" />
         <div className="flex min-w-0 items-center gap-2 sm:gap-2.5">
-          <div className="from-accent-500/20 to-accent-600/10 text-accent-400 shrink-0 rounded-xl bg-linear-to-br p-1.5 sm:p-2">
+          <div className="shrink-0 rounded-xl bg-linear-to-br from-accent-500/20 to-accent-600/10 p-1.5 text-accent-400 sm:p-2">
             <MailIcon className="h-6 w-6" />
           </div>
           <div className="min-w-0">
-            <h1 className="text-dark-100 truncate text-lg font-bold sm:text-xl">
+            <h1 className="truncate text-lg font-bold text-dark-100 sm:text-xl">
               {t('admin.emailTemplates.title')}
             </h1>
-            <p className="text-dark-400 truncate text-xs">
+            <p className="truncate text-xs text-dark-400">
               {t('admin.emailTemplates.description')}
             </p>
           </div>
@@ -546,7 +546,7 @@ export default function AdminEmailTemplates() {
           {typesLoading ? (
             <div className="space-y-3">
               {[...Array(6)].map((_, i) => (
-                <div key={i} className="bg-dark-800 h-20 animate-pulse rounded-xl" />
+                <div key={i} className="h-20 animate-pulse rounded-xl bg-dark-800" />
               ))}
             </div>
           ) : (
@@ -567,7 +567,7 @@ export default function AdminEmailTemplates() {
       {/* Detail loading overlay */}
       {selectedType && detailLoading && (
         <div className="flex items-center justify-center py-16">
-          <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
         </div>
       )}
     </div>

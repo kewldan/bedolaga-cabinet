@@ -60,7 +60,7 @@ export function BreakdownList({ title, items, valueFormatter }: BreakdownListPro
                   <span className="shrink-0 text-sm font-semibold text-dark-100">
                     {valueFormatter ? valueFormatter(item.value) : item.value}
                   </span>
-                  <span className="w-12 shrink-0 text-right text-xs tabular-nums text-dark-500">
+                  <span className="w-12 shrink-0 text-right text-xs text-dark-500 tabular-nums">
                     {share.toFixed(1)}%
                   </span>
                 </div>

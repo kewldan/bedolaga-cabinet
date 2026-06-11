@@ -758,7 +758,7 @@ export default function AdminLandingEditor() {
                 </label>
                 {/* Period checkboxes from tariff detail */}
                 {selectedTariffIds.includes(tariff.id) && !tariff.is_daily && (
-                  <div className="ml-7 mt-2">
+                  <div className="mt-2 ml-7">
                     <span className="text-xs text-dark-500">{t('admin.landings.periods')}:</span>
                     {tariffPeriodsMap[tariff.id] ? (
                       <div className="mt-1 flex flex-wrap gap-2">
@@ -961,7 +961,7 @@ export default function AdminLandingEditor() {
                 {/* Preview */}
                 {selectedTariffIds.length > 0 && (
                   <div className="rounded-lg border border-dark-600 bg-dark-800/30 p-3">
-                    <p className="mb-2 text-xs font-medium uppercase tracking-wider text-dark-500">
+                    <p className="mb-2 text-xs font-medium tracking-wider text-dark-500 uppercase">
                       {t('admin.landings.discountPreview', 'Preview')}
                     </p>
                     {selectedTariffIds.slice(0, 3).map((tariffId) => {

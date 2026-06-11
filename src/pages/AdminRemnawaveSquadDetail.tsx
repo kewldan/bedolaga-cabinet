@@ -102,7 +102,7 @@ export default function AdminRemnawaveSquadDetail() {
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
           <div>
             <p className="text-sm text-dark-500">UUID</p>
-            <p className="break-all font-mono text-xs text-dark-200">{squad.uuid}</p>
+            <p className="font-mono text-xs break-all text-dark-200">{squad.uuid}</p>
           </div>
           <div>
             <p className="text-sm text-dark-500">

@@ -261,7 +261,7 @@ export default function AdminPartnerSettings() {
               onChange={(e) =>
                 setFormData({ ...formData, withdrawal_requisites_text: e.target.value })
               }
-              className="input min-h-[80px] w-full"
+              className="min-h-[80px] input w-full"
               maxLength={2000}
               disabled={!formData.withdrawal_enabled}
               placeholder={t('admin.partners.settingsFields.requisitesTextPlaceholder')}

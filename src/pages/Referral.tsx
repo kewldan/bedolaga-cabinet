@@ -429,7 +429,7 @@ export default function Referral() {
               </p>
               <button
                 onClick={() => navigate('/referral/partner/apply')}
-                className="btn-primary mt-4 px-6"
+                className="mt-4 btn-primary px-6"
               >
                 {t('referral.partner.applyButton')}
               </button>
@@ -509,7 +509,7 @@ export default function Referral() {
               )}
               <button
                 onClick={() => navigate('/referral/partner/apply')}
-                className="btn-primary mt-4 px-6"
+                className="mt-4 btn-primary px-6"
               >
                 {t('referral.partner.reapplyButton')}
               </button>

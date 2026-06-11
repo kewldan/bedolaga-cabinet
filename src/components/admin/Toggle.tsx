@@ -37,7 +37,7 @@ export function Toggle({
       >
         <div
           className={cn(
-            'absolute left-1 top-1 h-6 w-6 rounded-full bg-white transition-transform duration-200',
+            'absolute top-1 left-1 h-6 w-6 rounded-full bg-white transition-transform duration-200',
             checked ? 'translate-x-6' : 'translate-x-0',
           )}
         />

@@ -43,7 +43,7 @@ export function TimelineBlock({
             {/* Right column: content */}
             <div className={`min-w-0 flex-1 ${isLast ? '' : 'pb-6'}`}>
               <h3 className="font-semibold text-dark-100">{getLocalizedText(block.title)}</h3>
-              <p className="mt-1 whitespace-pre-line text-sm leading-relaxed text-dark-400">
+              <p className="mt-1 text-sm leading-relaxed whitespace-pre-line text-dark-400">
                 {getLocalizedText(block.description)}
               </p>
               {renderBlockButtons(block.buttons, 'light')}

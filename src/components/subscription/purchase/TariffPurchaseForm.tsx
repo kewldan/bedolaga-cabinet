@@ -248,7 +248,7 @@ export function TariffPurchaseForm({
                     >
                       {displayDiscount && displayDiscount > 0 && (
                         <div
-                          className={`absolute -right-2 -top-2 rounded-full px-2 py-0.5 text-xs font-medium text-white ${
+                          className={`absolute -top-2 -right-2 rounded-full px-2 py-0.5 text-xs font-medium text-white ${
                             promoPeriod.isPromoGroup ? 'bg-success-500' : 'bg-warning-500'
                           }`}
                         >
@@ -286,7 +286,7 @@ export function TariffPurchaseForm({
                   <div className="text-xs text-dark-400">
                     {t('subscription.noPeriodsAvailableHint')}
                   </div>
-                  <button onClick={onBack} className="btn-secondary mt-3 px-4 py-2 text-sm">
+                  <button onClick={onBack} className="mt-3 btn-secondary px-4 py-2 text-sm">
                     {t('subscription.chooseDifferentTariff')}
                   </button>
                 </div>

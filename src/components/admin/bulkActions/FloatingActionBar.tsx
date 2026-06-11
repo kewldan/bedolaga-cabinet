@@ -160,26 +160,26 @@ export function FloatingActionBar({
     <div className="fixed inset-x-0 bottom-0 z-9999 flex justify-center px-4 pb-[max(5rem,calc(4.5rem+env(safe-area-inset-bottom)))]">
       <div
         ref={menuRef}
-        className="border-dark-700/60 bg-dark-800/80 relative flex w-full max-w-2xl items-center gap-3 rounded-2xl border px-5 py-3 shadow-2xl backdrop-blur-xl"
+        className="relative flex w-full max-w-2xl items-center gap-3 rounded-2xl border border-dark-700/60 bg-dark-800/80 px-5 py-3 shadow-2xl backdrop-blur-xl"
       >
         <div className="flex items-center gap-2">
           {selectedUserCount > 0 && (
             <div className="flex items-center gap-1.5">
-              <div className="bg-accent-500/20 text-accent-400 flex h-8 w-8 items-center justify-center rounded-lg text-sm font-bold">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-500/20 text-sm font-bold text-accent-400">
                 {selectedUserCount}
               </div>
-              <span className="text-dark-300 hidden text-xs font-medium sm:inline">
+              <span className="hidden text-xs font-medium text-dark-300 sm:inline">
                 {t('admin.bulkActions.usersSelected', { count: selectedUserCount })}
               </span>
             </div>
           )}
           {isMultiTariff && selectedSubscriptionCount > 0 && (
             <div className="flex items-center gap-1.5">
-              {selectedUserCount > 0 && <div className="bg-dark-700 mx-1 h-4 w-px" />}
-              <div className="bg-success-500/20 text-success-400 flex h-8 w-8 items-center justify-center rounded-lg text-sm font-bold">
+              {selectedUserCount > 0 && <div className="mx-1 h-4 w-px bg-dark-700" />}
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-success-500/20 text-sm font-bold text-success-400">
                 {selectedSubscriptionCount}
               </div>
-              <span className="text-dark-300 hidden text-xs font-medium sm:inline">
+              <span className="hidden text-xs font-medium text-dark-300 sm:inline">
                 {t('admin.bulkActions.subscriptionsSelected', {
                   count: selectedSubscriptionCount,
                 })}
@@ -190,10 +190,10 @@ export function FloatingActionBar({
 
         {isMultiTariff && totalVisibleSubscriptionCount > 0 && (
           <>
-            <div className="bg-dark-700 mx-1 h-6 w-px" />
+            <div className="mx-1 h-6 w-px bg-dark-700" />
             <button
               onClick={onToggleAllSubscriptions}
-              className="text-dark-300 hover:bg-dark-700 hover:text-dark-200 shrink-0 rounded-lg px-2.5 py-1.5 text-[11px] font-medium transition-colors"
+              className="shrink-0 rounded-lg px-2.5 py-1.5 text-[11px] font-medium text-dark-300 transition-colors hover:bg-dark-700 hover:text-dark-200"
             >
               {selectedSubscriptionCount === totalVisibleSubscriptionCount &&
               selectedSubscriptionCount > 0
@@ -203,22 +203,22 @@ export function FloatingActionBar({
           </>
         )}
 
-        <div className="bg-dark-700 mx-2 h-6 w-px" />
+        <div className="mx-2 h-6 w-px bg-dark-700" />
 
         <div className="relative ml-auto">
           <button
             onClick={() => setOpen(!open)}
-            className="bg-accent-500 text-on-accent hover:bg-accent-600 flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-colors"
+            className="flex items-center gap-2 rounded-xl bg-accent-500 px-4 py-2 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-600"
           >
             {t('common.actions')}
             <ChevronDownIcon />
           </button>
 
           {open && (
-            <div className="border-dark-700 bg-dark-800 absolute right-0 bottom-full mb-2 w-64 overflow-hidden rounded-xl border py-1.5 shadow-2xl">
+            <div className="absolute right-0 bottom-full mb-2 w-64 overflow-hidden rounded-xl border border-dark-700 bg-dark-800 py-1.5 shadow-2xl">
               {isMultiTariff && (
-                <div className="border-dark-700/50 border-b px-4 py-1.5">
-                  <span className="text-dark-500 text-[10px] font-semibold tracking-wider uppercase">
+                <div className="border-b border-dark-700/50 px-4 py-1.5">
+                  <span className="text-[10px] font-semibold tracking-wider text-dark-500 uppercase">
                     {t('admin.bulkActions.subscriptionTarget')}
                   </span>
                 </div>
@@ -251,8 +251,8 @@ export function FloatingActionBar({
                 })}
 
               {isMultiTariff && (
-                <div className="border-dark-700/50 border-t border-b px-4 py-1.5">
-                  <span className="text-dark-500 text-[10px] font-semibold tracking-wider uppercase">
+                <div className="border-t border-b border-dark-700/50 px-4 py-1.5">
+                  <span className="text-[10px] font-semibold tracking-wider text-dark-500 uppercase">
                     {t('admin.bulkActions.userTarget')}
                   </span>
                 </div>

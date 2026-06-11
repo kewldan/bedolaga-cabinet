@@ -44,7 +44,7 @@ export function MinimalBlock({
               />
               <span className="font-medium text-dark-100">{getLocalizedText(block.title)}</span>
             </div>
-            <p className="whitespace-pre-line text-sm leading-relaxed text-dark-400">
+            <p className="text-sm leading-relaxed whitespace-pre-line text-dark-400">
               {getLocalizedText(block.description)}
             </p>
             {renderBlockButtons(block.buttons, 'subtle')}

@@ -222,7 +222,7 @@ export default function AdminPromocodeCreate() {
       </div>
 
       {/* Form */}
-      <div className="card space-y-4">
+      <div className="space-y-4 card">
         {/* Code */}
         <div>
           <label htmlFor="pc-code" className="mb-2 block text-sm font-medium text-dark-300">
@@ -519,7 +519,7 @@ export default function AdminPromocodeCreate() {
       </div>
 
       {/* Footer */}
-      <div className="card space-y-3">
+      <div className="space-y-3 card">
         {validationErrors.length > 0 && (
           <div className="rounded-lg border border-error-500/30 bg-error-500/10 p-3">
             <p className="mb-1 text-sm font-medium text-error-400">

@@ -106,13 +106,13 @@ function wrap(frame: Frame, key: number): ReactNode {
       return <s key={k}>{frame.children}</s>;
     case 'code':
       return (
-        <code key={k} className="bg-dark-950/30 rounded px-1 font-mono text-[0.92em]">
+        <code key={k} className="rounded bg-dark-950/30 px-1 font-mono text-[0.92em]">
           {frame.children}
         </code>
       );
     case 'pre':
       return (
-        <pre key={k} className="bg-dark-950/30 my-1 rounded p-2 font-mono text-[0.92em]">
+        <pre key={k} className="my-1 rounded bg-dark-950/30 p-2 font-mono text-[0.92em]">
           {frame.children}
         </pre>
       );
@@ -190,7 +190,7 @@ export function TelegramPreview({
   if (!open) return null;
   return createPortal(
     <div
-      className="bg-dark-950/70 fixed inset-0 z-9999 flex items-center justify-center p-4"
+      className="fixed inset-0 z-9999 flex items-center justify-center bg-dark-950/70 p-4"
       onClick={onClose}
     >
       <div
@@ -209,7 +209,7 @@ export function TelegramPreview({
           <button
             onClick={onClose}
             aria-label={t('common.close', 'Закрыть')}
-            className="text-dark-400 hover:bg-dark-700 flex h-9 w-9 items-center justify-center rounded"
+            className="flex h-9 w-9 items-center justify-center rounded text-dark-400 hover:bg-dark-700"
           >
             ✕
           </button>
@@ -268,7 +268,7 @@ export function EmailPreview({ open, onClose, subject, htmlContent }: EmailPrevi
   const emptyHtml = `<p style="color:#999;font-family:sans-serif">${t('admin.broadcasts.previewEmpty', '— пусто —')}</p>`;
   return createPortal(
     <div
-      className="bg-dark-950/70 fixed inset-0 z-9999 flex items-center justify-center p-4"
+      className="fixed inset-0 z-9999 flex items-center justify-center bg-dark-950/70 p-4"
       onClick={onClose}
     >
       <div

@@ -183,7 +183,7 @@ function DocumentEditor({
   });
 
   if (isLoading || !data) {
-    return <div className="skeleton h-64 w-full rounded-xl" />;
+    return <div className="h-64 w-full skeleton rounded-xl" />;
   }
 
   const languages = data.items.map((item) => item.language);
@@ -213,7 +213,7 @@ function DocumentEditor({
             setContents((prev) => ({ ...prev, [activeLang]: e.target.value }));
           }}
           rows={16}
-          className="input min-h-[320px] w-full font-mono text-sm"
+          className="min-h-[320px] input w-full font-mono text-sm"
           placeholder={t('admin.legalPages.contentPlaceholder')}
         />
       </div>
@@ -291,7 +291,7 @@ function RulesEditor({ onDirtyChange }: { onDirtyChange: (dirty: boolean) => voi
   });
 
   if (isLoading || !data) {
-    return <div className="skeleton h-64 w-full rounded-xl" />;
+    return <div className="h-64 w-full skeleton rounded-xl" />;
   }
 
   const languages = data.items.map((item) => item.language);
@@ -313,7 +313,7 @@ function RulesEditor({ onDirtyChange }: { onDirtyChange: (dirty: boolean) => voi
             setContents((prev) => ({ ...prev, [activeLang]: e.target.value }));
           }}
           rows={16}
-          className="input min-h-[320px] w-full font-mono text-sm"
+          className="min-h-[320px] input w-full font-mono text-sm"
           placeholder={t('admin.legalPages.contentPlaceholder')}
         />
       </div>
@@ -557,7 +557,7 @@ function FaqEditor({ onDirtyChange }: { onDirtyChange: (dirty: boolean) => void 
   });
 
   if (isLoading || !data) {
-    return <div className="skeleton h-64 w-full rounded-xl" />;
+    return <div className="h-64 w-full skeleton rounded-xl" />;
   }
 
   const languages = data.settings.map((s) => s.language);

@@ -122,16 +122,16 @@ export function BalanceTab({
   return (
     <div className="space-y-4">
       {/* Current balance */}
-      <div className="border-accent-500/30 from-accent-500/20 to-accent-700/20 rounded-xl border bg-linear-to-r p-4">
-        <div className="text-dark-400 mb-1 text-sm">{t('admin.users.detail.balance.current')}</div>
-        <div className="text-dark-100 text-3xl font-bold">
+      <div className="rounded-xl border border-accent-500/30 bg-linear-to-r from-accent-500/20 to-accent-700/20 p-4">
+        <div className="mb-1 text-sm text-dark-400">{t('admin.users.detail.balance.current')}</div>
+        <div className="text-3xl font-bold text-dark-100">
           {formatWithCurrency(user.balance_rubles)}
         </div>
       </div>
 
       {/* Add/subtract form */}
       {hasPermission('users:balance') && (
-        <div className="bg-dark-800/50 space-y-3 rounded-xl p-4">
+        <div className="space-y-3 rounded-xl bg-dark-800/50 p-4">
           <input
             type="number"
             value={balanceAmount}
@@ -151,14 +151,14 @@ export function BalanceTab({
             <button
               onClick={() => handleUpdateBalance(true)}
               disabled={actionLoading || balanceAmount === ''}
-              className="bg-success-500 hover:bg-success-600 flex flex-1 items-center justify-center gap-2 rounded-lg py-2 text-white transition-colors disabled:opacity-50"
+              className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-success-500 py-2 text-white transition-colors hover:bg-success-600 disabled:opacity-50"
             >
               <PlusIcon className="h-4 w-4" /> {t('admin.users.detail.balance.add')}
             </button>
             <button
               onClick={() => handleUpdateBalance(false)}
               disabled={actionLoading || balanceAmount === ''}
-              className="bg-error-500 hover:bg-error-600 flex flex-1 items-center justify-center gap-2 rounded-lg py-2 text-white transition-colors disabled:opacity-50"
+              className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-error-500 py-2 text-white transition-colors hover:bg-error-600 disabled:opacity-50"
             >
               <MinusIcon className="h-4 w-4" /> {t('admin.users.detail.balance.subtract')}
             </button>
@@ -168,9 +168,9 @@ export function BalanceTab({
 
       {/* Active promo offer */}
       {user.promo_offer_discount_percent > 0 && (
-        <div className="border-accent-500/20 bg-accent-500/5 rounded-xl border p-4">
+        <div className="rounded-xl border border-accent-500/20 bg-accent-500/5 p-4">
           <div className="mb-3 flex items-center justify-between">
-            <span className="text-accent-400 text-sm font-medium">
+            <span className="text-sm font-medium text-accent-400">
               {t('admin.users.detail.activePromoOffer')}
             </span>
             <button
@@ -189,24 +189,24 @@ export function BalanceTab({
           </div>
           <div className="grid grid-cols-3 gap-3 text-center">
             <div>
-              <div className="text-dark-100 text-lg font-bold">
+              <div className="text-lg font-bold text-dark-100">
                 {user.promo_offer_discount_percent}%
               </div>
-              <div className="text-dark-500 text-xs">{t('admin.users.detail.discount')}</div>
+              <div className="text-xs text-dark-500">{t('admin.users.detail.discount')}</div>
             </div>
             <div>
-              <div className="text-dark-100 text-sm font-medium">
+              <div className="text-sm font-medium text-dark-100">
                 {user.promo_offer_discount_source || '-'}
               </div>
-              <div className="text-dark-500 text-xs">{t('admin.users.detail.source')}</div>
+              <div className="text-xs text-dark-500">{t('admin.users.detail.source')}</div>
             </div>
             <div>
-              <div className="text-dark-100 text-sm font-medium">
+              <div className="text-sm font-medium text-dark-100">
                 {user.promo_offer_discount_expires_at
                   ? formatDate(user.promo_offer_discount_expires_at)
                   : '-'}
               </div>
-              <div className="text-dark-500 text-xs">{t('admin.users.detail.expiresAt')}</div>
+              <div className="text-xs text-dark-500">{t('admin.users.detail.expiresAt')}</div>
             </div>
           </div>
         </div>
@@ -214,8 +214,8 @@ export function BalanceTab({
 
       {/* Send promo offer */}
       {hasPermission('users:send_offer') && (
-        <div className="bg-dark-800/50 rounded-xl p-4">
-          <div className="text-dark-200 mb-3 text-sm font-medium">
+        <div className="rounded-xl bg-dark-800/50 p-4">
+          <div className="mb-3 text-sm font-medium text-dark-200">
             {t('admin.users.detail.sendOffer')}
           </div>
           <div className="space-y-3">
@@ -250,19 +250,19 @@ export function BalanceTab({
 
       {/* Recent transactions */}
       {user.recent_transactions.length > 0 && (
-        <div className="bg-dark-800/50 rounded-xl p-4">
-          <div className="text-dark-200 mb-3 font-medium">
+        <div className="rounded-xl bg-dark-800/50 p-4">
+          <div className="mb-3 font-medium text-dark-200">
             {t('admin.users.detail.balance.recentTransactions')}
           </div>
           <div className="max-h-48 space-y-2 overflow-y-auto">
             {user.recent_transactions.map((tx) => (
               <div
                 key={tx.id}
-                className="border-dark-700 flex items-center justify-between border-b py-2 last:border-0"
+                className="flex items-center justify-between border-b border-dark-700 py-2 last:border-0"
               >
                 <div>
-                  <div className="text-dark-200 text-sm">{tx.description || tx.type}</div>
-                  <div className="text-dark-500 text-xs">{formatDate(tx.created_at)}</div>
+                  <div className="text-sm text-dark-200">{tx.description || tx.type}</div>
+                  <div className="text-xs text-dark-500">{formatDate(tx.created_at)}</div>
                 </div>
                 <div className={tx.amount_kopeks >= 0 ? 'text-success-400' : 'text-error-400'}>
                   {tx.amount_kopeks >= 0 ? '+' : ''}

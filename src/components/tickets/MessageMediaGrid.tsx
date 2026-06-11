@@ -113,7 +113,7 @@ export function MessageMediaGrid({
               <button
                 key={`${item.file_id}-${visIdx}`}
                 type="button"
-                className="group bg-dark-800 relative aspect-square overflow-hidden rounded-lg"
+                className="group relative aspect-square overflow-hidden rounded-lg bg-dark-800"
                 onClick={() => openFullscreen(originalIdx)}
               >
                 <img
@@ -123,7 +123,7 @@ export function MessageMediaGrid({
                   loading="lazy"
                 />
                 {isLastVisible && (
-                  <div className="bg-dark-950/60 pointer-events-none absolute inset-0 flex items-center justify-center text-2xl font-semibold text-white">
+                  <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-dark-950/60 text-2xl font-semibold text-white">
                     +{hiddenCount}
                   </div>
                 )}
@@ -145,7 +145,7 @@ export function MessageMediaGrid({
                 className="max-h-64 max-w-full rounded-lg"
                 preload="metadata"
               />
-              {item.caption && <p className="text-dark-400 mt-1 text-xs">{item.caption}</p>}
+              {item.caption && <p className="mt-1 text-xs text-dark-400">{item.caption}</p>}
             </div>
           );
         }
@@ -155,7 +155,7 @@ export function MessageMediaGrid({
             href={mediaUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-dark-700 text-dark-200 hover:bg-dark-600 inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors"
+            className="inline-flex items-center gap-2 rounded-lg bg-dark-700 px-3 py-2 text-sm text-dark-200 transition-colors hover:bg-dark-600"
           >
             <DocumentIcon className="h-4 w-4" />
             {item.caption || `Download ${item.type}`}
@@ -167,7 +167,7 @@ export function MessageMediaGrid({
         photoItems[fullscreenIndex] &&
         createPortal(
           <div
-            className="bg-dark-950 fixed inset-0 z-9999"
+            className="fixed inset-0 z-9999 bg-dark-950"
             style={{ touchAction: 'pan-x pan-y pinch-zoom' }}
           >
             <button
@@ -196,7 +196,7 @@ export function MessageMediaGrid({
                 >
                   <ChevronRightIcon className="h-5 w-5" />
                 </button>
-                <div className="bg-dark-950/70 absolute bottom-6 left-1/2 z-10 -translate-x-1/2 rounded-full px-3 py-1 text-sm text-white">
+                <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 rounded-full bg-dark-950/70 px-3 py-1 text-sm text-white">
                   {fullscreenIndex + 1} / {photoItems.length}
                 </div>
               </>
@@ -223,7 +223,7 @@ export function MessageMediaGrid({
 
       {/* Fallback: error state */}
       {photoItems.length === 0 && otherItems.length === 0 && (
-        <div className="text-dark-400 text-xs">{translateError}</div>
+        <div className="text-xs text-dark-400">{translateError}</div>
       )}
     </div>
   );

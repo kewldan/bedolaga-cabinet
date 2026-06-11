@@ -121,7 +121,7 @@ export default function ReferralPartnerApply() {
             </label>
             <textarea
               id="rp-description"
-              className="input min-h-[80px] w-full"
+              className="min-h-[80px] input w-full"
               value={form.description ?? ''}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
               placeholder={t('referral.partner.fields.descriptionPlaceholder')}

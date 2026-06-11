@@ -95,7 +95,7 @@ function SortablePrizeCard({
       style={style}
       className={`group flex flex-col rounded-xl border ${
         isDragging
-          ? 'border-accent-500/50 bg-dark-800 shadow-accent-500/20 shadow-xl'
+          ? 'border-accent-500/50 bg-dark-800 shadow-xl shadow-accent-500/20'
           : prize.is_active
             ? 'border-dark-700/50 bg-dark-800/50'
             : 'border-dark-800/50 bg-dark-900/30 opacity-60'
@@ -107,7 +107,7 @@ function SortablePrizeCard({
         <button
           {...attributes}
           {...listeners}
-          className="text-dark-500 hover:bg-dark-700/50 hover:text-dark-300 shrink-0 cursor-grab touch-none rounded-lg p-1.5 active:cursor-grabbing sm:p-2.5"
+          className="shrink-0 cursor-grab touch-none rounded-lg p-1.5 text-dark-500 hover:bg-dark-700/50 hover:text-dark-300 active:cursor-grabbing sm:p-2.5"
           title={t('admin.wheel.prizes.dragToReorder')}
         >
           <GripVerticalIcon />
@@ -123,8 +123,8 @@ function SortablePrizeCard({
 
         {/* Prize info */}
         <div className="min-w-0 flex-1">
-          <div className="text-dark-100 truncate font-semibold">{prize.display_name}</div>
-          <div className="text-dark-400 truncate text-xs sm:text-sm">
+          <div className="truncate font-semibold text-dark-100">{prize.display_name}</div>
+          <div className="truncate text-xs text-dark-400 sm:text-sm">
             {t(`admin.wheel.prizes.types.${prize.prize_type}`)} •{' '}
             {(prize.prize_value_kopeks / 100).toFixed(0)}₽
           </div>
@@ -141,7 +141,7 @@ function SortablePrizeCard({
           </button>
           <button
             onClick={onDelete}
-            className="btn-ghost text-error-400 hover:bg-error-500/10 p-1.5 sm:p-2"
+            className="btn-ghost p-1.5 text-error-400 hover:bg-error-500/10 sm:p-2"
             title={t('common.delete')}
           >
             <TrashIcon />
@@ -151,7 +151,7 @@ function SortablePrizeCard({
 
       {/* Expanded edit form */}
       {isExpanded && (
-        <div className="border-dark-700 bg-dark-800/50 border-t p-4">
+        <div className="border-t border-dark-700 bg-dark-800/50 p-4">
           <InlinePrizeForm
             prize={prize}
             onSave={onSave}
@@ -370,13 +370,13 @@ export default function AdminWheel() {
   if (isLoading) {
     return (
       <div className="flex min-h-[400px] items-center justify-center">
-        <div className="border-accent-500 h-10 w-10 animate-spin rounded-full border-2 border-t-transparent" />
+        <div className="h-10 w-10 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
       </div>
     );
   }
 
   if (!config) {
-    return <div className="text-dark-400 py-12 text-center">{t('wheel.errors.loadFailed')}</div>;
+    return <div className="py-12 text-center text-dark-400">{t('wheel.errors.loadFailed')}</div>;
   }
 
   return (
@@ -388,12 +388,12 @@ export default function AdminWheel() {
           {!capabilities.hasBackButton && (
             <button
               onClick={() => navigate('/admin')}
-              className="border-dark-700 bg-dark-800 hover:border-dark-600 flex h-10 w-10 items-center justify-center rounded-xl border transition-colors"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-dark-700 bg-dark-800 transition-colors hover:border-dark-600"
             >
               <BackIcon />
             </button>
           )}
-          <h1 className="text-dark-50 text-xl font-bold sm:text-2xl">{t('admin.wheel.title')}</h1>
+          <h1 className="text-xl font-bold text-dark-50 sm:text-2xl">{t('admin.wheel.title')}</h1>
         </div>
         <div className="flex items-center gap-2">
           <span
@@ -410,12 +410,12 @@ export default function AdminWheel() {
 
       {/* Tabs */}
       <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
-        <div className="border-dark-700 flex gap-1 border-b pb-2 sm:gap-2">
+        <div className="flex gap-1 border-b border-dark-700 pb-2 sm:gap-2">
           <button
             onClick={() => setActiveTab('settings')}
             className={`flex items-center gap-1.5 rounded-t-lg px-3 py-2 text-sm whitespace-nowrap transition-colors sm:gap-2 sm:px-4 sm:text-base ${
               activeTab === 'settings'
-                ? 'border-accent-500 bg-dark-800 text-accent-400 border-b-2'
+                ? 'border-b-2 border-accent-500 bg-dark-800 text-accent-400'
                 : 'text-dark-400 hover:text-dark-200'
             }`}
           >
@@ -426,7 +426,7 @@ export default function AdminWheel() {
             onClick={() => setActiveTab('prizes')}
             className={`flex items-center gap-1.5 rounded-t-lg px-3 py-2 text-sm whitespace-nowrap transition-colors sm:gap-2 sm:px-4 sm:text-base ${
               activeTab === 'prizes'
-                ? 'border-accent-500 bg-dark-800 text-accent-400 border-b-2'
+                ? 'border-b-2 border-accent-500 bg-dark-800 text-accent-400'
                 : 'text-dark-400 hover:text-dark-200'
             }`}
           >
@@ -437,7 +437,7 @@ export default function AdminWheel() {
             onClick={() => setActiveTab('statistics')}
             className={`flex items-center gap-1.5 rounded-t-lg px-3 py-2 text-sm whitespace-nowrap transition-colors sm:gap-2 sm:px-4 sm:text-base ${
               activeTab === 'statistics'
-                ? 'border-accent-500 bg-dark-800 text-accent-400 border-b-2'
+                ? 'border-b-2 border-accent-500 bg-dark-800 text-accent-400'
                 : 'text-dark-400 hover:text-dark-200'
             }`}
           >
@@ -449,14 +449,14 @@ export default function AdminWheel() {
 
       {/* Settings Tab */}
       {activeTab === 'settings' && (
-        <div className="card space-y-6 p-6">
+        <div className="space-y-6 card p-6">
           {/* Enable toggle */}
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-dark-100 font-semibold">
+              <h3 className="font-semibold text-dark-100">
                 {t('admin.wheel.settings.enableWheel')}
               </h3>
-              <p className="text-dark-400 text-sm">{t('admin.wheel.settings.allowSpins')}</p>
+              <p className="text-sm text-dark-400">{t('admin.wheel.settings.allowSpins')}</p>
             </div>
             <button
               type="button"
@@ -481,13 +481,13 @@ export default function AdminWheel() {
 
           {/* Spin Cost Section */}
           <div className="space-y-4">
-            <h3 className="text-dark-400 flex items-center gap-2 text-sm font-medium">
+            <h3 className="flex items-center gap-2 text-sm font-medium text-dark-400">
               <StarIcon className="h-4 w-4" />
               {t('admin.wheel.settings.spinCost')}
             </h3>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <div>
-                <label className="text-dark-300 mb-2 block text-sm font-medium">
+                <label className="mb-2 block text-sm font-medium text-dark-300">
                   {t('admin.wheel.settings.costInStars')}
                 </label>
                 <div className="flex gap-2">
@@ -521,15 +521,15 @@ export default function AdminWheel() {
                           prev ? { ...prev, spin_cost_stars_enabled: e.target.checked } : null,
                         )
                       }
-                      className="border-dark-600 rounded"
+                      className="rounded border-dark-600"
                     />
-                    <span className="text-dark-400 text-sm">{t('admin.wheel.enabled')}</span>
+                    <span className="text-sm text-dark-400">{t('admin.wheel.enabled')}</span>
                   </label>
                 </div>
               </div>
 
               <div>
-                <label className="text-dark-300 mb-2 block text-sm font-medium">
+                <label className="mb-2 block text-sm font-medium text-dark-300">
                   {t('admin.wheel.settings.costInDays')}
                 </label>
                 <div className="flex gap-2">
@@ -561,9 +561,9 @@ export default function AdminWheel() {
                           prev ? { ...prev, spin_cost_days_enabled: e.target.checked } : null,
                         )
                       }
-                      className="border-dark-600 rounded"
+                      className="rounded border-dark-600"
                     />
-                    <span className="text-dark-400 text-sm">{t('admin.wheel.enabled')}</span>
+                    <span className="text-sm text-dark-400">{t('admin.wheel.enabled')}</span>
                   </label>
                 </div>
               </div>
@@ -574,13 +574,13 @@ export default function AdminWheel() {
 
           {/* Limits & RTP Section */}
           <div className="space-y-4">
-            <h3 className="text-dark-400 flex items-center gap-2 text-sm font-medium">
+            <h3 className="flex items-center gap-2 text-sm font-medium text-dark-400">
               <AdjustmentsIcon className="h-4 w-4" />
               {t('admin.wheel.settings.limitsAndRtp')}
             </h3>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <div>
-                <label className="text-dark-300 mb-2 block text-sm font-medium">
+                <label className="mb-2 block text-sm font-medium text-dark-300">
                   {t('admin.wheel.settings.rtpPercent')}
                 </label>
                 <input
@@ -595,9 +595,9 @@ export default function AdminWheel() {
                   }
                   className="w-full"
                 />
-                <div className="text-dark-400 flex justify-between text-sm">
+                <div className="flex justify-between text-sm text-dark-400">
                   <span>0%</span>
-                  <span className="text-accent-400 font-bold">
+                  <span className="font-bold text-accent-400">
                     {settingsForm?.rtp_percent ?? config.rtp_percent}%
                   </span>
                   <span>100%</span>
@@ -605,7 +605,7 @@ export default function AdminWheel() {
               </div>
 
               <div>
-                <label className="text-dark-300 mb-2 block text-sm font-medium">
+                <label className="mb-2 block text-sm font-medium text-dark-300">
                   {t('admin.wheel.settings.dailyLimit')}
                 </label>
                 <input
@@ -628,7 +628,7 @@ export default function AdminWheel() {
               </div>
 
               <div>
-                <label className="text-dark-300 mb-2 block text-sm font-medium">
+                <label className="mb-2 block text-sm font-medium text-dark-300">
                   {t('admin.wheel.settings.minSubDays')}
                 </label>
                 <input
@@ -661,13 +661,13 @@ export default function AdminWheel() {
 
           {/* Promocodes Section */}
           <div className="space-y-4">
-            <h3 className="text-dark-400 flex items-center gap-2 text-sm font-medium">
+            <h3 className="flex items-center gap-2 text-sm font-medium text-dark-400">
               <TicketIcon className="h-4 w-4" />
               {t('admin.wheel.settings.promocodes')}
             </h3>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <div>
-                <label className="text-dark-300 mb-2 block text-sm font-medium">
+                <label className="mb-2 block text-sm font-medium text-dark-300">
                   {t('admin.wheel.settings.promoPrefix')}
                 </label>
                 <input
@@ -683,7 +683,7 @@ export default function AdminWheel() {
                 />
               </div>
               <div>
-                <label className="text-dark-300 mb-2 block text-sm font-medium">
+                <label className="mb-2 block text-sm font-medium text-dark-300">
                   {t('admin.wheel.settings.promoValidityDays')}
                 </label>
                 <input
@@ -707,7 +707,7 @@ export default function AdminWheel() {
 
           {/* Save Button */}
           {hasSettingsChanges && (
-            <div className="border-dark-700 flex justify-end border-t pt-6">
+            <div className="flex justify-end border-t border-dark-700 pt-6">
               <button
                 onClick={async () => {
                   if (!settingsForm) return;
@@ -762,7 +762,7 @@ export default function AdminWheel() {
           {/* Prize list */}
           <div className="space-y-4">
             <div className="flex items-center justify-between gap-2">
-              <p className="text-dark-400 text-sm">{t('admin.wheel.prizes.dragToReorder')}</p>
+              <p className="text-sm text-dark-400">{t('admin.wheel.prizes.dragToReorder')}</p>
               <button
                 onClick={() => setIsCreating(true)}
                 className="btn-primary flex shrink-0 items-center gap-2"
@@ -774,12 +774,12 @@ export default function AdminWheel() {
 
             {/* Unsaved order changes banner */}
             {hasUnsavedOrder && (
-              <div className="border-warning-500/30 bg-warning-500/10 flex items-center gap-3 rounded-xl border p-4">
+              <div className="flex items-center gap-3 rounded-xl border border-warning-500/30 bg-warning-500/10 p-4">
                 <div className="flex-1">
-                  <p className="text-warning-400 text-sm font-medium">
+                  <p className="text-sm font-medium text-warning-400">
                     {t('admin.wheel.prizes.unsavedOrder')}
                   </p>
-                  <p className="text-warning-400/70 text-xs">
+                  <p className="text-xs text-warning-400/70">
                     {t('admin.wheel.prizes.unsavedOrderHint')}
                   </p>
                 </div>
@@ -840,7 +840,7 @@ export default function AdminWheel() {
             </DndContext>
 
             {config.prizes.length === 0 && !isCreating && (
-              <div className="text-dark-400 py-12 text-center">
+              <div className="py-12 text-center text-dark-400">
                 {t('admin.wheel.prizes.noPrizes')}
               </div>
             )}
@@ -849,7 +849,7 @@ export default function AdminWheel() {
           {/* Wheel Preview */}
           <div className="hidden lg:sticky lg:top-24 lg:block">
             <div className="card p-4">
-              <h3 className="text-dark-400 mb-4 text-sm font-medium">{t('admin.wheel.preview')}</h3>
+              <h3 className="mb-4 text-sm font-medium text-dark-400">{t('admin.wheel.preview')}</h3>
               <div className="mx-auto max-w-[250px]">
                 <FortuneWheel
                   prizes={config.prizes}
@@ -866,12 +866,12 @@ export default function AdminWheel() {
       {/* Statistics Tab */}
       {activeTab === 'statistics' && statsLoading && (
         <div className="flex justify-center py-12">
-          <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
         </div>
       )}
 
       {activeTab === 'statistics' && !statsLoading && statsError && (
-        <div className="bento-card text-error-400 py-8 text-center">
+        <div className="bento-card py-8 text-center text-error-400">
           {t('admin.wheel.statistics.loadError')}
         </div>
       )}
@@ -881,7 +881,7 @@ export default function AdminWheel() {
         !statsError &&
         stats &&
         stats.total_spins === 0 && (
-          <div className="bento-card text-dark-400 py-12 text-center">
+          <div className="bento-card py-12 text-center text-dark-400">
             {t('admin.wheel.statistics.empty')}
           </div>
         )}
@@ -1002,8 +1002,8 @@ function InlinePrizeForm({
     <form onSubmit={handleSubmit} className={`space-y-4 ${!prize ? 'card p-4' : ''}`}>
       {/* Header for new prize */}
       {!prize && (
-        <div className="border-dark-700 flex items-center justify-between border-b pb-3">
-          <h3 className="text-dark-100 font-semibold">{t('admin.wheel.prizes.addPrize')}</h3>
+        <div className="flex items-center justify-between border-b border-dark-700 pb-3">
+          <h3 className="font-semibold text-dark-100">{t('admin.wheel.prizes.addPrize')}</h3>
           <button type="button" onClick={onCancel} className="btn-ghost p-1">
             <XMarkIcon />
           </button>
@@ -1014,7 +1014,7 @@ function InlinePrizeForm({
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {/* Prize type */}
         <div>
-          <label className="text-dark-300 mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium text-dark-300">
             {t('admin.wheel.prizes.fields.type')}
           </label>
           <select
@@ -1032,7 +1032,7 @@ function InlinePrizeForm({
 
         {/* Display name */}
         <div>
-          <label className="text-dark-300 mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium text-dark-300">
             {t('admin.wheel.prizes.fields.displayName')}
           </label>
           <input
@@ -1049,7 +1049,7 @@ function InlinePrizeForm({
         {/* Prize value */}
         {formData.prize_type !== 'nothing' && (
           <div>
-            <label className="text-dark-300 mb-2 block text-sm font-medium">
+            <label className="mb-2 block text-sm font-medium text-dark-300">
               {t('admin.wheel.prizes.fields.value')} (
               {formData.prize_type === 'balance_bonus'
                 ? 'kopeks'
@@ -1075,7 +1075,7 @@ function InlinePrizeForm({
 
         {/* Prize value in kopeks (for RTP calculation) */}
         <div>
-          <label className="text-dark-300 mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium text-dark-300">
             {t('admin.wheel.prizes.fields.valueKopeks')}
           </label>
           <input
@@ -1090,14 +1090,14 @@ function InlinePrizeForm({
             min={0}
             className="input w-full"
           />
-          <p className="text-dark-500 mt-1 text-xs">
+          <p className="mt-1 text-xs text-dark-500">
             = {(toNumber(formData.prize_value_kopeks) / 100).toFixed(2)} RUB
           </p>
         </div>
 
         {/* Emoji */}
         <div>
-          <label className="text-dark-300 mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium text-dark-300">
             {t('admin.wheel.prizes.fields.emoji')}
           </label>
           <input
@@ -1124,16 +1124,16 @@ function InlinePrizeForm({
           id={`is_active_${prize?.id || 'new'}`}
           checked={formData.is_active}
           onChange={(e) => setFormData({ ...formData, is_active: e.target.checked })}
-          className="border-dark-600 rounded"
+          className="rounded border-dark-600"
         />
-        <label htmlFor={`is_active_${prize?.id || 'new'}`} className="text-dark-300 text-sm">
+        <label htmlFor={`is_active_${prize?.id || 'new'}`} className="text-sm text-dark-300">
           {t('admin.wheel.prizes.fields.active')}
         </label>
       </div>
 
       {/* Manual probability override (optional; empty = auto by RTP) */}
       <div>
-        <label className="text-dark-300 mb-2 block text-sm font-medium">
+        <label className="mb-2 block text-sm font-medium text-dark-300">
           {t('admin.wheel.prizes.fields.probability')}
         </label>
         <input
@@ -1153,18 +1153,18 @@ function InlinePrizeForm({
           placeholder="0.00 – 1.00"
           className="input w-full sm:w-1/2"
         />
-        <p className="text-dark-500 mt-1 text-xs">
+        <p className="mt-1 text-xs text-dark-500">
           {t('admin.wheel.prizes.fields.probabilityHint')}
         </p>
       </div>
 
       {/* Promocode settings */}
       {formData.prize_type === 'promocode' && (
-        <div className="bg-dark-700/50 space-y-3 rounded-lg p-3">
-          <h4 className="text-dark-200 font-medium">{t('admin.wheel.prizes.promo.title')}</h4>
+        <div className="space-y-3 rounded-lg bg-dark-700/50 p-3">
+          <h4 className="font-medium text-dark-200">{t('admin.wheel.prizes.promo.title')}</h4>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <div>
-              <label className="text-dark-300 mb-2 block text-sm font-medium">
+              <label className="mb-2 block text-sm font-medium text-dark-300">
                 {t('admin.wheel.prizes.promo.balanceBonus')}
               </label>
               <input
@@ -1182,7 +1182,7 @@ function InlinePrizeForm({
               />
             </div>
             <div>
-              <label className="text-dark-300 mb-2 block text-sm font-medium">
+              <label className="mb-2 block text-sm font-medium text-dark-300">
                 {t('admin.wheel.prizes.promo.subscriptionDays')}
               </label>
               <input
@@ -1204,7 +1204,7 @@ function InlinePrizeForm({
       )}
 
       {/* Action buttons */}
-      <div className="border-dark-700 flex justify-end gap-2 border-t pt-4">
+      <div className="flex justify-end gap-2 border-t border-dark-700 pt-4">
         <button
           type="button"
           onClick={onCancel}

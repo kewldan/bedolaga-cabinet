@@ -150,7 +150,7 @@ export default function SuccessNotificationModal() {
   const modalContent = (
     <div className="fixed inset-0 z-100 flex items-center justify-center">
       {/* Backdrop */}
-      <div className="bg-dark-950/80 absolute inset-0 backdrop-blur-sm" onClick={handleClose} />
+      <div className="absolute inset-0 bg-dark-950/80 backdrop-blur-sm" onClick={handleClose} />
 
       {/* Modal */}
       <div
@@ -159,7 +159,7 @@ export default function SuccessNotificationModal() {
         aria-modal="true"
         aria-labelledby="success-modal-title"
         tabIndex={-1}
-        className="border-dark-700/50 bg-dark-900 relative mx-4 w-full max-w-sm overflow-hidden rounded-3xl border shadow-2xl"
+        className="relative mx-4 w-full max-w-sm overflow-hidden rounded-3xl border border-dark-700/50 bg-dark-900 shadow-2xl"
         style={{
           marginBottom: safeBottom ? `${safeBottom}px` : undefined,
         }}
@@ -169,7 +169,7 @@ export default function SuccessNotificationModal() {
         <button
           onClick={handleClose}
           aria-label={t('common.close')}
-          className="text-dark-400 hover:bg-dark-800 hover:text-dark-200 absolute top-3 right-3 z-10 rounded-xl p-2 transition-colors"
+          className="absolute top-3 right-3 z-10 rounded-xl p-2 text-dark-400 transition-colors hover:bg-dark-800 hover:text-dark-200"
         >
           <CloseIcon />
         </button>
@@ -191,7 +191,7 @@ export default function SuccessNotificationModal() {
         <div className="space-y-4 p-6">
           {/* Amount */}
           {formattedAmount && (
-            <div className="bg-dark-800/50 flex items-center justify-between rounded-xl px-4 py-3">
+            <div className="flex items-center justify-between rounded-xl bg-dark-800/50 px-4 py-3">
               <span className="text-dark-400">
                 {isBalanceTopup
                   ? t('successNotification.amount', 'Amount')
@@ -208,7 +208,7 @@ export default function SuccessNotificationModal() {
 
           {/* Devices info (for devices purchase) */}
           {isDevicesPurchased && data.devicesAdded && (
-            <div className="bg-dark-800/50 flex items-center justify-between rounded-xl px-4 py-3">
+            <div className="flex items-center justify-between rounded-xl bg-dark-800/50 px-4 py-3">
               <span className="text-dark-400">
                 {t('successNotification.devicesAdded', 'Devices added')}
               </span>
@@ -217,50 +217,50 @@ export default function SuccessNotificationModal() {
           )}
 
           {isDevicesPurchased && data.newDeviceLimit && (
-            <div className="bg-dark-800/50 flex items-center justify-between rounded-xl px-4 py-3">
+            <div className="flex items-center justify-between rounded-xl bg-dark-800/50 px-4 py-3">
               <span className="text-dark-400">
                 {t('successNotification.totalDevices', 'Total devices')}
               </span>
-              <span className="text-dark-100 font-semibold">{data.newDeviceLimit}</span>
+              <span className="font-semibold text-dark-100">{data.newDeviceLimit}</span>
             </div>
           )}
 
           {/* Traffic info (for traffic purchase) */}
           {isTrafficPurchased && data.trafficGbAdded && (
-            <div className="bg-dark-800/50 flex items-center justify-between rounded-xl px-4 py-3">
+            <div className="flex items-center justify-between rounded-xl bg-dark-800/50 px-4 py-3">
               <span className="text-dark-400">
                 {t('successNotification.trafficAdded', 'Traffic added')}
               </span>
-              <span className="text-success-400 text-lg font-bold">+{data.trafficGbAdded} GB</span>
+              <span className="text-lg font-bold text-success-400">+{data.trafficGbAdded} GB</span>
             </div>
           )}
 
           {isTrafficPurchased && data.newTrafficLimitGb && (
-            <div className="bg-dark-800/50 flex items-center justify-between rounded-xl px-4 py-3">
+            <div className="flex items-center justify-between rounded-xl bg-dark-800/50 px-4 py-3">
               <span className="text-dark-400">
                 {t('successNotification.totalTraffic', 'Total traffic')}
               </span>
-              <span className="text-dark-100 font-semibold">{data.newTrafficLimitGb} GB</span>
+              <span className="font-semibold text-dark-100">{data.newTrafficLimitGb} GB</span>
             </div>
           )}
 
           {/* New balance (for top-up) */}
           {isBalanceTopup && formattedBalance && (
-            <div className="bg-dark-800/50 flex items-center justify-between rounded-xl px-4 py-3">
+            <div className="flex items-center justify-between rounded-xl bg-dark-800/50 px-4 py-3">
               <span className="text-dark-400">
                 {t('successNotification.newBalance', 'New balance')}
               </span>
-              <span className="text-dark-100 text-lg font-bold">{formattedBalance}</span>
+              <span className="text-lg font-bold text-dark-100">{formattedBalance}</span>
             </div>
           )}
 
           {/* Tariff name */}
           {data.tariffName && (
-            <div className="bg-dark-800/50 flex items-center justify-between gap-3 rounded-xl px-4 py-3">
-              <span className="text-dark-400 shrink-0">
+            <div className="flex items-center justify-between gap-3 rounded-xl bg-dark-800/50 px-4 py-3">
+              <span className="shrink-0 text-dark-400">
                 {t('successNotification.tariff', 'Tariff')}
               </span>
-              <span className="text-dark-100 min-w-0 truncate font-semibold">
+              <span className="min-w-0 truncate font-semibold text-dark-100">
                 {data.tariffName}
               </span>
             </div>
@@ -268,11 +268,11 @@ export default function SuccessNotificationModal() {
 
           {/* Expiry date */}
           {formattedExpiry && (
-            <div className="bg-dark-800/50 flex items-center justify-between rounded-xl px-4 py-3">
+            <div className="flex items-center justify-between rounded-xl bg-dark-800/50 px-4 py-3">
               <span className="text-dark-400">
                 {t('successNotification.validUntil', 'Valid until')}
               </span>
-              <span className="text-dark-100 font-semibold">{formattedExpiry}</span>
+              <span className="font-semibold text-dark-100">{formattedExpiry}</span>
             </div>
           )}
 
@@ -281,7 +281,7 @@ export default function SuccessNotificationModal() {
             {isSubscription && (
               <button
                 onClick={handleGoToSubscription}
-                className="bg-accent-500 text-on-accent shadow-accent-500/25 hover:bg-accent-400 active:bg-accent-600 flex w-full items-center justify-center gap-2 rounded-xl py-3.5 font-bold shadow-lg transition-colors"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent-500 py-3.5 font-bold text-on-accent shadow-lg shadow-accent-500/25 transition-colors hover:bg-accent-400 active:bg-accent-600"
               >
                 <RocketIcon className="h-8 w-8" />
                 <span>{t('successNotification.goToSubscription', 'Go to Subscription')}</span>
@@ -291,7 +291,7 @@ export default function SuccessNotificationModal() {
             {isBalanceTopup && (
               <button
                 onClick={handleGoToBalance}
-                className="bg-success-500 shadow-success-500/25 hover:bg-success-400 active:bg-success-600 flex w-full items-center justify-center gap-2 rounded-xl py-3.5 font-bold text-white shadow-lg transition-colors"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-success-500 py-3.5 font-bold text-white shadow-lg shadow-success-500/25 transition-colors hover:bg-success-400 active:bg-success-600"
               >
                 <WalletIcon className="h-8 w-8" />
                 <span>{t('successNotification.goToBalance', 'Go to Balance')}</span>
@@ -301,7 +301,7 @@ export default function SuccessNotificationModal() {
             {isDevicesPurchased && (
               <button
                 onClick={handleGoToSubscription}
-                className="bg-accent-500 text-on-accent shadow-accent-500/25 hover:bg-accent-400 active:bg-accent-600 flex w-full items-center justify-center gap-2 rounded-xl py-3.5 font-bold shadow-lg transition-colors"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent-500 py-3.5 font-bold text-on-accent shadow-lg shadow-accent-500/25 transition-colors hover:bg-accent-400 active:bg-accent-600"
               >
                 <DevicesIcon className="h-8 w-8" />
                 <span>{t('successNotification.goToSubscription', 'Go to Subscription')}</span>
@@ -311,7 +311,7 @@ export default function SuccessNotificationModal() {
             {isTrafficPurchased && (
               <button
                 onClick={handleGoToSubscription}
-                className="bg-success-500 shadow-success-500/25 hover:bg-success-400 active:bg-success-600 flex w-full items-center justify-center gap-2 rounded-xl py-3.5 font-bold text-white shadow-lg transition-colors"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-success-500 py-3.5 font-bold text-white shadow-lg shadow-success-500/25 transition-colors hover:bg-success-400 active:bg-success-600"
               >
                 <TrafficIcon className="h-8 w-8" />
                 <span>{t('successNotification.goToSubscription', 'Go to Subscription')}</span>
@@ -320,7 +320,7 @@ export default function SuccessNotificationModal() {
 
             <button
               onClick={handleClose}
-              className="bg-dark-800 text-dark-300 hover:bg-dark-700 hover:text-dark-100 w-full rounded-xl py-3 font-semibold transition-colors"
+              className="w-full rounded-xl bg-dark-800 py-3 font-semibold text-dark-300 transition-colors hover:bg-dark-700 hover:text-dark-100"
             >
               {t('common.close', 'Close')}
             </button>

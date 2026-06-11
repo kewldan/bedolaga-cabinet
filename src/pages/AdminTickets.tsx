@@ -508,7 +508,7 @@ export default function AdminTickets() {
               </div>
 
               {/* Messages */}
-              <div className="scrollbar-hide mb-4 max-h-[400px] flex-1 space-y-4 overflow-y-auto">
+              <div className="mb-4 scrollbar-hide max-h-[400px] flex-1 space-y-4 overflow-y-auto">
                 {selectedTicket.messages.map((msg) => (
                   <div
                     key={msg.id}
@@ -582,7 +582,7 @@ export default function AdminTickets() {
                           <button
                             type="button"
                             onClick={() => removeAttachment(idx)}
-                            className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-dark-600 text-dark-300 hover:bg-error-500 hover:text-white"
+                            className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-dark-600 text-dark-300 hover:bg-error-500 hover:text-white"
                           >
                             <XIcon className="h-3 w-3" />
                           </button>

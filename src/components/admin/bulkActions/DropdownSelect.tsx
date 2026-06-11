@@ -31,7 +31,7 @@ export function DropdownSelect({ value, options, onChange, className }: Dropdown
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="border-dark-700 bg-dark-800 text-dark-100 focus:border-accent-500/40 w-full appearance-none rounded-xl border px-3 py-2.5 pr-8 text-sm transition-colors outline-none focus:shadow-[0_0_0_3px_rgba(var(--rt-accent-500),0.08)]"
+        className="w-full appearance-none rounded-xl border border-dark-700 bg-dark-800 px-3 py-2.5 pr-8 text-sm text-dark-100 transition-colors outline-none focus:border-accent-500/40 focus:shadow-[0_0_0_3px_rgba(var(--rt-accent-500),0.08)]"
       >
         {options.map((o) => (
           <option key={o.value} value={o.value}>
@@ -39,7 +39,7 @@ export function DropdownSelect({ value, options, onChange, className }: Dropdown
           </option>
         ))}
       </select>
-      <div className="text-dark-500 pointer-events-none absolute top-1/2 right-2.5 -translate-y-1/2">
+      <div className="pointer-events-none absolute top-1/2 right-2.5 -translate-y-1/2 text-dark-500">
         <ChevronDownIcon className="h-4 w-4" />
       </div>
     </div>

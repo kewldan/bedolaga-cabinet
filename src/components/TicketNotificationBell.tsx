@@ -230,7 +230,7 @@ export default function TicketNotificationBell({ isAdmin = false }: TicketNotifi
       >
         <BellIcon />
         {unreadCount > 0 && (
-          <span className="animate-scale-in-bounce bg-error-500 absolute -top-0.5 -right-0.5 flex h-[18px] min-w-[18px] items-center justify-center rounded-full px-1 text-xs font-bold text-white">
+          <span className="absolute -top-0.5 -right-0.5 flex h-[18px] min-w-[18px] animate-scale-in-bounce items-center justify-center rounded-full bg-error-500 px-1 text-xs font-bold text-white">
             {unreadCount > 99 ? '99+' : unreadCount}
           </span>
         )}
@@ -239,19 +239,19 @@ export default function TicketNotificationBell({ isAdmin = false }: TicketNotifi
       {/* Dropdown */}
       {isOpen && (
         <div
-          className="animate-scale-in border-dark-700/50 bg-dark-900/95 fixed right-4 left-4 z-50 mt-0 w-auto overflow-hidden rounded-2xl border shadow-2xl shadow-black/30 backdrop-blur-xl sm:absolute sm:top-auto sm:right-0 sm:left-auto sm:mt-2 sm:w-96"
+          className="fixed right-4 left-4 z-50 mt-0 w-auto animate-scale-in overflow-hidden rounded-2xl border border-dark-700/50 bg-dark-900/95 shadow-2xl shadow-black/30 backdrop-blur-xl sm:absolute sm:top-auto sm:right-0 sm:left-auto sm:mt-2 sm:w-96"
           style={isMobileFullscreen ? { top: dropdownTop } : undefined}
         >
           {/* Header */}
-          <div className="border-dark-700/50 bg-dark-800/30 flex items-center justify-between border-b px-4 py-3">
-            <h3 className="text-dark-100 text-sm font-semibold">
+          <div className="flex items-center justify-between border-b border-dark-700/50 bg-dark-800/30 px-4 py-3">
+            <h3 className="text-sm font-semibold text-dark-100">
               {t('notifications.ticketNotifications', 'Ticket Notifications')}
             </h3>
             {unreadCount > 0 && (
               <button
                 onClick={() => markAllReadMutation.mutate()}
                 disabled={markAllReadMutation.isPending}
-                className="text-accent-400 hover:text-accent-300 flex items-center gap-1.5 text-xs transition-colors disabled:opacity-50"
+                className="flex items-center gap-1.5 text-xs text-accent-400 transition-colors hover:text-accent-300 disabled:opacity-50"
               >
                 <CheckIcon />
                 {t('notifications.markAllRead', 'Mark all read')}
@@ -262,35 +262,35 @@ export default function TicketNotificationBell({ isAdmin = false }: TicketNotifi
           {/* Notifications list */}
           <div className="max-h-80 overflow-y-auto">
             {isLoading ? (
-              <div className="text-dark-500 p-8 text-center">
-                <div className="border-accent-500 mx-auto h-6 w-6 animate-spin rounded-full border-2 border-t-transparent"></div>
+              <div className="p-8 text-center text-dark-500">
+                <div className="mx-auto h-6 w-6 animate-spin rounded-full border-2 border-accent-500 border-t-transparent"></div>
               </div>
             ) : notificationsData?.items && notificationsData.items.length > 0 ? (
               notificationsData.items.map((notification: TicketNotification) => (
                 <button
                   key={notification.id}
                   onClick={() => handleNotificationClick(notification)}
-                  className={`border-dark-800/50 hover:bg-dark-800/50 w-full border-b px-4 py-3 text-left transition-all duration-200 last:border-b-0 ${
+                  className={`w-full border-b border-dark-800/50 px-4 py-3 text-left transition-all duration-200 last:border-b-0 hover:bg-dark-800/50 ${
                     !notification.is_read ? 'bg-accent-500/5' : ''
                   }`}
                 >
                   <div className="flex gap-3">
-                    <div className="bg-dark-800/50 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-dark-800/50">
                       {getNotificationIcon(notification.notification_type)}
                     </div>
                     <div className="min-w-0 flex-1">
                       <p
-                        className={`text-sm leading-relaxed ${!notification.is_read ? 'text-dark-100 font-medium' : 'text-dark-300'}`}
+                        className={`text-sm leading-relaxed ${!notification.is_read ? 'font-medium text-dark-100' : 'text-dark-300'}`}
                       >
                         {notification.message}
                       </p>
-                      <p className="text-dark-500 mt-1 text-xs">
+                      <p className="mt-1 text-xs text-dark-500">
                         {formatTime(notification.created_at)}
                       </p>
                     </div>
                     {!notification.is_read && (
                       <div className="shrink-0 pt-1">
-                        <span className="bg-accent-500 shadow-accent-500/50 block h-2.5 w-2.5 rounded-full shadow-lg"></span>
+                        <span className="block h-2.5 w-2.5 rounded-full bg-accent-500 shadow-lg shadow-accent-500/50"></span>
                       </div>
                     )}
                   </div>
@@ -298,10 +298,10 @@ export default function TicketNotificationBell({ isAdmin = false }: TicketNotifi
               ))
             ) : (
               <div className="p-8 text-center">
-                <div className="bg-dark-800/50 text-dark-500 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl">
+                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-dark-800/50 text-dark-500">
                   <BellIcon />
                 </div>
-                <p className="text-dark-500 text-sm">
+                <p className="text-sm text-dark-500">
                   {t('notifications.noNotifications', 'No notifications')}
                 </p>
               </div>
@@ -310,13 +310,13 @@ export default function TicketNotificationBell({ isAdmin = false }: TicketNotifi
 
           {/* Footer */}
           {notificationsData?.items && notificationsData.items.length > 0 && (
-            <div className="border-dark-700/50 bg-dark-800/30 border-t px-4 py-3">
+            <div className="border-t border-dark-700/50 bg-dark-800/30 px-4 py-3">
               <button
                 onClick={() => {
                   setIsOpen(false);
                   navigate(isAdmin ? '/admin/tickets' : '/support');
                 }}
-                className="text-accent-400 hover:text-accent-300 w-full py-1 text-center text-sm transition-colors"
+                className="w-full py-1 text-center text-sm text-accent-400 transition-colors hover:text-accent-300"
               >
                 {t('notifications.viewAll', 'View all tickets')}
               </button>

@@ -139,7 +139,7 @@ export function SettingsTreeSidebar({
   return (
     <nav className={cn('flex flex-col', className)}>
       {/* Search bar */}
-      <div ref={searchContainerRef} className="relative px-3 pb-2 pt-3">
+      <div ref={searchContainerRef} className="relative px-3 pt-3 pb-2">
         <input
           ref={inputRef}
           type="text"
@@ -151,9 +151,9 @@ export function SettingsTreeSidebar({
           onFocus={() => setIsSearchOpen(true)}
           onKeyDown={handleKeyDown}
           placeholder={t('admin.settings.searchPlaceholder')}
-          className="w-full rounded-lg border border-dark-700/50 bg-dark-800/50 py-2 pl-9 pr-8 text-sm text-dark-100 placeholder-dark-500 transition-colors focus:border-accent-500 focus:outline-none"
+          className="w-full rounded-lg border border-dark-700/50 bg-dark-800/50 py-2 pr-8 pl-9 text-sm text-dark-100 placeholder-dark-500 transition-colors focus:border-accent-500 focus:outline-none"
         />
-        <div className="absolute left-6 top-1/2 -translate-y-1/2 text-dark-500">
+        <div className="absolute top-1/2 left-6 -translate-y-1/2 text-dark-500">
           <SearchIcon className="h-4 w-4" />
         </div>
         {searchQuery && (
@@ -162,7 +162,7 @@ export function SettingsTreeSidebar({
               onSearchChange('');
               setIsSearchOpen(false);
             }}
-            className="absolute right-6 top-1/2 -translate-y-1/2 text-dark-500 transition-colors hover:text-dark-300"
+            className="absolute top-1/2 right-6 -translate-y-1/2 text-dark-500 transition-colors hover:text-dark-300"
           >
             <CloseIcon className="h-4 w-4" />
           </button>
@@ -170,7 +170,7 @@ export function SettingsTreeSidebar({
 
         {/* Autocomplete dropdown */}
         {isSearchOpen && suggestions.length > 0 && (
-          <div className="absolute left-3 right-3 top-full z-50 mt-1 max-h-72 overflow-y-auto rounded-lg border border-dark-700 bg-dark-800 py-1 shadow-xl">
+          <div className="absolute top-full right-3 left-3 z-50 mt-1 max-h-72 overflow-y-auto rounded-lg border border-dark-700 bg-dark-800 py-1 shadow-xl">
             {suggestions.map((setting, index) => (
               <button
                 key={setting.key}
@@ -225,8 +225,8 @@ export function SettingsTreeSidebar({
       <div className="mx-3 border-t border-dark-700/50" />
 
       {/* Customization section label */}
-      <div className="px-6 pb-1 pt-3">
-        <span className="text-[10px] font-semibold uppercase tracking-wider text-dark-500">
+      <div className="px-6 pt-3 pb-1">
+        <span className="text-[10px] font-semibold tracking-wider text-dark-500 uppercase">
           {t('admin.settings.customization', 'Customization')}
         </span>
       </div>
@@ -257,8 +257,8 @@ export function SettingsTreeSidebar({
       <div className="mx-3 border-t border-dark-700/50" />
 
       {/* Settings section label */}
-      <div className="px-6 pb-1 pt-3">
-        <span className="text-[10px] font-semibold uppercase tracking-wider text-dark-500">
+      <div className="px-6 pt-3 pb-1">
+        <span className="text-[10px] font-semibold tracking-wider text-dark-500 uppercase">
           {t('admin.settings.settingsLabel', 'Settings')}
         </span>
       </div>
@@ -295,7 +295,7 @@ export function SettingsTreeSidebar({
 
               {/* Children */}
               {isExpanded && (
-                <div className="relative ml-5 mt-0.5 space-y-0.5 border-l border-dark-700/50 pl-3">
+                <div className="relative mt-0.5 ml-5 space-y-0.5 border-l border-dark-700/50 pl-3">
                   {group.children.map((child) => {
                     const isActive = activeSection === child.id;
                     return (

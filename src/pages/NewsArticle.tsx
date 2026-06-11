@@ -253,14 +253,14 @@ export default function NewsArticlePage() {
   if (isLoading) {
     return (
       <div className="space-y-6">
-        <div className="skeleton h-8 w-32 rounded-lg" />
-        <div className="skeleton h-10 w-3/4 rounded-lg" />
-        <div className="skeleton h-5 w-48 rounded-lg" />
-        <div className="skeleton h-64 w-full rounded-xl" />
+        <div className="h-8 w-32 skeleton rounded-lg" />
+        <div className="h-10 w-3/4 skeleton rounded-lg" />
+        <div className="h-5 w-48 skeleton rounded-lg" />
+        <div className="h-64 w-full skeleton rounded-xl" />
         <div className="space-y-3">
-          <div className="skeleton h-4 w-full rounded" />
-          <div className="skeleton h-4 w-5/6 rounded" />
-          <div className="skeleton h-4 w-4/6 rounded" />
+          <div className="h-4 w-full skeleton rounded" />
+          <div className="h-4 w-5/6 skeleton rounded" />
+          <div className="h-4 w-4/6 skeleton rounded" />
         </div>
       </div>
     );
@@ -312,7 +312,7 @@ export default function NewsArticlePage() {
             return (
               <>
                 <span
-                  className="inline-flex items-center gap-1.5 rounded-md px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-widest"
+                  className="inline-flex items-center gap-1.5 rounded-md px-3 py-1 font-mono text-[11px] font-bold tracking-widest uppercase"
                   style={{
                     color,
                     background: `${color}15`,
@@ -330,7 +330,7 @@ export default function NewsArticlePage() {
                 </span>
                 {article.tag && (
                   <span
-                    className="inline-block rounded px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider"
+                    className="inline-block rounded px-2 py-0.5 font-mono text-[10px] font-bold tracking-wider uppercase"
                     style={{
                       color,
                       border: `1px solid ${color}33`,
@@ -346,7 +346,7 @@ export default function NewsArticlePage() {
         </div>
 
         {/* Title */}
-        <h1 className="mb-4 text-2xl font-extrabold leading-tight text-dark-50 sm:text-3xl">
+        <h1 className="mb-4 text-2xl leading-tight font-extrabold text-dark-50 sm:text-3xl">
           {article.title}
         </h1>
 

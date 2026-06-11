@@ -205,7 +205,7 @@ export default function AdminPayments() {
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
             placeholder={t('admin.payments.searchPlaceholder')}
-            className="w-full rounded-xl border border-dark-700 bg-dark-800 py-3 pl-10 pr-4 text-dark-100 placeholder-dark-500 transition-colors focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500"
+            className="w-full rounded-xl border border-dark-700 bg-dark-800 py-3 pr-4 pl-10 text-dark-100 placeholder-dark-500 transition-colors focus:border-accent-500 focus:ring-1 focus:ring-accent-500 focus:outline-none"
           />
         </div>
         <p className="mt-1.5 text-xs text-dark-500">{t('admin.payments.searchHint')}</p>
@@ -389,7 +389,7 @@ export default function AdminPayments() {
         {isError ? (
           <div className="py-12 text-center">
             <div className="text-dark-400">{t('common.error')}</div>
-            <button onClick={() => refetch()} className="btn-secondary mt-3">
+            <button onClick={() => refetch()} className="mt-3 btn-secondary">
               {t('common.retry')}
             </button>
           </div>

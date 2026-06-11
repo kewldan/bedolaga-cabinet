@@ -340,10 +340,10 @@ export default function Login() {
       <div className="relative w-full max-w-md space-y-5">
         {/* Logo & branding */}
         <div className="text-center">
-          <div className="border-dark-700/50 bg-dark-800/80 relative mx-auto mb-3 flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl border shadow-md">
+          <div className="relative mx-auto mb-3 flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl border border-dark-700/50 bg-dark-800/80 shadow-md">
             {/* Letter fallback */}
             <span
-              className={`text-accent-400 absolute text-lg font-bold transition-opacity duration-200 ${branding?.has_custom_logo && logoLoaded ? 'opacity-0' : 'opacity-100'}`}
+              className={`absolute text-lg font-bold text-accent-400 transition-opacity duration-200 ${branding?.has_custom_logo && logoLoaded ? 'opacity-0' : 'opacity-100'}`}
             >
               {appLogo}
             </span>
@@ -357,12 +357,12 @@ export default function Login() {
               />
             )}
           </div>
-          {appName && <h1 className="text-dark-50 text-2xl font-bold">{appName}</h1>}
+          {appName && <h1 className="text-2xl font-bold text-dark-50">{appName}</h1>}
 
           {/* Referral Banner */}
           {referralCode && isEmailAuthEnabled && (
-            <div className="border-accent-500/30 bg-accent-500/10 mt-3 rounded-xl border p-2.5">
-              <div className="text-accent-400 flex items-center justify-center gap-2">
+            <div className="mt-3 rounded-xl border border-accent-500/30 bg-accent-500/10 p-2.5">
+              <div className="flex items-center justify-center gap-2 text-accent-400">
                 <UsersIcon className="h-4 w-4 shrink-0" />
                 <span className="text-xs font-medium">{t('auth.referralInvite')}</span>
               </div>
@@ -373,17 +373,17 @@ export default function Login() {
         {/* Check Email Screen */}
         {registeredEmail ? (
           <div className="card text-center">
-            <div className="bg-success-500/20 mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl">
-              <EmailIcon className="text-success-400 h-7 w-7" />
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-success-500/20">
+              <EmailIcon className="h-7 w-7 text-success-400" />
             </div>
-            <h2 className="text-dark-50 mb-2 text-lg font-bold">
+            <h2 className="mb-2 text-lg font-bold text-dark-50">
               {t('auth.checkEmail', 'Check your email')}
             </h2>
-            <p className="text-dark-400 mb-3 text-sm">
+            <p className="mb-3 text-sm text-dark-400">
               {t('auth.verificationSent', 'We sent a verification link to:')}
             </p>
-            <p className="text-accent-400 mb-4 text-sm font-medium">{registeredEmail}</p>
-            <p className="text-dark-500 mb-5 text-xs">
+            <p className="mb-4 text-sm font-medium text-accent-400">{registeredEmail}</p>
+            <p className="mb-5 text-xs text-dark-500">
               {t(
                 'auth.clickLinkToVerify',
                 'Click the link in the email to verify your account and log in.',
@@ -405,7 +405,7 @@ export default function Login() {
             {error && (
               <div
                 role="alert"
-                className="border-error-500/30 bg-error-500/10 text-error-400 mb-4 rounded-xl border px-4 py-2.5 text-sm"
+                className="mb-4 rounded-xl border border-error-500/30 bg-error-500/10 px-4 py-2.5 text-sm text-error-400"
               >
                 {error}
               </div>
@@ -415,19 +415,19 @@ export default function Login() {
             <div className="space-y-3">
               {isLoading && isTelegramWebApp ? (
                 <div className="py-6 text-center">
-                  <div className="border-accent-500 mx-auto mb-3 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
-                  <p className="text-dark-400 text-sm">{t('auth.authenticating')}</p>
+                  <div className="mx-auto mb-3 h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
+                  <p className="text-sm text-dark-400">{t('auth.authenticating')}</p>
                 </div>
               ) : isTelegramWebApp && error ? (
                 <div className="space-y-3 text-center">
                   <button
                     onClick={handleRetryTelegramAuth}
-                    className="btn-primary mx-auto flex items-center gap-2 px-5 py-2.5"
+                    className="mx-auto btn-primary flex items-center gap-2 px-5 py-2.5"
                   >
                     <RefreshIcon className="h-4 w-4" />
                     {t('auth.tryAgain')}
                   </button>
-                  <p className="text-dark-500 text-xs">
+                  <p className="text-xs text-dark-500">
                     {t(
                       'auth.telegramReopenHint',
                       'If the problem persists, close and reopen the app',
@@ -443,9 +443,9 @@ export default function Login() {
             {oauthProviders.length > 0 && (
               <>
                 <div className="my-4 flex items-center gap-3">
-                  <div className="bg-dark-700 h-px flex-1" />
-                  <span className="text-dark-500 text-xs">{t('auth.or', 'or')}</span>
-                  <div className="bg-dark-700 h-px flex-1" />
+                  <div className="h-px flex-1 bg-dark-700" />
+                  <span className="text-xs text-dark-500">{t('auth.or', 'or')}</span>
+                  <div className="h-px flex-1 bg-dark-700" />
                 </div>
                 <div className="flex items-stretch gap-2">
                   {oauthProviders.map((provider) => (
@@ -454,15 +454,15 @@ export default function Login() {
                       type="button"
                       onClick={() => handleOAuthLogin(provider.name)}
                       disabled={oauthLoading !== null}
-                      className="border-dark-700 bg-dark-800/80 hover:border-dark-600 hover:bg-dark-700 flex flex-1 flex-col items-center justify-center gap-1.5 rounded-xl border py-2.5 transition-all disabled:opacity-50"
+                      className="flex flex-1 flex-col items-center justify-center gap-1.5 rounded-xl border border-dark-700 bg-dark-800/80 py-2.5 transition-all hover:border-dark-600 hover:bg-dark-700 disabled:opacity-50"
                       title={provider.display_name}
                     >
                       {oauthLoading === provider.name ? (
-                        <span className="border-dark-400 h-5 w-5 animate-spin rounded-full border-2 border-t-white" />
+                        <span className="h-5 w-5 animate-spin rounded-full border-2 border-dark-400 border-t-white" />
                       ) : (
                         <OAuthProviderIcon provider={provider.name} className="h-5 w-5" />
                       )}
-                      <span className="text-dark-500 text-[10px] leading-none">
+                      <span className="text-[10px] leading-none text-dark-500">
                         {provider.display_name}
                       </span>
                     </button>
@@ -475,19 +475,19 @@ export default function Login() {
             {isEmailAuthEnabled && (
               <>
                 <div className="my-4 flex items-center gap-3">
-                  <div className="bg-dark-700 h-px flex-1" />
+                  <div className="h-px flex-1 bg-dark-700" />
                   <button
                     type="button"
                     onClick={() => setShowEmailForm(!showEmailForm)}
-                    className="border-dark-700 bg-dark-800/60 text-dark-300 hover:border-dark-600 hover:bg-dark-700 hover:text-dark-200 flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-xs font-medium transition-all"
+                    className="flex items-center gap-1.5 rounded-full border border-dark-700 bg-dark-800/60 px-3.5 py-1.5 text-xs font-medium text-dark-300 transition-all hover:border-dark-600 hover:bg-dark-700 hover:text-dark-200"
                   >
-                    <EmailIcon className="text-dark-400 h-3.5 w-3.5" />
+                    <EmailIcon className="h-3.5 w-3.5 text-dark-400" />
                     <span>{t('auth.loginWithEmail')}</span>
                     <ChevronDownIcon
-                      className={`text-dark-400 h-3 w-3 transition-transform duration-300 ${showEmailForm ? 'rotate-180' : ''}`}
+                      className={`h-3 w-3 text-dark-400 transition-transform duration-300 ${showEmailForm ? 'rotate-180' : ''}`}
                     />
                   </button>
-                  <div className="bg-dark-700 h-px flex-1" />
+                  <div className="h-px flex-1 bg-dark-700" />
                 </div>
 
                 {/* Collapsible email form */}
@@ -503,13 +503,13 @@ export default function Login() {
                         /* Forgot password screen - replaces login/register */
                         forgotPasswordSent ? (
                           <div className="space-y-4 text-center">
-                            <div className="bg-success-500/20 mx-auto flex h-12 w-12 items-center justify-center rounded-2xl">
-                              <EmailIcon className="text-success-400 h-6 w-6" />
+                            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-success-500/20">
+                              <EmailIcon className="h-6 w-6 text-success-400" />
                             </div>
-                            <p className="text-dark-100 text-sm font-medium">
+                            <p className="text-sm font-medium text-dark-100">
                               {t('auth.checkEmail', 'Check your email')}
                             </p>
-                            <p className="text-dark-400 text-xs">
+                            <p className="text-xs text-dark-400">
                               {t(
                                 'auth.passwordResetSent',
                                 'If an account exists with this email, we sent password reset instructions.',
@@ -518,14 +518,14 @@ export default function Login() {
                             <button
                               type="button"
                               onClick={closeForgotPasswordModal}
-                              className="text-accent-400 hover:text-accent-300 text-sm transition-colors"
+                              className="text-sm text-accent-400 transition-colors hover:text-accent-300"
                             >
                               {t('common.back', 'Back')}
                             </button>
                           </div>
                         ) : (
                           <div className="space-y-4">
-                            <p className="text-dark-400 text-center text-sm">
+                            <p className="text-center text-sm text-dark-400">
                               {t(
                                 'auth.forgotPasswordHint',
                                 'Enter your email and we will send you instructions to reset your password.',
@@ -547,7 +547,7 @@ export default function Login() {
                                 />
                               </div>
                               {forgotPasswordError && (
-                                <p className="text-error-400 text-sm">{forgotPasswordError}</p>
+                                <p className="text-sm text-error-400">{forgotPasswordError}</p>
                               )}
                               <button
                                 type="submit"
@@ -568,7 +568,7 @@ export default function Login() {
                               <button
                                 type="button"
                                 onClick={closeForgotPasswordModal}
-                                className="text-dark-400 hover:text-dark-200 text-sm transition-colors"
+                                className="text-sm text-dark-400 transition-colors hover:text-dark-200"
                               >
                                 {t('common.back', 'Back')}
                               </button>
@@ -578,7 +578,7 @@ export default function Login() {
                       ) : (
                         /* Normal login / register */
                         <>
-                          <div className="bg-dark-800 flex rounded-lg p-1">
+                          <div className="flex rounded-lg bg-dark-800 p-1">
                             <button
                               type="button"
                               className={`flex-1 rounded-md py-2 text-sm font-medium transition-all ${
@@ -662,7 +662,7 @@ export default function Login() {
                               {authMode === 'register' &&
                                 password.length > 0 &&
                                 password.length < 8 && (
-                                  <p className="text-error-400 mt-1.5 text-xs">
+                                  <p className="mt-1.5 text-xs text-error-400">
                                     {t(
                                       'auth.passwordTooShort',
                                       'Password must be at least 8 characters',
@@ -709,7 +709,7 @@ export default function Login() {
                           </form>
 
                           {authMode === 'register' && (
-                            <p className="text-dark-500 text-center text-xs">
+                            <p className="text-center text-xs text-dark-500">
                               {t(
                                 'auth.verificationEmailNotice',
                                 'After registration, a verification email will be sent to your address',
@@ -722,7 +722,7 @@ export default function Login() {
                               <button
                                 type="button"
                                 onClick={() => setShowForgotPassword(true)}
-                                className="text-accent-400 hover:text-accent-300 text-sm transition-colors"
+                                className="text-sm text-accent-400 transition-colors hover:text-accent-300"
                               >
                                 {t('auth.forgotPassword', 'Forgot password?')}
                               </button>

@@ -73,9 +73,9 @@ function SortableLandingCard({
       ref={setNodeRef}
       style={style}
       className={cn(
-        'bg-dark-800 rounded-xl border p-3 transition-colors sm:p-4',
+        'rounded-xl border bg-dark-800 p-3 transition-colors sm:p-4',
         isDragging
-          ? 'border-accent-500/50 shadow-accent-500/20 shadow-xl'
+          ? 'border-accent-500/50 shadow-xl shadow-accent-500/20'
           : landing.is_active
             ? 'border-dark-700'
             : 'border-dark-700/50 opacity-60',
@@ -86,7 +86,7 @@ function SortableLandingCard({
         <button
           {...attributes}
           {...listeners}
-          className="text-dark-500 hover:bg-dark-700/50 hover:text-dark-300 mt-0.5 shrink-0 cursor-grab touch-none rounded-lg p-2 active:cursor-grabbing sm:mt-1 sm:p-1.5"
+          className="mt-0.5 shrink-0 cursor-grab touch-none rounded-lg p-2 text-dark-500 hover:bg-dark-700/50 hover:text-dark-300 active:cursor-grabbing sm:mt-1 sm:p-1.5"
           title={t('admin.tariffs.dragToReorder')}
         >
           <GripIcon />
@@ -98,45 +98,45 @@ function SortableLandingCard({
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0 flex-1">
               <div className="mb-1 flex flex-wrap items-center gap-1.5 sm:gap-2">
-                <h3 className="text-dark-100 truncate font-medium">
+                <h3 className="truncate font-medium text-dark-100">
                   {resolveLocaleDisplay(landing.title)}
                 </h3>
-                <span className="bg-dark-800 text-dark-400 shrink-0 rounded px-2 py-0.5 text-xs">
+                <span className="shrink-0 rounded bg-dark-800 px-2 py-0.5 text-xs text-dark-400">
                   {landing.slug}
                 </span>
                 {landing.is_active ? (
-                  <span className="bg-success-500/20 text-success-400 shrink-0 rounded px-2 py-0.5 text-xs">
+                  <span className="shrink-0 rounded bg-success-500/20 px-2 py-0.5 text-xs text-success-400">
                     {t('admin.landings.active')}
                   </span>
                 ) : (
-                  <span className="bg-dark-600 text-dark-400 shrink-0 rounded px-2 py-0.5 text-xs">
+                  <span className="shrink-0 rounded bg-dark-600 px-2 py-0.5 text-xs text-dark-400">
                     {t('admin.landings.inactive')}
                   </span>
                 )}
                 {landing.gift_enabled && (
-                  <span className="bg-accent-500/20 text-accent-400 shrink-0 rounded px-1.5 py-0.5 text-xs">
+                  <span className="shrink-0 rounded bg-accent-500/20 px-1.5 py-0.5 text-xs text-accent-400">
                     <GiftIcon />
                   </span>
                 )}
                 {landing.has_active_discount && (
-                  <span className="bg-accent-500/20 text-accent-400 rounded-full px-2 py-0.5 text-[10px] font-medium">
+                  <span className="rounded-full bg-accent-500/20 px-2 py-0.5 text-[10px] font-medium text-accent-400">
                     {t('admin.landings.discountActive', 'Discount')}
                   </span>
                 )}
               </div>
-              <div className="text-dark-400 text-sm">
+              <div className="text-sm text-dark-400">
                 <span>
                   {landing.purchase_stats.total}
-                  <span className="text-dark-600 ml-1">
+                  <span className="ml-1 text-dark-600">
                     {t('admin.landings.stats.created', 'created')}
                   </span>
-                  <span className="text-dark-600 mx-1">/</span>
+                  <span className="mx-1 text-dark-600">/</span>
                   <span className="text-success-400">
                     {landing.purchase_stats.paid +
                       landing.purchase_stats.delivered +
                       landing.purchase_stats.pending_activation}
                   </span>
-                  <span className="text-dark-600 ml-1">
+                  <span className="ml-1 text-dark-600">
                     {t('admin.landings.stats.paid', 'paid')}
                   </span>
                 </span>
@@ -147,14 +147,14 @@ function SortableLandingCard({
             <div className="hidden shrink-0 items-center gap-1.5 sm:flex">
               <button
                 onClick={onCopyUrl}
-                className="bg-dark-700 text-dark-300 hover:bg-dark-600 hover:text-dark-100 rounded-lg p-2 transition-colors"
+                className="rounded-lg bg-dark-700 p-2 text-dark-300 transition-colors hover:bg-dark-600 hover:text-dark-100"
                 title={t('admin.landings.copyUrl')}
               >
                 <CopyIcon />
               </button>
               <button
                 onClick={onStats}
-                className="bg-dark-700 text-dark-300 hover:bg-dark-600 hover:text-dark-100 rounded-lg p-2 transition-colors"
+                className="rounded-lg bg-dark-700 p-2 text-dark-300 transition-colors hover:bg-dark-600 hover:text-dark-100"
                 title={t('admin.landings.statistics')}
               >
                 <StatsChartIcon className="h-4 w-4" />
@@ -175,7 +175,7 @@ function SortableLandingCard({
               </button>
               <button
                 onClick={onEdit}
-                className="bg-dark-700 text-dark-300 hover:bg-dark-600 hover:text-dark-100 rounded-lg p-2 transition-colors"
+                className="rounded-lg bg-dark-700 p-2 text-dark-300 transition-colors hover:bg-dark-600 hover:text-dark-100"
                 title={t('admin.landings.edit')}
               >
                 <EditIcon />
@@ -185,7 +185,7 @@ function SortableLandingCard({
                 className={cn(
                   'rounded-lg p-2 transition-colors',
                   isPendingDelete
-                    ? 'bg-error-500/20 text-error-400 ring-error-500/30 ring-1'
+                    ? 'bg-error-500/20 text-error-400 ring-1 ring-error-500/30'
                     : 'bg-dark-700 text-dark-300 hover:bg-error-500/20 hover:text-error-400',
                 )}
                 title={
@@ -209,14 +209,14 @@ function SortableLandingCard({
           <div className="mt-2 flex items-center gap-1.5 sm:hidden">
             <button
               onClick={onCopyUrl}
-              className="bg-dark-700 text-dark-300 hover:bg-dark-600 hover:text-dark-100 rounded-lg p-2 transition-colors"
+              className="rounded-lg bg-dark-700 p-2 text-dark-300 transition-colors hover:bg-dark-600 hover:text-dark-100"
               title={t('admin.landings.copyUrl')}
             >
               <CopyIcon />
             </button>
             <button
               onClick={onStats}
-              className="bg-dark-700 text-dark-300 hover:bg-dark-600 hover:text-dark-100 rounded-lg p-2 transition-colors"
+              className="rounded-lg bg-dark-700 p-2 text-dark-300 transition-colors hover:bg-dark-600 hover:text-dark-100"
               title={t('admin.landings.statistics')}
             >
               <StatsChartIcon className="h-4 w-4" />
@@ -235,7 +235,7 @@ function SortableLandingCard({
             </button>
             <button
               onClick={onEdit}
-              className="bg-dark-700 text-dark-300 hover:bg-dark-600 hover:text-dark-100 rounded-lg p-2 transition-colors"
+              className="rounded-lg bg-dark-700 p-2 text-dark-300 transition-colors hover:bg-dark-600 hover:text-dark-100"
               title={t('admin.landings.edit')}
             >
               <EditIcon />
@@ -246,7 +246,7 @@ function SortableLandingCard({
               className={cn(
                 'rounded-lg p-2 transition-colors',
                 isPendingDelete
-                  ? 'bg-error-500/20 text-error-400 ring-error-500/30 ring-1'
+                  ? 'bg-error-500/20 text-error-400 ring-1 ring-error-500/30'
                   : 'bg-dark-700 text-dark-300 hover:bg-error-500/20 hover:text-error-400',
               )}
               title={
@@ -397,13 +397,13 @@ export default function AdminLandings() {
           {!capabilities.hasBackButton && (
             <button
               onClick={() => navigate('/admin')}
-              className="border-dark-700 bg-dark-800 hover:border-dark-600 flex h-10 w-10 items-center justify-center rounded-xl border transition-colors"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-dark-700 bg-dark-800 transition-colors hover:border-dark-600"
             >
               <BackIcon />
             </button>
           )}
           <div>
-            <h1 className="text-dark-100 text-xl font-semibold">{t('admin.landings.title')}</h1>
+            <h1 className="text-xl font-semibold text-dark-100">{t('admin.landings.title')}</h1>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -411,7 +411,7 @@ export default function AdminLandings() {
             <button
               onClick={handleSaveOrder}
               disabled={saveOrderMutation.isPending}
-              className="bg-success-500 hover:bg-success-600 flex items-center gap-2 rounded-lg px-4 py-2 text-white transition-colors"
+              className="flex items-center gap-2 rounded-lg bg-success-500 px-4 py-2 text-white transition-colors hover:bg-success-600"
             >
               {saveOrderMutation.isPending ? (
                 <div className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
@@ -423,7 +423,7 @@ export default function AdminLandings() {
           )}
           <button
             onClick={() => navigate('/admin/landings/create')}
-            className="bg-accent-500 text-on-accent hover:bg-accent-600 flex items-center justify-center gap-2 rounded-lg px-4 py-2 transition-colors"
+            className="flex items-center justify-center gap-2 rounded-lg bg-accent-500 px-4 py-2 text-on-accent transition-colors hover:bg-accent-600"
           >
             <PlusIcon />
             {t('admin.landings.create')}
@@ -432,7 +432,7 @@ export default function AdminLandings() {
       </div>
 
       {/* Drag hint */}
-      <div className="text-dark-500 mb-4 flex items-center gap-2 text-sm">
+      <div className="mb-4 flex items-center gap-2 text-sm text-dark-500">
         <GripIcon />
         {t('admin.tariffs.dragToReorder')}
       </div>
@@ -440,7 +440,7 @@ export default function AdminLandings() {
       {/* Landings List */}
       {isLoading ? (
         <div className="flex items-center justify-center py-12">
-          <div className="border-accent-500 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-500 border-t-transparent" />
         </div>
       ) : localLandings.length === 0 ? (
         <div className="py-12 text-center">

@@ -31,11 +31,11 @@ export function CampaignDetailPanel({ campaignId, className }: CampaignDetailPan
   return (
     <div className={className}>
       {/* Header */}
-      <div className="border-dark-700/50 flex items-center justify-between border-b p-4">
-        <h3 className="text-dark-100 text-sm font-semibold">{campaign?.name ?? '...'}</h3>
+      <div className="flex items-center justify-between border-b border-dark-700/50 p-4">
+        <h3 className="text-sm font-semibold text-dark-100">{campaign?.name ?? '...'}</h3>
         <button
           onClick={handleClose}
-          className="text-dark-500 hover:bg-dark-800 hover:text-dark-300 rounded-lg p-1 transition-colors"
+          className="rounded-lg p-1 text-dark-500 transition-colors hover:bg-dark-800 hover:text-dark-300"
           aria-label={t('common.close')}
         >
           <CloseIcon className="h-5 w-5" />
@@ -46,12 +46,12 @@ export function CampaignDetailPanel({ campaignId, className }: CampaignDetailPan
       <div className="overflow-y-auto p-4 pb-[calc(1rem+var(--safe-bottom,0))]">
         {isLoading && (
           <div className="flex items-center justify-center py-8">
-            <div className="border-dark-600 border-t-accent-400 h-6 w-6 animate-spin rounded-full border-2" />
+            <div className="h-6 w-6 animate-spin rounded-full border-2 border-dark-600 border-t-accent-400" />
           </div>
         )}
 
         {isError && (
-          <div className="text-error-400 py-8 text-center text-sm">
+          <div className="py-8 text-center text-sm text-error-400">
             {t('admin.referralNetwork.error')}
           </div>
         )}
@@ -61,10 +61,10 @@ export function CampaignDetailPanel({ campaignId, className }: CampaignDetailPan
             {/* Info */}
             <div className="space-y-2">
               <div className="flex items-center justify-between gap-2 text-sm">
-                <span className="text-dark-500 shrink-0">
+                <span className="shrink-0 text-dark-500">
                   {t('admin.referralNetwork.campaign.startParam')}
                 </span>
-                <span className="text-dark-200 min-w-0 truncate font-mono">
+                <span className="min-w-0 truncate font-mono text-dark-200">
                   {campaign.start_parameter}
                 </span>
               </div>
@@ -84,25 +84,25 @@ export function CampaignDetailPanel({ campaignId, className }: CampaignDetailPan
             </div>
 
             {/* Stats */}
-            <div className="border-dark-700/50 bg-dark-800/40 rounded-lg border p-3">
+            <div className="rounded-lg border border-dark-700/50 bg-dark-800/40 p-3">
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-dark-400">
                     {t('admin.referralNetwork.campaign.directUsers')}
                   </span>
-                  <span className="text-dark-100 font-mono">{campaign.direct_users}</span>
+                  <span className="font-mono text-dark-100">{campaign.direct_users}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-dark-400">
                     {t('admin.referralNetwork.campaign.totalNetwork')}
                   </span>
-                  <span className="text-dark-100 font-mono">{campaign.total_network_users}</span>
+                  <span className="font-mono text-dark-100">{campaign.total_network_users}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-dark-400">
                     {t('admin.referralNetwork.campaign.totalRevenue')}
                   </span>
-                  <span className="text-accent-400 font-mono">
+                  <span className="font-mono text-accent-400">
                     {formatKopeksToRubles(campaign.total_revenue_kopeks)} ₽
                   </span>
                 </div>
@@ -110,7 +110,7 @@ export function CampaignDetailPanel({ campaignId, className }: CampaignDetailPan
                   <span className="text-dark-400">
                     {t('admin.referralNetwork.campaign.conversionRate')}
                   </span>
-                  <span className="text-dark-100 font-mono">
+                  <span className="font-mono text-dark-100">
                     {campaign.conversion_rate.toFixed(1)}%
                   </span>
                 </div>
@@ -118,7 +118,7 @@ export function CampaignDetailPanel({ campaignId, className }: CampaignDetailPan
                   <span className="text-dark-400">
                     {t('admin.referralNetwork.campaign.avgCheck')}
                   </span>
-                  <span className="text-dark-100 font-mono">
+                  <span className="font-mono text-dark-100">
                     {formatKopeksToRubles(campaign.avg_check_kopeks)} ₽
                   </span>
                 </div>
@@ -127,8 +127,8 @@ export function CampaignDetailPanel({ campaignId, className }: CampaignDetailPan
 
             {/* Top referrers */}
             {campaign.top_referrers.length > 0 && (
-              <div className="border-dark-700/50 bg-dark-800/40 rounded-lg border p-3">
-                <h4 className="text-dark-500 mb-2 text-xs font-medium tracking-wider uppercase">
+              <div className="rounded-lg border border-dark-700/50 bg-dark-800/40 p-3">
+                <h4 className="mb-2 text-xs font-medium tracking-wider text-dark-500 uppercase">
                   {t('admin.referralNetwork.campaign.topReferrers')}
                 </h4>
                 <div className="space-y-1.5">
@@ -138,14 +138,14 @@ export function CampaignDetailPanel({ campaignId, className }: CampaignDetailPan
                       className="flex items-center justify-between gap-2 text-sm"
                     >
                       <div className="flex min-w-0 items-center gap-2">
-                        <span className="bg-dark-700 text-dark-300 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-medium">
+                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-dark-700 text-[10px] font-medium text-dark-300">
                           {index + 1}
                         </span>
-                        <span className="text-dark-200 truncate">
+                        <span className="truncate text-dark-200">
                           {referrer.username ? `@${referrer.username}` : `#${referrer.user_id}`}
                         </span>
                       </div>
-                      <span className="text-dark-300 shrink-0 font-mono">
+                      <span className="shrink-0 font-mono text-dark-300">
                         {referrer.referral_count}
                       </span>
                     </div>
