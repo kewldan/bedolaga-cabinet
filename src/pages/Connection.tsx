@@ -100,15 +100,17 @@ export default function Connection() {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [handleGoBack]);
 
+  const subscriptionUrl = appConfig?.subscriptionUrl;
+  const username = user?.username;
   const resolveUrl = useCallback(
     (url: string): string => {
-      if (!hasTemplates(url) || !appConfig?.subscriptionUrl) return url;
+      if (!hasTemplates(url) || !subscriptionUrl) return url;
       return resolveTemplate(url, {
-        subscriptionUrl: appConfig.subscriptionUrl,
-        username: user?.username ?? undefined,
+        subscriptionUrl,
+        username: username ?? undefined,
       });
     },
-    [appConfig?.subscriptionUrl, user?.username],
+    [subscriptionUrl, username],
   );
 
   const openDeepLink = useCallback(

@@ -197,6 +197,8 @@ export default function AdminLandingEditor() {
   });
 
   const tariffPeriodsData = tariffDetailQueries.map((q) => q.data);
+  // Стабильный ключ вместо выражения в deps (react-hooks v7 требует простые зависимости)
+  const tariffPeriodsKey = JSON.stringify(tariffPeriodsData.map((d) => d?.id));
   const tariffPeriodsMap = useMemo(() => {
     const map: Record<number, PeriodPrice[]> = {};
     tariffPeriodsData.forEach((data) => {
@@ -206,7 +208,7 @@ export default function AdminLandingEditor() {
     });
     return map;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [JSON.stringify(tariffPeriodsData.map((d) => d?.id)), selectedTariffIds]);
+  }, [tariffPeriodsKey, selectedTariffIds]);
 
   // Fetch landing for editing
   const { data: landingData } = useQuery({
