@@ -87,16 +87,12 @@ export function MessageMediaGrid({
   if (items.length === 0) return null;
 
   // Grid layout based on photo count
-  let gridClass = '';
-  if (photoItems.length === 1) {
-    gridClass = 'grid-cols-1';
-  } else if (photoItems.length === 2) {
-    gridClass = 'grid-cols-2';
-  } else if (photoItems.length === 3) {
-    gridClass = 'grid-cols-3';
-  } else {
-    gridClass = 'grid-cols-2'; // 4+ → 2x2
-  }
+  const gridClass =
+    photoItems.length === 1
+      ? 'grid-cols-1'
+      : photoItems.length === 3
+        ? 'grid-cols-3'
+        : 'grid-cols-2'; // 2 и 4+ → две колонки (4+ выходит 2x2)
 
   const visiblePhotos = photoItems.slice(0, 4);
   const hiddenCount = photoItems.length - visiblePhotos.length;

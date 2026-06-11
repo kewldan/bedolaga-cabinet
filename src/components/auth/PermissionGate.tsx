@@ -23,16 +23,14 @@ export function PermissionGate({
   const hasAnyPermission = usePermissionStore((state) => state.hasAnyPermission);
   const hasAllPermissions = usePermissionStore((state) => state.hasAllPermissions);
 
-  let hasAccess = false;
-
-  if (permission) {
-    hasAccess = hasPermission(permission);
-  } else if (permissions && permissions.length > 0) {
-    hasAccess = requireAll ? hasAllPermissions(...permissions) : hasAnyPermission(...permissions);
-  } else {
-    // No permissions specified — allow access
-    hasAccess = true;
-  }
+  // Без указанных прав — доступ открыт
+  const hasAccess = permission
+    ? hasPermission(permission)
+    : permissions && permissions.length > 0
+      ? requireAll
+        ? hasAllPermissions(...permissions)
+        : hasAnyPermission(...permissions)
+      : true;
 
   if (!hasAccess) {
     return <>{fallback}</>;

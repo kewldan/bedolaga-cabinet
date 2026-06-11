@@ -161,12 +161,10 @@ export default function AdminTrafficUsage() {
         : null;
     const nodeUuids = selectedNodes.size > 0 ? new Set(selectedNodes) : null;
 
-    let merged: Set<string> | null = null;
-    if (countryUuids && nodeUuids) {
-      merged = new Set([...countryUuids].filter((id) => nodeUuids.has(id)));
-    } else {
-      merged = countryUuids || nodeUuids;
-    }
+    const merged =
+      countryUuids && nodeUuids
+        ? new Set([...countryUuids].filter((id) => nodeUuids.has(id)))
+        : countryUuids || nodeUuids;
     return merged && merged.size > 0 ? [...merged].join(',') : undefined;
   }, [nodes, selectedCountries, selectedNodes]);
 
