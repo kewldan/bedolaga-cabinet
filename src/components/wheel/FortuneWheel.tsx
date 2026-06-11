@@ -8,6 +8,14 @@ interface FortuneWheelProps {
   onSpinComplete: () => void;
 }
 
+// Декор колеса следует операторской палитре (--rt-* пишет applyThemeColors),
+// а не зашитым фиолетово-индиговым хексам.
+function paletteColor(token: string, fallback: string): string {
+  if (typeof document === 'undefined') return fallback;
+  const triplet = getComputedStyle(document.documentElement).getPropertyValue(token).trim();
+  return triplet ? `rgb(${triplet})` : fallback;
+}
+
 const FortuneWheel = memo(function FortuneWheel({
   prizes,
   isSpinning,
@@ -90,14 +98,14 @@ const FortuneWheel = memo(function FortuneWheel({
   const getSectorColors = (index: number, baseColor?: string) => {
     if (baseColor) return baseColor;
     const colors = [
-      '#8B5CF6',
-      '#EC4899',
-      '#3B82F6',
-      '#10B981',
-      '#F59E0B',
-      '#EF4444',
-      '#6366F1',
-      '#14B8A6',
+      paletteColor('--rt-accent-500', '#3B82F6'),
+      paletteColor('--rt-success-500', '#10B981'),
+      paletteColor('--rt-warning-500', '#F59E0B'),
+      paletteColor('--rt-error-500', '#EF4444'),
+      paletteColor('--rt-accent-700', '#1D4ED8'),
+      paletteColor('--rt-success-700', '#047857'),
+      paletteColor('--rt-warning-700', '#B45309'),
+      paletteColor('--rt-error-700', '#B91C1C'),
     ];
     return colors[index % colors.length];
   };
@@ -181,18 +189,18 @@ const FortuneWheel = memo(function FortuneWheel({
 
             {/* Outer ring gradient */}
             <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#C084FC" />
-              <stop offset="25%" stopColor="#A855F7" />
-              <stop offset="50%" stopColor="#7C3AED" />
-              <stop offset="75%" stopColor="#A855F7" />
-              <stop offset="100%" stopColor="#C084FC" />
+              <stop offset="0%" stopColor={paletteColor('--rt-accent-300', '#C084FC')} />
+              <stop offset="25%" stopColor={paletteColor('--rt-accent-500', '#A855F7')} />
+              <stop offset="50%" stopColor={paletteColor('--rt-accent-700', '#7C3AED')} />
+              <stop offset="75%" stopColor={paletteColor('--rt-accent-500', '#A855F7')} />
+              <stop offset="100%" stopColor={paletteColor('--rt-accent-300', '#C084FC')} />
             </linearGradient>
 
             {/* Hub gradient */}
             <radialGradient id="hubGrad" cx="30%" cy="30%" r="70%">
-              <stop offset="0%" stopColor="#818CF8" />
-              <stop offset="50%" stopColor="#6366F1" />
-              <stop offset="100%" stopColor="#4338CA" />
+              <stop offset="0%" stopColor={paletteColor('--rt-accent-400', '#818CF8')} />
+              <stop offset="50%" stopColor={paletteColor('--rt-accent-600', '#6366F1')} />
+              <stop offset="100%" stopColor={paletteColor('--rt-accent-800', '#4338CA')} />
             </radialGradient>
 
             {/* Text shadow filter */}
@@ -377,8 +385,8 @@ const FortuneWheel = memo(function FortuneWheel({
             cx={center}
             cy={center}
             r={hubRadius - 12}
-            fill="#312E81"
-            stroke="#6366F1"
+            fill={paletteColor('--rt-accent-900', '#312E81')}
+            stroke={paletteColor('--rt-accent-500', '#6366F1')}
             strokeWidth="2"
           />
 

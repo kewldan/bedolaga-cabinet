@@ -220,7 +220,7 @@ const FeaturedCard = memo(function FeaturedCard({ item, onClick }: FeaturedCardP
         </div>
 
         <div className="mt-6 flex items-center justify-between">
-          <span className="font-mono text-xs text-dark-600">
+          <span className="font-mono text-xs text-dark-500">
             {item.published_at ? new Date(item.published_at).toLocaleDateString(i18n.language) : ''}
           </span>
           <span className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-accent-400 transition-all duration-300 group-hover:gap-2.5">
@@ -305,7 +305,7 @@ const NewsCard = memo(function NewsCard({ item, index, onClick }: NewsCardProps)
         </div>
 
         <div className="mt-5 flex items-center justify-between border-t border-dark-700/50 pt-3.5">
-          <span className="font-mono text-[11px] text-dark-600">
+          <span className="font-mono text-[11px] text-dark-500">
             {item.published_at ? new Date(item.published_at).toLocaleDateString(i18n.language) : ''}
           </span>
           <span className="font-mono text-[11px] text-dark-500">

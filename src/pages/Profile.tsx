@@ -328,13 +328,15 @@ export default function Profile() {
       {referralTerms?.is_enabled && referralLink && (
         <motion.div variants={staggerItem}>
           <Card>
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-dark-100">{t('referral.yourLink')}</h2>
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <h2 className="min-w-0 text-lg font-semibold text-dark-100">
+                {t('referral.yourLink')}
+              </h2>
               <Link
                 to="/referral"
-                className="flex items-center gap-1 text-accent-400 transition-colors hover:text-accent-300"
+                className="flex shrink-0 items-center gap-1 whitespace-nowrap text-accent-400 transition-colors hover:text-accent-300"
               >
-                <span className="text-sm">{t('referral.title')}</span>
+                <span className="text-sm">{t('common.all', 'Все')}</span>
                 <ArrowRightIcon className="h-4 w-4" />
               </Link>
             </div>
@@ -374,10 +376,10 @@ export default function Profile() {
 
             {user?.email ? (
               <div className="space-y-4">
-                <div className="flex items-center justify-between border-b border-dark-800/50 py-3">
-                  <span className="text-dark-400">Email</span>
-                  <div className="flex items-center gap-3">
-                    <span className="font-medium text-dark-100">{user.email}</span>
+                <div className="flex items-center justify-between gap-3 border-b border-dark-800/50 py-3">
+                  <span className="shrink-0 text-dark-400">Email</span>
+                  <div className="flex min-w-0 items-center gap-3">
+                    <span className="min-w-0 truncate font-medium text-dark-100">{user.email}</span>
                     {user.email_verified ? (
                       <span className="badge-success">{t('profile.verified')}</span>
                     ) : isEmailVerificationEnabled ? (
