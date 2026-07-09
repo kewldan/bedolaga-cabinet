@@ -5,7 +5,7 @@ import { infoApi } from '../api/info';
 import { formatContent } from '../utils/legalContent';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 
-export type PublicLegalDoc = 'offer' | 'privacy';
+export type PublicLegalDoc = 'offer' | 'privacy' | 'recurrent';
 
 interface PublicLegalProps {
   doc: PublicLegalDoc;
@@ -31,6 +31,12 @@ const DOC_CONFIG: Record<
     titleKey: 'footer.privacy',
     titleFallback: 'Политика конфиденциальности',
     fetch: infoApi.getPrivacyPolicy,
+  },
+  recurrent: {
+    queryKey: 'recurrent-payments',
+    titleKey: 'footer.recurrent',
+    titleFallback: 'Рекуррентные платежи',
+    fetch: infoApi.getRecurrentPayments,
   },
 };
 

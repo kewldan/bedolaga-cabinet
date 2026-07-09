@@ -269,6 +269,7 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/offer" element={<PublicLegal doc="offer" />} />
         <Route path="/privacy" element={<PublicLegal doc="privacy" />} />
+        <Route path="/recurrent-payments" element={<PublicLegal doc="recurrent" />} />
         <Route
           path="/merge/:mergeToken"
           element={

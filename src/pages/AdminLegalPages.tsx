@@ -14,9 +14,34 @@ import { useDestructiveConfirm } from '../platform/hooks/useNativeDialog';
 import { cn } from '../lib/utils';
 import { ChevronDownIcon, ChevronUpIcon, PlusIcon, TrashIcon } from '@/components/icons';
 
-type LegalTab = 'privacy' | 'offer' | 'rules' | 'faq';
+type LegalTab = 'privacy' | 'offer' | 'recurrent' | 'rules' | 'faq';
 
 const DISPLAY_MODES: LegalDisplayMode[] = ['bot', 'web', 'both'];
+
+type DocumentKind = 'privacy-policy' | 'public-offer' | 'recurrent-payments';
+
+const DOCUMENT_API: Record<
+  DocumentKind,
+  {
+    get: () => ReturnType<typeof adminLegalPagesApi.getPrivacyPolicy>;
+    update: (
+      data: Parameters<typeof adminLegalPagesApi.updatePrivacyPolicy>[0],
+    ) => ReturnType<typeof adminLegalPagesApi.updatePrivacyPolicy>;
+  }
+> = {
+  'privacy-policy': {
+    get: adminLegalPagesApi.getPrivacyPolicy,
+    update: adminLegalPagesApi.updatePrivacyPolicy,
+  },
+  'public-offer': {
+    get: adminLegalPagesApi.getPublicOffer,
+    update: adminLegalPagesApi.updatePublicOffer,
+  },
+  'recurrent-payments': {
+    get: adminLegalPagesApi.getRecurrentPayments,
+    update: adminLegalPagesApi.updateRecurrentPayments,
+  },
+};
 
 function extractErrorDetail(err: unknown): string | null {
   const error = err as { response?: { data?: { detail?: unknown } } };
@@ -103,7 +128,7 @@ function DocumentEditor({
   kind,
   onDirtyChange,
 }: {
-  kind: 'privacy-policy' | 'public-offer';
+  kind: DocumentKind;
   onDirtyChange: (dirty: boolean) => void;
 }) {
   const { t } = useTranslation();
@@ -118,10 +143,7 @@ function DocumentEditor({
 
   const { data, isLoading, isFetching } = useQuery({
     queryKey: ['admin', 'legal-pages', kind],
-    queryFn: () =>
-      kind === 'privacy-policy'
-        ? adminLegalPagesApi.getPrivacyPolicy()
-        : adminLegalPagesApi.getPublicOffer(),
+    queryFn: () => DOCUMENT_API[kind].get(),
     staleTime: 0,
     gcTime: 0,
   });
@@ -167,9 +189,7 @@ function DocumentEditor({
           is_enabled: enabled[language] ?? false,
         })),
       };
-      return kind === 'privacy-policy'
-        ? adminLegalPagesApi.updatePrivacyPolicy(payload)
-        : adminLegalPagesApi.updatePublicOffer(payload);
+      return DOCUMENT_API[kind].update(payload);
     },
     onSuccess: () => {
       haptic.success();
@@ -661,7 +681,7 @@ export default function AdminLegalPages() {
       </div>
 
       <div className="flex flex-wrap gap-1">
-        {(['privacy', 'offer', 'rules', 'faq'] as const).map((tab) => (
+        {(['privacy', 'offer', 'recurrent', 'rules', 'faq'] as const).map((tab) => (
           <button
             key={tab}
             type="button"
@@ -683,6 +703,9 @@ export default function AdminLegalPages() {
       )}
       {activeTab === 'offer' && (
         <DocumentEditor key="offer" kind="public-offer" onDirtyChange={setDirty} />
+      )}
+      {activeTab === 'recurrent' && (
+        <DocumentEditor key="recurrent" kind="recurrent-payments" onDirtyChange={setDirty} />
       )}
       {activeTab === 'rules' && <RulesEditor onDirtyChange={setDirty} />}
       {activeTab === 'faq' && <FaqEditor onDirtyChange={setDirty} />}

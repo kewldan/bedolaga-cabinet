@@ -7,12 +7,10 @@ interface LegalLink {
   fallback: string;
 }
 
-// Recurring-payments has no dedicated legal document in the backend yet, so it is
-// intentionally omitted rather than pointed at unrelated content. Re-add once a
-// `recurrent-payments` document + public endpoint exist.
 const LINKS: LegalLink[] = [
   { href: '/offer', labelKey: 'footer.offer', fallback: 'Публичная оферта' },
   { href: '/privacy', labelKey: 'footer.privacy', fallback: 'Политика конфиденциальности' },
+  { href: '/recurrent-payments', labelKey: 'footer.recurrent', fallback: 'Рекуррентные платежи' },
 ];
 
 interface LegalFooterProps {
