@@ -1,13 +1,13 @@
 # Stage 1: Build the React application
-FROM node:20-alpine AS builder
+FROM oven/bun:1-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files
-COPY package.json package-lock.json* ./
+# Copy package files (bun.lock is generated from package-lock.json versions)
+COPY package.json bun.lock ./
 
-# Install dependencies
-RUN if [ -f package-lock.json ]; then npm ci; else npm install; fi
+# Install dependencies (frozen lockfile = reproducible builds, like npm ci)
+RUN bun install --frozen-lockfile
 
 # Copy source code
 COPY . .
@@ -24,8 +24,8 @@ ENV VITE_TELEGRAM_BOT_USERNAME=$VITE_TELEGRAM_BOT_USERNAME
 ENV VITE_APP_NAME=$VITE_APP_NAME
 ENV VITE_APP_LOGO=$VITE_APP_LOGO
 
-# Build the application
-RUN npm run build
+# Build the application (tsc && vite build under the bun runtime)
+RUN bun run build
 
 # Stage 2: Serve with Nginx
 FROM nginx:alpine
