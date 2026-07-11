@@ -6,7 +6,7 @@ import i18n from '../i18n';
 import { couponsApi } from '../api/coupons';
 import { usePlatform } from '../platform/hooks/usePlatform';
 import { copyToClipboard } from '../utils/clipboard';
-import { formatPrice } from '../utils/format';
+import { formatPrice, formatShortDate } from '../utils/format';
 import { getApiErrorMessage } from '../utils/api-error';
 import { useToast } from '../components/Toast';
 import { PermissionGate } from '../components/auth/PermissionGate';
@@ -20,17 +20,6 @@ import {
   TicketIcon,
 } from '@/components/icons';
 import { StatCard } from '../components/stats';
-
-const formatDate = (date: string | null): string => {
-  if (!date) return '-';
-  const localeMap: Record<string, string> = { ru: 'ru-RU', en: 'en-US', zh: 'zh-CN', fa: 'fa-IR' };
-  const locale = localeMap[i18n.language] || 'ru-RU';
-  return new Date(date).toLocaleDateString(locale, {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-  });
-};
 
 export default function AdminCouponDetail() {
   const { t } = useTranslation();
@@ -184,13 +173,13 @@ export default function AdminCouponDetail() {
           <span className="text-dark-400">{t('admin.coupons.detail.validUntil')}</span>
           <span className="text-dark-100">
             {batch.valid_until
-              ? formatDate(batch.valid_until)
+              ? formatShortDate(batch.valid_until)
               : t('admin.coupons.detail.perpetual')}
           </span>
         </div>
         <div className="flex justify-between gap-4">
           <span className="text-dark-400">{t('admin.coupons.detail.createdAt')}</span>
-          <span className="text-dark-100">{formatDate(batch.created_at)}</span>
+          <span className="text-dark-100">{formatShortDate(batch.created_at)}</span>
         </div>
       </div>
 

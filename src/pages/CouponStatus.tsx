@@ -5,21 +5,10 @@ import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import { couponsApi, CouponRedeemResponse } from '../api/coupons';
 import { useAuthStore } from '../store/auth';
-import i18n from '../i18n';
+import { formatShortDate } from '../utils/format';
 import { Spinner } from '@/components/ui/Spinner';
 import { AnimatedCheckmark } from '@/components/ui/AnimatedCheckmark';
 import { TicketIcon } from '@/components/icons';
-
-const formatDate = (date: string | null): string => {
-  if (!date) return '-';
-  const localeMap: Record<string, string> = { ru: 'ru-RU', en: 'en-US', zh: 'zh-CN', fa: 'fa-IR' };
-  const locale = localeMap[i18n.language] || 'ru-RU';
-  return new Date(date).toLocaleDateString(locale, {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-  });
-};
 
 function Shell({ children }: { children: React.ReactNode }) {
   return (
@@ -60,7 +49,10 @@ export default function CouponStatus() {
     queryKey: ['coupon-status', token],
     queryFn: () => couponsApi.getCouponStatus(token!),
     enabled: !!token,
-    retry: 1,
+    // 404 is the expected answer for an invalid/consumed/expired token — the
+    // common case for a shared link — so retrying only wastes a request against
+    // the rate-limited public endpoint.
+    retry: false,
   });
 
   const redeemMutation = useMutation({
@@ -110,7 +102,7 @@ export default function CouponStatus() {
             {redeemed.end_date && (
               <>
                 <br />
-                {t('coupon.success.until')} {formatDate(redeemed.end_date)}
+                {t('coupon.success.until')} {formatShortDate(redeemed.end_date)}
               </>
             )}
           </p>
@@ -142,7 +134,9 @@ export default function CouponStatus() {
           {coupon.valid_until && (
             <div className="flex justify-between gap-4">
               <span className="text-dark-400">{t('coupon.validUntil')}</span>
-              <span className="font-medium text-dark-100">{formatDate(coupon.valid_until)}</span>
+              <span className="font-medium text-dark-100">
+                {formatShortDate(coupon.valid_until)}
+              </span>
             </div>
           )}
         </div>

@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import i18n from '../i18n';
 import { couponsApi, CouponBatch } from '../api/coupons';
 import { usePlatform } from '../platform/hooks/usePlatform';
-import { formatPrice } from '../utils/format';
+import { formatPrice, formatShortDate } from '../utils/format';
 import {
   BackIcon,
   PlusIcon,
@@ -17,17 +17,6 @@ import {
 import { StatCard } from '../components/stats';
 
 const PAGE_SIZE = 50;
-
-const formatDate = (date: string | null): string => {
-  if (!date) return '-';
-  const localeMap: Record<string, string> = { ru: 'ru-RU', en: 'en-US', zh: 'zh-CN', fa: 'fa-IR' };
-  const locale = localeMap[i18n.language] || 'ru-RU';
-  return new Date(date).toLocaleDateString(locale, {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-  });
-};
 
 export default function AdminCoupons() {
   const { t } = useTranslation();
@@ -74,8 +63,10 @@ export default function AdminCoupons() {
         </button>
       </div>
 
-      {/* Stats Overview */}
-      {batches.length > 0 && (
+      {/* Stats Overview — the Active/Redeemed/Revoked cards sum only the loaded
+          page, so show them only when the whole set fits one page; otherwise
+          they would contradict the global "Batches" total. */}
+      {batches.length > 0 && total <= PAGE_SIZE && (
         <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
           <StatCard
             label={t('admin.coupons.stats.batches')}
@@ -159,7 +150,7 @@ export default function AdminCoupons() {
                     )}
                     {batch.valid_until && (
                       <span>
-                        {t('admin.coupons.list.until')}: {formatDate(batch.valid_until)}
+                        {t('admin.coupons.list.until')}: {formatShortDate(batch.valid_until)}
                       </span>
                     )}
                   </div>
