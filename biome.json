@@ -58,7 +58,28 @@
     {
       "includes": ["**/*.css"],
       "linter": {
-        "enabled": false
+        "rules": {
+          "suspicious": {
+            "noDuplicateProperties": "off",
+            "noUnknownAtRules": {
+              "options": {
+                "ignore": ["tailwind"]
+              },
+              "level": "error"
+            }
+          },
+          "correctness": {
+            "noUnknownFunction": {
+              "options": {
+                "ignore": ["theme", "screen"]
+              },
+              "level": "error"
+            }
+          },
+          "complexity": {
+            "noImportantStyles": "off"
+          }
+        }
       }
     }
   ]
