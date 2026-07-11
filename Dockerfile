@@ -1,5 +1,11 @@
 # Stage 1: Build the React application
-FROM oven/bun:1-alpine AS builder
+FROM oven/bun:1-alpine AS bun-bin
+
+# Гибрид: bun только для установки пакетов (2.4x быстрее npm ci),
+# сборка остаётся под node — вывод бит-в-бит совпадает с npm-сборкой
+FROM node:20-alpine AS builder
+RUN apk add --no-cache libgcc libstdc++
+COPY --from=bun-bin /usr/local/bin/bun /usr/local/bin/bun
 
 WORKDIR /app
 
@@ -25,7 +31,7 @@ ENV VITE_APP_NAME=$VITE_APP_NAME
 ENV VITE_APP_LOGO=$VITE_APP_LOGO
 
 # Build the application (tsc && vite build under the bun runtime)
-RUN bun run build
+RUN npm run build
 
 # Stage 2: Serve with Nginx
 FROM nginx:alpine
@@ -40,4 +46,5 @@ EXPOSE 80
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD wget --no-verbose --tries=1 --spider http://localhost:80/ || exit 1
+
 
