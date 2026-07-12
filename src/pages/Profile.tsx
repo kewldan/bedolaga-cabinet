@@ -325,9 +325,11 @@ export default function Profile() {
         </Card>
       </motion.div>
 
-      {/* Referral Link Widget */}
+      {/* Referral Link Widget — self-animated: mounts after the referral queries
+          resolve, when the parent stagger orchestration has already finished and
+          would leave it stuck at opacity 0 */}
       {referralTerms?.is_enabled && referralLink && (
-        <motion.div variants={staggerItem}>
+        <motion.div variants={staggerItem} initial="initial" animate="animate">
           <Card>
             <div className="mb-4 flex items-center justify-between">
               <h2 className="text-lg font-semibold text-dark-100">{t('referral.yourLink')}</h2>

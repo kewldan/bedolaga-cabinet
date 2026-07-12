@@ -308,9 +308,11 @@ export default function Balance() {
         </Card>
       </motion.div>
 
-      {/* Payment Methods */}
+      {/* Payment Methods — self-animated: mounts after its query resolves, when
+          the parent stagger orchestration has already finished and would leave
+          it stuck at opacity 0 */}
       {paymentMethods && paymentMethods.length > 0 && (
-        <motion.div variants={staggerItem}>
+        <motion.div variants={staggerItem} initial="initial" animate="animate">
           <Card>
             <h2 className="mb-4 text-lg font-semibold text-dark-100">
               {t('balance.topUpBalance')}
@@ -474,9 +476,10 @@ export default function Balance() {
         </Card>
       </motion.div>
 
-      {/* Saved Cards Navigation */}
+      {/* Saved Cards Navigation — self-animated: mounts after its query resolves
+          (see Payment Methods above) */}
       {savedCardsData?.recurrent_enabled && (
-        <motion.div variants={staggerItem}>
+        <motion.div variants={staggerItem} initial="initial" animate="animate">
           <Card interactive onClick={() => navigate('/balance/saved-cards')}>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">

@@ -774,10 +774,13 @@ export default function Wheel() {
             >
               <div className="border-t border-dark-700/30 px-4 pb-4 pt-2">
                 {history && history.items.length > 0 ? (
+                  // "hidden"/"show" don't exist in staggerContainer/staggerItem
+                  // (their keys are initial/animate/exit), so the stagger here
+                  // was silently a no-op
                   <motion.div
                     variants={staggerContainer}
-                    initial="hidden"
-                    animate="show"
+                    initial="initial"
+                    animate="animate"
                     className="space-y-2"
                   >
                     {history.items.map((item: SpinHistoryItem) => (
