@@ -348,9 +348,11 @@ export default function Support() {
         </Button>
       </motion.div>
 
-      {/* Contact support card for "both" mode */}
+      {/* Contact support card for "both" mode — self-animated: mounts after the
+          config query resolves, when the parent stagger orchestration has already
+          finished and would leave it stuck at opacity 0 */}
       {supportConfig?.support_type === 'both' && supportConfig.support_username && (
-        <motion.div variants={staggerItem}>
+        <motion.div variants={staggerItem} initial="initial" animate="animate">
           <Card className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-dark-800">

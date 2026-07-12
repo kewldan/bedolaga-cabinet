@@ -73,7 +73,11 @@ export default function SavedCards() {
   };
 
   return (
+    // key: remount the container when loading resolves — stagger orchestration
+    // runs once on mount, so cards arriving from the API later would otherwise
+    // stay stuck at their initial variant (opacity 0) after a hard refresh
     <motion.div
+      key={isLoading ? 'loading' : 'ready'}
       className="space-y-6"
       variants={staggerContainer}
       initial="initial"

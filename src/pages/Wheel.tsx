@@ -357,7 +357,7 @@ export default function Wheel() {
       // Web-only: synchronously pre-open a tab during the user gesture to dodge the
       // popup blocker before the async invoice URL resolves. Not reached in Telegram
       // (hasInvoice is true there, so the native invoice flow is used instead).
-      // eslint-disable-next-line no-restricted-properties
+      // biome-ignore lint: canonical popup-blocker workaround, see comment above
       preOpenedWindowRef.current = window.open('about:blank', '_blank') || null;
     }
     starsInvoiceMutation.mutate();
@@ -774,10 +774,13 @@ export default function Wheel() {
             >
               <div className="border-t border-dark-700/30 px-4 pb-4 pt-2">
                 {history && history.items.length > 0 ? (
+                  // "hidden"/"show" don't exist in staggerContainer/staggerItem
+                  // (their keys are initial/animate/exit), so the stagger here
+                  // was silently a no-op
                   <motion.div
                     variants={staggerContainer}
-                    initial="hidden"
-                    animate="show"
+                    initial="initial"
+                    animate="animate"
                     className="space-y-2"
                   >
                     {history.items.map((item: SpinHistoryItem) => (
