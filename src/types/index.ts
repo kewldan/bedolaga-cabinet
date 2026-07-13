@@ -364,6 +364,9 @@ export interface TariffsPurchaseOptions {
   // New fields for expired subscription handling
   subscription_status?: string;
   subscription_is_expired?: boolean;
+  // Free (0₽) source tariff: switch is blocked (free days must reset),
+  // tariff cards must offer the purchase flow instead of the prorated switch
+  subscription_on_free_tariff?: boolean;
   has_subscription?: boolean;
   // Multi-tariff: all available tariffs already purchased
   all_tariffs_purchased?: boolean;
