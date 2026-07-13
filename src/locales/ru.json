@@ -3998,7 +3998,8 @@
             "tickets": "Тикеты",
             "gifts": "Подарки",
             "referrals": "Рефералы",
-            "logins": "Входы"
+            "logins": "Входы",
+            "clicks": "Клики"
           },
           "types": {
             "transaction": "Транзакция",
@@ -4012,7 +4013,9 @@
             "gift_received": "Подарок получен",
             "referral_earning": "Реферальное начисление",
             "cabinet_login": "Вход в кабинет",
-            "withdrawal": "Заявка на вывод"
+            "withdrawal": "Заявка на вывод",
+            "button_click": "Кнопка в боте",
+            "cabinet_action": "Действие в кабинете"
           },
           "sources": {
             "bot": "Бот",

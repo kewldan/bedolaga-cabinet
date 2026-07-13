@@ -3096,7 +3096,8 @@
             "tickets": "تیکت‌ها",
             "gifts": "هدایا",
             "referrals": "دعوت‌ها",
-            "logins": "ورودها"
+            "logins": "ورودها",
+            "clicks": "کلیک‌ها"
           },
           "types": {
             "transaction": "تراکنش",
@@ -3110,7 +3111,9 @@
             "gift_received": "هدیه دریافت شد",
             "referral_earning": "درآمد دعوت",
             "cabinet_login": "ورود به پنل",
-            "withdrawal": "درخواست برداشت"
+            "withdrawal": "درخواست برداشت",
+            "button_click": "دکمه ربات",
+            "cabinet_action": "اقدام در پنل"
           },
           "sources": {
             "bot": "ربات",

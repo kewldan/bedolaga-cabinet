@@ -3095,7 +3095,8 @@
             "tickets": "工单",
             "gifts": "礼物",
             "referrals": "推荐",
-            "logins": "登录"
+            "logins": "登录",
+            "clicks": "点击"
           },
           "types": {
             "transaction": "交易",
@@ -3109,7 +3110,9 @@
             "gift_received": "已收到礼物",
             "referral_earning": "推荐收益",
             "cabinet_login": "登录后台",
-            "withdrawal": "提现申请"
+            "withdrawal": "提现申请",
+            "button_click": "机器人按钮",
+            "cabinet_action": "后台操作"
           },
           "sources": {
             "bot": "机器人",

@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { adminUsersApi, type UserActivityItem } from '../../../api/adminUsers';
 import {
   BanknotesIcon,
+  BoltIcon,
+  BotIcon,
   CabinetIcon,
   ChartBarIcon,
   ChatIcon,
@@ -40,6 +42,7 @@ const FILTERS: Array<{ key: string; types: string | null }> = [
   { key: 'tickets', types: 'ticket' },
   { key: 'gifts', types: 'gift_sent,gift_received' },
   { key: 'referrals', types: 'referral_earning' },
+  { key: 'clicks', types: 'button_click,cabinet_action' },
   { key: 'logins', types: 'cabinet_login' },
 ];
 
@@ -56,6 +59,8 @@ const TYPE_VISUALS: Record<string, { icon: typeof WalletIcon; tint: string }> = 
   referral_earning: { icon: UsersIcon, tint: 'bg-success-500/15 text-success-400' },
   cabinet_login: { icon: CabinetIcon, tint: 'bg-dark-700/60 text-dark-300' },
   withdrawal: { icon: BanknotesIcon, tint: 'bg-error-500/15 text-error-400' },
+  button_click: { icon: BotIcon, tint: 'bg-dark-700/60 text-dark-300' },
+  cabinet_action: { icon: BoltIcon, tint: 'bg-dark-700/60 text-dark-300' },
 };
 
 const FALLBACK_VISUAL = { icon: HistoryIcon, tint: 'bg-dark-700/60 text-dark-300' };

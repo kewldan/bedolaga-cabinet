@@ -3592,7 +3592,8 @@
             "tickets": "Tickets",
             "gifts": "Gifts",
             "referrals": "Referrals",
-            "logins": "Logins"
+            "logins": "Logins",
+            "clicks": "Clicks"
           },
           "types": {
             "transaction": "Transaction",
@@ -3606,7 +3607,9 @@
             "gift_received": "Gift received",
             "referral_earning": "Referral earning",
             "cabinet_login": "Cabinet login",
-            "withdrawal": "Withdrawal request"
+            "withdrawal": "Withdrawal request",
+            "button_click": "Bot button",
+            "cabinet_action": "Cabinet action"
           },
           "sources": {
             "bot": "Bot",
