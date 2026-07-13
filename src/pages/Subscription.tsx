@@ -1,3 +1,4 @@
+import { uiLocale } from '@/utils/uiLocale';
 import { useState, useEffect, useRef, useCallback, useMemo, memo } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
@@ -73,7 +74,7 @@ const CountdownTimer = memo(function CountdownTimer({
   const isExpired = !isActive;
   const isUrgent = countdown.days <= 3;
 
-  const formattedDate = new Date(endDate).toLocaleDateString(undefined, {
+  const formattedDate = new Date(endDate).toLocaleDateString(uiLocale(), {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
@@ -997,7 +998,7 @@ export default function Subscription() {
                             </div>
                             <div className="mt-0.5 font-mono text-[9px] text-dark-50/20">
                               {t('subscription.trafficResetAt')}:{' '}
-                              {new Date(purchase.expires_at).toLocaleDateString(undefined, {
+                              {new Date(purchase.expires_at).toLocaleDateString(uiLocale(), {
                                 day: '2-digit',
                                 month: '2-digit',
                                 year: 'numeric',
@@ -1017,8 +1018,12 @@ export default function Subscription() {
                           />
                         </div>
                         <div className="mt-1 flex justify-between font-mono text-[9px] text-dark-50/20">
-                          <span>{new Date(purchase.created_at).toLocaleDateString()}</span>
-                          <span>{new Date(purchase.expires_at).toLocaleDateString()}</span>
+                          <span>
+                            {new Date(purchase.created_at).toLocaleDateString(uiLocale())}
+                          </span>
+                          <span>
+                            {new Date(purchase.expires_at).toLocaleDateString(uiLocale())}
+                          </span>
                         </div>
                       </div>
                     ))}
@@ -1203,7 +1208,7 @@ export default function Subscription() {
                   </div>
                   <div className="mt-1 text-[12px] text-dark-50/35">
                     {t('subscription.pause.pausedDescription')}{' '}
-                    {new Date(subscription.end_date).toLocaleDateString()} (
+                    {new Date(subscription.end_date).toLocaleDateString(uiLocale())} (
                     {t('subscription.pause.days', { count: subscription.days_left })})
                   </div>
                 </div>

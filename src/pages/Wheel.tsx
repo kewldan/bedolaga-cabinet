@@ -1,3 +1,4 @@
+import { uiLocale } from '@/utils/uiLocale';
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
@@ -798,7 +799,7 @@ export default function Wheel() {
                               {item.prize_display_name}
                             </div>
                             <div className="text-xs text-dark-500">
-                              {new Date(item.created_at).toLocaleDateString()}
+                              {new Date(item.created_at).toLocaleDateString(uiLocale())}
                             </div>
                           </div>
                         </div>

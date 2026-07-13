@@ -1,3 +1,4 @@
+import { uiLocale } from '@/utils/uiLocale';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
@@ -77,7 +78,8 @@ export default function PublicLegal({ doc }: PublicLegalProps) {
             <div dangerouslySetInnerHTML={{ __html: formatContent(data.content) }} />
             {data.updated_at && (
               <p className="mt-4 text-xs text-dark-500">
-                {t('info.updatedAt', 'Обновлено')}: {new Date(data.updated_at).toLocaleDateString()}
+                {t('info.updatedAt', 'Обновлено')}:{' '}
+                {new Date(data.updated_at).toLocaleDateString(uiLocale())}
               </p>
             )}
           </div>

@@ -1,3 +1,4 @@
+import { uiLocale } from '@/utils/uiLocale';
 import { useState, useRef, useEffect } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
@@ -411,7 +412,7 @@ export default function Support() {
                     </span>
                   </div>
                   <div className="text-xs text-dark-500">
-                    {new Date(ticket.updated_at).toLocaleDateString()}
+                    {new Date(ticket.updated_at).toLocaleDateString(uiLocale())}
                   </div>
                 </button>
               ))}
@@ -558,7 +559,7 @@ export default function Support() {
                     </span>
                     <span className="text-xs text-dark-500">
                       {t('support.created')}{' '}
-                      {new Date(selectedTicket.created_at).toLocaleDateString()}
+                      {new Date(selectedTicket.created_at).toLocaleDateString(uiLocale())}
                     </span>
                   </div>
                 </div>
@@ -587,7 +588,7 @@ export default function Support() {
                           {msg.is_from_admin ? t('support.supportTeam') : t('support.you')}
                         </span>
                         <span className="text-xs text-dark-500">
-                          {new Date(msg.created_at).toLocaleString()}
+                          {new Date(msg.created_at).toLocaleString(uiLocale())}
                         </span>
                       </div>
                       {msg.message_text && (

@@ -1,12 +1,13 @@
+import { uiLocale } from '@/utils/uiLocale';
 import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { PiCaretDown } from 'react-icons/pi';
 import DOMPurify from 'dompurify';
-import { infoApi, FaqPage, InfoVisibility } from '../api/info';
+import { infoApi, type FaqPage, type InfoVisibility } from '../api/info';
 import { formatContent } from '../utils/legalContent';
 import { infoPagesApi } from '../api/infoPages';
-import { promoApi, LoyaltyTierInfo } from '../api/promo';
+import { promoApi, type LoyaltyTierInfo } from '../api/promo';
 import type { FaqItem, ReplacesTab } from '../api/infoPages';
 import { DocumentIcon, InfoIcon, QuestionIcon, ShieldIcon, StarIcon } from '@/components/icons';
 
@@ -489,7 +490,7 @@ export default function Info() {
           />
           {rules.updated_at && (
             <p className="mt-6 border-t border-dark-700 pt-4 text-sm text-dark-400">
-              {t('info.updatedAt')}: {new Date(rules.updated_at).toLocaleDateString()}
+              {t('info.updatedAt')}: {new Date(rules.updated_at).toLocaleDateString(uiLocale())}
             </p>
           )}
         </div>
@@ -517,7 +518,7 @@ export default function Info() {
           />
           {privacy.updated_at && (
             <p className="mt-6 border-t border-dark-700 pt-4 text-sm text-dark-400">
-              {t('info.updatedAt')}: {new Date(privacy.updated_at).toLocaleDateString()}
+              {t('info.updatedAt')}: {new Date(privacy.updated_at).toLocaleDateString(uiLocale())}
             </p>
           )}
         </div>
@@ -545,7 +546,7 @@ export default function Info() {
           />
           {offer.updated_at && (
             <p className="mt-6 border-t border-dark-700 pt-4 text-sm text-dark-400">
-              {t('info.updatedAt')}: {new Date(offer.updated_at).toLocaleDateString()}
+              {t('info.updatedAt')}: {new Date(offer.updated_at).toLocaleDateString(uiLocale())}
             </p>
           )}
         </div>
@@ -566,7 +567,7 @@ export default function Info() {
       }
 
       const formatCurrency = (amount: number) => {
-        return new Intl.NumberFormat('ru-RU', {
+        return new Intl.NumberFormat(uiLocale(), {
           style: 'currency',
           currency: 'RUB',
           minimumFractionDigits: 0,

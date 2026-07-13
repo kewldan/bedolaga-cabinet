@@ -1,3 +1,4 @@
+import { uiLocale } from '@/utils/uiLocale';
 import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
@@ -303,7 +304,7 @@ export default function Profile() {
             <div className="flex items-center justify-between py-3">
               <span className="text-dark-400">{t('profile.registeredAt')}</span>
               <span className="font-medium text-dark-100">
-                {user?.created_at ? new Date(user.created_at).toLocaleDateString() : '-'}
+                {user?.created_at ? new Date(user.created_at).toLocaleDateString(uiLocale()) : '-'}
               </span>
             </div>
           </div>
