@@ -1681,6 +1681,7 @@
       "customButtonTypeUrl": "链接",
       "customButtonCallbackPlaceholder": "callback_data（例如 back_to_menu）",
       "customButtonUrlPlaceholder": "https://example.com",
+      "customButtonEmojiIdPlaceholder": "自定义 Emoji ID（可选）",
       "category": "类别",
       "categoryNews": "新闻",
       "categoryPromo": "促销",

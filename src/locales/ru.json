@@ -1974,6 +1974,7 @@
       "customButtonTypeUrl": "Ссылка",
       "customButtonCallbackPlaceholder": "callback_data (например, back_to_menu)",
       "customButtonUrlPlaceholder": "https://example.com",
+      "customButtonEmojiIdPlaceholder": "Custom emoji ID (необязательно)",
       "preview": "Предпросмотр",
       "previewEmpty": "— пусто —",
       "emailSubjectLabel": "Тема",

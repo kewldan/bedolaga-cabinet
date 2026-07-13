@@ -1580,6 +1580,7 @@
       "customButtonTypeUrl": "لینک",
       "customButtonCallbackPlaceholder": "callback_data (مثلاً back_to_menu)",
       "customButtonUrlPlaceholder": "https://example.com",
+      "customButtonEmojiIdPlaceholder": "شناسه ایموجی سفارشی (اختیاری)",
       "category": "دسته‌بندی",
       "categoryNews": "اخبار",
       "categoryPromo": "تبلیغاتی",
