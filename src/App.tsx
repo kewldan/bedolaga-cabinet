@@ -31,6 +31,7 @@ import {
   ServiceUnavailableScreen,
 } from './components/blocking';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import { BackgroundHost } from './components/backgrounds/BackgroundHost';
 import { PermissionRoute } from '@/components/auth/PermissionRoute';
 import { saveReturnUrl } from './utils/token';
 import { useAnalyticsCounters } from './hooks/useAnalyticsCounters';
@@ -259,6 +260,8 @@ function App() {
 
   return (
     <>
+      {/* Живёт над <Routes>: анимация фона не перезапускается при навигации */}
+      <BackgroundHost />
       <BlockingOverlay />
       <Routes>
         {/* Public routes */}

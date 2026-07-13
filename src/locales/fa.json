@@ -1580,6 +1580,7 @@
       "customButtonTypeUrl": "لینک",
       "customButtonCallbackPlaceholder": "callback_data (مثلاً back_to_menu)",
       "customButtonUrlPlaceholder": "https://example.com",
+      "customButtonEmojiIdPlaceholder": "شناسه ایموجی سفارشی (اختیاری)",
       "category": "دسته‌بندی",
       "categoryNews": "اخبار",
       "categoryPromo": "تبلیغاتی",
@@ -2882,7 +2883,8 @@
           "sync": "همگام‌سازی",
           "tickets": "تیکت‌ها",
           "gifts": "هدایا",
-          "referrals": "معرفی‌ها"
+          "referrals": "معرفی‌ها",
+          "activity": "فعالیت"
         },
         "noTickets": "این کاربر تیکتی ندارد",
         "ticketsCount": "تیکت",
@@ -3083,7 +3085,71 @@
           "areYouSure": "آیا مطمئنید می‌خواهید ادامه دهید؟",
           "title": "عملیات"
         },
-        "noVpnData": "داده‌ای از VPN وجود ندارد"
+        "noVpnData": "داده‌ای از VPN وجود ندارد",
+        "activity": {
+          "total": "مجموع رویدادها",
+          "empty": "هنوز فعالیتی وجود ندارد",
+          "filters": {
+            "all": "همه",
+            "payments": "پرداخت‌ها",
+            "events": "رویدادها",
+            "promo": "تخفیف‌ها",
+            "tickets": "تیکت‌ها",
+            "gifts": "هدایا",
+            "referrals": "دعوت‌ها",
+            "logins": "ورودها",
+            "clicks": "کلیک‌ها"
+          },
+          "types": {
+            "transaction": "تراکنش",
+            "event": "رویداد",
+            "promocode": "کد تخفیف",
+            "coupon": "کوپن",
+            "ticket": "تیکت",
+            "wheel_spin": "گردونه شانس",
+            "poll": "نظرسنجی تکمیل شد",
+            "gift_sent": "هدیه ارسال شد",
+            "gift_received": "هدیه دریافت شد",
+            "referral_earning": "درآمد دعوت",
+            "cabinet_login": "ورود به پنل",
+            "withdrawal": "درخواست برداشت",
+            "button_click": "دکمه ربات",
+            "cabinet_action": "اقدام در پنل"
+          },
+          "sources": {
+            "bot": "ربات",
+            "cabinet": "پنل"
+          },
+          "subtypes": {
+            "deposit": "واریز",
+            "withdrawal": "برداشت",
+            "subscription_payment": "پرداخت اشتراک",
+            "refund": "بازپرداخت",
+            "failed_refund": "بازپرداخت ناموفق",
+            "referral_reward": "پاداش دعوت",
+            "poll_reward": "پاداش نظرسنجی",
+            "gift_payment": "پرداخت هدیه",
+            "activation": "فعال‌سازی",
+            "purchase": "خرید",
+            "subscription_purchase": "خرید اشتراک",
+            "renewal": "تمدید",
+            "balance_topup": "شارژ موجودی",
+            "promo_group_change": "تغییر گروه تخفیف",
+            "campaign_registration": "ثبت‌نام کمپین",
+            "referral_link_visit": "بازدید لینک دعوت",
+            "referral_registration": "ثبت‌نام دعوتی",
+            "trial_activation": "فعال‌سازی دوره آزمایشی",
+            "open": "باز",
+            "answered": "پاسخ داده شده",
+            "pending": "در انتظار",
+            "closed": "بسته",
+            "redeemed": "استفاده شده",
+            "approved": "تأیید شده",
+            "rejected": "رد شده",
+            "completed": "انجام شده",
+            "command": "دستور"
+          }
+        }
       },
       "notFound": "کاربر یافت نشد",
       "purchaseCount": "تعداد خرید: {{count}}",

@@ -1974,6 +1974,7 @@
       "customButtonTypeUrl": "Ссылка",
       "customButtonCallbackPlaceholder": "callback_data (например, back_to_menu)",
       "customButtonUrlPlaceholder": "https://example.com",
+      "customButtonEmojiIdPlaceholder": "Custom emoji ID (необязательно)",
       "preview": "Предпросмотр",
       "previewEmpty": "— пусто —",
       "emailSubjectLabel": "Тема",
@@ -3785,7 +3786,8 @@
           "sync": "Синхронизация",
           "tickets": "Тикеты",
           "gifts": "Подарки",
-          "referrals": "Рефералы"
+          "referrals": "Рефералы",
+          "activity": "Активность"
         },
         "noTickets": "У пользователя нет тикетов",
         "ticketsCount": "тикетов",
@@ -3985,6 +3987,70 @@
           "searchPlaceholder": "Поиск по имени, email или Telegram ID...",
           "alreadyReferred": "уже чей-то реферал",
           "noUsersFound": "Пользователи не найдены"
+        },
+        "activity": {
+          "total": "Всего событий",
+          "empty": "Активности пока нет",
+          "filters": {
+            "all": "Все",
+            "payments": "Платежи",
+            "events": "События",
+            "promo": "Промо",
+            "tickets": "Тикеты",
+            "gifts": "Подарки",
+            "referrals": "Рефералы",
+            "logins": "Входы",
+            "clicks": "Клики"
+          },
+          "types": {
+            "transaction": "Транзакция",
+            "event": "Событие",
+            "promocode": "Промокод",
+            "coupon": "Купон",
+            "ticket": "Тикет",
+            "wheel_spin": "Колесо фортуны",
+            "poll": "Опрос пройден",
+            "gift_sent": "Подарок отправлен",
+            "gift_received": "Подарок получен",
+            "referral_earning": "Реферальное начисление",
+            "cabinet_login": "Вход в кабинет",
+            "withdrawal": "Заявка на вывод",
+            "button_click": "Кнопка в боте",
+            "cabinet_action": "Действие в кабинете"
+          },
+          "sources": {
+            "bot": "Бот",
+            "cabinet": "Кабинет"
+          },
+          "subtypes": {
+            "deposit": "Пополнение",
+            "withdrawal": "Списание",
+            "subscription_payment": "Оплата подписки",
+            "refund": "Возврат",
+            "failed_refund": "Неудачный возврат",
+            "referral_reward": "Реферальная награда",
+            "poll_reward": "Награда за опрос",
+            "gift_payment": "Оплата подарка",
+            "activation": "Активация",
+            "purchase": "Покупка",
+            "subscription_purchase": "Покупка подписки",
+            "renewal": "Продление",
+            "balance_topup": "Пополнение баланса",
+            "promo_group_change": "Смена промогруппы",
+            "campaign_registration": "Регистрация по кампании",
+            "referral_link_visit": "Переход по реф. ссылке",
+            "referral_registration": "Реф. регистрация",
+            "trial_activation": "Активация триала",
+            "open": "Открыт",
+            "answered": "Отвечен",
+            "pending": "Ожидает",
+            "closed": "Закрыт",
+            "redeemed": "Погашен",
+            "approved": "Одобрена",
+            "rejected": "Отклонена",
+            "completed": "Выполнена",
+            "command": "Команда"
+          }
         }
       },
       "notFound": "Пользователь не найден",

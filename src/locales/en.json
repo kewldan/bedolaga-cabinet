@@ -1947,6 +1947,7 @@
       "customButtonTypeUrl": "URL",
       "customButtonCallbackPlaceholder": "callback_data (e.g. back_to_menu)",
       "customButtonUrlPlaceholder": "https://example.com",
+      "customButtonEmojiIdPlaceholder": "Custom emoji ID (optional)",
       "preview": "Preview",
       "previewEmpty": "— empty —",
       "emailSubjectLabel": "Subject",
@@ -3378,7 +3379,8 @@
           "sync": "Synchronization",
           "tickets": "Tickets",
           "gifts": "Gifts",
-          "referrals": "Referrals"
+          "referrals": "Referrals",
+          "activity": "Activity"
         },
         "noTickets": "No tickets from this user",
         "ticketsCount": "tickets",
@@ -3579,6 +3581,70 @@
           "searchPlaceholder": "Search by name, email, or Telegram ID...",
           "alreadyReferred": "already has referrer",
           "noUsersFound": "No users found"
+        },
+        "activity": {
+          "total": "Total events",
+          "empty": "No activity yet",
+          "filters": {
+            "all": "All",
+            "payments": "Payments",
+            "events": "Events",
+            "promo": "Promo",
+            "tickets": "Tickets",
+            "gifts": "Gifts",
+            "referrals": "Referrals",
+            "logins": "Logins",
+            "clicks": "Clicks"
+          },
+          "types": {
+            "transaction": "Transaction",
+            "event": "Event",
+            "promocode": "Promo code",
+            "coupon": "Coupon",
+            "ticket": "Ticket",
+            "wheel_spin": "Fortune wheel",
+            "poll": "Poll completed",
+            "gift_sent": "Gift sent",
+            "gift_received": "Gift received",
+            "referral_earning": "Referral earning",
+            "cabinet_login": "Cabinet login",
+            "withdrawal": "Withdrawal request",
+            "button_click": "Bot button",
+            "cabinet_action": "Cabinet action"
+          },
+          "sources": {
+            "bot": "Bot",
+            "cabinet": "Cabinet"
+          },
+          "subtypes": {
+            "deposit": "Deposit",
+            "withdrawal": "Charge",
+            "subscription_payment": "Subscription payment",
+            "refund": "Refund",
+            "failed_refund": "Failed refund",
+            "referral_reward": "Referral reward",
+            "poll_reward": "Poll reward",
+            "gift_payment": "Gift payment",
+            "activation": "Activation",
+            "purchase": "Purchase",
+            "subscription_purchase": "Subscription purchase",
+            "renewal": "Renewal",
+            "balance_topup": "Balance top-up",
+            "promo_group_change": "Promo group change",
+            "campaign_registration": "Campaign registration",
+            "referral_link_visit": "Referral link visit",
+            "referral_registration": "Referral registration",
+            "trial_activation": "Trial activation",
+            "open": "Open",
+            "answered": "Answered",
+            "pending": "Pending",
+            "closed": "Closed",
+            "redeemed": "Redeemed",
+            "approved": "Approved",
+            "rejected": "Rejected",
+            "completed": "Completed",
+            "command": "Command"
+          }
         }
       },
       "notFound": "User not found",

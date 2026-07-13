@@ -1681,6 +1681,7 @@
       "customButtonTypeUrl": "链接",
       "customButtonCallbackPlaceholder": "callback_data（例如 back_to_menu）",
       "customButtonUrlPlaceholder": "https://example.com",
+      "customButtonEmojiIdPlaceholder": "自定义 Emoji ID（可选）",
       "category": "类别",
       "categoryNews": "新闻",
       "categoryPromo": "促销",
@@ -2881,7 +2882,8 @@
           "sync": "同步",
           "tickets": "工单",
           "gifts": "礼物",
-          "referrals": "推荐"
+          "referrals": "推荐",
+          "activity": "活动记录"
         },
         "noTickets": "该用户没有工单",
         "ticketsCount": "个工单",
@@ -3082,7 +3084,71 @@
           "areYouSure": "确定要继续？",
           "title": "操作"
         },
-        "noVpnData": "无 VPN 数据"
+        "noVpnData": "无 VPN 数据",
+        "activity": {
+          "total": "事件总数",
+          "empty": "暂无活动记录",
+          "filters": {
+            "all": "全部",
+            "payments": "支付",
+            "events": "事件",
+            "promo": "促销",
+            "tickets": "工单",
+            "gifts": "礼物",
+            "referrals": "推荐",
+            "logins": "登录",
+            "clicks": "点击"
+          },
+          "types": {
+            "transaction": "交易",
+            "event": "事件",
+            "promocode": "促销码",
+            "coupon": "优惠券",
+            "ticket": "工单",
+            "wheel_spin": "幸运转盘",
+            "poll": "问卷已完成",
+            "gift_sent": "已发送礼物",
+            "gift_received": "已收到礼物",
+            "referral_earning": "推荐收益",
+            "cabinet_login": "登录后台",
+            "withdrawal": "提现申请",
+            "button_click": "机器人按钮",
+            "cabinet_action": "后台操作"
+          },
+          "sources": {
+            "bot": "机器人",
+            "cabinet": "后台"
+          },
+          "subtypes": {
+            "deposit": "充值",
+            "withdrawal": "扣款",
+            "subscription_payment": "订阅付款",
+            "refund": "退款",
+            "failed_refund": "退款失败",
+            "referral_reward": "推荐奖励",
+            "poll_reward": "问卷奖励",
+            "gift_payment": "礼物付款",
+            "activation": "激活",
+            "purchase": "购买",
+            "subscription_purchase": "订阅购买",
+            "renewal": "续订",
+            "balance_topup": "余额充值",
+            "promo_group_change": "促销组变更",
+            "campaign_registration": "活动注册",
+            "referral_link_visit": "推荐链接访问",
+            "referral_registration": "推荐注册",
+            "trial_activation": "试用激活",
+            "open": "打开",
+            "answered": "已回复",
+            "pending": "等待中",
+            "closed": "已关闭",
+            "redeemed": "已兑换",
+            "approved": "已批准",
+            "rejected": "已拒绝",
+            "completed": "已完成",
+            "command": "命令"
+          }
+        }
       },
       "notFound": "未找到用户",
       "purchaseCount": "购买次数：{{count}}",
