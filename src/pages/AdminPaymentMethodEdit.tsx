@@ -498,9 +498,7 @@ export default function AdminPaymentMethodEdit() {
             rows={2}
             className="input"
           />
-          <p className="mt-1 text-xs text-dark-500">
-            {t('admin.paymentMethods.descriptionHint')}
-          </p>
+          <p className="mt-1 text-xs text-dark-500">{t('admin.paymentMethods.descriptionHint')}</p>
         </div>
 
         {/* Sub-options */}

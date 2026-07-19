@@ -1627,7 +1627,7 @@
     },
     "paymentMethods": {
       "title": "Payment Methods",
-      "description": "Configure display order and conditions",
+      "subtitle": "Configure display order and conditions",
       "enabled": "On",
       "disabled": "Off",
       "notConfigured": "Not configured",

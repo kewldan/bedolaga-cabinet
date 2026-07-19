@@ -1423,7 +1423,7 @@
     },
     "paymentMethods": {
       "title": "支付方法",
-      "description": "配置顺序和显示条件",
+      "subtitle": "配置顺序和显示条件",
       "enabled": "开启",
       "disabled": "关闭",
       "notConfigured": "未配置",
@@ -1439,6 +1439,8 @@
       "openUrlDirectHint": "开启 — 支付链接立即打开,不显示中间的按钮面板。关闭 — 显示「打开支付」按钮。在 Telegram 内两种情况都会在外部浏览器中打开链接(否则通过银行 App/SBP 付款会失败);支付完成后返回结果页。Stars/CryptoBot(t.me/ 链接)始终原生打开,不受此开关影响。",
       "displayName": "显示名称",
       "displayNameHint": "留空以使用默认名称",
+      "description": "描述",
+      "descriptionHint": "显示在支付方法名称下方。留空则使用默认文本",
       "subOptions": "支付选项",
       "minAmount": "最小金额（戈比）",
       "maxAmount": "最大金额（戈比）",
