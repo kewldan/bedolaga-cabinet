@@ -6744,7 +6744,7 @@
       },
       "filters": {
         "all": "All",
-        "search": "Username, order # or user ID"
+        "search": "Username, order # or ID"
       },
       "empty": "No orders",
       "reviewHint": "The TON transfer may have gone out, but the result is unknown. Check the wallet's outgoing transfers: Stars delivered — «Completed»; no transfer for sure — «Retry»; otherwise — «Refund».",
