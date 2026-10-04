@@ -40,6 +40,12 @@ vi.mock('../components/InsufficientBalancePrompt', () => ({
   ),
 }));
 
+const navigate = vi.hoisted(() => vi.fn());
+vi.mock('react-router', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('react-router')>()),
+  useNavigate: () => navigate,
+}));
+
 const api = vi.hoisted(() => ({
   getConfig: vi.fn(),
   getOrders: vi.fn(),
@@ -124,7 +130,7 @@ describe('страница звёзд', () => {
     expect(second.idempotency_key).toBe(first.idempotency_key);
   });
 
-  it('при 402 предлагает пополнить недостающее', async () => {
+  it('при 402 сразу ведёт на оплату недостающего', async () => {
     const error = Object.assign(new Error('402'), {
       isAxiosError: true,
       response: {
@@ -136,6 +142,17 @@ describe('страница звёзд', () => {
     await renderPage();
     fireEvent.click(await screen.findByRole('button', { name: /Оплатить/ }));
     expect((await screen.findByTestId('insufficient')).textContent).toBe('76000');
+    expect(navigate).toHaveBeenCalledWith('/balance/top-up?amount=760&returnTo=%2Fstars');
+  });
+
+  it('при нехватке баланса кнопка называет сумму доплаты', async () => {
+    api.getConfig.mockResolvedValue({ ...config, balance_kopeks: 6000 });
+    await renderPage();
+    // 100 ⭐ × 1,60 ₽ = 160 ₽, на балансе 60 ₽ → доплатить 100 ₽
+    expect(await screen.findByText('Доплатить')).toBeTruthy();
+    const pay = await screen.findByRole('button', { name: /Оплатить/ });
+    expect(pay.textContent).toMatch(/100/);
+    expect(screen.getByText(/Откроется оплата недостающей суммы/)).toBeTruthy();
   });
 
   it('не даёт оплатить с некорректным ником', async () => {
