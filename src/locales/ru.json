@@ -82,7 +82,8 @@
     "wheel": "Колесо удачи",
     "menu": "Меню",
     "gift": "Подарить",
-    "navigation": "Навигация"
+    "navigation": "Навигация",
+    "stars": "Звёзды"
   },
   "notifications": {
     "ticketNotifications": "Уведомления о тикетах",
@@ -1073,7 +1074,8 @@
       "tryAgain": "Попробовать снова"
     },
     "top_up": "Пополнить баланс",
-    "scanQrToPay": "Отсканируйте QR-код в приложении банка или откройте оплату"
+    "scanQrToPay": "Отсканируйте QR-код в приложении банка или откройте оплату",
+    "starsPayment": "Оплата звёзд"
   },
   "referral": {
     "title": "Реферальная программа",
@@ -1527,7 +1529,8 @@
       "infoPages": "Инфо-страницы",
       "legalPages": "Системные страницы",
       "systemErrors": "Ошибки системы",
-      "dpichecker": "DPI//CHECKER"
+      "dpichecker": "DPI//CHECKER",
+      "stars": "Звёзды"
     },
     "panel": {
       "title": "Панель администратора",
@@ -3330,7 +3333,8 @@
         "sys_cabinet": "Кабинет",
         "sys_other": "Прочие настройки",
         "sys_dpichecker": "DPI//CHECKER",
-        "payments_cashera": "Cashera"
+        "payments_cashera": "Cashera",
+        "users_stars_shop": "Магазин звёзд"
       },
       "presets": {
         "standard": "Стандарт",
@@ -3843,7 +3847,8 @@
         "CHANNEL": "Канал",
         "TIMEZONE": "Часовой пояс",
         "REFERRAL": "Реферальная система",
-        "MODERATION": "Модерация"
+        "MODERATION": "Модерация",
+        "STARS_SHOP": "⭐ Магазин звёзд"
       },
       "offlineConv": "Офлайн-конверсии",
       "apiKey": "API-ключ",
@@ -4062,7 +4067,8 @@
         "support": "Поддержка",
         "info": "Информация",
         "admin": "Админка",
-        "language": "Язык"
+        "language": "Язык",
+        "stars": "Звёзды"
       },
       "descriptions": {
         "home": "Кнопка личного кабинета",
@@ -4072,7 +4078,8 @@
         "support": "Обращения в поддержку",
         "info": "Информационный раздел",
         "admin": "Веб-админка",
-        "language": "Выбор языка"
+        "language": "Выбор языка",
+        "stars": "Покупка звёзд Telegram"
       },
       "styles": {
         "default": "Без цвета",
@@ -7301,6 +7308,70 @@
         "attempts": "попыток: {{count}}",
         "response": "бот ответил {{code}}"
       }
+    },
+    "stars": {
+      "title": "Звёзды Telegram",
+      "subtitle": "Заказы, выдача через Fragment и выручка",
+      "settings": "Настройки",
+      "banner": {
+        "disabled": "Магазин выключен — пользователи его не видят (STARS_SHOP_ENABLED).",
+        "dryRun": "Тестовый режим: заказы проходят без Fragment и кошелька (STARS_SHOP_DRY_RUN).",
+        "noFragment": "Fragment не настроен: задайте FRAGMENT_COOKIES, FRAGMENT_WALLET_MNEMONIC и FRAGMENT_TON_API_KEY в .env."
+      },
+      "period": {
+        "days": "{{count}} дн.",
+        "all": "Всё время"
+      },
+      "stats": {
+        "revenue": "Выручка",
+        "margin": "Маржа {{value}}",
+        "sold": "Звёзд продано",
+        "orders": "заказов: {{count}}",
+        "refunded": "Возвращено",
+        "review": "На проверке"
+      },
+      "wallet": {
+        "title": "Кошелёк Fragment",
+        "check": "Проверить",
+        "loading": "Загружаем…",
+        "error": "Не удалось получить баланс",
+        "price": "100 ⭐ на Fragment: {{price}} TON",
+        "hint": "Баланс и адрес платёжного кошелька"
+      },
+      "filters": {
+        "all": "Все",
+        "search": "Ник, № заказа или ID"
+      },
+      "empty": "Заказов нет",
+      "reviewHint": "Перевод TON мог уйти, а итог неизвестен. Проверьте исходящие переводы кошелька: звёзды дошли — «Выполнен»; перевода точно не было — «Повторить»; иначе — «Вернуть деньги».",
+      "fields": {
+        "source": "Источник",
+        "attempts": "Попыток",
+        "cost": "Себестоимость",
+        "recipientName": "Имя получателя",
+        "fragmentReq": "Заявка Fragment",
+        "txHash": "Хеш транзакции",
+        "nextAttempt": "След. попытка",
+        "updated": "Обновлён"
+      },
+      "source": {
+        "bot": "Бот",
+        "cabinet": "Кабинет",
+        "auto_cart": "Автопокупка"
+      },
+      "confirm": {
+        "retry": "Поставить заказ в очередь снова? Для заказа на проверке — только если перевод точно не уходил, иначе звёзды оплатятся дважды.",
+        "refund": "Вернуть деньги на баланс покупателя?",
+        "complete": "Звёзды дошли? Укажите хеш транзакции, если он есть.",
+        "yes": "Подтвердить",
+        "cancel": "Отмена"
+      },
+      "actions": {
+        "retry": "Повторить",
+        "refund": "Вернуть деньги",
+        "complete": "Выполнен",
+        "failed": "Действие не выполнено"
+      }
     }
   },
   "adminUpdates": {
@@ -8479,6 +8550,56 @@
     },
     "subscription": {
       "untitled": "Подписка"
+    }
+  },
+  "stars": {
+    "title": "Звёзды Telegram",
+    "subtitle": "{{price}} за звезду · приходят на аккаунт получателя за пару минут",
+    "unavailable": "Покупка звёзд сейчас недоступна",
+    "toHome": "На главную",
+    "paid": {
+      "title": "Заказ #{{id}} оплачен",
+      "text": "{{quantity}} ⭐ для @{{recipient}} — отправляем. Статус обновится ниже.",
+      "again": "Купить ещё"
+    },
+    "recipient": {
+      "title": "Кому",
+      "self": "Себе (@{{username}})",
+      "selfNoUsername": "Себе — нет ника",
+      "other": "Другому",
+      "invalid": "Нужен ник Telegram: латиница, цифры и «_», 4–32 символа",
+      "hint": "Ник получателя, например @durov. Отменить отправку будет нельзя."
+    },
+    "quantity": {
+      "title": "Сколько",
+      "custom": "Другое количество ({{min}}–{{max}})",
+      "invalid": "Количество от {{min}} до {{max}}"
+    },
+    "summary": {
+      "total": "К оплате",
+      "balance": "На балансе",
+      "paying": "Оплачиваем…",
+      "pay": "Оплатить {{total}}",
+      "payDisabled": "Выберите получателя и количество",
+      "note": "Оплата с баланса. Если звёзды не удастся отправить — деньги вернутся на баланс."
+    },
+    "insufficient": "Пополните баланс — заказ {{quantity}} ⭐ для @{{recipient}} оплатится автоматически.",
+    "errors": {
+      "priceChanged": "Цена изменилась — проверьте сумму и оплатите ещё раз.",
+      "invalid": "Проверьте получателя и количество.",
+      "generic": "Не удалось оплатить заказ. Попробуйте ещё раз."
+    },
+    "orders": {
+      "title": "Мои заказы"
+    },
+    "status": {
+      "paid": "В очереди",
+      "processing": "Отправляем",
+      "broadcasting": "Отправляем",
+      "completed": "Доставлено",
+      "failed": "Ошибка",
+      "refunded": "Деньги возвращены",
+      "needs_review": "Проверяем"
     }
   }
 }

@@ -72,7 +72,8 @@
     "wheel": "幸运转盘",
     "menu": "菜单",
     "gift": "赠送",
-    "navigation": "导航"
+    "navigation": "导航",
+    "stars": "星星"
   },
   "notifications": {
     "ticketNotifications": "工单通知",
@@ -912,7 +913,8 @@
       "tryAgain": "重试"
     },
     "top_up": "充值",
-    "scanQrToPay": "请在银行应用中扫描二维码，或打开支付页面"
+    "scanQrToPay": "请在银行应用中扫描二维码，或打开支付页面",
+    "starsPayment": "购买星星"
   },
   "referral": {
     "title": "推荐计划",
@@ -1360,7 +1362,8 @@
       "infoPages": "信息页面",
       "legalPages": "系统页面",
       "systemErrors": "系统错误",
-      "dpichecker": "DPI//CHECKER"
+      "dpichecker": "DPI//CHECKER",
+      "stars": "星星"
     },
     "panel": {
       "title": "管理面板",
@@ -2381,14 +2384,16 @@
         "sys_cabinet": "用户中心",
         "sys_other": "其他设置",
         "sys_dpichecker": "DPI//CHECKER",
-        "payments_cashera": "Cashera"
+        "payments_cashera": "Cashera",
+        "users_stars_shop": "星星商店"
       },
       "categories": {
         "CABINET": "用户中心",
         "INFO_PAGES": "法律文件与 FAQ",
         "MENU": "菜单按钮",
         "TELEGRAM_WIDGET": "Telegram Login Widget",
-        "TELEGRAM_OIDC": "Telegram Login (OIDC)"
+        "TELEGRAM_OIDC": "Telegram Login (OIDC)",
+        "STARS_SHOP": "⭐ 星星商店"
       },
       "settingNames": {
         "Telegram Widget Size": "小部件大小",
@@ -2616,7 +2621,8 @@
         "support": "支持",
         "info": "信息",
         "admin": "管理面板",
-        "language": "语言"
+        "language": "语言",
+        "stars": "星星"
       },
       "descriptions": {
         "home": "个人中心按钮",
@@ -2626,7 +2632,8 @@
         "support": "支持工单",
         "info": "信息板块",
         "admin": "网页管理面板",
-        "language": "机器人语言选择"
+        "language": "机器人语言选择",
+        "stars": "购买 Telegram 星星"
       },
       "styles": {
         "default": "无颜色",

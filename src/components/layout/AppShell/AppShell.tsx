@@ -27,6 +27,7 @@ import TicketNotificationBell from '@/components/TicketNotificationBell';
 import {
   SubscriptionIcon,
   GiftIcon,
+  StarIcon,
   HomeIcon,
   CreditCardIcon,
   ChatIcon,
@@ -61,7 +62,8 @@ export function AppShell({ children }: AppShellProps) {
 
   // Extracted hooks
   const { appName, logoLetter, hasCustomLogo, logoUrl } = useBranding();
-  const { referralEnabled, wheelEnabled, hasContests, hasPolls, giftEnabled } = useFeatureFlags();
+  const { referralEnabled, wheelEnabled, hasContests, hasPolls, giftEnabled, starsEnabled } =
+    useFeatureFlags();
   const { lite } = useLiteMode();
   useScrollRestoration();
   // Анимированный фон рендерит BackgroundHost в App (не перемонтируется при
@@ -101,6 +103,7 @@ export function AppShell({ children }: AppShellProps) {
     { path: '/balance', label: t('nav.balance'), icon: CreditCardIcon },
     ...(referralEnabled ? [{ path: '/referral', label: t('nav.referral'), icon: UsersIcon }] : []),
     ...(giftEnabled ? [{ path: '/gift', label: t('nav.gift'), icon: GiftIcon }] : []),
+    ...(starsEnabled ? [{ path: '/stars', label: t('nav.stars'), icon: StarIcon }] : []),
     { path: '/support', label: t('nav.support'), icon: ChatIcon },
     { path: '/info', label: t('nav.info'), icon: InfoIcon },
     { path: '/profile', label: t('nav.profile'), icon: UserIcon },
@@ -269,6 +272,7 @@ export function AppShell({ children }: AppShellProps) {
         hasContests={hasContests}
         hasPolls={hasPolls}
         giftEnabled={giftEnabled}
+        starsEnabled={starsEnabled}
       />
 
       {/* Desktop spacer */}

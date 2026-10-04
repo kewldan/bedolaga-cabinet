@@ -77,7 +77,8 @@
     "wheel": "Fortune Wheel",
     "menu": "Menu",
     "gift": "Gift",
-    "navigation": "Navigation"
+    "navigation": "Navigation",
+    "stars": "Stars"
   },
   "notifications": {
     "ticketNotifications": "Ticket Notifications",
@@ -1045,7 +1046,8 @@
       "tryAgain": "Try Again"
     },
     "top_up": "Top up balance",
-    "scanQrToPay": "Scan the QR code in your banking app or open the payment page"
+    "scanQrToPay": "Scan the QR code in your banking app or open the payment page",
+    "starsPayment": "Stars purchase"
   },
   "referral": {
     "title": "Referral Program",
@@ -1506,7 +1508,8 @@
       "infoPages": "Info Pages",
       "legalPages": "System pages",
       "systemErrors": "System errors",
-      "dpichecker": "DPI//CHECKER"
+      "dpichecker": "DPI//CHECKER",
+      "stars": "Stars"
     },
     "panel": {
       "title": "Admin Panel",
@@ -3284,14 +3287,16 @@
         "sys_cabinet": "Cabinet",
         "sys_other": "Other settings",
         "sys_dpichecker": "DPI//CHECKER",
-        "payments_cashera": "Cashera"
+        "payments_cashera": "Cashera",
+        "users_stars_shop": "Stars shop"
       },
       "categories": {
         "CABINET": "Cabinet",
         "INFO_PAGES": "Legal documents and FAQ",
         "MENU": "Menu button",
         "TELEGRAM_WIDGET": "Telegram Login Widget",
-        "TELEGRAM_OIDC": "Telegram Login (OIDC)"
+        "TELEGRAM_OIDC": "Telegram Login (OIDC)",
+        "STARS_SHOP": "⭐ Stars shop"
       },
       "settingNames": {
         "Telegram Widget Size": "Widget Size",
@@ -3637,7 +3642,8 @@
         "support": "Support",
         "info": "Info",
         "admin": "Admin Panel",
-        "language": "Language"
+        "language": "Language",
+        "stars": "Stars"
       },
       "descriptions": {
         "home": "Personal cabinet button",
@@ -3647,7 +3653,8 @@
         "support": "Support tickets",
         "info": "Information section",
         "admin": "Web admin panel",
-        "language": "Language selection"
+        "language": "Language selection",
+        "stars": "Buy Telegram Stars"
       },
       "styles": {
         "default": "No color",
@@ -6705,6 +6712,70 @@
         "attempts": "attempts: {{count}}",
         "response": "bot replied {{code}}"
       }
+    },
+    "stars": {
+      "title": "Telegram Stars",
+      "subtitle": "Orders, Fragment delivery and revenue",
+      "settings": "Settings",
+      "banner": {
+        "disabled": "The shop is off — users don't see it (STARS_SHOP_ENABLED).",
+        "dryRun": "Test mode: orders complete without Fragment or wallet (STARS_SHOP_DRY_RUN).",
+        "noFragment": "Fragment is not configured: set FRAGMENT_COOKIES, FRAGMENT_WALLET_MNEMONIC and FRAGMENT_TON_API_KEY in .env."
+      },
+      "period": {
+        "days": "{{count}} d",
+        "all": "All time"
+      },
+      "stats": {
+        "revenue": "Revenue",
+        "margin": "Margin {{value}}",
+        "sold": "Stars sold",
+        "orders": "orders: {{count}}",
+        "refunded": "Refunded",
+        "review": "Under review"
+      },
+      "wallet": {
+        "title": "Fragment wallet",
+        "check": "Check",
+        "loading": "Loading…",
+        "error": "Couldn't get the balance",
+        "price": "100 ⭐ on Fragment: {{price}} TON",
+        "hint": "Payer wallet balance and address"
+      },
+      "filters": {
+        "all": "All",
+        "search": "Username, order # or ID"
+      },
+      "empty": "No orders",
+      "reviewHint": "The TON transfer may have gone out, but the result is unknown. Check the wallet's outgoing transfers: Stars delivered — «Completed»; no transfer for sure — «Retry»; otherwise — «Refund».",
+      "fields": {
+        "source": "Source",
+        "attempts": "Attempts",
+        "cost": "Cost",
+        "recipientName": "Recipient name",
+        "fragmentReq": "Fragment request",
+        "txHash": "Transaction hash",
+        "nextAttempt": "Next attempt",
+        "updated": "Updated"
+      },
+      "source": {
+        "bot": "Bot",
+        "cabinet": "Cabinet",
+        "auto_cart": "Auto purchase"
+      },
+      "confirm": {
+        "retry": "Queue the order again? For an order under review — only if the transfer definitely didn't go out, otherwise the Stars are paid twice.",
+        "refund": "Return the money to the buyer's balance?",
+        "complete": "Were the Stars delivered? Enter the transaction hash if you have it.",
+        "yes": "Confirm",
+        "cancel": "Cancel"
+      },
+      "actions": {
+        "retry": "Retry",
+        "refund": "Refund",
+        "complete": "Completed",
+        "failed": "Action failed"
+      }
     }
   },
   "adminUpdates": {
@@ -7866,6 +7937,56 @@
     },
     "subscription": {
       "untitled": "Subscription"
+    }
+  },
+  "stars": {
+    "title": "Telegram Stars",
+    "subtitle": "{{price}} per star · delivered to the recipient within a couple of minutes",
+    "unavailable": "Buying Stars is unavailable right now",
+    "toHome": "Home",
+    "paid": {
+      "title": "Order #{{id}} paid",
+      "text": "{{quantity}} ⭐ for @{{recipient}} — sending now. The status will update below.",
+      "again": "Buy more"
+    },
+    "recipient": {
+      "title": "Recipient",
+      "self": "Myself (@{{username}})",
+      "selfNoUsername": "Myself — no username",
+      "other": "Someone else",
+      "invalid": "Enter a Telegram username: Latin letters, digits and «_», 4–32 characters",
+      "hint": "Recipient's username, e.g. @durov. The transfer cannot be undone."
+    },
+    "quantity": {
+      "title": "Amount",
+      "custom": "Other amount ({{min}}–{{max}})",
+      "invalid": "Amount from {{min}} to {{max}}"
+    },
+    "summary": {
+      "total": "To pay",
+      "balance": "Balance",
+      "paying": "Paying…",
+      "pay": "Pay {{total}}",
+      "payDisabled": "Choose a recipient and amount",
+      "note": "Paid from your balance. If the Stars can't be sent, the money returns to your balance."
+    },
+    "insufficient": "Top up your balance — the order of {{quantity}} ⭐ for @{{recipient}} will be paid automatically.",
+    "errors": {
+      "priceChanged": "The price has changed — check the total and pay again.",
+      "invalid": "Check the recipient and amount.",
+      "generic": "Couldn't pay for the order. Please try again."
+    },
+    "orders": {
+      "title": "My orders"
+    },
+    "status": {
+      "paid": "Queued",
+      "processing": "Sending",
+      "broadcasting": "Sending",
+      "completed": "Delivered",
+      "failed": "Error",
+      "refunded": "Refunded",
+      "needs_review": "Under review"
     }
   }
 }

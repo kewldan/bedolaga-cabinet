@@ -73,6 +73,7 @@ const Info = lazyWithRetry(() => import('./pages/Info'));
 const Wheel = lazyWithRetry(() => import('./pages/Wheel'));
 const GiftSubscription = lazyWithRetry(() => import('./pages/GiftSubscription'));
 const GiftResult = lazyWithRetry(() => import('./pages/GiftResult'));
+const Stars = lazyWithRetry(() => import('./pages/Stars'));
 const Connection = lazyWithRetry(() => import('./pages/Connection'));
 const ConnectionQR = lazyWithRetry(() => import('./pages/ConnectionQR'));
 const QuickPurchase = lazyWithRetry(() => import('./pages/QuickPurchase'));
@@ -106,6 +107,7 @@ const AdminBroadcastCreate = lazyWithRetry(() => import('./pages/AdminBroadcastC
 const AdminPromocodes = lazyWithRetry(() => import('./pages/AdminPromocodes'));
 const AdminPromocodeCreate = lazyWithRetry(() => import('./pages/AdminPromocodeCreate'));
 const AdminCoupons = lazyWithRetry(() => import('./pages/AdminCoupons'));
+const AdminStars = lazyWithRetry(() => import('./pages/AdminStars'));
 const AdminCouponCreate = lazyWithRetry(() => import('./pages/AdminCouponCreate'));
 const AdminCouponDetail = lazyWithRetry(() => import('./pages/AdminCouponDetail'));
 const CouponStatus = lazyWithRetry(() => import('./pages/CouponStatus'));
@@ -601,6 +603,16 @@ function App() {
           }
         />
         <Route
+          path="/stars"
+          element={
+            <ProtectedRoute>
+              <LazyPage>
+                <Stars />
+              </LazyPage>
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/gift/result"
           element={
             <ProtectedRoute>
@@ -931,6 +943,16 @@ function App() {
             <PermissionRoute permission="promocodes:read">
               <LazyPage>
                 <AdminPromocodeCreate />
+              </LazyPage>
+            </PermissionRoute>
+          }
+        />
+        <Route
+          path="/admin/stars"
+          element={
+            <PermissionRoute permission="stars_shop:read">
+              <LazyPage>
+                <AdminStars />
               </LazyPage>
             </PermissionRoute>
           }

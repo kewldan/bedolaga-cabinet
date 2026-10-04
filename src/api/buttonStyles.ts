@@ -15,6 +15,7 @@ export interface ButtonStylesConfig {
   support: ButtonSectionConfig;
   info: ButtonSectionConfig;
   admin: ButtonSectionConfig;
+  stars: ButtonSectionConfig;
 }
 
 export type ButtonStylesUpdate = {
@@ -29,6 +30,7 @@ export const BUTTON_SECTIONS = [
   'support',
   'info',
   'admin',
+  'stars',
 ] as const;
 
 export type ButtonSection = (typeof BUTTON_SECTIONS)[number];
@@ -53,6 +55,7 @@ export const DEFAULT_BUTTON_STYLES: ButtonStylesConfig = {
   support: { ...DEFAULT_SECTION, style: 'primary' },
   info: { ...DEFAULT_SECTION, style: 'primary' },
   admin: { ...DEFAULT_SECTION, style: 'danger' },
+  stars: { ...DEFAULT_SECTION },
 };
 
 function normalizeConfig(data: ButtonStylesConfig): ButtonStylesConfig {

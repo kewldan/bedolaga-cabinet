@@ -13,6 +13,7 @@ const BOT_TYPES = [
   'referral_reward',
   'poll_reward',
   'gift_payment',
+  'stars_payment',
 ];
 
 const LOCALES = ['ru', 'en', 'zh', 'fa'].map((lang) => ({

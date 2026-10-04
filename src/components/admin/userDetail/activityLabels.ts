@@ -199,7 +199,12 @@ export function describeItem(item: UserActivityItem, t: Translate): ItemDescript
 }
 
 /** Подтипы транзакций-трат: красные и со знаком минус. */
-const EXPENSE_SUBTYPES = new Set(['withdrawal', 'subscription_payment', 'gift_payment']);
+const EXPENSE_SUBTYPES = new Set([
+  'withdrawal',
+  'subscription_payment',
+  'gift_payment',
+  'stars_payment',
+]);
 
 export interface ActivityLine {
   /** Что произошло — по-человечески: «Продление 90 дней», «Подписка», «Вход в кабинет». */

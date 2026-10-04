@@ -35,6 +35,7 @@ export const BUILTIN_SECTIONS = [
   'info',
   'admin',
   'language',
+  'stars',
 ] as const;
 
 export const STYLE_OPTIONS = [
