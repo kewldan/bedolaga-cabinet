@@ -8002,9 +8002,11 @@
       "paying": "Paying…",
       "pay": "Pay {{total}}",
       "payDisabled": "Choose a recipient and amount",
-      "note": "Paid from your balance. If the Stars can't be sent, the money returns to your balance."
+      "note": "Paid from your balance. If the Stars can't be sent, the money returns to your balance.",
+      "toPay": "To pay",
+      "noteTopUp": "You will pay the missing amount — the Stars are sent automatically right after payment."
     },
-    "insufficient": "Top up your balance — the order of {{quantity}} ⭐ for @{{recipient}} will be paid automatically.",
+    "insufficient": "The order of {{quantity}} ⭐ for @{{recipient}} is saved — pay the missing amount",
     "errors": {
       "priceChanged": "The price has changed — check the total and pay again.",
       "invalid": "Check the recipient and amount.",

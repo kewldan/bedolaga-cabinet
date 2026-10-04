@@ -122,6 +122,17 @@ export default function Stars() {
     quantity <= config.max_quantity;
   const total = config && quantity !== null ? quantity * config.price_per_star_kopeks : 0;
   const balance = paidOrder?.balance_kopeks ?? config?.balance_kopeks ?? 0;
+  // Не хватает на балансе — кнопка сразу ведёт на оплату недостающего: сервер сохраняет
+  // заказ, после оплаты он проводится сам. Отдельного экрана «недостаточно средств» нет.
+  const shortfall = quantityValid ? Math.max(0, total - balance) : 0;
+
+  const goToPayment = (missing: number) => {
+    const params = new URLSearchParams({
+      amount: String(Math.ceil(missing / 100)),
+      returnTo: '/stars',
+    });
+    navigate(`/balance/top-up?${params.toString()}`);
+  };
 
   const signature = `${recipient.toLowerCase()}|${quantity ?? ''}`;
   const checkoutKeyFor = (sig: string): string => {
@@ -158,6 +169,7 @@ export default function Stars() {
       if (axios.isAxiosError(err) && err.response?.status === 402) {
         const detail = err.response.data?.detail as StarsInsufficientBalance;
         setMissingKopeks(detail.missing_kopeks);
+        goToPayment(detail.missing_kopeks);
         return;
       }
       if (axios.isAxiosError(err) && err.response?.status === 409) {
@@ -358,6 +370,14 @@ export default function Stars() {
                 <span className="text-dark-400">{t('stars.summary.balance')}</span>
                 <span className="text-dark-200">{formatPrice(balance, i18n.language)}</span>
               </div>
+              {shortfall > 0 && balance > 0 && (
+                <div className="flex justify-between gap-4">
+                  <span className="text-dark-400">{t('stars.summary.toPay')}</span>
+                  <span className="font-medium text-dark-100">
+                    {formatPrice(shortfall, i18n.language)}
+                  </span>
+                </div>
+              )}
             </div>
 
             {error && (
@@ -369,6 +389,7 @@ export default function Stars() {
             {missingKopeks !== null && (
               <InsufficientBalancePrompt
                 className="mt-3"
+                compact
                 missingAmountKopeks={missingKopeks}
                 message={t('stars.insufficient', { quantity, recipient })}
               />
@@ -382,10 +403,14 @@ export default function Stars() {
               {purchase.isPending
                 ? t('stars.summary.paying')
                 : quantityValid
-                  ? t('stars.summary.pay', { total: formatPrice(total, i18n.language) })
+                  ? t('stars.summary.pay', {
+                      total: formatPrice(shortfall > 0 ? shortfall : total, i18n.language),
+                    })
                   : t('stars.summary.payDisabled')}
             </button>
-            <p className="mt-2 text-center text-xs text-dark-500">{t('stars.summary.note')}</p>
+            <p className="mt-2 text-center text-xs text-dark-500">
+              {shortfall > 0 ? t('stars.summary.noteTopUp') : t('stars.summary.note')}
+            </p>
           </section>
         </>
       )}
