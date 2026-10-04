@@ -77,7 +77,8 @@
     "wheel": "چرخ شانس",
     "menu": "منو",
     "gift": "هدیه",
-    "navigation": "ناوبری"
+    "navigation": "ناوبری",
+    "stars": "ستاره"
   },
   "notifications": {
     "ticketNotifications": "اعلان‌های تیکت",
@@ -918,7 +919,8 @@
       "tryAgain": "تلاش مجدد"
     },
     "top_up": "افزایش موجودی",
-    "scanQrToPay": "کد QR را در برنامه بانک اسکن کنید یا صفحه پرداخت را باز کنید"
+    "scanQrToPay": "کد QR را در برنامه بانک اسکن کنید یا صفحه پرداخت را باز کنید",
+    "starsPayment": "خرید ستاره"
   },
   "referral": {
     "title": "برنامه معرفی",
@@ -1366,7 +1368,8 @@
       "infoPages": "صفحات اطلاعات",
       "legalPages": "صفحات سیستمی",
       "systemErrors": "خطاهای سیستم",
-      "dpichecker": "DPI//CHECKER"
+      "dpichecker": "DPI//CHECKER",
+      "stars": "ستاره‌ها"
     },
     "panel": {
       "title": "پنل مدیریت",
@@ -2320,14 +2323,16 @@
         "sys_cabinet": "کابین",
         "sys_other": "سایر تنظیمات",
         "sys_dpichecker": "DPI//CHECKER",
-        "payments_cashera": "Cashera"
+        "payments_cashera": "Cashera",
+        "users_stars_shop": "فروشگاه ستاره"
       },
       "categories": {
         "CABINET": "کابین",
         "INFO_PAGES": "اسناد حقوقی و پرسش‌های متداول",
         "MENU": "دکمه منو",
         "TELEGRAM_WIDGET": "Telegram Login Widget",
-        "TELEGRAM_OIDC": "Telegram Login (OIDC)"
+        "TELEGRAM_OIDC": "Telegram Login (OIDC)",
+        "STARS_SHOP": "⭐ فروشگاه ستاره"
       },
       "settingNames": {
         "Telegram Widget Size": "اندازه ویجت",
@@ -2555,7 +2560,8 @@
         "support": "پشتیبانی",
         "info": "اطلاعات",
         "admin": "پنل مدیریت",
-        "language": "زبان"
+        "language": "زبان",
+        "stars": "ستاره‌ها"
       },
       "descriptions": {
         "home": "دکمه کابینت شخصی",
@@ -2565,7 +2571,8 @@
         "support": "تیکت‌های پشتیبانی",
         "info": "بخش اطلاعات",
         "admin": "پنل مدیریت وب",
-        "language": "انتخاب زبان ربات"
+        "language": "انتخاب زبان ربات",
+        "stars": "خرید ستاره تلگرام"
       },
       "styles": {
         "default": "بدون رنگ",

@@ -202,6 +202,12 @@ const sections: AdminSection[] = [
         permission: 'coupons:read',
       },
       {
+        name: 'admin.nav.stars',
+        icon: 'sparkle',
+        to: '/admin/stars',
+        permission: 'stars_shop:read',
+      },
+      {
         name: 'admin.nav.promoGroups',
         icon: 'percent',
         to: '/admin/promo-groups',

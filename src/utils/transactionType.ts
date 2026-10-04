@@ -14,6 +14,7 @@ const TYPES: Record<string, { label: string; badge: string }> = {
   REFERRAL_REWARD: { label: 'balance.referralReward', badge: 'badge-warning' },
   POLL_REWARD: { label: 'balance.pollReward', badge: 'badge-warning' },
   GIFT_PAYMENT: { label: 'balance.giftPayment', badge: 'badge-info' },
+  STARS_PAYMENT: { label: 'balance.starsPayment', badge: 'badge-info' },
 };
 
 const lookup = (type: string) => TYPES[type?.toUpperCase?.() ?? ''];

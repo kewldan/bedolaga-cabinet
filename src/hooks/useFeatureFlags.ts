@@ -6,6 +6,7 @@ import { referralApi } from '@/api/referral';
 import { wheelApi } from '@/api/wheel';
 import { contestsApi } from '@/api/contests';
 import { pollsApi } from '@/api/polls';
+import { starsApi } from '@/api/stars';
 
 // Последние известные значения флагов. Пока запросы в полёте, флаги были
 // undefined -> табы «Рефералы»/«Колесо» появлялись с задержкой и нижняя
@@ -19,6 +20,7 @@ type CachedFlags = {
   hasContests?: boolean;
   hasPolls?: boolean;
   giftEnabled?: boolean;
+  starsEnabled?: boolean;
 };
 
 function readFlagsCache(): CachedFlags {
@@ -73,16 +75,33 @@ export function useFeatureFlags() {
     retry: false,
   });
 
+  const { data: starsConfig } = useQuery({
+    queryKey: ['stars-config'],
+    queryFn: starsApi.getConfig,
+    enabled: isAuthenticated,
+    staleTime: 60000,
+    retry: false,
+  });
+
   const flags = {
     referralEnabled: referralTerms ? referralTerms.is_enabled : cached.referralEnabled,
     wheelEnabled: wheelConfig ? wheelConfig.is_enabled : cached.wheelEnabled,
     hasContests: contestsCount ? contestsCount.count > 0 : cached.hasContests,
     hasPolls: pollsCount ? pollsCount.count > 0 : cached.hasPolls,
     giftEnabled: giftConfig ? giftConfig.enabled : cached.giftEnabled,
+    starsEnabled: starsConfig ? starsConfig.available : cached.starsEnabled,
   };
 
   useEffect(() => {
-    if (!referralTerms && !wheelConfig && !contestsCount && !pollsCount && !giftConfig) return;
+    if (
+      !referralTerms &&
+      !wheelConfig &&
+      !contestsCount &&
+      !pollsCount &&
+      !giftConfig &&
+      !starsConfig
+    )
+      return;
     try {
       localStorage.setItem(FLAGS_CACHE_KEY, JSON.stringify(flags));
     } catch {
@@ -95,6 +114,7 @@ export function useFeatureFlags() {
     flags.hasContests,
     flags.hasPolls,
     flags.giftEnabled,
+    flags.starsEnabled,
   ]);
 
   return flags;

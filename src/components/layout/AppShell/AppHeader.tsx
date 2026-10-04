@@ -43,6 +43,7 @@ import {
   MoonIcon,
   SearchIcon,
 } from './icons';
+import { StarIcon } from '@/components/icons';
 
 const FALLBACK_NAME = import.meta.env.VITE_APP_NAME || 'Cabinet';
 const FALLBACK_LOGO = import.meta.env.VITE_APP_LOGO || 'V';
@@ -64,6 +65,7 @@ interface AppHeaderProps {
   hasContests?: boolean;
   hasPolls?: boolean;
   giftEnabled?: boolean;
+  starsEnabled?: boolean;
 }
 
 export function AppHeader({
@@ -80,6 +82,7 @@ export function AppHeader({
   hasContests,
   hasPolls,
   giftEnabled,
+  starsEnabled,
 }: AppHeaderProps) {
   const { t } = useTranslation();
   const location = useLocation();
@@ -158,6 +161,7 @@ export function AppHeader({
     ...(hasPolls ? [{ path: '/polls', label: t('nav.polls'), icon: ClipboardIcon }] : []),
     ...(wheelEnabled ? [{ path: '/wheel', label: t('nav.wheel'), icon: WheelIcon }] : []),
     ...(giftEnabled ? [{ path: '/gift', label: t('nav.gift'), icon: GiftIcon }] : []),
+    ...(starsEnabled ? [{ path: '/stars', label: t('nav.stars'), icon: StarIcon }] : []),
     { path: '/info', label: t('nav.info'), icon: InfoIcon },
   ];
 
