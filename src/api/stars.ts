@@ -70,8 +70,14 @@ export interface AdminStarsOrder extends StarsOrder {
   fragment_req_id: string | null;
   ton_tx_hash: string | null;
   cost_nanoton: number | null;
+  /** Курс TON и себестоимость в копейках на момент выдачи */
+  ton_rate_kopeks?: number | null;
+  cost_kopeks?: number | null;
   next_attempt_at: string | null;
+  processing_started_at?: string | null;
   updated_at: string | null;
+  user_telegram_id?: number | null;
+  user_username?: string | null;
 }
 
 export interface AdminStarsOrdersList {
@@ -88,10 +94,13 @@ export interface AdminStarsStats {
   revenue_kopeks: number;
   refunded_kopeks: number;
   cost_nanoton: number;
-  /** null — не задан курс TON (STARS_SHOP_TON_RATE_KOPEKS) */
+  /** null — нет курса TON, себестоимость старых заказов не посчитать */
   margin_kopeks: number | null;
+  cost_kopeks?: number | null;
   by_status: Record<string, number>;
   needs_review: number;
+  ton_rate_kopeks?: number | null;
+  ton_rate_source?: string | null;
 }
 
 export interface AdminStarsStatus {
@@ -102,7 +111,10 @@ export interface AdminStarsStatus {
   min_quantity: number;
   max_quantity: number;
   presets: number[];
-  ton_rate_kopeks: number;
+  /** Курс TON: ручной (manual) или с tonapi/coingecko; null — недоступен */
+  ton_rate_kopeks: number | null;
+  ton_rate_source?: string | null;
+  wallet_low_stars?: number;
 }
 
 export interface AdminStarsWallet {
@@ -110,6 +122,7 @@ export interface AdminStarsWallet {
   state: string;
   balance_ton: number;
   fragment_price_ton_per_100: string | null;
+  ton_rate_kopeks?: number | null;
 }
 
 // ============== API ==============

@@ -6732,7 +6732,12 @@
         "sold": "Stars sold",
         "orders": "orders: {{count}}",
         "refunded": "Refunded",
-        "review": "Under review"
+        "review": "Under review",
+        "marginTitle": "Margin",
+        "marginSub": "{{percent}} · cost {{cost}}",
+        "noRate": "no TON rate",
+        "avgPrice": "avg {{value}} per ⭐",
+        "refundedSub": "refunded {{value}}"
       },
       "wallet": {
         "title": "Fragment wallet",
@@ -6740,7 +6745,9 @@
         "loading": "Loading…",
         "error": "Couldn't get the balance",
         "price": "100 ⭐ on Fragment: {{price}} TON",
-        "hint": "Payer wallet balance and address"
+        "hint": "Payer wallet balance and address",
+        "starsLeft": "Enough for about {{value}} ⭐",
+        "lowStars": "Only enough for {{value}} ⭐ — top up the wallet"
       },
       "filters": {
         "all": "All",
@@ -6756,7 +6763,16 @@
         "fragmentReq": "Fragment request",
         "txHash": "Transaction hash",
         "nextAttempt": "Next attempt",
-        "updated": "Updated"
+        "updated": "Updated",
+        "paid": "Paid",
+        "pricePerStar": "Price per ⭐",
+        "margin": "Margin",
+        "tonRate": "TON rate at delivery",
+        "buyer": "Buyer",
+        "recipient": "Recipient",
+        "created": "Created",
+        "completed": "Delivered",
+        "refunded": "Refunded"
       },
       "source": {
         "bot": "Bot",
@@ -6775,6 +6791,24 @@
         "refund": "Refund",
         "complete": "Completed",
         "failed": "Action failed"
+      },
+      "sections": {
+        "money": "Money",
+        "people": "Buyer and recipient",
+        "delivery": "Delivery",
+        "chain": "Blockchain"
+      },
+      "estimatedCost": "* estimated at the current rate: the order was delivered before rates were saved",
+      "forSelf": "Bought for themselves",
+      "deliveredIn": "in {{seconds}} s",
+      "copyHash": "Hash",
+      "copyReq": "Request ID",
+      "copyAddress": "Address",
+      "tonRate": "TON rate: {{value}} · {{source}}",
+      "rateSource": {
+        "manual": "manual",
+        "tonapi": "tonapi.io",
+        "coingecko": "CoinGecko"
       }
     }
   },
