@@ -7328,7 +7328,12 @@
         "sold": "Звёзд продано",
         "orders": "заказов: {{count}}",
         "refunded": "Возвращено",
-        "review": "На проверке"
+        "review": "На проверке",
+        "marginTitle": "Маржа",
+        "marginSub": "{{percent}} · себестоимость {{cost}}",
+        "noRate": "нет курса TON",
+        "avgPrice": "в среднем {{value}} за ⭐",
+        "refundedSub": "возвращено {{value}}"
       },
       "wallet": {
         "title": "Кошелёк Fragment",
@@ -7336,7 +7341,9 @@
         "loading": "Загружаем…",
         "error": "Не удалось получить баланс",
         "price": "100 ⭐ на Fragment: {{price}} TON",
-        "hint": "Баланс и адрес платёжного кошелька"
+        "hint": "Баланс и адрес платёжного кошелька",
+        "starsLeft": "Хватит примерно на {{value}} ⭐",
+        "lowStars": "Хватит только на {{value}} ⭐ — пора пополнить кошелёк"
       },
       "filters": {
         "all": "Все",
@@ -7352,7 +7359,16 @@
         "fragmentReq": "Заявка Fragment",
         "txHash": "Хеш транзакции",
         "nextAttempt": "След. попытка",
-        "updated": "Обновлён"
+        "updated": "Обновлён",
+        "paid": "Оплачено",
+        "pricePerStar": "Цена за ⭐",
+        "margin": "Маржа",
+        "tonRate": "Курс TON при выдаче",
+        "buyer": "Покупатель",
+        "recipient": "Получатель",
+        "created": "Создан",
+        "completed": "Выдан",
+        "refunded": "Возврат"
       },
       "source": {
         "bot": "Бот",
@@ -7371,6 +7387,24 @@
         "refund": "Вернуть деньги",
         "complete": "Выполнен",
         "failed": "Действие не выполнено"
+      },
+      "sections": {
+        "money": "Деньги",
+        "people": "Покупатель и получатель",
+        "delivery": "Выдача",
+        "chain": "Блокчейн"
+      },
+      "estimatedCost": "* оценка по текущему курсу: заказ выдан до того, как курс начал сохраняться",
+      "forSelf": "Покупка себе",
+      "deliveredIn": "за {{seconds}} с",
+      "copyHash": "Хеш",
+      "copyReq": "ID заявки",
+      "copyAddress": "Адрес",
+      "tonRate": "Курс TON: {{value}} · {{source}}",
+      "rateSource": {
+        "manual": "вручную",
+        "tonapi": "tonapi.io",
+        "coingecko": "CoinGecko"
       }
     }
   },
